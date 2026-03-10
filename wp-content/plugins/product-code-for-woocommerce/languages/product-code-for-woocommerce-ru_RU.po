@@ -1,0 +1,232 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Product Code for WooCommerce\n"
+"POT-Creation-Date: 2026-01-12 22:30+0000\n"
+"PO-Revision-Date: 2026-01-12 22:30-0500\n"
+"Last-Translator: Artios Media\n"
+"Language-Team: Russian\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "Product code"
+msgstr "Код товара"
+
+msgid "Successfully Updated Redirecting back...."
+msgstr "Успешно обновлено. Перенаправление..."
+
+msgid "Failed to update please retry later, Redirecting back... "
+msgstr "Ошибка обновления, попробуйте позже. Перенаправление..."
+
+msgid "%s refers to a company's unique internal product identifier, needed for online product fulfillment."
+msgstr "%s относится к уникальному внутреннему идентификатору продукта компании, необходимому для выполнения онлайн-заказов."
+
+msgid "Product code 2"
+msgstr "Код товара 2"
+
+msgid "Code"
+msgstr "Код"
+
+msgid "Code 2"
+msgstr "Код 2"
+
+msgid "View Details"
+msgstr "Подробнее"
+
+msgid "Donation for Homeless"
+msgstr "Пожертвование для бездомных"
+
+msgid "Product Code"
+msgstr "Код Товара"
+
+msgid "Product Code for WooCommerce Add-on requires Woocommerce plugin to be installed and activated."
+msgstr "Дополнение Код Товара для WooCommerce требует установки и активации плагина WooCommerce."
+
+msgid "Product Code:"
+msgstr "Код Товара:"
+
+msgid "Product Code Second:"
+msgstr "Второй Код Товара:"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Settings saved successfully."
+msgstr "Успешно сохранено."
+
+msgid "Product Code Settings"
+msgstr "Настройки Кода Товара"
+
+msgid "Configurations"
+msgstr "Конфигурации"
+
+msgid "Primary Product Code"
+msgstr "Основной Код Товара"
+
+msgid "Enable Product Code"
+msgstr "Включить Код Товара"
+
+msgid "Enable product code display across your store."
+msgstr "Включить отображение кода товара в вашем магазине."
+
+msgid "Master switch. When enabled, codes appear on product pages, cart, checkout, and order receipts."
+msgstr "Главный переключатель. При включении коды отображаются на страницах товаров, в корзине, при оформлении заказа и в квитанциях."
+
+msgid "Hide on Product Pages"
+msgstr "Скрыть на Страницах Товаров"
+
+msgid "Hide from single product pages only."
+msgstr "Скрыть только на отдельных страницах товаров."
+
+msgid "Code still appears in cart, checkout, and order receipts."
+msgstr "Код по-прежнему отображается в корзине, при оформлении заказа и в квитанциях."
+
+msgid "Hide from Customer Orders"
+msgstr "Скрыть из Заказов Клиентов"
+
+msgid "Hide from cart, checkout, and order confirmations."
+msgstr "Скрыть из корзины, оформления заказа и подтверждений заказа."
+
+msgid "Codes are still saved to orders and visible in admin, invoices, and packing slips. Ideal for internal codes like bin numbers."
+msgstr "Коды по-прежнему сохраняются в заказах и видны в админке, счетах и упаковочных листах. Идеально для внутренних кодов, таких как номера ячеек."
+
+msgid "Field Title"
+msgstr "Название Поля"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 12 characters."
+msgstr "Метка, показываемая клиентам на страницах товаров и в корзине. Максимум 12 символов."
+
+msgid "Products Column Title"
+msgstr "Заголовок Колонки Товаров"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 12 characters."
+msgstr "Заголовок колонки в списке Товаров и Быстром Редактировании. Максимум 12 символов."
+
+msgid "Secondary Product Code"
+msgstr "Дополнительный Код Товара"
+
+msgid "Enable Second Field"
+msgstr "Включить Второе Поле"
+
+msgid "Add a second product code field in admin."
+msgstr "Добавить второе поле кода товара в админке."
+
+msgid "Adds a second code field to the product editor. Useful for alternate SKUs, supplier codes, or bin locations."
+msgstr "Добавляет второе поле кода в редактор товара. Полезно для альтернативных артикулов, кодов поставщика или мест хранения."
+
+msgid "Show Second Code"
+msgstr "Показать Второй Код"
+
+msgid "Display second code to customers."
+msgstr "Показывать второй код клиентам."
+
+msgid "Shows second code on product pages, cart, checkout, and receipts. Leave unchecked to keep it admin-only."
+msgstr "Показывает второй код на страницах товаров, в корзине, при оформлении и в чеках. Оставьте неотмеченным только для админки."
+
+msgid "Second Field Title"
+msgstr "Название Второго Поля"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 14 characters."
+msgstr "Метка, показываемая клиентам на страницах товаров и в корзине. Максимум 14 символов."
+
+msgid "Second Column Title"
+msgstr "Заголовок Второй Колонки"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 14 characters."
+msgstr "Заголовок колонки в списке Товаров и Быстром Редактировании. Максимум 14 символов."
+
+msgid "Advanced Settings"
+msgstr "Расширенные Настройки"
+
+msgid "Hide Field When Empty"
+msgstr "Скрыть Поле Если Пусто"
+
+msgid "Hide code display when no value is set."
+msgstr "Скрыть отображение кода, когда значение не установлено."
+
+msgid "Prevents \"N/A\" from appearing on product pages when a product has no code assigned."
+msgstr "Предотвращает появление \"Н/Д\" на страницах товаров, когда код не назначен."
+
+msgid "Enable Structured Data"
+msgstr "Включить Структурированные Данные"
+
+msgid "Add product code to schema.org markup."
+msgstr "Добавить код товара в разметку schema.org."
+
+msgid "Includes product code in structured data for search engines. Improves SEO for products with GTINs, ISBNs, or MPNs."
+msgstr "Включает код товара в структурированные данные для поисковых систем. Улучшает SEO для товаров с GTIN, ISBN или MPN."
+
+msgid "Structured Data Type"
+msgstr "Тип Структурированных Данных"
+
+msgid "GTIN: barcodes (UPC/EAN). ISBN: books. MPN: manufacturer part numbers. Choose based on your code type."
+msgstr "GTIN: штрих-коды (UPC/EAN). ISBN: книги. MPN: артикулы производителя. Выберите в соответствии с типом вашего кода."
+
+msgid "Admin Only"
+msgstr "Только для Админа"
+
+msgid "Only admins see codes on product pages."
+msgstr "Только админы видят коды на страницах товаров."
+
+msgid "Logged-in administrators will see codes on product pages; all other visitors will not."
+msgstr "Вошедшие администраторы увидят коды на страницах товаров; другие посетители — нет."
+
+msgid "Hide WooCommerce GTIN"
+msgstr "Скрыть GTIN WooCommerce"
+
+msgid "Hide the built-in WooCommerce Unique ID field."
+msgstr "Скрыть встроенное поле Уникальный ID WooCommerce."
+
+msgid "WooCommerce 9.2+ added a GTIN field. Default is set to 'hide' to avoid confusion."
+msgstr "WooCommerce 9.2+ добавил поле GTIN. По умолчанию установлено 'скрыть' во избежание путаницы."
+
+msgid "Delete Data on Uninstall"
+msgstr "Удалить Данные при Удалении"
+
+msgid "WARNING:"
+msgstr "ВНИМАНИЕ:"
+
+msgid "Permanently deletes all codes when plugin is uninstalled."
+msgstr "Навсегда удаляет все коды при удалении плагина."
+
+msgid "Save Settings"
+msgstr "Сохранить"
+
+msgid "Support"
+msgstr "Поддержка"
+
+msgid "Leave Review"
+msgstr "Оценить"
+
+msgid "This plugin is free, but your donation aids orphans:"
+msgstr "Этот плагин бесплатный, но ваше пожертвование помогает сиротам:"
+
+msgid "I Want to Help"
+msgstr "Помочь"
+
+msgid "<strong>NOTICE! Product Code For WooCommerce</strong> must update your database to modify meta fields. Consider backing up database first."
+msgstr "<strong>ВНИМАНИЕ! Код Товара для WooCommerce</strong> должен обновить вашу базу данных для изменения мета-полей. Рекомендуется сначала сделать резервную копию базы данных."
+
+msgid "Update Now"
+msgstr "Обновить Сейчас"
+
+msgid "N/A"
+msgstr "Н/Д"
+
+msgid "Product Code for WooCommerce"
+msgstr "Код Товара для WooCommerce"
+
+msgid "http://wordpress.org/plugins/product-code-for-woocommerce"
+msgstr "http://wordpress.org/plugins/product-code-for-woocommerce"
+
+msgid "Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup."
+msgstr "Плагин предоставляет уникальный внутренний идентификатор продукта в дополнение к GTIN, EAN, SKU и UPC на протяжении всего процесса заказа. Дополнительное поле кода товара можно активировать в настройках."
+
+msgid "Artios Media"
+msgstr "Artios Media"
+
+msgid "http://www.artiosmedia.com"
+msgstr "http://www.artiosmedia.com"

@@ -1,0 +1,19 @@
+.wrap.woocommerce table.form-table tr:nth-child(4),
+.wrap.woocommerce table.form-table tr:nth-child(9) {
+    border-bottom: 1px solid #8f959e;
+}
+
+.wrap.woocommerce table.form-table tr:nth-child(4) :is(th, td),
+.wrap.woocommerce table.form-table tr:nth-child(9) :is(th, td) {
+    padding-bottom: 40px;
+}
+
+.wrap.woocommerce table.form-table tr:nth-child(4)+tr td,
+.wrap.woocommerce table.form-table tr:nth-child(9)+tr td {
+    padding-top: 40px;
+}
+
+.wrap.woocommerce table.form-table tr:nth-child(4)+tr th,
+.wrap.woocommerce table.form-table tr:nth-child(9)+tr th {
+    padding-top: 45px;
+}

@@ -1,0 +1,53 @@
+{
+    "name": "vivacom/woocommerce",
+    "authors": [
+        {
+            "name": "Viva.com",
+            "email": "Plugins@vivawallet.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=7.3",
+        "composer/installers": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "humbug/php-scoper": "*",
+        "vivawallet/vivawallet-php": "2.2.4"
+    },
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/vivawallet/"
+        },
+        "packagist.org": false
+    },
+    "autoload": {
+        "classmap": [
+            "vendor_prefixed/"
+        ]
+    },
+    "scripts": {
+        "phpcs-config": [
+            "\"phpcs/vendor/bin/phpcs\" --config-set installed_paths phpcs/vendor/wp-coding-standards/wpcs,phpcs/vendor/phpcompatibility/php-compatibility,phpcs/vendor/woocommerce/woocommerce-sniffs/src,phpcs/vendor/phpcompatibility/phpcompatibility-wp,phpcs/vendor/phpcompatibility/phpcompatibility-paragonie,phpcs/vendor/phpcsstandards/phpcsutils,phpcs/vendor/phpcsstandards/phpcsextra"
+        ],
+        "phpcs-scan": [
+            "@phpcs-config",
+            "\"phpcs/vendor/bin/phpcs\""
+        ],
+        "post-autoload-dump": [
+            "@php vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=VivaComSmartCheckout --output-dir=./vendor_prefixed/guzzlehttp --config=php-scoper/guzzlehttp.inc.php --force",
+            "@php vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=VivaComSmartCheckout --output-dir=./vendor_prefixed/psr --config=php-scoper/psr.inc.php --force",
+            "@php vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=VivaComSmartCheckout --output-dir=./vendor_prefixed/symfony/deprecation-contracts --config=php-scoper/symfony.inc.php --force",
+            "@php vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=VivaComSmartCheckout --output-dir=./vendor_prefixed/ralouphie --config=php-scoper/ralouphie.inc.php --force",
+            "@php vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=VivaComSmartCheckout --output-dir=./vendor_prefixed/vivawallet --config=php-scoper/vivawallet.inc.php --force"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

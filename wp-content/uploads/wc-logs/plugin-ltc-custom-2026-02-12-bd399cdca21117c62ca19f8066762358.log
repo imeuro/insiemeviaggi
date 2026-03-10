@@ -1,0 +1,282 @@
+2026-02-12T16:06:22+00:00 INFO *++++++*
+2026-02-12T16:06:22+00:00 INFO -> ok, show me the downloads for 20573
+2026-02-12T16:06:22+00:00 INFO Array
+(
+)
+2026-02-12T16:06:22+00:00 INFO -> ok, but is downloadable?
+2026-02-12T16:06:22+00:00 INFO 1
+2026-02-12T16:07:30+00:00 INFO ==================
+2026-02-12T16:07:30+00:00 INFO ---> Status for order 24652: completed
+2026-02-12T16:07:30+00:00 INFO ---> listing reserved tickets # for order 24652: 
+2026-02-12T16:07:30+00:00 INFO DIGCRP_201
+2026-02-12T16:07:30+00:00 INFO DIGCRP_202
+2026-02-12T16:07:30+00:00 INFO DIGCRP_203
+2026-02-12T16:07:30+00:00 INFO ==================
+2026-02-12T16:07:30+00:00 INFO ---> Status for order 24652: completed
+2026-02-12T16:07:30+00:00 INFO Array
+(
+    [cfb29b8bd1cf3168d35e253eb87e2d11] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => cfb29b8bd1cf3168d35e253eb87e2d11
+                    [name] => DIGCRP_201.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_201.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+    [8f6388257e1b825201f11794dc34082b] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 8f6388257e1b825201f11794dc34082b
+                    [name] => DIGCRP_202.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_202.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+    [797913d24c33ac9e16dab3fb696bbd60] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 797913d24c33ac9e16dab3fb696bbd60
+                    [name] => DIGCRP_203.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_203.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+)
+2026-02-12T16:07:30+00:00 INFO Array
+(
+    [0] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => cfb29b8bd1cf3168d35e253eb87e2d11
+                    [name] => DIGCRP_201.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_201.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+    [1] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 8f6388257e1b825201f11794dc34082b
+                    [name] => DIGCRP_202.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_202.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+    [2] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 797913d24c33ac9e16dab3fb696bbd60
+                    [name] => DIGCRP_203.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_203.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+)
+2026-02-12T16:07:30+00:00 INFO Array
+(
+    [0] => Array
+        (
+            [download_url] => https://www.insiemeviaggi.com/?download_file=20573&order=wc_order_DXwYAPAZDrlrQ&uid=9a0d0d1f294e2924c45f8862546b047d8f81e5f9c4415624de5b038900a3096c&key=cfb29b8bd1cf3168d35e253eb87e2d11
+            [download_id] => cfb29b8bd1cf3168d35e253eb87e2d11
+            [product_id] => 20573
+            [product_name] => Gardaland Park: speciale convenzionati
+            [product_url] => https://www.insiemeviaggi.com/product/gardaland-park/
+            [download_name] => DIGCRP_201.pdf
+            [order_id] => 24652
+            [order_key] => wc_order_DXwYAPAZDrlrQ
+            [downloads_remaining] => 
+            [access_expires] => 
+            [file] => Array
+                (
+                    [name] => DIGCRP_201.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_201.pdf
+                )
+
+        )
+
+    [1] => Array
+        (
+            [download_url] => https://www.insiemeviaggi.com/?download_file=20573&order=wc_order_DXwYAPAZDrlrQ&uid=9a0d0d1f294e2924c45f8862546b047d8f81e5f9c4415624de5b038900a3096c&key=8f6388257e1b825201f11794dc34082b
+            [download_id] => 8f6388257e1b825201f11794dc34082b
+            [product_id] => 20573
+            [product_name] => Gardaland Park: speciale convenzionati
+            [product_url] => https://www.insiemeviaggi.com/product/gardaland-park/
+            [download_name] => DIGCRP_202.pdf
+            [order_id] => 24652
+            [order_key] => wc_order_DXwYAPAZDrlrQ
+            [downloads_remaining] => 
+            [access_expires] => 
+            [file] => Array
+                (
+                    [name] => DIGCRP_202.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_202.pdf
+                )
+
+        )
+
+    [2] => Array
+        (
+            [download_url] => https://www.insiemeviaggi.com/?download_file=20573&order=wc_order_DXwYAPAZDrlrQ&uid=9a0d0d1f294e2924c45f8862546b047d8f81e5f9c4415624de5b038900a3096c&key=797913d24c33ac9e16dab3fb696bbd60
+            [download_id] => 797913d24c33ac9e16dab3fb696bbd60
+            [product_id] => 20573
+            [product_name] => Gardaland Park: speciale convenzionati
+            [product_url] => https://www.insiemeviaggi.com/product/gardaland-park/
+            [download_name] => DIGCRP_203.pdf
+            [order_id] => 24652
+            [order_key] => wc_order_DXwYAPAZDrlrQ
+            [downloads_remaining] => 
+            [access_expires] => 
+            [file] => Array
+                (
+                    [name] => DIGCRP_203.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_203.pdf
+                )
+
+        )
+
+)
+2026-02-12T16:07:30+00:00 INFO ---> EMAIL ATTACHMENTS for order #24652: 
+2026-02-12T16:07:30+00:00 INFO /home/customer/www/insiemeviaggi.com/public_html/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_201.pdf
+2026-02-12T16:07:30+00:00 INFO /home/customer/www/insiemeviaggi.com/public_html/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_202.pdf
+2026-02-12T16:07:30+00:00 INFO /home/customer/www/insiemeviaggi.com/public_html/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_203.pdf
+2026-02-12T16:07:30+00:00 INFO ==================
+2026-02-12T16:07:30+00:00 INFO ---> Status for order 24652: completed
+2026-02-12T16:07:30+00:00 INFO ---> listing reserved tickets # for order 24652: 
+2026-02-12T16:07:30+00:00 INFO DIGCRP_201
+2026-02-12T16:07:30+00:00 INFO DIGCRP_202
+2026-02-12T16:07:30+00:00 INFO DIGCRP_203
+2026-02-12T16:27:45+00:00 INFO *++++++*
+2026-02-12T16:27:45+00:00 INFO -> ok, show me the downloads for 20573
+2026-02-12T16:27:45+00:00 INFO Array
+(
+    [cfb29b8bd1cf3168d35e253eb87e2d11] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => cfb29b8bd1cf3168d35e253eb87e2d11
+                    [name] => DIGCRP_201.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_201.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+    [8f6388257e1b825201f11794dc34082b] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 8f6388257e1b825201f11794dc34082b
+                    [name] => DIGCRP_202.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_202.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+    [797913d24c33ac9e16dab3fb696bbd60] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => 797913d24c33ac9e16dab3fb696bbd60
+                    [name] => DIGCRP_203.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_203.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+)
+2026-02-12T16:27:45+00:00 INFO -> ok, but is downloadable?
+2026-02-12T16:27:45+00:00 INFO 1
+2026-02-12T16:27:45+00:00 INFO ==================
+2026-02-12T16:27:45+00:00 INFO ---> Status for order 24654: on-hold
+2026-02-12T16:27:45+00:00 INFO ---> listing reserved tickets # for order 24654: 
+2026-02-12T16:27:45+00:00 INFO DIGCRP_204
+2026-02-12T16:27:45+00:00 INFO ==================
+2026-02-12T16:27:45+00:00 INFO ---> Status for order 24654: on-hold
+2026-02-12T16:27:45+00:00 INFO ---> listing reserved tickets # for order 24654: 
+2026-02-12T16:27:45+00:00 INFO DIGCRP_204
+2026-02-12T21:58:02+00:00 INFO ==================
+2026-02-12T21:58:02+00:00 INFO ---> Status for order 24654: completed
+2026-02-12T21:58:02+00:00 INFO ---> listing reserved tickets # for order 24654: 
+2026-02-12T21:58:02+00:00 INFO DIGCRP_204
+2026-02-12T21:58:02+00:00 INFO ==================
+2026-02-12T21:58:02+00:00 INFO ---> Status for order 24654: completed
+2026-02-12T21:58:02+00:00 INFO Array
+(
+    [fb4bda1bd63b4337e2da5f993fa7d256] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => fb4bda1bd63b4337e2da5f993fa7d256
+                    [name] => DIGCRP_204.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_204.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+)
+2026-02-12T21:58:02+00:00 INFO Array
+(
+    [0] => WC_Product_Download Object
+        (
+            [data:protected] => Array
+                (
+                    [id] => fb4bda1bd63b4337e2da5f993fa7d256
+                    [name] => DIGCRP_204.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_204.pdf
+                    [enabled] => 1
+                )
+
+        )
+
+)
+2026-02-12T21:58:02+00:00 INFO Array
+(
+    [0] => Array
+        (
+            [download_url] => https://www.insiemeviaggi.com/?download_file=20573&order=wc_order_7wXqXQu4hm7QH&uid=9a0d0d1f294e2924c45f8862546b047d8f81e5f9c4415624de5b038900a3096c&key=fb4bda1bd63b4337e2da5f993fa7d256
+            [download_id] => fb4bda1bd63b4337e2da5f993fa7d256
+            [product_id] => 20573
+            [product_name] => Gardaland Park: speciale convenzionati
+            [product_url] => https://www.insiemeviaggi.com/?post_type=product&p=20573
+            [download_name] => DIGCRP_204.pdf
+            [order_id] => 24654
+            [order_key] => wc_order_7wXqXQu4hm7QH
+            [downloads_remaining] => 
+            [access_expires] => 
+            [file] => Array
+                (
+                    [name] => DIGCRP_204.pdf
+                    [file] => https://www.insiemeviaggi.com/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_204.pdf
+                )
+
+        )
+
+)
+2026-02-12T21:58:02+00:00 INFO ---> EMAIL ATTACHMENTS for order #24654: 
+2026-02-12T21:58:02+00:00 INFO /home/customer/www/insiemeviaggi.com/public_html/wp-content/uploads/woocommerce_uploads/CR1_1/DIGCRP_204.pdf
+2026-02-12T21:58:08+00:00 INFO ==================
+2026-02-12T21:58:08+00:00 INFO ---> Status for order 24572: cancelled
+2026-02-12T21:58:08+00:00 INFO ---> listing respawned tickets # from order 24572: 
+2026-02-12T21:58:08+00:00 INFO 0 of 0 tickets were respawned

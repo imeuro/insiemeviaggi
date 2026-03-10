@@ -1,0 +1,232 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Product Code for WooCommerce\n"
+"POT-Creation-Date: 2026-01-12 22:30+0000\n"
+"PO-Revision-Date: 2026-01-12 22:30-0500\n"
+"Last-Translator: Artios Media\n"
+"Language-Team: Spanish\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "Product code"
+msgstr "Código de producto"
+
+msgid "Successfully Updated Redirecting back...."
+msgstr "Actualizado con éxito. Redirigiendo..."
+
+msgid "Failed to update please retry later, Redirecting back... "
+msgstr "Error al actualizar, intente más tarde. Redirigiendo..."
+
+msgid "%s refers to a company's unique internal product identifier, needed for online product fulfillment."
+msgstr "%s se refiere al identificador interno único de producto de una empresa, necesario para el cumplimiento de pedidos en línea."
+
+msgid "Product code 2"
+msgstr "Código de producto 2"
+
+msgid "Code"
+msgstr "Código"
+
+msgid "Code 2"
+msgstr "Código 2"
+
+msgid "View Details"
+msgstr "Ver detalles"
+
+msgid "Donation for Homeless"
+msgstr "Donación para personas sin hogar"
+
+msgid "Product Code"
+msgstr "Código de Producto"
+
+msgid "Product Code for WooCommerce Add-on requires Woocommerce plugin to be installed and activated."
+msgstr "El complemento Código de Producto para WooCommerce requiere que el plugin WooCommerce esté instalado y activado."
+
+msgid "Product Code:"
+msgstr "Código de Producto:"
+
+msgid "Product Code Second:"
+msgstr "Segundo Código de Producto:"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "Settings saved successfully."
+msgstr "Guardado con éxito."
+
+msgid "Product Code Settings"
+msgstr "Ajustes de Código de Producto"
+
+msgid "Configurations"
+msgstr "Configuraciones"
+
+msgid "Primary Product Code"
+msgstr "Código de Producto Principal"
+
+msgid "Enable Product Code"
+msgstr "Activar Código de Producto"
+
+msgid "Enable product code display across your store."
+msgstr "Activar visualización de código de producto en tu tienda."
+
+msgid "Master switch. When enabled, codes appear on product pages, cart, checkout, and order receipts."
+msgstr "Interruptor principal. Cuando está activado, los códigos aparecen en páginas de producto, carrito, pago y recibos de pedido."
+
+msgid "Hide on Product Pages"
+msgstr "Ocultar en Páginas de Producto"
+
+msgid "Hide from single product pages only."
+msgstr "Ocultar solo en páginas de producto individuales."
+
+msgid "Code still appears in cart, checkout, and order receipts."
+msgstr "El código sigue apareciendo en carrito, pago y recibos de pedido."
+
+msgid "Hide from Customer Orders"
+msgstr "Ocultar en Pedidos de Clientes"
+
+msgid "Hide from cart, checkout, and order confirmations."
+msgstr "Ocultar en carrito, pago y confirmaciones de pedido."
+
+msgid "Codes are still saved to orders and visible in admin, invoices, and packing slips. Ideal for internal codes like bin numbers."
+msgstr "Los códigos se guardan en pedidos y son visibles en admin, facturas y albaranes. Ideal para códigos internos como números de ubicación."
+
+msgid "Field Title"
+msgstr "Título del Campo"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 12 characters."
+msgstr "Etiqueta mostrada a clientes en páginas de producto y carrito. Máximo 12 caracteres."
+
+msgid "Products Column Title"
+msgstr "Título de Columna de Productos"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 12 characters."
+msgstr "Encabezado de columna en lista de Productos y Edición Rápida. Máximo 12 caracteres."
+
+msgid "Secondary Product Code"
+msgstr "Código de Producto Secundario"
+
+msgid "Enable Second Field"
+msgstr "Activar Segundo Campo"
+
+msgid "Add a second product code field in admin."
+msgstr "Añadir un segundo campo de código de producto en admin."
+
+msgid "Adds a second code field to the product editor. Useful for alternate SKUs, supplier codes, or bin locations."
+msgstr "Añade un segundo campo de código al editor de producto. Útil para SKUs alternativos, códigos de proveedor o ubicaciones."
+
+msgid "Show Second Code"
+msgstr "Mostrar Segundo Código"
+
+msgid "Display second code to customers."
+msgstr "Mostrar segundo código a clientes."
+
+msgid "Shows second code on product pages, cart, checkout, and receipts. Leave unchecked to keep it admin-only."
+msgstr "Muestra segundo código en páginas de producto, carrito, pago y recibos. Dejar sin marcar para solo admin."
+
+msgid "Second Field Title"
+msgstr "Título del Segundo Campo"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 14 characters."
+msgstr "Etiqueta mostrada a clientes en páginas de producto y carrito. Máximo 14 caracteres."
+
+msgid "Second Column Title"
+msgstr "Título de Segunda Columna"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 14 characters."
+msgstr "Encabezado de columna en lista de Productos y Edición Rápida. Máximo 14 caracteres."
+
+msgid "Advanced Settings"
+msgstr "Ajustes Avanzados"
+
+msgid "Hide Field When Empty"
+msgstr "Ocultar Campo Cuando Vacío"
+
+msgid "Hide code display when no value is set."
+msgstr "Ocultar código cuando no hay valor establecido."
+
+msgid "Prevents \"N/A\" from appearing on product pages when a product has no code assigned."
+msgstr "Evita que aparezca \"N/D\" en páginas de producto cuando no hay código asignado."
+
+msgid "Enable Structured Data"
+msgstr "Activar Datos Estructurados"
+
+msgid "Add product code to schema.org markup."
+msgstr "Añadir código de producto al marcado schema.org."
+
+msgid "Includes product code in structured data for search engines. Improves SEO for products with GTINs, ISBNs, or MPNs."
+msgstr "Incluye código de producto en datos estructurados para buscadores. Mejora SEO para productos con GTINs, ISBNs o MPNs."
+
+msgid "Structured Data Type"
+msgstr "Tipo de Datos Estructurados"
+
+msgid "GTIN: barcodes (UPC/EAN). ISBN: books. MPN: manufacturer part numbers. Choose based on your code type."
+msgstr "GTIN: códigos de barras (UPC/EAN). ISBN: libros. MPN: números de pieza del fabricante. Elija según su tipo de código."
+
+msgid "Admin Only"
+msgstr "Solo Admin"
+
+msgid "Only admins see codes on product pages."
+msgstr "Solo admins ven códigos en páginas de producto."
+
+msgid "Logged-in administrators will see codes on product pages; all other visitors will not."
+msgstr "Los administradores conectados verán los códigos en páginas de producto; otros visitantes no."
+
+msgid "Hide WooCommerce GTIN"
+msgstr "Ocultar GTIN de WooCommerce"
+
+msgid "Hide the built-in WooCommerce Unique ID field."
+msgstr "Ocultar el campo ID Único integrado de WooCommerce."
+
+msgid "WooCommerce 9.2+ added a GTIN field. Default is set to 'hide' to avoid confusion."
+msgstr "WooCommerce 9.2+ añadió un campo GTIN. Por defecto está en 'ocultar' para evitar confusión."
+
+msgid "Delete Data on Uninstall"
+msgstr "Eliminar Datos al Desinstalar"
+
+msgid "WARNING:"
+msgstr "ADVERTENCIA:"
+
+msgid "Permanently deletes all codes when plugin is uninstalled."
+msgstr "Elimina permanentemente todos los códigos cuando se desinstala el plugin."
+
+msgid "Save Settings"
+msgstr "Guardar"
+
+msgid "Support"
+msgstr "Soporte"
+
+msgid "Leave Review"
+msgstr "Reseña"
+
+msgid "This plugin is free, but your donation aids orphans:"
+msgstr "Este plugin es gratuito, pero tu donación ayuda a huérfanos:"
+
+msgid "I Want to Help"
+msgstr "Ayudar"
+
+msgid "<strong>NOTICE! Product Code For WooCommerce</strong> must update your database to modify meta fields. Consider backing up database first."
+msgstr "<strong>¡AVISO! Código de Producto para WooCommerce</strong> debe actualizar su base de datos para modificar campos meta. Considere hacer una copia de seguridad primero."
+
+msgid "Update Now"
+msgstr "Actualizar Ahora"
+
+msgid "N/A"
+msgstr "N/D"
+
+msgid "Product Code for WooCommerce"
+msgstr "Código de Producto para WooCommerce"
+
+msgid "http://wordpress.org/plugins/product-code-for-woocommerce"
+msgstr "http://wordpress.org/plugins/product-code-for-woocommerce"
+
+msgid "Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup."
+msgstr "El plugin proporciona un identificador interno de producto único además del GTIN, EAN, SKU y UPC durante todo el proceso de pedido. Un campo secundario de código de producto se puede activar desde la configuración."
+
+msgid "Artios Media"
+msgstr "Artios Media"
+
+msgid "http://www.artiosmedia.com"
+msgstr "http://www.artiosmedia.com"

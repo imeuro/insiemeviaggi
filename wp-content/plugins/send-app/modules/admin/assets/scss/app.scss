@@ -1,0 +1,72 @@
+@use "./variables.scss" as variables;
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+	&.folded {
+		.wrap .esend-app {
+			width: calc(100vw - #{variables.$admin-folded-menu-width});
+		}
+	}
+}
+
+#wpbody {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    margin: 0;
+    padding: 0;
+
+    .esend-app {
+		position: fixed;
+        height: calc(100vh - #{variables.$admin-bar-height});
+		width: calc(100vw - #{variables.$admin-menu-width});
+        overflow: hidden;
+		top: variables.$admin-bar-height;
+		z-index: 1000;
+
+        .esend-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: hidden;
+        }
+    }
+}
+
+@media only screen and (max-width: 960px) {
+	.wrap .esend-app {
+		width: calc(100vw - #{variables.$admin-menu-width-mobile});
+	}
+}
+
+@media only screen and (max-width: 782px) {
+	.wrap .esend-app {
+		width: 100vw;
+	}
+}
+
+#wpfooter {
+    display: none !important;
+}
+
+#wpcontent {
+    padding: 0 !important;
+}
+
+#wpbody-content {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.contentinfo,
+.e-admin-top-bar,
+.error,
+.notice {
+    display: none !important;
+}

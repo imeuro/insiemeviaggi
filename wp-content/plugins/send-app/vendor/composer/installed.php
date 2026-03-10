@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'elementor/send',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '9fcc00fb610427f8f2fb80aed60ad28a04569b13',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'elementor/send' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '9fcc00fb610427f8f2fb80aed60ad28a04569b13',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'elementor/wp-notifications-package' => array(
+            'pretty_version' => '1.2.0',
+            'version' => '1.2.0.0',
+            'reference' => 'dd25ca9dd79402c3bb51fab112aa079702eb165e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../elementor/wp-notifications-package',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'woocommerce/action-scheduler' => array(
+            'pretty_version' => '3.9.3',
+            'version' => '3.9.3.0',
+            'reference' => 'c58cdbab17651303d406cd3b22cf9d75c71c986c',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../woocommerce/action-scheduler',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

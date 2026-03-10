@@ -1,0 +1,1439 @@
+# Copyright (C) 2022 Viva Wallet
+# This file is distributed under the same license as the Viva Wallet Standard Checkout plugin.
+# Translators:
+# Tsvetan <tstoyanov@vivawallet.com>, 2021
+# Emona Adamova <eadamova@vivawallet.com>, 2021
+# Ognyan Timchev <otimchev@vivawallet.com>, 2022
+# Martin Hlebarski, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Viva Wallet Standard Checkout 1.4.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/viva-wallet-for-woocommerce\n"
+"POT-Creation-Date: 2022-07-29T14:40:31+00:00\n"
+"PO-Revision-Date: 2021-01-26 10:10+0000\n"
+"Last-Translator: Martin Hlebarski, 2022\n"
+"Language-Team: Bulgarian (https://www.transifex.com/viva/teams/94187/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: viva-wallet-for-woocommerce\n"
+"X-Generator: WP-CLI 2.6.0\n"
+
+#. Plugin Name of the plugin
+#: includes/class-wc-vivawallet.php:115
+msgid "Viva Wallet Standard Checkout"
+msgstr "Viva Wallet Standard Checkout"
+
+#. Plugin URI of the plugin
+msgid "http://www.vivawallet.com/"
+msgstr "http://www.vivawallet.com/"
+
+#. Description of the plugin
+msgid ""
+"Connects WooCommerce to Viva Wallet payment gateway (standard checkout) to "
+"process and sync your payments and help you sell more."
+msgstr ""
+"Свържете WooCommerce с портала за плащания на Viva Wallet (native checkout),"
+" за да обработвате и синхронизирате Вашите плащания и да Ви помогне да "
+"продавате повече"
+
+#. Author of the plugin
+msgid "Viva Wallet"
+msgstr "Viva Wallet"
+
+#. Author URI of the plugin
+msgid "https://www.vivawallet.com/"
+msgstr "https://www.vivawallet.com/"
+
+#: includes/admin/vivawallet-bitpay-settings.php:12
+msgid "Enable Viva Wallet BitPay Gateway"
+msgstr "Активирайте портала за плащане Viva Wallet BitPay"
+
+#: includes/admin/vivawallet-bitpay-settings.php:14
+msgid "Enable Viva Wallet BitPay Gateway and receive BitPay payments"
+msgstr ""
+"Активирайте портала за плащане Viva Wallet BitPay и получайте BitPay "
+"плащания"
+
+#: includes/admin/vivawallet-bitpay-settings.php:19
+#: includes/admin/vivawallet-directpay-settings.php:19
+#: includes/admin/vivawallet-eps-settings.php:19
+#: includes/admin/vivawallet-giropay-settings.php:19
+#: includes/admin/vivawallet-ideal-settings.php:19
+#: includes/admin/vivawallet-multibanco-settings.php:19
+#: includes/admin/vivawallet-p24-settings.php:19
+#: includes/admin/vivawallet-payu-settings.php:19
+#: includes/admin/vivawallet-settings.php:156
+#: includes/admin/vivawallet-wechatpay-settings.php:19
+msgid "Title"
+msgstr "Заглавие"
+
+#: includes/admin/vivawallet-bitpay-settings.php:21
+#: includes/admin/vivawallet-directpay-settings.php:21
+#: includes/admin/vivawallet-eps-settings.php:21
+#: includes/admin/vivawallet-giropay-settings.php:21
+#: includes/admin/vivawallet-ideal-settings.php:21
+#: includes/admin/vivawallet-multibanco-settings.php:21
+#: includes/admin/vivawallet-p24-settings.php:21
+#: includes/admin/vivawallet-payu-settings.php:21
+#: includes/admin/vivawallet-settings.php:158
+#: includes/admin/vivawallet-wechatpay-settings.php:21
+msgid "This controls the title which the user sees on checkout page."
+msgstr ""
+"Това контролира заглавието, което потребителят вижда на страницата за "
+"плащане."
+
+#: includes/admin/vivawallet-bitpay-settings.php:22
+msgid "BitPay"
+msgstr "BitPay"
+
+#: includes/admin/vivawallet-bitpay-settings.php:25
+#: includes/admin/vivawallet-directpay-settings.php:25
+#: includes/admin/vivawallet-eps-settings.php:25
+#: includes/admin/vivawallet-giropay-settings.php:25
+#: includes/admin/vivawallet-ideal-settings.php:25
+#: includes/admin/vivawallet-multibanco-settings.php:25
+#: includes/admin/vivawallet-p24-settings.php:25
+#: includes/admin/vivawallet-payu-settings.php:25
+#: includes/admin/vivawallet-settings.php:162
+#: includes/admin/vivawallet-wechatpay-settings.php:25
+msgid "Description"
+msgstr "Описание"
+
+#: includes/admin/vivawallet-bitpay-settings.php:27
+#: includes/admin/vivawallet-directpay-settings.php:27
+#: includes/admin/vivawallet-eps-settings.php:27
+#: includes/admin/vivawallet-giropay-settings.php:27
+#: includes/admin/vivawallet-ideal-settings.php:27
+#: includes/admin/vivawallet-multibanco-settings.php:27
+#: includes/admin/vivawallet-p24-settings.php:27
+#: includes/admin/vivawallet-payu-settings.php:27
+#: includes/admin/vivawallet-settings.php:164
+#: includes/admin/vivawallet-wechatpay-settings.php:27
+msgid "This controls the description which the user sees on checkout page."
+msgstr ""
+"Това контролира описанието, което потребителят вижда на страницата за "
+"плащане."
+
+#: includes/admin/vivawallet-bitpay-settings.php:28
+msgid "You will be redirected to BitPay."
+msgstr "Ще бъдете пренасочени към BitPay."
+
+#: includes/admin/vivawallet-directpay-settings.php:12
+msgid "Enable Viva Wallet DirectPay Gateway"
+msgstr "Активирайте Viva Wallet DirectPay Gateway"
+
+#: includes/admin/vivawallet-directpay-settings.php:14
+msgid "Enable Viva Wallet DirectPay Gateway and receive DirectPay payments"
+msgstr ""
+"Активирайте Viva Wallet DirectPay Gateway и получавайте DirectPay плащания"
+
+#: includes/admin/vivawallet-directpay-settings.php:22
+msgid "DirectPay"
+msgstr "DirectPay"
+
+#: includes/admin/vivawallet-directpay-settings.php:28
+msgid "You will be redirected to DirectPay."
+msgstr "Ще бъдете пренасочени към DirectPay."
+
+#: includes/admin/vivawallet-eps-settings.php:12
+msgid "Enable Viva Wallet Eps Gateway"
+msgstr "Активирайте Viva Wallet Eps Gateway"
+
+#: includes/admin/vivawallet-eps-settings.php:14
+msgid "Enable Viva Wallet Eps Gateway and receive Eps payments"
+msgstr "Активирайте Viva Wallet Eps Gateway и получавайте Eps плащания"
+
+#: includes/admin/vivawallet-eps-settings.php:22
+msgid "Eps"
+msgstr "Eps"
+
+#: includes/admin/vivawallet-eps-settings.php:28
+msgid "You will be redirected to Eps."
+msgstr "Ще бъдете пренасочени към Eps."
+
+#. translators: error
+#: includes/admin/vivawallet-error-page.php:8
+msgid ""
+"Current currency %s selected for WooCommerce is not supported by Viva "
+"Wallet."
+msgstr ""
+"Текущата валута %sизбрана за WooCommerce не се поддържа от Viva Wallet."
+
+#: includes/admin/vivawallet-error-page.php:9
+msgid ""
+"Merchants can use one of these currencies (EUR, GBP, BGN, PLN, RON, DKK, "
+"CZK, HRK) which should be the same as their Viva Wallet account currency."
+msgstr ""
+"Търговците могат да използват една от следните валути (EUR, GBP, BGN, PLN, "
+"RON, DKK, CZK, HRK), която трябва да бъде същата като валутата на Viva "
+"Wallet акаунта им."
+
+#: includes/admin/vivawallet-error-page.php:15
+msgid "Invalid currency"
+msgstr "Невалидна валута"
+
+#: includes/admin/vivawallet-error-page.php:20
+msgid "Allowed currencies"
+msgstr "Позволени валути"
+
+#: includes/admin/vivawallet-giropay-settings.php:12
+msgid "Enable Viva Wallet Giropay Gateway"
+msgstr "Активирайте Viva Wallet Giropay Gateway"
+
+#: includes/admin/vivawallet-giropay-settings.php:14
+msgid "Enable Viva Wallet Giropay Gateway and receive Giropay payments"
+msgstr ""
+"Активирайте Viva Wallet Giropay Gateway и получавайте Giropay плащания"
+
+#: includes/admin/vivawallet-giropay-settings.php:22
+msgid "Giropay"
+msgstr "Giropay"
+
+#: includes/admin/vivawallet-giropay-settings.php:28
+msgid "You will be redirected to Giropay."
+msgstr "Ще бъдете пренасочени към Giropay."
+
+#: includes/admin/vivawallet-ideal-settings.php:12
+msgid "Enable Viva Wallet iDeal Gateway"
+msgstr "Активирайте Viva Wallet iDeal Gateway"
+
+#: includes/admin/vivawallet-ideal-settings.php:14
+msgid "Enable Viva Wallet iDeal Gateway and receive iDeal payments"
+msgstr "Активирайте Viva Wallet iDeal Gateway и получавайте iDeal плащания"
+
+#: includes/admin/vivawallet-ideal-settings.php:22
+msgid "iDeal"
+msgstr "iDeal"
+
+#: includes/admin/vivawallet-ideal-settings.php:28
+msgid "You will be redirected to iDeal."
+msgstr "Ще бъдете пренасочени към iDeal."
+
+#: includes/admin/vivawallet-multibanco-settings.php:12
+msgid "Enable Viva Wallet Multibanco Gateway"
+msgstr "Активирайте Viva Wallet Multibanco Gateway"
+
+#: includes/admin/vivawallet-multibanco-settings.php:14
+msgid "Enable Viva Wallet Multibanco Gateway and receive Multibanco payments"
+msgstr ""
+"Активирайте Viva Wallet Multibanco Gateway и получавайте Multibanco плащания"
+
+#: includes/admin/vivawallet-multibanco-settings.php:22
+msgid "Multibanco"
+msgstr "Multibanco"
+
+#: includes/admin/vivawallet-multibanco-settings.php:28
+msgid "You will be redirected to Multibanco."
+msgstr "Ще бъдете пренасочени към Multibanco."
+
+#: includes/admin/vivawallet-p24-settings.php:12
+msgid "Enable Viva Wallet P24 Gateway"
+msgstr "Активирайте Viva Wallet P24 Gateway"
+
+#: includes/admin/vivawallet-p24-settings.php:14
+msgid "Enable Viva Wallet P24 Gateway and receive P24 payments"
+msgstr "Активирайте Viva Wallet P24 Gateway и получавайте P24 плащания"
+
+#: includes/admin/vivawallet-p24-settings.php:22
+msgid "Przelewy24 (P24)"
+msgstr "Przelewy24 (P24)"
+
+#: includes/admin/vivawallet-p24-settings.php:28
+msgid "You will be redirected to P24."
+msgstr "Ще бъдете пренасочени към P24."
+
+#: includes/admin/vivawallet-payu-settings.php:12
+msgid "Enable Viva Wallet PayU Gateway"
+msgstr "Активирайте Viva Wallet PayU Gateway"
+
+#: includes/admin/vivawallet-payu-settings.php:14
+msgid "Enable Viva Wallet PayU Gateway and receive PayU payments"
+msgstr "Активирайте Viva Wallet PayU Gateway и получавайте PayU плащания"
+
+#: includes/admin/vivawallet-payu-settings.php:22
+msgid "PayU"
+msgstr "PayU"
+
+#: includes/admin/vivawallet-payu-settings.php:28
+msgid "You will be redirected to PayU."
+msgstr "Ще бъдете пренасочени към PayU."
+
+#. translators: credentials
+#: includes/admin/vivawallet-settings.php:11
+msgid ""
+"Set the title and description of the payment gateway. Title and description "
+"are visible to end users in the checkout page."
+msgstr ""
+"Задайте заглавието и описанието на портала за плащане. Заглавието и "
+"описанието са видими за крайните потребители на страницата за плащане."
+
+#. translators: credentials
+#: includes/admin/vivawallet-settings.php:17
+msgid ""
+"To find out how to retrieve your credentials for the payment gateway, please"
+" visit the Viva Wallet Standard Checkout <a target=\"_blank\" "
+"href=\"%s\">installation guide</a>."
+msgstr ""
+"За да разберете как да извлечете идентификационните си данни за платежния "
+"портал, моля посетете Viva Wallet Standard Checkout<a target=\"_blank\" "
+"href=\"%s\"> ръководство за инсталиране </a>"
+
+#. translators: Demo Mode
+#: includes/admin/vivawallet-settings.php:19
+msgid ""
+"If Demo Mode is enabled, please use the credentials you got from <a "
+"target=\"_blank\" href=\"%s\">demo.vivapayments.com</a>."
+msgstr ""
+"Ако демо режимът е активиран, моля, използвайте идентификационните данни, "
+"които сте получили от <a target=\"_blank\" "
+"href=\"%s\">demo.vivapayments.com</a>."
+
+#: includes/admin/vivawallet-settings.php:27
+msgid "Viva Wallet Standard Checkout settings"
+msgstr "Viva Wallet Standard Checkout настройки"
+
+#: includes/admin/vivawallet-settings.php:32
+msgid "Enable Viva Wallet Standard Checkout"
+msgstr "Активирайте Viva Wallet Standard Checkout"
+
+#: includes/admin/vivawallet-settings.php:34
+msgid ""
+"Enable Viva Wallet Standard Checkout to accept payments from all major "
+"credit cards, and offer other payment methods, such as Apple Pay and Google "
+"Pay, local card schemes, local wallets, and alternative payment methods."
+msgstr ""
+"Активирайте Viva Wallet Standard Checkout, за да приемате плащания от всички"
+" основни кредитни карти,  и предложите други начини на плащане, като Apple "
+"Pay и Google Pay, местни картови схеми, местни портфейли и алтернативни "
+"методи на плащане."
+
+#: includes/admin/vivawallet-settings.php:46
+msgid "Set Viva Wallet API credentials"
+msgstr "Задайте идентификационни данни за API на Viva Wallet"
+
+#: includes/admin/vivawallet-settings.php:51
+msgid "Demo mode"
+msgstr "Демо режим"
+
+#: includes/admin/vivawallet-settings.php:53
+msgid "Enable demo mode"
+msgstr "Активирайте демонстрационния режим"
+
+#: includes/admin/vivawallet-settings.php:61
+msgid "Live mode credentials"
+msgstr "Идентификационни данни в режим на живо"
+
+#: includes/admin/vivawallet-settings.php:66
+msgid "Demo mode credentials"
+msgstr "Идентификационни данни в демо режим"
+
+#: includes/admin/vivawallet-settings.php:71
+msgid "Live Client ID"
+msgstr "Live Client ID"
+
+#: includes/admin/vivawallet-settings.php:73
+msgid "Client ID provided by Viva Wallet."
+msgstr "Client ID предоставен от Viva Wallet."
+
+#: includes/admin/vivawallet-settings.php:77
+msgid "Demo Client ID"
+msgstr "Demo Client ID"
+
+#: includes/admin/vivawallet-settings.php:79
+msgid "Client ID provided by Viva Wallet. "
+msgstr "Client ID предоставен от Viva Wallet."
+
+#: includes/admin/vivawallet-settings.php:86
+msgid "Live Client Secret"
+msgstr "Live Client Secret"
+
+#: includes/admin/vivawallet-settings.php:88
+#: includes/admin/vivawallet-settings.php:94
+msgid "Client Secret provided by Viva Wallet."
+msgstr "Client Secret предоставена от Viva Wallet."
+
+#: includes/admin/vivawallet-settings.php:92
+msgid "Demo Client Secret"
+msgstr "Demo Client Secret"
+
+#: includes/admin/vivawallet-settings.php:108
+msgid "Live Apple Pay enable"
+msgstr "Активирайте Live Apple Pay"
+
+#. translators: apple link to terms.
+#: includes/admin/vivawallet-settings.php:110
+msgid ""
+"Enable Apple Pay API in Live Mode. %1$sBy using Apple Pay, you agree to "
+"%2$s's terms of service."
+msgstr ""
+"Активирайте Apple Pay API в Live Mode. %1$sИзползвайки Apple Pay, вие се "
+"съгласявате с %2$s условията за ползване."
+
+#: includes/admin/vivawallet-settings.php:112
+#: includes/admin/vivawallet-settings.php:121
+msgid ""
+"If enabled, users will be able to pay using Apple Pay if supported by the "
+"browser."
+msgstr ""
+"Ако е активирано, потребителите ще могат да плащат с Apple Pay, ако се "
+"поддържат от браузъра."
+
+#: includes/admin/vivawallet-settings.php:117
+msgid "Demo Apple Pay enable"
+msgstr "Активирайте Demo Apple Pay"
+
+#. translators: apple link to terms.
+#: includes/admin/vivawallet-settings.php:119
+msgid ""
+"Enable Apple Pay API in Demo Mode. %1$sBy using Apple Pay, you agree to "
+"%2$s's terms of service."
+msgstr ""
+"Активирайте Apple Pay API в Demo режим. %1$sИзползвайки Apple Pay, Вие се "
+"съгласявате с %2$sусловията за ползване."
+
+#: includes/admin/vivawallet-settings.php:133
+msgid "Advanced settings"
+msgstr "Разширени настройки"
+
+#: includes/admin/vivawallet-settings.php:138
+msgid "Show advanced settings"
+msgstr "Показване на разширените настройки"
+
+#: includes/admin/vivawallet-settings.php:140
+msgid ""
+"Show advanced settings. If this checkbox is unchecked, the plugin will use "
+"default settings."
+msgstr ""
+"Показване на разширените настройки. Ако това квадратче не е отметнато, "
+"плъгина ще използва настройките по подразбиране."
+
+#: includes/admin/vivawallet-settings.php:159
+msgid "Card payment"
+msgstr "Плащане с карта"
+
+#: includes/admin/vivawallet-settings.php:165
+msgid "Accept all major debit and credit cards"
+msgstr "Приема всички основни дебитни и кредитни карти"
+
+#: includes/admin/vivawallet-settings.php:170
+#: includes/class-wc-vivawallet.php:817
+msgid "Installments"
+msgstr "Вноски"
+
+#: includes/admin/vivawallet-settings.php:172
+msgid ""
+"WARNING: Only available to Greek Viva Wallet accounts. <br>Example: "
+"90:3,180:6<br>Order total 90 euro -> allow 0 and 3 installments <br>Order "
+"total 180 euro -> allow 0, 3 and 6 installments<br>Leave empty in case you "
+"do not want to offer installments."
+msgstr ""
+"ПРЕДУПРЕЖДЕНИЕ: Налично само за гръцки акаунти в Viva Wallet.<br>Например: "
+"90:3,180:6<br> Обща поръчка 90 евро -> позволете 0 и 3 вноски<br>Обща "
+"поръчка 180 евро -> позволете 0, 3 и 6 вноски<br>Оставете празно, в случай "
+"че не искате да предлагате вноски."
+
+#: includes/admin/vivawallet-settings.php:177
+msgid "Live Source Code List"
+msgstr "Списък на Live Source Code "
+
+#: includes/admin/vivawallet-settings.php:179
+msgid ""
+"Provides a list with all source codes that are set in your Viva Wallet "
+"banking app."
+msgstr ""
+"Предоставя списък с всички изходни кодове, които са зададени във Вашето "
+"приложение за банкиране Viva Wallet."
+
+#: includes/admin/vivawallet-settings.php:184
+msgid "Demo Source Code List"
+msgstr "Demo Source Code List"
+
+#: includes/admin/vivawallet-settings.php:186
+msgid ""
+"Provides a list with all source codes that are set in the Viva Wallet "
+"banking app"
+msgstr ""
+"Предоставя списък с всички изходни кодове, които са зададени в приложението "
+"за банкиране Viva Wallet"
+
+#: includes/admin/vivawallet-settings.php:192
+msgid "Show Powered by Viva Wallet and logo on payment form"
+msgstr "Покажи Осъществено от Viva Wallet и лого на формуляра за плащане"
+
+#: includes/admin/vivawallet-settings.php:194
+msgid "Enable Viva Wallet logo on checkout page (default = yes)."
+msgstr ""
+"Активирайте логото на Viva Wallet на страницата за плащане (по подразбиране "
+"= да)."
+
+#: includes/admin/vivawallet-settings.php:198
+msgid "Show credit card logo on checkout page. "
+msgstr "Покажете логото на кредитната карта на страницата за плащане."
+
+#: includes/admin/vivawallet-settings.php:200
+msgid ""
+"Enable credit card logo in the form element input as the user types credit "
+"card number info (default = yes)."
+msgstr ""
+"Активирайте логото на кредитната карта във въвеждането на елемента на "
+"формуляра, докато потребителят въвежда информация за номера на кредитна "
+"карта (по подразбиране = да)."
+
+#: includes/admin/vivawallet-settings.php:204
+msgid "Order status after successful payment."
+msgstr "Състояние на поръчката след успешно плащане."
+
+#: includes/admin/vivawallet-settings.php:205
+msgid ""
+"Your WooCommerce will be updated to this status after successful payment on "
+"Viva Wallet (default = completed)."
+msgstr ""
+"Вашият WooCommerce ще бъде актуализиран до този статус след успешно плащане "
+"с Viva Wallet (по подразбиране = завършено)."
+
+#: includes/admin/vivawallet-settings.php:209
+msgid "Completed"
+msgstr "Завършено"
+
+#: includes/admin/vivawallet-settings.php:210
+msgid "Processing"
+msgstr "Обработка"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:12
+msgid "Enable Viva Wallet WeChat Pay Gateway"
+msgstr "Активирайте Viva Wallet WeChat Pay Gateway"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:14
+msgid "Enable Viva Wallet WeChat Pay Gateway and receive WeChat Pay payments"
+msgstr ""
+"Активирайте Viva Wallet WeChat Pay Gateway и получавайте плащания чрез "
+"WeChat Pay"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:22
+msgid "WeChat Pay"
+msgstr "WeChat Pay"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:28
+msgid "You will be redirected to WeChatPay."
+msgstr "Ще бъдете пренасочени към WeChatPay."
+
+#. translators: link to main page settings 'here'
+#: includes/class-wc-vivawallet-apm.php:96
+msgid ""
+"Please fill in your Viva Wallet credentials and enable the main plugin from "
+"<a href=\"%s\">here</a> before you enable this payment method."
+msgstr ""
+"Моля, попълнете идентификационните си данни за Viva Wallet и активирайте "
+"основния плъгин от <a href=\"%s\">тук, </a>преди да активирате този начин на"
+" плащане."
+
+#: includes/class-wc-vivawallet-apm.php:220
+msgid ""
+"Viva Wallet: The plugin of Viva Wallet Standard Checkout must be enabled. "
+"Please enable it and add your credentials."
+msgstr ""
+"Viva Wallet: Плъгина на Viva Wallet за WooCommerce трябва да бъде активиран."
+" Моля, активирайте го и добавете идентификационните си данни."
+
+#: includes/class-wc-vivawallet-apm.php:228
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Please check your credentials "
+"in the main settings page of Viva Wallet Standard Checkout!"
+msgstr ""
+"Viva Wallet: Вашите идентификационни данни НЕ са валидни. Моля, проверете "
+"идентификационните си данни на главната страница с настройки за Viva Wallet "
+"Standard Checkout!"
+
+#: includes/class-wc-vivawallet-apm.php:238
+msgid "Viva Wallet: You are ready to receive payments using "
+msgstr "Viva Wallet: Готови сте да получавате плащания чрез"
+
+#: includes/class-wc-vivawallet-apm.php:244
+msgid "Viva Wallet: Your account supports: "
+msgstr "Viva Wallet: Вашият акаунт поддържа:"
+
+#: includes/class-wc-vivawallet-apm.php:247
+msgid "But there was a problem updating hooks for your website. "
+msgstr ""
+"Но възникна проблем при актуализирането на бисквитките за Вашия уебсайт."
+
+#: includes/class-wc-vivawallet-apm.php:248
+msgid ""
+"Note that this payment method will work only on a server. Endpoints must be "
+"accessible from the web."
+msgstr ""
+"Имайте предвид, че този начин на плащане ще работи само на сървър. Крайните "
+"точки трябва да бъдат достъпни от мрежата."
+
+#: includes/class-wc-vivawallet-apm.php:254
+msgid "Viva Wallet: Your account does not support: "
+msgstr "Viva Wallet: Вашият акаунт не поддържа:"
+
+#: includes/class-wc-vivawallet-apm.php:257
+msgid "Please contact Viva Wallet. "
+msgstr "Моля, свържете се с Viva Wallet."
+
+#: includes/class-wc-vivawallet-apm.php:301
+msgid ""
+"Order is currently awaiting payment. After successful payment, we will send "
+"you an email confirmation."
+msgstr ""
+"В момента поръчката очаква плащане. След успешно плащане ще Ви изпратим "
+"потвърждение по имейл."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:117
+msgid ""
+"Viva Wallet - Apple Pay: This site is not SSL protected. Please protect your"
+" domain to register with Apple Pay."
+msgstr ""
+"Viva Wallet - Apple Pay: Този сайт не е SSL защитен. Моля, защитете домейна "
+"си, за да се регистрирате в Apple Pa"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:173
+#: includes/class-wc-vivawallet-apple-pay-register.php:178
+msgid ""
+"Viva Wallet - Apple Pay: Unable to load domain association file from Viva "
+"Wallet API. "
+msgstr ""
+"Viva Wallet - Apple Pay: Не може да се зареди файл за асоцииране на домейн "
+"от API на Viva Wallet."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:183
+msgid ""
+"Viva Wallet - Apple Pay: Unable to load variable $_SERVER['DOCUMENT_ROOT']. "
+"Please check the documentation for further info."
+msgstr ""
+"Viva Wallet - Apple Pay: Не може да се зареди променлива $ _SERVER "
+"['DOCUMENT_ROOT']. Моля, проверете документацията за допълнителна информация"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:195
+msgid "Viva Wallet - Apple Pay: Domain association already exists. "
+msgstr "Viva Wallet - Apple Pay: Асоциацията за домейна вече съществува."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:201
+msgid ""
+"Viva Wallet - Apple Pay: Unable to create .well-known folder for the domain "
+"association file in domain root. Please check the documentation for further "
+"info."
+msgstr ""
+"Viva Wallet - Apple Pay: Не може да се създаде добре разпознаваема папка за "
+"асоцииране на файл на домейна в основния домейн. Моля, проверете "
+"документацията за допълнителна информация."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:207
+msgid ""
+"Viva Wallet - Apple Pay: Unable to copy domain association file to domain "
+"root (in .well-known folder). "
+msgstr ""
+"Viva Wallet - Apple Pay: Не може да се копира файл с асоциация на домейн към"
+" основния домейн (в . разпознаваема папка)."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:211
+msgid "Viva Wallet - Apple Pay: Domain association file updated. "
+msgstr ""
+"Viva Wallet - Apple Pay: Файлът за асоцииране на домейн е актуализиран."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:248
+#: includes/class-wc-vivawallet-apple-pay-register.php:258
+msgid ""
+"Viva Wallet: There was a problem connecting to Viva Wallet API endpoints. "
+"Please also check logs for the errors"
+msgstr ""
+"Viva Wallet: Има проблем при свързването с крайните точки на API на Viva "
+"Wallet. Моля, проверете и регистрационните файлове за грешки"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:270
+msgid ""
+"Viva Wallet: Something seems wrong in the setup of Apple Pay, please reload "
+"this page to try again!"
+msgstr ""
+"Viva Wallet: Нещо изглежда неправилно в настройката на Apple Pay, моля, "
+"презаредете тази страница, за да опитате отново!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:286
+#: includes/class-wc-vivawallet-apple-pay-register.php:326
+msgid ""
+"Viva Wallet: Your domain is verified with Apple Pay and you are ready to "
+"accept DEMO payments! Please note that you need an Apple Sandbox account to "
+"process DEMO transactions."
+msgstr ""
+"Viva Wallet: Вашият домейн е проверен с Apple Pay и сте готови да приемете "
+"DEMO плащания! Моля, обърнете внимание, че Ви е необходим акаунт в Apple "
+"Sandbox за обработка на DEMO транзакции."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:288
+#: includes/class-wc-vivawallet-apple-pay-register.php:328
+msgid ""
+"Viva Wallet: Your domain is verified with Apple Pay and you are ready to "
+"accept LIVE payments!"
+msgstr ""
+"Viva Wallet: Вашият домейн е потвърден с Apple Pay и сте готови да приемете "
+"LIVE плащания!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:306
+msgid "Viva Wallet: Something seems wrong in the DEMO setup of Apple Pay!"
+msgstr ""
+"Viva Wallet: Нещо изглежда не е наред в DEMO настройката на Apple Pay!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:308
+msgid "Viva Wallet: Something seems wrong in the setup of Apple Pay!"
+msgstr "Viva Wallet: Нещо изглежда не е наред в настройката на Apple Pay!"
+
+#: includes/class-wc-vivawallet-applepay.php:143
+#: includes/class-wc-vivawallet-applepay.php:617
+msgid "Tax"
+msgstr "Данък"
+
+#: includes/class-wc-vivawallet-applepay.php:151
+#: includes/class-wc-vivawallet-applepay.php:624
+msgid "Shipping"
+msgstr "Доставка"
+
+#: includes/class-wc-vivawallet-applepay.php:158
+msgid "Pending"
+msgstr "В очакване"
+
+#: includes/class-wc-vivawallet-applepay.php:226
+msgid ""
+"Viva Wallet - Apple Pay: This site is not SSL protected. Please protect your"
+" domain to accept Apple Pay payments, or disable Apple Pay from Viva Wallet "
+"plugin settings.\" "
+msgstr ""
+"Viva Wallet - Apple Pay: Този сайт не е SSL защитен. Моля, защитете домейна "
+"си, за да приемате плащания с Apple Pay или деактивирайте Apple Pay от "
+"настройките на плъгина на Viva Wallet. \""
+
+#: includes/class-wc-vivawallet-applepay.php:236
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Apple Pay could not be loaded. "
+"Please check your credentials!"
+msgstr ""
+"Viva Wallet: Вашите идентификационни данни НЕ са валидни. Apple Pay не можа "
+"да бъде зареден. Моля, проверете идентификационните си данни!"
+
+#: includes/class-wc-vivawallet-applepay.php:399
+#: includes/class-wc-vivawallet-applepay.php:412
+msgid "Unable to find shipping method for address."
+msgstr "Не може да се намери начин на доставка за адрес."
+
+#: includes/class-wc-vivawallet-applepay.php:493
+msgid "Empty cart"
+msgstr "Празна количка"
+
+#: includes/class-wc-vivawallet-applepay.php:631
+msgid "Discount"
+msgstr "Отстъпка"
+
+#: includes/class-wc-vivawallet-bitpay.php:49
+msgid "Viva Wallet Standard Checkout - BitPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - BitPay Payment Gateway"
+
+#: includes/class-wc-vivawallet-directpay.php:49
+msgid "Viva Wallet Standard Checkout - DirectPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - DirectPay Payment Gateway"
+
+#: includes/class-wc-vivawallet-endpoints.php:81
+#: includes/class-wc-vivawallet-endpoints.php:333
+msgid "There was a connection problem. Please try again later."
+msgstr "Възникна проблем с връзката. Моля, опитайте отново по-късно."
+
+#. translators: Please check your card details or try again later! (card
+#. details bolded)
+#: includes/class-wc-vivawallet-endpoints.php:91
+#: includes/class-wc-vivawallet-endpoints.php:105
+msgid "Please check your <strong>card details</strong> or try again later!"
+msgstr ""
+"Моля, проверете <strong>детайлите на картата си</strong> или опитайте отново"
+" по-късно!"
+
+#: includes/class-wc-vivawallet-endpoints.php:129
+msgid "Sorry we could not process your payment! Please try again later."
+msgstr ""
+"За съжаление не успяхме да обработим плащането Ви! Моля, опитайте отново по-"
+"късно."
+
+#: includes/class-wc-vivawallet-endpoints.php:159
+msgid "WARNING: This order was paid with installments!"
+msgstr "ПРЕДУПРЕЖДЕНИЕ: Тази поръчка е платена на вноски!"
+
+#: includes/class-wc-vivawallet-endpoints.php:161
+msgid "Number of installments: "
+msgstr "Брой на вноските:"
+
+#: includes/class-wc-vivawallet-endpoints.php:201
+msgid "Order created via Viva Wallet Standard Checkout."
+msgstr "Поръчката е създадена чрез Viva Wallet Standard Checkout."
+
+#: includes/class-wc-vivawallet-endpoints.php:213
+msgid ""
+"Sorry we could not process your payment because customer name and email was "
+"not set! Please try again later."
+msgstr ""
+"За съжаление не успяхме да обработим плащането Ви, тъй като името и имейл на"
+" клиента не бяха зададени! Моля, опитайте отново по-късно."
+
+#: includes/class-wc-vivawallet-endpoints.php:222
+msgid ""
+"Sorry we could not process your payment because no customer name was set! "
+"Please try again later."
+msgstr ""
+"За съжаление не успяхме да обработим плащането Ви, тъй като не беше зададено"
+" име на клиент! Моля, опитайте отново по-късно."
+
+#: includes/class-wc-vivawallet-endpoints.php:231
+msgid ""
+"Sorry we could not process your payment because no customer email was set! "
+"Please try again later."
+msgstr ""
+"За съжаление не успяхме да обработим плащането Ви, защото не е зададен имейл"
+" за клиент! Моля, опитайте отново по-късно."
+
+#: includes/class-wc-vivawallet-endpoints.php:239
+#: includes/class-wc-vivawallet-endpoints.php:250
+msgid "Gateway selected:"
+msgstr "Избран gateaway:"
+
+#: includes/class-wc-vivawallet-endpoints.php:241
+msgid " via Viva Wallet Standard Checkout"
+msgstr "чрез Viva Wallet Standard Checkout"
+
+#: includes/class-wc-vivawallet-endpoints.php:251
+msgid "Viva Wallet Standard Checkout."
+msgstr "Viva Wallet Standard Checkout"
+
+#: includes/class-wc-vivawallet-endpoints.php:278
+#: includes/class-wc-vivawallet-endpoints.php:637
+msgid "Order has been paid with Viva Wallet Standard Checkout, TxID: "
+msgstr "Поръчката е платена с Viva Wallet Standard Checkout, данъчен номер"
+
+#: includes/class-wc-vivawallet-endpoints.php:328
+msgid ""
+"The card issuer rejected this transaction. Please use a different card."
+msgstr ""
+"Издателят на картата отхвърли транзакцията. Моля, използвайте друга карта."
+
+#: includes/class-wc-vivawallet-endpoints.php:330
+msgid ""
+"There was a problem with your card. Please check the card details and try "
+"again."
+msgstr ""
+"Имаше проблем с картата Ви. Моля, проверете данните на картата и опитайте "
+"отново."
+
+#. translators: Please check your card details or try again later!
+#: includes/class-wc-vivawallet-endpoints.php:361
+msgid "Please check your %s or try again later!"
+msgstr "Моля, проверете %sили опитайте по-късно!"
+
+#. translators: Please check your card details or try again later!
+#: includes/class-wc-vivawallet-endpoints.php:361
+msgid "card details"
+msgstr "данни за картата"
+
+#: includes/class-wc-vivawallet-endpoints.php:371
+#: includes/class-wc-vivawallet-endpoints.php:516
+msgid ""
+"Something went wrong trying to get token for your card! Please try again."
+msgstr ""
+"Нещо се обърка, опитвайки се да вземем токен за картата Ви! Моля, опитайте "
+"отново."
+
+#: includes/class-wc-vivawallet-endpoints.php:381
+msgid "You must be logged in to add payment methods."
+msgstr "Трябва да сте влезли, за да добавите начини на плащане."
+
+#: includes/class-wc-vivawallet-endpoints.php:419
+#: includes/class-wc-vivawallet-endpoints.php:420
+msgid "Adding Payment Source"
+msgstr "Добавяне на източник на плащане"
+
+#: includes/class-wc-vivawallet-endpoints.php:508
+msgid ""
+"Something went wrong trying to get token for your card! The charge was "
+"successful, but the automatic refund failed. Please contact the store owner "
+"and ask to refund you manually. "
+msgstr ""
+"Нещо се е объркало при разпознаване на токена за картата Ви. Начисляването "
+"на сумата е било успешно, но автоматичното й възстановяване не е "
+"проработило. Моля, свържете се със собственика на магазина и помолете, да "
+"възстановят сумата ръчно."
+
+#: includes/class-wc-vivawallet-endpoints.php:722
+msgid ""
+"There was a problem processing your payment. Please try again or use an "
+"other payment method."
+msgstr ""
+"При обработката на плащането Ви възникна проблем. Моля, опитайте отново или "
+"използвайте друг начин на плащане."
+
+#: includes/class-wc-vivawallet-eps.php:49
+msgid "Viva Wallet Standard Checkout - Eps Payment Gateway"
+msgstr "Viva Wallet Standard Checkout t - Платежен Портал Eps "
+
+#: includes/class-wc-vivawallet-giropay.php:49
+msgid "Viva Wallet Standard Checkout - Giropay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout -  Платежен Портал Giropay"
+
+#: includes/class-wc-vivawallet-ideal.php:49
+msgid "Viva Wallet Standard Checkout - iDeal Payment Gateway"
+msgstr "Viva Wallet Standard Checkout  - Платежен Портал iDeal "
+
+#: includes/class-wc-vivawallet-multibanco.php:49
+msgid "Viva Wallet Standard Checkout - Multibanco Payment Gateway"
+msgstr "Viva Wallet Standard Checkout  - Платежен Портал Multibanco "
+
+#: includes/class-wc-vivawallet-p24.php:49
+msgid "Viva Wallet Standard Checkout - P24 Payment Gateway"
+msgstr "Viva Wallet Standard Checkout  - Платежен Портал P24 "
+
+#: includes/class-wc-vivawallet-payu.php:49
+msgid "Viva Wallet Standard Checkout - PayU Payment Gateway"
+msgstr "Viva Wallet Standard Checkout  - Платежен Портал PayU "
+
+#: includes/class-wc-vivawallet-refund.php:36
+msgid "You cannot edit an already refunded or canceled order."
+msgstr "Не можете да редактирате вече възстановена или анулирана поръчка."
+
+#: includes/class-wc-vivawallet-refund.php:41
+msgid ""
+"The transaction ID for this order could not be found. Something is wrong!"
+msgstr ""
+"Идентификаторът на транзакцията за тази поръчка не можа да бъде намерен. "
+"Нещо не е наред!"
+
+#: includes/class-wc-vivawallet-refund.php:50
+msgid ""
+"Partial Refund not available yet. Please try later or contact Viva Wallet "
+"support for more info."
+msgstr ""
+"Все още не е налице частично възстановяване. Моля, опитайте по-късно или се "
+"свържете с екипа за поддръжка на Viva Wallet за повече информация."
+
+#: includes/class-wc-vivawallet-refund.php:60
+#: includes/class-wc-vivawallet-refund.php:67
+msgid "Error connecting to Viva Wallet services. Please try again!"
+msgstr ""
+"Грешка при свързването с услугите на Viva Wallet. Моля, опитайте отново!"
+
+#: includes/class-wc-vivawallet-refund.php:71
+msgid "Something went wrong and we could not process the refund."
+msgstr "Нещо се обърка и не успяхме да обработим възстановяването."
+
+#: includes/class-wc-vivawallet-refund.php:85
+msgid "Full refund was executed on Viva Wallet with ID: "
+msgstr "Пълното възстановяване на сумата е извършено на Viva Wallet с ID:"
+
+#: includes/class-wc-vivawallet-refund.php:87
+msgid "Partial refund was executed on Viva Wallet with ID: "
+msgstr "Изпълнено е частично възстановяване на Viva Wallet с ID:"
+
+#: includes/class-wc-vivawallet-subscriptions.php:78
+msgid "Viva Wallet Card Token Id "
+msgstr "Viva Wallet Card Token Id "
+
+#: includes/class-wc-vivawallet-subscriptions.php:82
+msgid "Viva Wallet Card Token"
+msgstr "Viva Wallet Card Token"
+
+#: includes/class-wc-vivawallet-subscriptions.php:105
+msgid "You are not allowed to change the Card Token."
+msgstr "Нямате право да променяте Card Token."
+
+#: includes/class-wc-vivawallet-subscriptions.php:228
+msgid "Order has been paid with Viva Wallet Standard Checkout, TxID:"
+msgstr ""
+"Поръчката е платена със  Viva Wallet Standard Checkout \n"
+"TxID:"
+
+#: includes/class-wc-vivawallet-subscriptions.php:232
+msgid "Card used for automatic renewal: "
+msgstr "Карта, използвана за автоматично подновяване:"
+
+#: includes/class-wc-vivawallet-wechatpay.php:49
+msgid "Viva Wallet Standard Checkout - WeChatPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout  - Платежен Портал WeChatPay "
+
+#: includes/class-wc-vivawallet.php:116
+msgid ""
+"Sign up for a demo account to test the API. Accept payments from all major "
+"credit cards, and offer other payment methods, such as Apple Pay and Google "
+"Pay, local card schemes, local wallets, and alternative payment methods."
+msgstr ""
+"Регистрирайте се за демо акаунт, за да тествате API. Приемайте плащания от "
+"всички основни кредитни карти и предлагайте други методи за плащане, като "
+"Apple Pay и Google Pay, местни картови схеми, местни портфейли и "
+"алтернативни методи на плащане."
+
+#: includes/class-wc-vivawallet.php:275
+msgid ""
+"Viva Wallet: The required PHP module, CURL, is not installed, or has been "
+"disabled. Please enable it, as this module is required for Viva Wallet "
+"services to work correctly."
+msgstr ""
+"Viva Wallet: Необходимият PHP модул, CURL, не е инсталиран или е "
+"деактивиран. Моля, активирайте го, тъй като този модул е необходим за "
+"правилната работа на услугите на Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:289
+msgid ""
+"Viva Wallet Warning: A valid domain name is needed for Viva Wallet services "
+"to work correctly. Your domain,"
+msgstr ""
+"Предупреждение от Viva Wallet: За да работят коректно услугите на Viva "
+"Wallet, е необходимо валидно име на домейн. Вашият домейн,"
+
+#: includes/class-wc-vivawallet.php:293 includes/class-wc-vivawallet.php:629
+msgid "does not seem valid."
+msgstr "не изглежда валидно."
+
+#: includes/class-wc-vivawallet.php:295 includes/class-wc-vivawallet.php:631
+msgid ""
+"To test locally, edit your hosts file and add a domain, for example, "
+"\"vivawalletdemo.test\"."
+msgstr ""
+"За да тествате локално, редактирайте файла си с хостове и добавете домейн, "
+"например \"vivawalletdemo.test\"."
+
+#: includes/class-wc-vivawallet.php:304
+msgid ""
+"Viva Wallet: Your DEMO credentials are NOT valid. Please check your "
+"credentials!"
+msgstr ""
+"Viva Wallet: Вашите DEMO идентификационни данни НЕ са валидни. Моля, "
+"проверете идентификационните си данни!"
+
+#: includes/class-wc-vivawallet.php:308
+msgid "Viva Wallet: Your DEMO credentials are valid."
+msgstr "Viva Wallet: Вашите идентификационни данни за DEMO са валидни."
+
+#: includes/class-wc-vivawallet.php:314
+msgid ""
+"Viva Wallet: Your LIVE credentials are NOT valid. Please check your "
+"credentials!"
+msgstr ""
+"Viva Wallet: Вашите LIVE идентификационни данни НЕ са валидни. Моля, "
+"проверете идентификационните си данни!"
+
+#: includes/class-wc-vivawallet.php:318
+msgid "Viva Wallet: Your LIVE credentials are valid."
+msgstr "Viva Wallet: Вашите LIVE идентификационни данни са валидни."
+
+#: includes/class-wc-vivawallet.php:328
+msgid ""
+"Viva Wallet: A new DEMO source code has been created in the Viva Wallet "
+"banking app with code: "
+msgstr ""
+"Viva Wallet: В приложението за банкиране на Viva Wallet е създаден нов "
+"source code на DEMO с код:"
+
+#: includes/class-wc-vivawallet.php:332
+msgid ""
+"Viva Wallet: A new LIVE source code has been created in the Viva Wallet "
+"banking app with code: "
+msgstr ""
+"Viva Wallet: В приложението за банкиране Viva Wallet е създаден нов LIVE "
+"source code с код:"
+
+#: includes/class-wc-vivawallet.php:336
+msgid ", and name: "
+msgstr ", и име:"
+
+#: includes/class-wc-vivawallet.php:337 includes/class-wc-vivawallet.php:350
+msgid ", and set as default source code."
+msgstr "и задайте като source code по подразбиране."
+
+#: includes/class-wc-vivawallet.php:344
+msgid ""
+"Viva Wallet: You changed or updated your DEMO credentials, a DEMO source "
+"code for your domain was found with name: "
+msgstr ""
+"Viva Wallet: Променихте или актуализирахте идентификационните си данни за "
+"DEMO, беше намерен source code на DEMO за Вашия домейн с име:"
+
+#: includes/class-wc-vivawallet.php:347
+msgid ""
+"Viva Wallet: You changed or updated your LIVE credentials, a LIVE source "
+"code for your domain was found with name: "
+msgstr ""
+"Viva Wallet: Променихте или актуализирахте идентификационните си данни за "
+"LIVE, беше намерен source code на LIVE за Вашия домейн с име:"
+
+#: includes/class-wc-vivawallet.php:356
+msgid "Viva Wallet: Your DEMO credentials are valid. "
+msgstr "Viva Wallet: Вашите идентификационни данни за DEMO са валидни."
+
+#: includes/class-wc-vivawallet.php:358
+msgid "Viva Wallet: Your LIVE credentials are valid. "
+msgstr "Viva Wallet: Вашите LIVE идентификационни данни са валидни."
+
+#: includes/class-wc-vivawallet.php:360
+msgid "But there was an error trying to create a new source. Error: "
+msgstr "Но възникна грешка при опит за създаване на нов източник. Грешка:"
+
+#: includes/class-wc-vivawallet.php:362
+msgid ""
+"Please try to save your settings again. Also check the sources selection box"
+" in advanced settings to see your available source codes and set one from "
+"there if available."
+msgstr ""
+"Моля, опитайте да запазите настройките си отново. Също така поставете "
+"отметка в полето за избор на източници в разширените настройки, за да видите"
+" наличните си изходни кодове и да зададете такъв от там, ако е наличен."
+
+#: includes/class-wc-vivawallet.php:381
+msgid "Viva Wallet: Your DEMO source code:"
+msgstr "Viva Wallet: Вашият DEMO source code:"
+
+#: includes/class-wc-vivawallet.php:383
+msgid "Viva Wallet: Your LIVE source code:"
+msgstr "Viva Wallet: Вашият LIVE source code:"
+
+#: includes/class-wc-vivawallet.php:389
+msgid "is verified and you are ready to accept payments."
+msgstr "е верифициран и сте готови да приемете плащания."
+
+#: includes/class-wc-vivawallet.php:393 includes/class-wc-vivawallet.php:408
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful. "
+msgstr ""
+"Viva Wallet: Вашите идентификационни данни за DEMO са валидни и свързването "
+"с Viva Wallet беше успешно."
+
+#: includes/class-wc-vivawallet.php:395
+msgid "We're in the process of reviewing your DEMO website \""
+msgstr "В процес сме на преглед на вашия уеб сайт DEMO \""
+
+#: includes/class-wc-vivawallet.php:397 includes/class-wc-vivawallet.php:412
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful. "
+msgstr ""
+"Viva Wallet: Вашите LIVE идентификационни данни са валидни и свързването с "
+"Viva Wallet беше успешно."
+
+#: includes/class-wc-vivawallet.php:399
+msgid "We're in the process of reviewing your LIVE website \""
+msgstr "В процес сме на преглед на LIVE уебсайта Ви \""
+
+#: includes/class-wc-vivawallet.php:403
+msgid ""
+"For a perfect one-shot-approval (1-2 business days), make sure that you have"
+" included the elements described in the following link. "
+msgstr ""
+"За перфектно еднократно одобрение (1-2 работни дни), уверете се, че сте "
+"включили елементите, описани в следващата връзка."
+
+#: includes/class-wc-vivawallet.php:410
+msgid "But your DEMO source code: "
+msgstr "Но Вашият DEMO source code: "
+
+#: includes/class-wc-vivawallet.php:414
+msgid "But your LIVE source code: "
+msgstr "Но Вашият LIVE source code: "
+
+#: includes/class-wc-vivawallet.php:419
+msgid ""
+"has been BLOCKED. Please check your latest email from Viva Wallet Support "
+"for more info."
+msgstr ""
+"е БЛОКИРАН. Моля, проверете последния си имейл от Viva Wallet Support за "
+"повече информация."
+
+#: includes/class-wc-vivawallet.php:424
+msgid ""
+"Viva Wallet: Your source code is empty. Please save your settings. Viva "
+"Wallet plugin will try to create a new source for your website."
+msgstr ""
+"Viva Wallet: Вашият изходен код е празен. Моля, запазете настройките си. "
+"Плъгина на Viva Wallet ще се опита да създаде нов източник за уебсайта Ви."
+
+#: includes/class-wc-vivawallet.php:540
+msgid ""
+"In order to add a card to your payment method, your card must be validated "
+"through 3D secure."
+msgstr ""
+"За да добавите карта към начина си на плащане, картата ви трябва да бъде "
+"валидирана чрез 3D secure."
+
+#: includes/class-wc-vivawallet.php:544
+msgid ""
+"In order to change your subscription payment method, your card must be "
+"validated through 3D secure."
+msgstr ""
+"За да промените начина си на абонаментно плащане, картата ви трябва да бъде "
+"валидирана чрез 3D secure."
+
+#: includes/class-wc-vivawallet.php:547
+msgid "You will be asked to validate a charge of "
+msgstr "Ще бъдете помолени да потвърдите такса от"
+
+#: includes/class-wc-vivawallet.php:550
+msgid "Note that the charge will be automatically immediately refunded."
+msgstr ""
+"Имайте предвид, че таксата автоматично ще бъде незабавно възстановена."
+
+#. translators: warning
+#: includes/class-wc-vivawallet.php:570
+msgid "TEST MODE ENABLED. "
+msgstr "АКТИВИРАН ТЕСТОВ РЕЖИМ."
+
+#: includes/class-wc-vivawallet.php:571
+msgid ""
+"For testing you can use 5188 3400 0000 0060 for card number, 111 for card "
+"code and any future date for expiry date in order to test the payment "
+"process."
+msgstr ""
+"За тестване на процеса на плащане можете да използвате 5188 3400 0000 0060 "
+"за номер на карта, 111 за код на картата и всяка бъдеща дата за изтичане."
+
+#. translators: For more info check the %1$s documentation %2$s
+#: includes/class-wc-vivawallet.php:573
+msgid "For more info check the %1$s documentation %2$s"
+msgstr "За повече информация проверете %1$sдокументацията%2$s"
+
+#: includes/class-wc-vivawallet.php:625
+msgid ""
+"Viva Wallet: A valid domain name is needed for Viva Wallet services to work "
+"correctly. Your domain,"
+msgstr ""
+"Viva Wallet: За да работят правилно услугите на Viva Wallet, е необходимо "
+"валидно име на домейн. Вашият домейн,"
+
+#: includes/class-wc-vivawallet.php:645
+msgid ""
+"Viva Wallet: Client Secret or Client ID not set. Please check documentation "
+"and fill in your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: Client Secret или Client ID не са зададени. Моля, проверете "
+"документацията и попълнете настройките на портала на Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:650
+msgid ""
+"Viva Wallet: Source Code is not set. Please check documentation and fill in "
+"your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: Изходният код не е зададен. Моля, проверете документацията и "
+"попълнете настройките на портала на Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:656 includes/class-wc-vivawallet.php:695
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Please check your credentials!"
+msgstr ""
+"Viva Wallet: Вашите потребителско име и парола НЕ са валидни. Моля, "
+"проверете идентификационните си данни!"
+
+#: includes/class-wc-vivawallet.php:664
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful."
+msgstr ""
+"Viva Wallet: Вашите потребителско име и парола в режима НА ЖИВО са валидни и"
+" свързването с Viva Wallet беше успешно."
+
+#. translators: error
+#: includes/class-wc-vivawallet.php:666 includes/class-wc-vivawallet.php:704
+msgid ""
+"We're in the process of reviewing your LIVE website. For a perfect one-shot-"
+"approval (1-2 business days), make sure that you have included the elements "
+"described in <a href=\"%s\" target=\"_blank\" style=\"text-decoration: "
+"underline; font-weight: bold;\">this link</a>."
+msgstr ""
+"В процес сме на преглед на уебсайта Ви на ЖИВО. За перфектно еднократно "
+"одобрение (1-2 работни дни), уверете се, че сте включили елементите, описани"
+" в <a href=\"%s\" target=\"_blank\" style=\"text-decoration: underline; "
+"font-weight: bold;\">този линк</a>.,"
+
+#: includes/class-wc-vivawallet.php:671
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful. But your LIVE source code, has been <span style=\"font-"
+"weight: bold;\">BLOCKED</span>."
+msgstr ""
+"Viva Wallet: Вашите потребителско име и парола в режима на ЖИВО са валидни и"
+" свързването с Viva Wallet беше успешно. Но изходният Ви код в режима на "
+"ЖИВО е бил <span style=\"font-weight: bold;\">БЛОКИРАН</span>."
+
+#: includes/class-wc-vivawallet.php:672 includes/class-wc-vivawallet.php:715
+msgid "Please check your latest email from Viva Wallet Support for more info."
+msgstr ""
+"Моля, проверете последния си e-mail от Viva Wallet Support за повече "
+"информация."
+
+#: includes/class-wc-vivawallet.php:675 includes/class-wc-vivawallet.php:718
+msgid ""
+"Viva Wallet: Something went wrong! Please try again or come back later. If "
+"you are the admin of the website, please check Viva Wallet Standard Checkout"
+" plugin."
+msgstr ""
+"Viva Wallet: Нещо се обърка! Моля, опитайте отново или опитайте по-късно. "
+"Ако Вие сте администратор на уебсайта, моля, проверете плъгина Viva Wallet "
+"Standard Checkout."
+
+#: includes/class-wc-vivawallet.php:684
+msgid ""
+"Viva Wallet: YOU ARE OPERATING IN TEST MODE. Test Client Secret or Client ID"
+" not set. Please check documentation and fill in your Viva Wallet gateway "
+"settings."
+msgstr ""
+"Viva Wallet: ВИЕ РАБОТИТЕ В ТЕСТОВ РЕЖИМ. Тестовите Client Secret или Client"
+" ID не са зададени. Моля, проверете документацията и попълнете настройките "
+"на портала за плащане на Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:689
+msgid ""
+"Viva Wallet: YOU ARE OPERATING IN TEST MODE. Test Source Code is not set. "
+"Please check documentation and fill in your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: ВИЕ РАБОТИТЕ В ТЕСТОВ РЕЖИМ. Тестовият изходен код не е "
+"зададен. Моля, проверете документацията и попълнете настройките на портала "
+"за плащане на Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:702
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful."
+msgstr ""
+"Viva Wallet: Вашите потребителско име и парола за ДЕМО са валидни и "
+"свързването с Viva Wallet беше успешно."
+
+#: includes/class-wc-vivawallet.php:709
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful. But your DEMO Source Code, has been"
+msgstr ""
+"Viva Wallet: Вашите потребителско име и парола за ДЕМО са валидни и "
+"свързването с Viva Wallet беше успешно. Но Вашият ДЕМО изходен код е"
+
+#: includes/class-wc-vivawallet.php:712
+msgid "BLOCKED"
+msgstr "БЛОКИРАН"
+
+#: includes/class-wc-vivawallet.php:727
+msgid ""
+"Viva Wallet: This site is not SSL protected. Please protect your domain to "
+"use Viva Wallet payments."
+msgstr ""
+"Viva Wallet: Този сайт не е SSL защитен. Моля, защитете домейна си, за да "
+"използвате плащанията през Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:811
+msgid "Powered by"
+msgstr "Осъществено от"
+
+#: includes/class-wc-vivawallet.php:812
+msgid "Please check your card details!"
+msgstr "Моля, проверете данните на картата си!"
+
+#: includes/class-wc-vivawallet.php:813
+msgid ""
+"Connection to Viva Wallet API failed. Please check your connection or try "
+"again later."
+msgstr ""
+"Неуспешна връзка с API на Viva Wallet. Моля, проверете връзката си или "
+"опитайте отново по-късно."
+
+#: includes/class-wc-vivawallet.php:814
+msgid ""
+"A billing name is required to process a charge. No billing name field found "
+"in checkout form."
+msgstr ""
+"Изисква се име за плащането, за да се продължи с плащането. Във формата за "
+"плащане не е открито поле за име за плащане."
+
+#: includes/class-wc-vivawallet.php:815
+msgid ""
+"Please read and accept the terms and conditions to proceed with your order."
+msgstr ""
+"Моля, прочетете и приемете правилата и условията за ползване, за да "
+"продължите с поръчката си."
+
+#: includes/class-wc-vivawallet.php:816
+msgid ""
+"Connection to WooCommerce checkout failed. Please check your connection or "
+"try again later."
+msgstr ""
+"Връзката с плащането на WooCommerce пропадна. Моля, проверете връзката си "
+"или опитайте отново по-късно."
+
+#: includes/class-wc-vivawallet.php:847
+msgid ""
+"Order created via Viva Wallet but something went wrong with authentication."
+msgstr ""
+"Поръчката е създадена чрез Viva Wallet, но се получи грешка при "
+"удостоверяването."
+
+#: includes/class-wc-vivawallet.php:852
+msgid "Something went wrong. Please refresh your page and try again."
+msgstr "Нещо се обърка. Моля, презаредете страницата и опитайте отново."
+
+#: includes/class-wc-vivawallet.php:879
+msgid ""
+"Order created via Viva Wallet Apple Pay checkout but failed getting Apple "
+"Pay token."
+msgstr ""
+"Поръчката е създадена чрез плащането на Viva Wallet през Apple Pay, но не "
+"успя да получи токена на Apple Pay."
+
+#: includes/class-wc-vivawallet.php:881
+msgid "Viva Wallet (via Apple Pay)"
+msgstr "Viva Wallet (през Apple Pay)"
+
+#: includes/class-wc-vivawallet.php:922
+msgid "Order has been paid with Viva Wallet (via Apple Pay), TxID: "
+msgstr "Поръчката е платена с Viva Wallet (чрез Apple Pay), данъчен ID:"
+
+#: includes/class-wc-vivawallet.php:927
+msgid "Order created via Viva Wallet Apple Pay checkout."
+msgstr "Поръчката е създадена чрез плащането на Viva Wallet с Apple Pay."
+
+#. translators: bolded word
+#: includes/class-wc-vivawallet.php:940
+msgid "Something went %s. Please try again."
+msgstr "Нещо се обърка%s.Моля, опитайте отново."
+
+#. translators: bolded word
+#: includes/class-wc-vivawallet.php:940
+msgid " wrong"
+msgstr "грешка"
+
+#: includes/class-wc-vivawallet.php:942
+msgid ""
+"Order created with Viva Wallet (via Apple Pay) but the processing of "
+"transaction failed."
+msgstr ""
+"Поръчката е създадена с Viva Wallet (чрез Apple Pay), но обработката на "
+"транзакцията пропадна."
+
+#. translators: error message
+#: woocommerce-vivawallet-gateway.php:38
+msgid ""
+"The Viva Wallet payment gateway requires WooCommerce to work. You can "
+"download %s here."
+msgstr ""
+"Порталът за плащане на Viva Wallet изисква WooCommercе, за да работи. Можете"
+" да го свалите от тук %s."
+
+#: woocommerce-vivawallet-gateway.php:255
+msgid "Settings"
+msgstr "Настройки"
+
+#: woocommerce-vivawallet-gateway.php:271
+msgid "View Viva Wallet Standard Checkout plugin documentation"
+msgstr "Документация за Viva Wallet Standard Checkout плъгин "
+
+#: woocommerce-vivawallet-gateway.php:271
+msgid "Documentation"
+msgstr "Документация"
+
+#: woocommerce-vivawallet-gateway.php:272
+msgid "Get support from Viva Wallet Team"
+msgstr "Получете клиентско обслужване от екипа на Viva Wallet"
+
+#: woocommerce-vivawallet-gateway.php:272
+msgid "Get support"
+msgstr "Получавам подкрепа"

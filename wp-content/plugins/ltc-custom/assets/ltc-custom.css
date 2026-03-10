@@ -1,0 +1,102 @@
+
+.checkoutSlider {
+  width: 100%;
+  text-align: center;
+}
+.form-navigation {
+	position: sticky;
+	top: 0px;
+	z-index: 10;
+	background: #fff;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+nav.form-navigation:before {
+    content: "Compila i campi:";
+    color: #0e4a92;
+}
+
+.checkoutSlides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 40px;
+  
+}
+.checkoutSlides::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.checkoutSlides::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+.checkoutSlides::-webkit-scrollbar-track {
+  background: transparent;
+}
+.checkoutSlides > div {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 90%;
+  height: auto;
+  margin: 40px 5% 40px 0;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 16px;
+}
+.checkoutSlides > div:target {
+/*   transform: scale(0.8); */
+}
+.checkoutSlides-new {
+	max-width: 480px;
+    width: auto;
+}
+
+.checkoutSlides input[type="text"], 
+.checkoutSlides input[type="email"], 
+.checkoutSlides input[type="password"], 
+.checkoutSlides input[type="tel"], 
+.checkoutSlides textarea {
+	background: #fff;
+}
+
+.checkoutSlider .form-navigation > a {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  background: #f8f8f8;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  font-size:18px;
+  font-weight: 800;
+  border-radius: 50%;
+  margin: 0 10px;
+  position: relative;
+}
+.checkoutSlider .form-navigation > a.active,
+.checkoutSlider .form-navigation > a:active,
+.checkoutSlider .form-navigation > a:focus {
+  background: #0e4a92;
+  color: #fff;
+}
+
+/* Don't need button navigation
+@supports (scroll-snap-type) {
+  .checkoutSlider .form-navigation > a {
+    display: none;
+  }
+}*/

@@ -1,0 +1,59 @@
+{
+	"name": "elementor/send",
+	"require": {
+		"woocommerce/action-scheduler": "^3.8.2",
+		"elementor/wp-notifications-package": "1.2.*"
+	},
+	"extra": {
+		"imposter": {
+			"namespace": "...",
+			"excludes": [
+				"woocommerce/action-scheduler"
+			]
+		},
+		"installer-paths": {
+			"vendor/{$vendor}/{$name}/": [
+				"woocommerce/action-scheduler"
+			],
+			"vendor/wp-plugins/{$name}/": [
+				"type:wordpress-plugin"
+			]
+		}
+	},
+	"require-dev": {
+		"yoast/phpunit-polyfills": "^3.0",
+		"wp-coding-standards/wpcs": "^3.0",
+		"phpstan/phpstan": "^2.0",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"phpstan/extension-installer": "^1.4",
+		"php-stubs/woocommerce-stubs": "^9.4",
+		"phpunit/phpunit": "9.6.21",
+		"wpackagist-plugin/woocommerce": "^9.6",
+		"wpackagist-plugin/elementor": "^3.27",
+		"thor-juhasz/phpunit-coverage-check": "^0.3.0"
+	},
+	"repositories": [
+		{
+			"type":"composer",
+			"url":"https://wpackagist.org"
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true,
+			"composer/installers": true
+		}
+	},
+	"scripts": {
+		"phpstan": "phpstan analyse --memory-limit=2048M",
+		"lint": "./vendor/bin/phpcs --standard=phpcs.xml",
+		"lint:fix": "./vendor/bin/phpcbf --standard=phpcs.xml",
+		"test": "./vendor/bin/phpunit",
+		"test:multisite": "WP_MULTISITE=1 ./vendor/bin/phpunit",
+		"test:install-local": "bash bin/install-wp-tests.sh wordpress_test root root",
+		"coverage": "composer run coverage:test && composer run coverage:check",
+		"coverage:test": "./vendor/bin/phpunit --coverage-clover coverage-report/clover.xml",
+		"coverage:check": "phpunit-coverage-check -t 1 coverage-report/clover.xml"
+	}
+}

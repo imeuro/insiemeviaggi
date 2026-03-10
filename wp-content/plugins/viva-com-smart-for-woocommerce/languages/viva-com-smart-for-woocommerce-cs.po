@@ -1,0 +1,619 @@
+# Copyright (C) 2024 Viva.com
+# This file is distributed under the same license as the Viva.com | Smart Checkout plugin.
+# Translators:
+# Kostas Polymeropoulos, 2024
+# Jana Hurtova <jhurtova@vivawallet.com>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Viva.com | Smart Checkout 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Viva-Wallet-Smart-Checkout-for-WooCommerce\n"
+"POT-Creation-Date: 2024-03-05T14:48:52+00:00\n"
+"PO-Revision-Date: 2023-11-10 12:54+0000\n"
+"Last-Translator: Jana Hurtova <jhurtova@vivawallet.com>, 2024\n"
+"Language-Team: Czech (https://app.transifex.com/viva/teams/94187/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"X-Domain: viva-com-smart-for-woocommerce\n"
+"X-Generator: WP-CLI 2.9.0\n"
+
+#. Plugin Name of the plugin
+#: includes/class-wc-vivawallet-smart.php:120
+msgid "Viva.com | Smart Checkout"
+msgstr "Viva.com | Smart Checkout"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://www.vivawallet.com/"
+msgstr "http://www.vivawallet.com/"
+
+#. Description of the plugin
+msgid "Extends WooCommerce with the Viva.com Smart Checkout."
+msgstr "Rozšiřuje WooCommerce o platební bránu Viva.com Smart Checkout."
+
+#. Author of the plugin
+msgid "Viva.com"
+msgstr "Viva.com"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:34
+msgid ""
+"Order is currently awaiting payment. After successful payment, we will send "
+"you an email confirmation."
+msgstr ""
+"Objednávka v současné době čeká na zaplacení. Po úspěšné platbě vám zašleme "
+"potvrzení e-mailem."
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:146
+msgid "Transaction failed using Viva.com Smart Checkout"
+msgstr "Transakce s Viva.com Smart Checkout se nezdařila"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:149
+msgid "with Viva-CorrelationId: "
+msgstr "s Viva-CorrelationId: "
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:205
+#: includes/class-wc-vivawallet-smart-endpoints.php:222
+#: includes/class-wc-vivawallet-smart-endpoints.php:245
+msgid "There was a problem processing your payment. Please try again"
+msgstr "Při zpracování vaší platby došlo k problému. Zkuste to prosím znovu"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:239
+msgid "Unpaid order cancelled - customer cancelled in smart checkout."
+msgstr ""
+"Nezaplacená objednávka byla zrušena - zákazník zrušil objednávku v platební "
+"bráně Smart Checkout."
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:240
+msgid "The Order was cancelled"
+msgstr "Objednávka byla zrušena"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:121
+msgid "Order has been paid with Viva.com Smart Checkout, Transaction Id:"
+msgstr "Objednávka byla zaplacena přes Viva.com Smart Checkout, ID transakce:"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:132
+msgid "Viva.com Transaction status: "
+msgstr "Stav transakcí Viva.com:"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:226
+msgid "You cannot edit an already refunded or canceled order."
+msgstr "Již vrácenou nebo zrušenou objednávku nelze upravit."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:232
+#: includes/class-wc-vivawallet-smart-helpers.php:302
+#: includes/class-wc-vivawallet-smart-helpers.php:371
+msgid ""
+"The viva order code for this order could not be found. Something is wrong!"
+msgstr ""
+"Kód viva objednávky pro tuto objednávku se nepodařilo najít. Něco je špatně!"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:239
+#: includes/class-wc-vivawallet-smart-helpers.php:308
+#: includes/class-wc-vivawallet-smart-helpers.php:377
+msgid ""
+"The transaction ID for this order could not be found. Something is wrong!"
+msgstr "ID transakce pro tuto objednávku nebylo nalezeno. Něco je špatně!"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:263
+msgid "Full refund was executed with ID: "
+msgstr "Byla provedena plná refundace s ID:"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:263
+msgid "Partial refund was executed with ID: "
+msgstr "Bylo provedeno částečné vrácení peněz s ID: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:269
+#: includes/class-wc-vivawallet-smart-helpers.php:337
+#: includes/class-wc-vivawallet-smart-helpers.php:406
+msgid "Transaction Response Error: "
+msgstr "Chyba odezvy transakce: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:292
+#: includes/class-wc-vivawallet-smart-helpers.php:361
+msgid "Wrong order status for capturing."
+msgstr "Nesprávný stav objednávky pro zachycení."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:296
+#: includes/class-wc-vivawallet-smart-helpers.php:365
+msgid "Wrong payment method of order."
+msgstr "Nesprávná platební metoda objednávky."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:312
+#: includes/class-wc-vivawallet-smart-helpers.php:381
+msgid "Wrong transaction type!"
+msgstr "Špatný typ transakce!"
+
+#. translators: credentials
+#: includes/class-wc-vivawallet-smart-helpers.php:854
+msgid ""
+"To find out how to retrieve your credentials for the payment gateway, please"
+" visit the Viva.com Smart Checkout %1$s installation guide %2$s"
+msgstr ""
+"Chcete-li zjistit, jak získat přihlašovací údaje pro platební bránu, "
+"navštivte průvodce instalací %2$sViva.com Smart Checkout%1$s."
+
+#. translators: Demo Mode
+#: includes/class-wc-vivawallet-smart-helpers.php:856
+msgid ""
+"If Demo Mode is enabled, please use the credentials you got from %1$s "
+"demo.vivapayments.com %2$s."
+msgstr ""
+"Pokud je povolen demo režim, použijte přihlašovací údaje, které jste získali"
+" z %1$sdemo.vivapayments.com %2$s."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:857
+msgid ""
+"Set the title and description of the payment gateway. Title and description "
+"are visible to end users in the checkout page."
+msgstr ""
+"Nastavte název a popis platební brány. Název a popis jsou viditelné pro "
+"koncové uživatele na pokladní stránce."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:871
+msgid "Viva.com Smart Checkout settings"
+msgstr "Nastavení Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:875
+#: includes/class-wc-vivawallet-smart-helpers.php:877
+msgid "Enable Viva.com Smart Checkout"
+msgstr "Povolit Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:886
+msgid "Set Viva.com API credentials"
+msgstr "Nastavit přihlašovací údaje Viva.com API"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:891
+msgid "Demo mode"
+msgstr "Demo režim"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:893
+msgid "Enable demo mode"
+msgstr "Povolit demo režim"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:898
+msgid "Live mode credentials"
+msgstr "Přihlašovací údaje k Live režimu"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:902
+msgid "Demo mode credentials"
+msgstr "Přihlašovací údaje k demo režimu"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:906
+msgid "Live Client ID"
+msgstr "Live Client ID"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:908
+msgid "Client ID provided by Viva.com."
+msgstr "Client ID poskytnuté Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:912
+msgid "Demo Client ID"
+msgstr "Demo Client ID"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:914
+msgid "Client ID provided by Viva.com. "
+msgstr "Client ID poskytnuté Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:918
+msgid "Live Client Secret"
+msgstr "Live Client Secret"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:920
+#: includes/class-wc-vivawallet-smart-helpers.php:926
+msgid "Client Secret provided by Viva.com."
+msgstr "Client Secret poskytnuté Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:924
+msgid "Demo Client Secret"
+msgstr "Demo Client Secret"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:935
+msgid "Advanced settings"
+msgstr "Pokročilá nastavení"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:939
+msgid "Show advanced settings"
+msgstr "Zobrazit pokročilá nastavení"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:941
+msgid ""
+"Show advanced settings. If this checkbox is unchecked, the plugin will use "
+"default settings."
+msgstr ""
+"Zobrazit pokročilá nastavení. Pokud toto políčko není zaškrtnuté, plugin "
+"použije výchozí nastavení."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:954
+msgid "Title"
+msgstr "Název"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:956
+msgid "This controls the title that the user sees during checkout."
+msgstr "Tím se řídí název, který se uživateli zobrazí při placení."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:957
+msgid "Viva.com Smart Checkout"
+msgstr "Viva.com  Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:960
+msgid "Description"
+msgstr "Popis"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:962
+msgid "This controls the description that the user sees during checkout."
+msgstr "Tím se řídí popis, který se uživateli zobrazí při placení."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:963
+#: includes/class-wc-vivawallet-smart.php:121
+msgid ""
+"Pay using 30+ methods (cards, digital wallets, local payment methods, online"
+" banking, and more)"
+msgstr ""
+"Plaťte více než 30 způsoby (kartami, digitálními peněženkami, místními "
+"platebními metodami, online bankovnictvím a dalšími)."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:966
+msgid "Instalments"
+msgstr "Splátky"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:968
+msgid ""
+"WARNING: Only available to Greek Viva.com accounts. <br>Example: "
+"90:3,180:6<br>Order total 90 euro -> allow 0 and 3 installments <br>Order "
+"total 180 euro -> allow 0, 3 and 6 installments<br>Leave empty in case you "
+"do not want to offer installments."
+msgstr ""
+"UPOZORNĚNÍ: K dispozici pouze pro řecké účty Viva.com. <br> Příklad: "
+"90:3,180:6<br>Objednávka celkem 90 EUR -> povoleny 0 a 3 splátky "
+"<br>Objednávka celkem 180 EUR -> povoleny 0, 3 a 6 splátek<br> V případě, že"
+" nechcete nabízet splátky, nechte prázdné."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:973
+msgid "Live Source Code List"
+msgstr "Live Source Code List"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:975
+#: includes/class-wc-vivawallet-smart-helpers.php:982
+msgid ""
+"Provides a list with all source codes that are set in your Viva.com banking "
+"app."
+msgstr ""
+"Poskytuje seznam všech zdrojových kódů, které jsou nastaveny v bankovní "
+"aplikaci Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:980
+msgid "Demo Source Code List"
+msgstr "Demo Source Code List"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:987
+msgid "Show logo on checkout page"
+msgstr "Zobrazit logo na pokladní stránce"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:989
+msgid "Enable Viva.com logo on checkout page (default = yes)."
+msgstr "Povolit logo Viva.com na pokladní stránce (default = ano)."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:993
+msgid "Order status after successful payment."
+msgstr "Stav objednávky po úspěšné platbě."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:994
+msgid ""
+"Your WooCommerce will be updated to this status after successful payment on "
+"Viva.com (default = completed)."
+msgstr ""
+"Po úspěšné platbě ve Viva.com bude váš obchod WooCommerce aktualizován na "
+"tento stav (default = dokončeno)."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:998
+msgid "Completed"
+msgstr "Dokončeno"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:999
+msgid "Processing"
+msgstr "Zpracování"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1003
+msgid "Preauthorized Payments"
+msgstr "Předautorizované platby"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1005
+msgid "Enable Preauthorized Payments"
+msgstr "Povolit předautorizované platby"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1006
+msgid ""
+"Enabling this will create orders with an \"On hold\" order status that you "
+"will need to Capture or Cancel later"
+msgstr ""
+"Pokud tuto funkci povolíte, vytvoříte objednávky se stavem \"Pozastaveno\", "
+"které budete muset později zachytit nebo zrušit"
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:117
+msgid "Viva.com Smart Card Token Id "
+msgstr "Viva.com Smart Card Token Id "
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:122
+msgid "Viva.com Smart Card Token"
+msgstr "Viva.com Smart Card Token"
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:157
+msgid "You are not allowed to change the Card Token."
+msgstr "Card Token nesmíte měnit."
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:255
+msgid "Payment method used for automatic renewal: "
+msgstr "Způsob platby pro automatické obnovení:"
+
+#: includes/class-wc-vivawallet-smart.php:199
+msgid "Capture Viva.com Payment"
+msgstr "Zachytit platbu Viva.com"
+
+#: includes/class-wc-vivawallet-smart.php:200
+msgid "Void Viva.com Payment"
+msgstr "Zrušení platby Viva.com"
+
+#: includes/class-wc-vivawallet-smart.php:216
+msgid "Capture prauthorized payment failed: %s"
+msgstr "Zachycení prautorizované platby se nezdařilo: %s"
+
+#: includes/class-wc-vivawallet-smart.php:218
+msgid "Capture prauthorized payment successfull: Tranaction Id: %s"
+msgstr "Úspěšné zachycení autorizované platby: ID tranakce: %s"
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:222
+#: includes/class-wc-vivawallet-smart.php:244
+#: includes/class-wc-vivawallet-smart.php:425
+#: includes/class-wc-vivawallet-smart.php:466
+msgid ""
+"Viva.com: Your %s credentials are NOT valid. Please check your credentials!"
+msgstr ""
+"Viva.com: Vaše %s přihlašovací údaje NEJSOU platné. Zkontrolujte je prosím!"
+
+#: includes/class-wc-vivawallet-smart.php:238
+msgid "Cancel of prauthorized payment failed: %s"
+msgstr "Zrušení autorizované platby se nezdařilo: %s"
+
+#: includes/class-wc-vivawallet-smart.php:240
+msgid "Cancel of prauthorized payment successfull: Tranaction Id: %s"
+msgstr "Zrušení autorizované platby bylo úspěšné: ID transakce: %s"
+
+#: includes/class-wc-vivawallet-smart.php:256
+msgid "Thank you for your order, please click the button below to pay."
+msgstr ""
+"Děkujeme vám za vaši objednávku, pro platbu klikněte na tlačítko níže."
+
+#: includes/class-wc-vivawallet-smart.php:340
+#: includes/class-wc-vivawallet-smart.php:345
+msgid ""
+"There was a problem processing your payment. Please try again or use an "
+"other payment method."
+msgstr ""
+"Při zpracování vaší platby došlo k problému. Zkuste to prosím znovu nebo "
+"použijte jiný způsob platby."
+
+#: includes/class-wc-vivawallet-smart.php:356
+msgid ""
+"Thank you for your order. We are now redirecting you to make your payment."
+msgstr ""
+"Děkujeme za vaši objednávku. Nyní vás přesměrujeme k provedení platby."
+
+#: includes/class-wc-vivawallet-smart.php:378
+msgid "Pay Now"
+msgstr "Nyní zaplatit"
+
+#: includes/class-wc-vivawallet-smart.php:378
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: includes/class-wc-vivawallet-smart.php:455
+msgid ""
+"Viva.com Warning: A valid domain name is needed for Viva.com services to "
+"work correctly."
+msgstr ""
+"Varování Viva.com: Pro správnou funkci služeb Viva Wallet je nutné mít "
+"platný název domény."
+
+#. translators: domain
+#: includes/class-wc-vivawallet-smart.php:457
+msgid "Your domain, \"%s\", does not seem valid."
+msgstr "Vaše doména \"%s\" se nezdá být platná."
+
+#: includes/class-wc-vivawallet-smart.php:458
+msgid ""
+"To test locally, edit your hosts file and add a domain, for example, "
+"\"vivademo.test\"."
+msgstr ""
+"Chcete-li testovat lokálně, upravte hosts soubor a přidejte doménu, "
+"například \"vivademo.test\"."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:471
+#: includes/class-wc-vivawallet-smart.php:502
+msgid "Viva.com: Your %s credentials are valid."
+msgstr "Viva.com: Vaše %s pověření jsou platná."
+
+#: includes/class-wc-vivawallet-smart.php:478
+msgid ""
+"Viva.com: You are ready to receive payment notifications. Your hooks have "
+"been updated successfully."
+msgstr ""
+"Viva.com: Jste připraveni přijímat oznámení o platbách. Vaše hooks byly "
+"úspěšně aktualizovány."
+
+#: includes/class-wc-vivawallet-smart.php:481
+msgid "Viva.com: There was a problem updating hooks for your website."
+msgstr ""
+"Viva.com: Došlo k problému s aktualizací hooks pro vaše webové stránky."
+
+#: includes/class-wc-vivawallet-smart.php:482
+msgid ""
+"Note that your site must be publicly accessible. Endpoints must be "
+"accessible from the web."
+msgstr ""
+"Upozorňujeme, že váš web musí být veřejně přístupný. Endpoints musí být "
+"přístupné z webu."
+
+#: includes/class-wc-vivawallet-smart.php:483
+msgid ""
+"You will be not able to receive payment notifications and your orders will "
+"not be updated."
+msgstr ""
+"Nebudete moci dostávat oznámení o platbách a vaše objednávky nebudou "
+"aktualizovány."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:492
+msgid ""
+"Viva.com: A new %1$s source code has been created in the Viva.com banking "
+"app with code: %2$s and set as default source code."
+msgstr ""
+"Viva.com: V bankovní aplikaci Viva Wallet byl vytvořen nový %1$s zdrojový "
+"kód s kódem: %2$s a nastaven jako výchozí zdrojový kód."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:497
+msgid ""
+"Viva.com: You changed or updated your %1$s credentials, a %2$s source code "
+"for your domain was found with name: %3$s, and set as default source code."
+msgstr ""
+"Viva.com: Změnili jste nebo aktualizovali své %1$s přihlašovací údaje, %2$s "
+"byl nalezen zdrojový kód pro vaši doménu s názvem: %3$s, který byl nastaven "
+"jako výchozí zdrojový kód."
+
+#: includes/class-wc-vivawallet-smart.php:503
+msgid "But there was an error trying to create a new source."
+msgstr "Při pokusu o vytvoření nového zdroje však došlo k chybě."
+
+#: includes/class-wc-vivawallet-smart.php:504
+#: includes/class-wc-vivawallet-smart.php:546
+#: includes/class-wc-vivawallet-smart.php:555
+#: includes/class-wc-vivawallet-smart.php:564
+msgid ""
+"Check the sources selection box in advanced settings to see your available "
+"source codes and set one from there if available."
+msgstr ""
+"V rozšířeném nastavení zaškrtněte políčko Výběr zdrojů, abyste viděli "
+"dostupné zdrojové kódy, a pokud je máte k dispozici, nastavte jeden z nich."
+
+#: includes/class-wc-vivawallet-smart.php:505
+#: includes/class-wc-vivawallet-smart.php:547
+#: includes/class-wc-vivawallet-smart.php:556
+#: includes/class-wc-vivawallet-smart.php:565
+msgid ""
+"Please try to save your settings again and if the source is empty, Viva.com "
+"plugin will try to create a new source for your website."
+msgstr ""
+"Zkuste znovu uložit nastavení a pokud je zdroj prázdný, plugin Viva.com se "
+"pokusí vytvořit nový zdroj pro vaše webové stránky."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:517
+msgid ""
+"Viva.com: Your %1$s source code: %2$s is verified and you are ready to "
+"accept payments."
+msgstr ""
+"Viva.com: Váš %1$s zdrojový kód: %2$s je ověřen a můžete přijímat platby."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:522
+#: includes/class-wc-vivawallet-smart.php:529
+#: includes/class-wc-vivawallet-smart.php:536
+#: includes/class-wc-vivawallet-smart.php:543
+#: includes/class-wc-vivawallet-smart.php:552
+#: includes/class-wc-vivawallet-smart.php:561
+msgid ""
+"Viva.com: Your %s credentials are valid and connection with Viva.com was "
+"successful."
+msgstr ""
+"Viva.com: Vaše %s přihlašovací údaje jsou platné a spojení s Viva Wallet "
+"proběhlo úspěšně."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:524
+msgid "We are in the process of reviewing your %1$s website \"%2$s\"."
+msgstr "Právě prověřujeme vaše %1$s webové stránky \"%2$s\"."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:531
+msgid ""
+"But your %1$s source code: %2$s has been BLOCKED. Please check your latest "
+"email from Viva.com Support for more info."
+msgstr ""
+"Ale váš %1$s zdrojový kód: %2$s byl ZABLOKOVÁN. Zkontrolujte prosím svůj "
+"poslední e-mail od podpory Viva.com, kde najdete další informace."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:538
+msgid "But your %1$s source code: %2$s is NOT active."
+msgstr "Ale váš %1$s zdrojový kód: %2$s NENÍ aktivní."
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:545
+msgid "But your %1$s source code: %2$s is not valid for this domain."
+msgstr "Ale váš %1$s zdrojový kód: %2$s není pro tuto doménu platný."
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:554
+msgid "But your %1$s source code: %2$s has wrong redirection urls."
+msgstr "Ale váš %1$s zdrojový kód: %2$s má špatné přesměrování URL."
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:563
+msgid "But your %1$s source code: %2$s is not found."
+msgstr "Ale váš %1$s zdrojový kód: %2$s nebyl nalezen."
+
+#: includes/class-wc-vivawallet-smart.php:571
+msgid ""
+"Viva.com: Your source code is empty. Please save your settings. Viva.com "
+"plugin will try to create a new source for your website."
+msgstr ""
+"Viva.com: Váš zdrojový kód je prázdný. Uložte prosím svá nastavení. Plugin "
+"Viva Wallet se pokusí vytvořit nový zdrojový kód pro vaše webové stránky."
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:585
+msgid ""
+"Invalid currency. Please check credentials or store currency. Allowed "
+"currencies are: %s"
+msgstr ""
+"Neplatná měna. Zkontrolujte prosím pověření nebo měnu obchodu. Povolené měny"
+" jsou: %s"
+
+#: includes/class-wc-vivawallet-smart.php:592
+msgid ""
+"Viva.com: Pretty permalinks must be enabled ( not plain text permalinks "
+"structure )."
+msgstr ""
+"Viva.com: Pretty permalinks musí být povoleny (nikoliv pouze textová "
+"struktura permalinks)."
+
+#: wc-vivawallet-smart.php:92 wc-vivawallet-smart.php:102
+msgid ""
+"The Viva.com payment gateway requires WooCommerce. Download link %s here."
+msgstr ""
+"Platební brána Viva.com vyžaduje WooCommerce. Odkaz ke stažení %s zde."
+
+#: wc-vivawallet-smart.php:251
+msgid "Settings"
+msgstr "Nastavení"
+
+#: wc-vivawallet-smart.php:267
+msgid "View Viva.com Smart Checkout plugin documentation"
+msgstr "Zobrazit dokumentaci k pluginu Viva.com Smart Checkout"
+
+#: wc-vivawallet-smart.php:267
+msgid "Documentation"
+msgstr "Dokumentace"
+
+#: wc-vivawallet-smart.php:268
+msgid "Get support from Viva.com Team"
+msgstr "Získejte podporu od týmu Viva.com."
+
+#: wc-vivawallet-smart.php:268
+msgid "Get support"
+msgstr "Požádat o podporu"

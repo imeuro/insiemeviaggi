@@ -1,0 +1,232 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Product Code for WooCommerce\n"
+"POT-Creation-Date: 2026-01-12 22:30+0000\n"
+"PO-Revision-Date: 2026-01-12 22:30-0500\n"
+"Last-Translator: Artios Media\n"
+"Language-Team: Dutch\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "Product code"
+msgstr "Productcode"
+
+msgid "Successfully Updated Redirecting back...."
+msgstr "Succesvol bijgewerkt. Doorverwijzen..."
+
+msgid "Failed to update please retry later, Redirecting back... "
+msgstr "Bijwerken mislukt, probeer later opnieuw. Doorverwijzen..."
+
+msgid "%s refers to a company's unique internal product identifier, needed for online product fulfillment."
+msgstr "%s verwijst naar de unieke interne productidentificatie van een bedrijf, nodig voor online orderafhandeling."
+
+msgid "Product code 2"
+msgstr "Productcode 2"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Code 2"
+msgstr "Code 2"
+
+msgid "View Details"
+msgstr "Details bekijken"
+
+msgid "Donation for Homeless"
+msgstr "Donatie voor daklozen"
+
+msgid "Product Code"
+msgstr "Productcode"
+
+msgid "Product Code for WooCommerce Add-on requires Woocommerce plugin to be installed and activated."
+msgstr "Productcode voor WooCommerce Add-on vereist dat de WooCommerce plugin geïnstalleerd en geactiveerd is."
+
+msgid "Product Code:"
+msgstr "Productcode:"
+
+msgid "Product Code Second:"
+msgstr "Tweede Productcode:"
+
+msgid "Settings"
+msgstr "Instellingen"
+
+msgid "Settings saved successfully."
+msgstr "Succesvol opgeslagen."
+
+msgid "Product Code Settings"
+msgstr "Productcode Instellingen"
+
+msgid "Configurations"
+msgstr "Configuraties"
+
+msgid "Primary Product Code"
+msgstr "Primaire Productcode"
+
+msgid "Enable Product Code"
+msgstr "Productcode Inschakelen"
+
+msgid "Enable product code display across your store."
+msgstr "Productcode weergave in je winkel inschakelen."
+
+msgid "Master switch. When enabled, codes appear on product pages, cart, checkout, and order receipts."
+msgstr "Hoofdschakelaar. Indien ingeschakeld verschijnen codes op productpagina's, winkelwagen, afrekenen en orderbevestigingen."
+
+msgid "Hide on Product Pages"
+msgstr "Verbergen op Productpagina's"
+
+msgid "Hide from single product pages only."
+msgstr "Alleen verbergen op individuele productpagina's."
+
+msgid "Code still appears in cart, checkout, and order receipts."
+msgstr "Code verschijnt nog steeds in winkelwagen, afrekenen en orderbevestigingen."
+
+msgid "Hide from Customer Orders"
+msgstr "Verbergen in Klantorders"
+
+msgid "Hide from cart, checkout, and order confirmations."
+msgstr "Verbergen in winkelwagen, afrekenen en orderbevestigingen."
+
+msgid "Codes are still saved to orders and visible in admin, invoices, and packing slips. Ideal for internal codes like bin numbers."
+msgstr "Codes worden nog steeds opgeslagen in orders en zichtbaar in admin, facturen en pakbonnen. Ideaal voor interne codes zoals locatienummers."
+
+msgid "Field Title"
+msgstr "Veldtitel"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 12 characters."
+msgstr "Label getoond aan klanten op productpagina's en in winkelwagen. Maximaal 12 tekens."
+
+msgid "Products Column Title"
+msgstr "Producten Kolomtitel"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 12 characters."
+msgstr "Kolomkop in admin Productenlijst en Snel Bewerken. Maximaal 12 tekens."
+
+msgid "Secondary Product Code"
+msgstr "Secundaire Productcode"
+
+msgid "Enable Second Field"
+msgstr "Tweede Veld Inschakelen"
+
+msgid "Add a second product code field in admin."
+msgstr "Voeg een tweede productcodeveld toe in admin."
+
+msgid "Adds a second code field to the product editor. Useful for alternate SKUs, supplier codes, or bin locations."
+msgstr "Voegt een tweede codeveld toe aan de producteditor. Handig voor alternatieve SKU's, leverancierscodes of locaties."
+
+msgid "Show Second Code"
+msgstr "Tweede Code Tonen"
+
+msgid "Display second code to customers."
+msgstr "Tweede code aan klanten tonen."
+
+msgid "Shows second code on product pages, cart, checkout, and receipts. Leave unchecked to keep it admin-only."
+msgstr "Toont tweede code op productpagina's, winkelwagen, afrekenen en bonnen. Niet aanvinken voor alleen admin."
+
+msgid "Second Field Title"
+msgstr "Tweede Veldtitel"
+
+msgid "Label shown to customers on product pages and in cart. Maximum 14 characters."
+msgstr "Label getoond aan klanten op productpagina's en in winkelwagen. Maximaal 14 tekens."
+
+msgid "Second Column Title"
+msgstr "Tweede Kolomtitel"
+
+msgid "Column header in admin Products list and Quick Edit. Maximum 14 characters."
+msgstr "Kolomkop in admin Productenlijst en Snel Bewerken. Maximaal 14 tekens."
+
+msgid "Advanced Settings"
+msgstr "Geavanceerde Instellingen"
+
+msgid "Hide Field When Empty"
+msgstr "Veld Verbergen Indien Leeg"
+
+msgid "Hide code display when no value is set."
+msgstr "Code weergave verbergen wanneer geen waarde is ingesteld."
+
+msgid "Prevents \"N/A\" from appearing on product pages when a product has no code assigned."
+msgstr "Voorkomt dat \"N.v.t.\" verschijnt op productpagina's wanneer geen code is toegewezen."
+
+msgid "Enable Structured Data"
+msgstr "Gestructureerde Data Inschakelen"
+
+msgid "Add product code to schema.org markup."
+msgstr "Productcode toevoegen aan schema.org markup."
+
+msgid "Includes product code in structured data for search engines. Improves SEO for products with GTINs, ISBNs, or MPNs."
+msgstr "Voegt productcode toe aan gestructureerde data voor zoekmachines. Verbetert SEO voor producten met GTINs, ISBNs of MPNs."
+
+msgid "Structured Data Type"
+msgstr "Type Gestructureerde Data"
+
+msgid "GTIN: barcodes (UPC/EAN). ISBN: books. MPN: manufacturer part numbers. Choose based on your code type."
+msgstr "GTIN: barcodes (UPC/EAN). ISBN: boeken. MPN: fabrikant onderdeelnummers. Kies op basis van je codetype."
+
+msgid "Admin Only"
+msgstr "Alleen Admin"
+
+msgid "Only admins see codes on product pages."
+msgstr "Alleen admins zien codes op productpagina's."
+
+msgid "Logged-in administrators will see codes on product pages; all other visitors will not."
+msgstr "Ingelogde beheerders zien codes op productpagina's; andere bezoekers niet."
+
+msgid "Hide WooCommerce GTIN"
+msgstr "WooCommerce GTIN Verbergen"
+
+msgid "Hide the built-in WooCommerce Unique ID field."
+msgstr "Het ingebouwde WooCommerce Unieke ID veld verbergen."
+
+msgid "WooCommerce 9.2+ added a GTIN field. Default is set to 'hide' to avoid confusion."
+msgstr "WooCommerce 9.2+ heeft een GTIN veld toegevoegd. Standaard ingesteld op 'verbergen' om verwarring te voorkomen."
+
+msgid "Delete Data on Uninstall"
+msgstr "Data Verwijderen bij Deïnstallatie"
+
+msgid "WARNING:"
+msgstr "WAARSCHUWING:"
+
+msgid "Permanently deletes all codes when plugin is uninstalled."
+msgstr "Verwijdert alle codes permanent wanneer de plugin wordt gedeïnstalleerd."
+
+msgid "Save Settings"
+msgstr "Opslaan"
+
+msgid "Support"
+msgstr "Ondersteuning"
+
+msgid "Leave Review"
+msgstr "Beoordelen"
+
+msgid "This plugin is free, but your donation aids orphans:"
+msgstr "Deze plugin is gratis, maar je donatie helpt wezen:"
+
+msgid "I Want to Help"
+msgstr "Helpen"
+
+msgid "<strong>NOTICE! Product Code For WooCommerce</strong> must update your database to modify meta fields. Consider backing up database first."
+msgstr "<strong>LET OP! Productcode voor WooCommerce</strong> moet je database bijwerken om metavelden te wijzigen. Overweeg eerst een database backup te maken."
+
+msgid "Update Now"
+msgstr "Nu Bijwerken"
+
+msgid "N/A"
+msgstr "N.v.t."
+
+msgid "Product Code for WooCommerce"
+msgstr "Productcode voor WooCommerce"
+
+msgid "http://wordpress.org/plugins/product-code-for-woocommerce"
+msgstr "http://wordpress.org/plugins/product-code-for-woocommerce"
+
+msgid "Plugin provides a unique internal product identifier in addition to the GTIN, EAN, SKU and UPC throughout the order process. A secondary product code field can be activated from setup."
+msgstr "Plugin biedt een unieke interne productidentificatie naast de GTIN, EAN, SKU en UPC gedurende het hele orderproces. Een secundair productcodeveld kan worden geactiveerd via de instellingen."
+
+msgid "Artios Media"
+msgstr "Artios Media"
+
+msgid "http://www.artiosmedia.com"
+msgstr "http://www.artiosmedia.com"

@@ -1,0 +1,639 @@
+# Copyright (C) 2024 Viva.com
+# This file is distributed under the same license as the Viva.com | Smart Checkout plugin.
+# Translators:
+# Elena Dikonymaki, 2024
+# Kostas Polymeropoulos, 2024
+# Adina Nanes <ananes@vivawallet.com>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Viva.com | Smart Checkout 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Viva-Wallet-Smart-Checkout-for-WooCommerce\n"
+"POT-Creation-Date: 2024-03-05T14:48:52+00:00\n"
+"PO-Revision-Date: 2023-11-10 12:54+0000\n"
+"Last-Translator: Adina Nanes <ananes@vivawallet.com>, 2024\n"
+"Language-Team: Romanian (https://app.transifex.com/viva/teams/94187/ro/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"X-Domain: viva-com-smart-for-woocommerce\n"
+"X-Generator: WP-CLI 2.9.0\n"
+
+#. Plugin Name of the plugin
+#: includes/class-wc-vivawallet-smart.php:120
+msgid "Viva.com | Smart Checkout"
+msgstr "Viva.com | Smart Checkout"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://www.vivawallet.com/"
+msgstr "http://www.vivawallet.com/"
+
+#. Description of the plugin
+msgid "Extends WooCommerce with the Viva.com Smart Checkout."
+msgstr "Extinde WooCommerce cu Viva.com Smart Checkout."
+
+#. Author of the plugin
+msgid "Viva.com"
+msgstr "Viva.com"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:34
+msgid ""
+"Order is currently awaiting payment. After successful payment, we will send "
+"you an email confirmation."
+msgstr ""
+"Comanda așteaptă efectuarea plății. După ce plata s-a realizat cu succes, vă"
+" vom trimite un e-mail de confirmare. "
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:146
+msgid "Transaction failed using Viva.com Smart Checkout"
+msgstr "Tranzacția a eșuat prin folosirea Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:149
+msgid "with Viva-CorrelationId: "
+msgstr "cu Viva-CorrelationId: "
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:205
+#: includes/class-wc-vivawallet-smart-endpoints.php:222
+#: includes/class-wc-vivawallet-smart-endpoints.php:245
+msgid "There was a problem processing your payment. Please try again"
+msgstr ""
+"A fost o problemă cu procesarea plății dumneavoastră. Vă rugăm să încercați "
+"din nou"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:239
+msgid "Unpaid order cancelled - customer cancelled in smart checkout."
+msgstr "Comandă neplătită anulată - clientul a anulat în smart checkout."
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:240
+msgid "The Order was cancelled"
+msgstr "Comanda a fost anulată"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:121
+msgid "Order has been paid with Viva.com Smart Checkout, Transaction Id:"
+msgstr "Comanda a fost plătită prin Viva.com Smart Checkout, ID Tranzacție:"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:132
+msgid "Viva.com Transaction status: "
+msgstr "Status tranzacție Viva.com: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:226
+msgid "You cannot edit an already refunded or canceled order."
+msgstr "Nu puteți edita o comandă deja rambursată sau anulată. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:232
+#: includes/class-wc-vivawallet-smart-helpers.php:302
+#: includes/class-wc-vivawallet-smart-helpers.php:371
+msgid ""
+"The viva order code for this order could not be found. Something is wrong!"
+msgstr ""
+"Codul de comandă viva pentru această comandă nu a putut fi găsit. Ceva nu "
+"este în regulă!"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:239
+#: includes/class-wc-vivawallet-smart-helpers.php:308
+#: includes/class-wc-vivawallet-smart-helpers.php:377
+msgid ""
+"The transaction ID for this order could not be found. Something is wrong!"
+msgstr ""
+"ID-ul tranzacției pentru această comandă nu a putut fi găsit. Ceva nu este "
+"în regulă!"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:263
+msgid "Full refund was executed with ID: "
+msgstr "Rambursarea integrală a fost executată cu ID-ul: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:263
+msgid "Partial refund was executed with ID: "
+msgstr "Rambursarea parțială a fost executată cu ID-ul: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:269
+#: includes/class-wc-vivawallet-smart-helpers.php:337
+#: includes/class-wc-vivawallet-smart-helpers.php:406
+msgid "Transaction Response Error: "
+msgstr "Eroare de răspuns la tranzacție: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:292
+#: includes/class-wc-vivawallet-smart-helpers.php:361
+msgid "Wrong order status for capturing."
+msgstr "Status comandă greșit pentru încasare."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:296
+#: includes/class-wc-vivawallet-smart-helpers.php:365
+msgid "Wrong payment method of order."
+msgstr "Metoda de plată greșită a comenzii."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:312
+#: includes/class-wc-vivawallet-smart-helpers.php:381
+msgid "Wrong transaction type!"
+msgstr "Tip de tranzacție greșit!"
+
+#. translators: credentials
+#: includes/class-wc-vivawallet-smart-helpers.php:854
+msgid ""
+"To find out how to retrieve your credentials for the payment gateway, please"
+" visit the Viva.com Smart Checkout %1$s installation guide %2$s"
+msgstr ""
+"Pentru a afla cum să vă recuperați credențialele pentru gateway-ul de plată,"
+" vă rugăm să accesați %1$s ghidul de instalare %2$s Viva.com Smart Checkout"
+
+#. translators: Demo Mode
+#: includes/class-wc-vivawallet-smart-helpers.php:856
+msgid ""
+"If Demo Mode is enabled, please use the credentials you got from %1$s "
+"demo.vivapayments.com %2$s."
+msgstr ""
+"Dacă modul demo este activat, vă rugăm să utilizați credențialele pe care "
+"le-ați primit de la %1$s demo.vivapayments.com %2$s."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:857
+msgid ""
+"Set the title and description of the payment gateway. Title and description "
+"are visible to end users in the checkout page."
+msgstr ""
+"Alegeți titlul și descrierea gateway-ului de plată. Titlul și descrierea "
+"sunt vizibile pentru utilizatorii finali în pagina de checkout. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:871
+msgid "Viva.com Smart Checkout settings"
+msgstr "Setări Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:875
+#: includes/class-wc-vivawallet-smart-helpers.php:877
+msgid "Enable Viva.com Smart Checkout"
+msgstr "Activați Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:886
+msgid "Set Viva.com API credentials"
+msgstr "Setați credențialele Viva.com API"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:891
+msgid "Demo mode"
+msgstr "Mod demo"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:893
+msgid "Enable demo mode"
+msgstr "Activați modul demo"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:898
+msgid "Live mode credentials"
+msgstr "Credențiale pentru modul live"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:902
+msgid "Demo mode credentials"
+msgstr "Credențiale pentru modul demo"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:906
+msgid "Live Client ID"
+msgstr "ID Client pentru modul live"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:908
+msgid "Client ID provided by Viva.com."
+msgstr "ID client oferit de Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:912
+msgid "Demo Client ID"
+msgstr "ID Client pentru modul demo"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:914
+msgid "Client ID provided by Viva.com. "
+msgstr "ID client oferit de Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:918
+msgid "Live Client Secret"
+msgstr "Client Secret Live"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:920
+#: includes/class-wc-vivawallet-smart-helpers.php:926
+msgid "Client Secret provided by Viva.com."
+msgstr "Client Secret oferit de Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:924
+msgid "Demo Client Secret"
+msgstr "Client Secret Demo"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:935
+msgid "Advanced settings"
+msgstr "Setări avansate"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:939
+msgid "Show advanced settings"
+msgstr "Afișați setări avansate"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:941
+msgid ""
+"Show advanced settings. If this checkbox is unchecked, the plugin will use "
+"default settings."
+msgstr ""
+"Afișați setări avansate. Dacă această căsuță nu este bifată, plugin-ul va "
+"folosi setările de bază. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:954
+msgid "Title"
+msgstr "Titlu"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:956
+msgid "This controls the title that the user sees during checkout."
+msgstr ""
+"Acesta controlează titlul pe care utilizatorul îl va vedea în timpul "
+"checkout-ului. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:957
+msgid "Viva.com Smart Checkout"
+msgstr "Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:960
+msgid "Description"
+msgstr "Descriere"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:962
+msgid "This controls the description that the user sees during checkout."
+msgstr ""
+"Acesta controlează descrierea pe care utilizatorul o va vedea în timpul "
+"checkout-ului. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:963
+#: includes/class-wc-vivawallet-smart.php:121
+msgid ""
+"Pay using 30+ methods (cards, digital wallets, local payment methods, online"
+" banking, and more)"
+msgstr ""
+"Plătiți folosind peste 30 de metode (carduri, portofele digitale, metode de "
+"plată locale, online banking și altele)"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:966
+msgid "Instalments"
+msgstr "Rate"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:968
+msgid ""
+"WARNING: Only available to Greek Viva.com accounts. <br>Example: "
+"90:3,180:6<br>Order total 90 euro -> allow 0 and 3 installments <br>Order "
+"total 180 euro -> allow 0, 3 and 6 installments<br>Leave empty in case you "
+"do not want to offer installments."
+msgstr ""
+"AVERTISMENT: Disponibil doar pentru conturile Viva.com din "
+"Grecia.<br>Examplu: 90:3,180:6<br>Total comandă 90 euro -> permiteți 0 și 3 "
+"rate <br>Total comandă 180 euro -> permiteți 0, 3 și 6 rate<br>Lăsați liber "
+"în cazul în care nu vreți să permiteți plata în rate. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:973
+msgid "Live Source Code List"
+msgstr "Listă coduri sursă Live"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:975
+#: includes/class-wc-vivawallet-smart-helpers.php:982
+msgid ""
+"Provides a list with all source codes that are set in your Viva.com banking "
+"app."
+msgstr ""
+"Oferă o listă cu toate codurile sursă care sunt setate în aplicația bancară "
+"Viva.com. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:980
+msgid "Demo Source Code List"
+msgstr "Listă coduri sursă Demo"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:987
+msgid "Show logo on checkout page"
+msgstr "Afișați logo în pagina de checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:989
+msgid "Enable Viva.com logo on checkout page (default = yes)."
+msgstr "Activați logo-ul Viva.com în pagina de checkout (implicit = da)."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:993
+msgid "Order status after successful payment."
+msgstr "Status comandă după realizarea cu succes a plății. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:994
+msgid ""
+"Your WooCommerce will be updated to this status after successful payment on "
+"Viva.com (default = completed)."
+msgstr ""
+"WooCommerce va fi actualizat cu acest status după realizarea cu succes a "
+"plății la Viva.com (implicit = finalizat). "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:998
+msgid "Completed"
+msgstr "Finalizat"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:999
+msgid "Processing"
+msgstr "Procesare"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1003
+msgid "Preauthorized Payments"
+msgstr "Plăți preautorizate"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1005
+msgid "Enable Preauthorized Payments"
+msgstr "Activați plățile preautorizate"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1006
+msgid ""
+"Enabling this will create orders with an \"On hold\" order status that you "
+"will need to Capture or Cancel later"
+msgstr ""
+"Activarea acestei opțiuni va crea comenzi cu statutul \"În așteptare\" pe "
+"care va trebui să le Încasați sau Anulați ulterior."
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:117
+msgid "Viva.com Smart Card Token Id "
+msgstr "Viva.com Smart Card Token Id "
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:122
+msgid "Viva.com Smart Card Token"
+msgstr "Viva.com Smart Card Token"
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:157
+msgid "You are not allowed to change the Card Token."
+msgstr "Nu aveți permisiunea de a schimba Card Token. "
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:255
+msgid "Payment method used for automatic renewal: "
+msgstr "Metodă de plată folosită pentru reînnoire automată: "
+
+#: includes/class-wc-vivawallet-smart.php:199
+msgid "Capture Viva.com Payment"
+msgstr "Încasare plată Viva.com "
+
+#: includes/class-wc-vivawallet-smart.php:200
+msgid "Void Viva.com Payment"
+msgstr "Anulare plată Viva.com "
+
+#: includes/class-wc-vivawallet-smart.php:216
+msgid "Capture prauthorized payment failed: %s"
+msgstr "Încasarea plății preautorizate a eșuat: %s"
+
+#: includes/class-wc-vivawallet-smart.php:218
+msgid "Capture prauthorized payment successfull: Tranaction Id: %s"
+msgstr "Încasare plată preautorizată realizată cu succes: ID tranzacție: %s"
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:222
+#: includes/class-wc-vivawallet-smart.php:244
+#: includes/class-wc-vivawallet-smart.php:425
+#: includes/class-wc-vivawallet-smart.php:466
+msgid ""
+"Viva.com: Your %s credentials are NOT valid. Please check your credentials!"
+msgstr ""
+"Viva.com: Credențialele dumneavoastră %s NU sunt valide. Vă rugăm să vă "
+"verificați credențialele! "
+
+#: includes/class-wc-vivawallet-smart.php:238
+msgid "Cancel of prauthorized payment failed: %s"
+msgstr "Anularea plății preautorizate a eșuat: %s"
+
+#: includes/class-wc-vivawallet-smart.php:240
+msgid "Cancel of prauthorized payment successfull: Tranaction Id: %s"
+msgstr ""
+"Anularea plății preautorizate a fost realizată cu succes: ID tranzacție: %s"
+
+#: includes/class-wc-vivawallet-smart.php:256
+msgid "Thank you for your order, please click the button below to pay."
+msgstr ""
+"Vă mulțumim pentru comanda dumneavoastră, vă rugăm să dați clic pe butonul "
+"de mai jos pentru a plăti. "
+
+#: includes/class-wc-vivawallet-smart.php:340
+#: includes/class-wc-vivawallet-smart.php:345
+msgid ""
+"There was a problem processing your payment. Please try again or use an "
+"other payment method."
+msgstr ""
+"A fost o problemă cu procesarea plății dumneavoastră. Vă rugăm să încercați "
+"din nou sau să folosiți o altă metodă de plată. "
+
+#: includes/class-wc-vivawallet-smart.php:356
+msgid ""
+"Thank you for your order. We are now redirecting you to make your payment."
+msgstr ""
+"Vă mulțumim pentru comanda dumneavoastră. Vă redirecționăm acum pentru a "
+"face plata. "
+
+#: includes/class-wc-vivawallet-smart.php:378
+msgid "Pay Now"
+msgstr "Plătiți acum"
+
+#: includes/class-wc-vivawallet-smart.php:378
+msgid "Cancel"
+msgstr "Anulare"
+
+#: includes/class-wc-vivawallet-smart.php:455
+msgid ""
+"Viva.com Warning: A valid domain name is needed for Viva.com services to "
+"work correctly."
+msgstr ""
+"Avertisment Viva.com: Este necesar un nume de domeniu valid pentru ca "
+"serviciile Viva.com să funcționeze corect."
+
+#. translators: domain
+#: includes/class-wc-vivawallet-smart.php:457
+msgid "Your domain, \"%s\", does not seem valid."
+msgstr "Domeniul dumneavoastră, \"%s\", nu pare a fi valid."
+
+#: includes/class-wc-vivawallet-smart.php:458
+msgid ""
+"To test locally, edit your hosts file and add a domain, for example, "
+"\"vivademo.test\"."
+msgstr ""
+"Pentru a testa local, editați fișierul gazdă și adăugați un domeniu, de "
+"exemplu, \"vivademo.test\"."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:471
+#: includes/class-wc-vivawallet-smart.php:502
+msgid "Viva.com: Your %s credentials are valid."
+msgstr "Viva.com: Credențialele dumneavoastră %s sunt valide."
+
+#: includes/class-wc-vivawallet-smart.php:478
+msgid ""
+"Viva.com: You are ready to receive payment notifications. Your hooks have "
+"been updated successfully."
+msgstr ""
+"Viva.com: Sunteți pregătit să primiți notificări de plată. Webhooks au fost "
+"actualizate cu succes. "
+
+#: includes/class-wc-vivawallet-smart.php:481
+msgid "Viva.com: There was a problem updating hooks for your website."
+msgstr ""
+"Viva.com: A fost o problemă cu actualizarea hooks pentru website-ul "
+"dumneavoastră. "
+
+#: includes/class-wc-vivawallet-smart.php:482
+msgid ""
+"Note that your site must be publicly accessible. Endpoints must be "
+"accessible from the web."
+msgstr ""
+"Notați că website-ul dumneavoastră trebuie să poată fi accesat public. "
+"Endpoints trebuie să fie accesibile din web. "
+
+#: includes/class-wc-vivawallet-smart.php:483
+msgid ""
+"You will be not able to receive payment notifications and your orders will "
+"not be updated."
+msgstr ""
+"Nu veți putea primi notificări de plată, iar comanda dumneavoastră nu va fi "
+"actualizată. "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:492
+msgid ""
+"Viva.com: A new %1$s source code has been created in the Viva.com banking "
+"app with code: %2$s and set as default source code."
+msgstr ""
+"Viva.com: Un nou cod sursă %1$s a fost creat în aplicația bancară Viva.com "
+"cu codul:  %2$s și a fost setat ca fiind codul de sursă implicit."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:497
+msgid ""
+"Viva.com: You changed or updated your %1$s credentials, a %2$s source code "
+"for your domain was found with name: %3$s, and set as default source code."
+msgstr ""
+"Viva.com: Ați schimbat sau ați actualizat credențialele dumneavoastră %1$s, "
+"un cod sursă %2$s a fost găsit pentru domeniul dumneavoastră cu numele:  "
+"%3$s, și setat drept codul sursă implicit. "
+
+#: includes/class-wc-vivawallet-smart.php:503
+msgid "But there was an error trying to create a new source."
+msgstr "Dar a fost întâmpinată o eroare în procesul de creare a noii surse."
+
+#: includes/class-wc-vivawallet-smart.php:504
+#: includes/class-wc-vivawallet-smart.php:546
+#: includes/class-wc-vivawallet-smart.php:555
+#: includes/class-wc-vivawallet-smart.php:564
+msgid ""
+"Check the sources selection box in advanced settings to see your available "
+"source codes and set one from there if available."
+msgstr ""
+"Verificați căsuța pentru selectarea surselor în setările avansate pentru a "
+"vedea codurile sursă disponibile și pentru a seta unul de acolo dacă este "
+"disponibil. "
+
+#: includes/class-wc-vivawallet-smart.php:505
+#: includes/class-wc-vivawallet-smart.php:547
+#: includes/class-wc-vivawallet-smart.php:556
+#: includes/class-wc-vivawallet-smart.php:565
+msgid ""
+"Please try to save your settings again and if the source is empty, Viva.com "
+"plugin will try to create a new source for your website."
+msgstr ""
+"Vă rugăm să încercați să salvați setările din nou, iar dacă sursa este "
+"goală, plugin-ul Viva.com va încerca să creeze o nouă sursă pentru website-"
+"ul dumneavoastră. "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:517
+msgid ""
+"Viva.com: Your %1$s source code: %2$s is verified and you are ready to "
+"accept payments."
+msgstr ""
+"Viva.com: Codul dumneavoastră sursă %1$s: %2$s este verificat și sunteți "
+"pregătit să acceptați plăți."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:522
+#: includes/class-wc-vivawallet-smart.php:529
+#: includes/class-wc-vivawallet-smart.php:536
+#: includes/class-wc-vivawallet-smart.php:543
+#: includes/class-wc-vivawallet-smart.php:552
+#: includes/class-wc-vivawallet-smart.php:561
+msgid ""
+"Viva.com: Your %s credentials are valid and connection with Viva.com was "
+"successful."
+msgstr ""
+"Viva.com: Credențialele dumneavoastră %s sunt valide și conectarea cu "
+"Viva.com a avut succes. "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:524
+msgid "We are in the process of reviewing your %1$s website \"%2$s\"."
+msgstr ""
+"Ne aflăm în proces de verificare a website-ului dumneavoastră %1$s \"%2$s\"."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:531
+msgid ""
+"But your %1$s source code: %2$s has been BLOCKED. Please check your latest "
+"email from Viva.com Support for more info."
+msgstr ""
+"Dar codul sursă %1$s: %2$s a fost BLOCAT. Vă rugăm să verificați cel mai "
+"recent e-mail de la asistența Viva.com pentru mai multe informații."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:538
+msgid "But your %1$s source code: %2$s is NOT active."
+msgstr "Dar codul sursă %1$s: %2$s NU este activ."
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:545
+msgid "But your %1$s source code: %2$s is not valid for this domain."
+msgstr ""
+"Dar codul dumneavoastră sursă%1$s: %2$s nu este valid pentru acest domeniu. "
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:554
+msgid "But your %1$s source code: %2$s has wrong redirection urls."
+msgstr ""
+"Dar codul dumneavoastră sursă %1$s: %2$s are url de redirecționare greșit. "
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:563
+msgid "But your %1$s source code: %2$s is not found."
+msgstr "Dar codul dumneavoastră sursă %1$s: %2$s nu a fost găsit."
+
+#: includes/class-wc-vivawallet-smart.php:571
+msgid ""
+"Viva.com: Your source code is empty. Please save your settings. Viva.com "
+"plugin will try to create a new source for your website."
+msgstr ""
+"Viva.com: Codul sursă este gol. Vă rugăm să salvați setările. Plugin-ul "
+"Viva.com va încerca să creeze o nouă sursă pentru website-ul dumneavoastră. "
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:585
+msgid ""
+"Invalid currency. Please check credentials or store currency. Allowed "
+"currencies are: %s"
+msgstr ""
+"Valută invalidă. Vă rugăm să verificați credențialele și valuta magazinului."
+" Valutele permise sunt:  %s"
+
+#: includes/class-wc-vivawallet-smart.php:592
+msgid ""
+"Viva.com: Pretty permalinks must be enabled ( not plain text permalinks "
+"structure )."
+msgstr ""
+"Viva.com: Pretty permalinks trebuie să fie activate (nu structură de text "
+"simplu pentru permalinks)."
+
+#: wc-vivawallet-smart.php:92 wc-vivawallet-smart.php:102
+msgid ""
+"The Viva.com payment gateway requires WooCommerce. Download link %s here."
+msgstr ""
+"Gateway-ul de plată Viva.com necesită WooCommerce. Link-ul de descărcare "
+"aici %s."
+
+#: wc-vivawallet-smart.php:251
+msgid "Settings"
+msgstr "Setări"
+
+#: wc-vivawallet-smart.php:267
+msgid "View Viva.com Smart Checkout plugin documentation"
+msgstr "Documentație pentru plugin-ul Viva.com Smart Checkout"
+
+#: wc-vivawallet-smart.php:267
+msgid "Documentation"
+msgstr "Documentație"
+
+#: wc-vivawallet-smart.php:268
+msgid "Get support from Viva.com Team"
+msgstr "Obțineți suport de la Echipa Viva.com"
+
+#: wc-vivawallet-smart.php:268
+msgid "Get support"
+msgstr "Primiți ajutor"

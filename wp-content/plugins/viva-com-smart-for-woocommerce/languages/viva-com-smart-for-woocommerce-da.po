@@ -1,0 +1,622 @@
+# Copyright (C) 2024 Viva.com
+# This file is distributed under the same license as the Viva.com | Smart Checkout plugin.
+# Translators:
+# Elena Dikonymaki, 2024
+# Kostas Polymeropoulos, 2024
+# Kristiane Biehl, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Viva.com | Smart Checkout 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Viva-Wallet-Smart-Checkout-for-WooCommerce\n"
+"POT-Creation-Date: 2024-03-05T14:48:52+00:00\n"
+"PO-Revision-Date: 2023-11-10 12:54+0000\n"
+"Last-Translator: Kristiane Biehl, 2024\n"
+"Language-Team: Danish (https://app.transifex.com/viva/teams/94187/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: viva-com-smart-for-woocommerce\n"
+"X-Generator: WP-CLI 2.9.0\n"
+
+#. Plugin Name of the plugin
+#: includes/class-wc-vivawallet-smart.php:120
+msgid "Viva.com | Smart Checkout"
+msgstr "Viva.com | Smart Checkout"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://www.vivawallet.com/"
+msgstr "http://www.vivawallet.com/"
+
+#. Description of the plugin
+msgid "Extends WooCommerce with the Viva.com Smart Checkout."
+msgstr "Udvider WooCommerce med Viva.com Smart Checkout. "
+
+#. Author of the plugin
+msgid "Viva.com"
+msgstr "Viva.com"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:34
+msgid ""
+"Order is currently awaiting payment. After successful payment, we will send "
+"you an email confirmation."
+msgstr ""
+"Ordren afventer i øjeblikket betaling. Når betalingen er gennemført, sender "
+"vi dig en e-mailbekræftelse"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:146
+msgid "Transaction failed using Viva.com Smart Checkout"
+msgstr "Transaktionen mislykkedes med Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:149
+msgid "with Viva-CorrelationId: "
+msgstr "med Viva-CorrelationId: "
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:205
+#: includes/class-wc-vivawallet-smart-endpoints.php:222
+#: includes/class-wc-vivawallet-smart-endpoints.php:245
+msgid "There was a problem processing your payment. Please try again"
+msgstr "Der opstod et problem ved behandlingen af din betaling. Prøv igen. "
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:239
+msgid "Unpaid order cancelled - customer cancelled in smart checkout."
+msgstr "Ubetalt ordre annulleret - kunden annullerede ordren i Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-endpoints.php:240
+msgid "The Order was cancelled"
+msgstr "Ordren blev annulleret"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:121
+msgid "Order has been paid with Viva.com Smart Checkout, Transaction Id:"
+msgstr "Ordren er blevet betalt med Viva.com Smart Checkout, transaktions ID:"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:132
+msgid "Viva.com Transaction status: "
+msgstr "Viva.com Transaktion status: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:226
+msgid "You cannot edit an already refunded or canceled order."
+msgstr ""
+"Du kan ikke redigere en ordre, der allerede er refunderet eller annulleret. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:232
+#: includes/class-wc-vivawallet-smart-helpers.php:302
+#: includes/class-wc-vivawallet-smart-helpers.php:371
+msgid ""
+"The viva order code for this order could not be found. Something is wrong!"
+msgstr "Denne ordres viva-kode kunne ikke findes. Der er noget galt!"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:239
+#: includes/class-wc-vivawallet-smart-helpers.php:308
+#: includes/class-wc-vivawallet-smart-helpers.php:377
+msgid ""
+"The transaction ID for this order could not be found. Something is wrong!"
+msgstr "Denne ordres transaktions ID kunne ikke findes. Der er noget galt!"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:263
+msgid "Full refund was executed with ID: "
+msgstr "Fuld refundering blev udført med ID: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:263
+msgid "Partial refund was executed with ID: "
+msgstr "Delvis refundering blev udført med ID: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:269
+#: includes/class-wc-vivawallet-smart-helpers.php:337
+#: includes/class-wc-vivawallet-smart-helpers.php:406
+msgid "Transaction Response Error: "
+msgstr "Transaktionssvarfejl: "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:292
+#: includes/class-wc-vivawallet-smart-helpers.php:361
+msgid "Wrong order status for capturing."
+msgstr "Forkert ordrestatus er fundet."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:296
+#: includes/class-wc-vivawallet-smart-helpers.php:365
+msgid "Wrong payment method of order."
+msgstr "Forkert betalingsmetode for ordren."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:312
+#: includes/class-wc-vivawallet-smart-helpers.php:381
+msgid "Wrong transaction type!"
+msgstr "Forkert transaktionstype!"
+
+#. translators: credentials
+#: includes/class-wc-vivawallet-smart-helpers.php:854
+msgid ""
+"To find out how to retrieve your credentials for the payment gateway, please"
+" visit the Viva.com Smart Checkout %1$s installation guide %2$s"
+msgstr ""
+"Find ud af hvordan du henter dine legitimationsoplysninger til "
+"betalingsgatewayen ved at besøge Viva.com Smart Checkout %1$s "
+"installationsguide %2$s"
+
+#. translators: Demo Mode
+#: includes/class-wc-vivawallet-smart-helpers.php:856
+msgid ""
+"If Demo Mode is enabled, please use the credentials you got from %1$s "
+"demo.vivapayments.com %2$s."
+msgstr ""
+"Hvis demo tilstand er aktiveret, venligst brug legitimationsoplysningerne du"
+" har fra %1$s demo.vivapayments.com %2$s."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:857
+msgid ""
+"Set the title and description of the payment gateway. Title and description "
+"are visible to end users in the checkout page."
+msgstr ""
+"Indstil titel og beskrivelse til betalingsgatewayen. Titel og beskrivelse er"
+" synlig for kunder på betalingssiden.  "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:871
+msgid "Viva.com Smart Checkout settings"
+msgstr "Viva.com Smart Checkout indstillinger"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:875
+#: includes/class-wc-vivawallet-smart-helpers.php:877
+msgid "Enable Viva.com Smart Checkout"
+msgstr "Aktiver Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:886
+msgid "Set Viva.com API credentials"
+msgstr "Indstil Viva.com API legitimationsoplysninger"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:891
+msgid "Demo mode"
+msgstr "Demo tilstand"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:893
+msgid "Enable demo mode"
+msgstr "Aktiver demo tilstand"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:898
+msgid "Live mode credentials"
+msgstr "Legitimationsoplysninger til live tilstand"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:902
+msgid "Demo mode credentials"
+msgstr "Legitimationsoplysninger til demo tilstand"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:906
+msgid "Live Client ID"
+msgstr "Live kunde ID"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:908
+msgid "Client ID provided by Viva.com."
+msgstr "Kunde ID givet af Viva.com. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:912
+msgid "Demo Client ID"
+msgstr "Demo kunde ID"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:914
+msgid "Client ID provided by Viva.com. "
+msgstr "Kunde ID givet af Viva.com. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:918
+msgid "Live Client Secret"
+msgstr "Live kunde Secret"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:920
+#: includes/class-wc-vivawallet-smart-helpers.php:926
+msgid "Client Secret provided by Viva.com."
+msgstr "Kunde Secret givet af Viva.com."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:924
+msgid "Demo Client Secret"
+msgstr "Demo kunde Secret "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:935
+msgid "Advanced settings"
+msgstr "Avancerede indstillinger"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:939
+msgid "Show advanced settings"
+msgstr "Vis avancerede indstillinger"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:941
+msgid ""
+"Show advanced settings. If this checkbox is unchecked, the plugin will use "
+"default settings."
+msgstr ""
+"Vis avancerede indstillinger. Hvis dette afkrysningsfelt ikke er markeret, "
+"vil pluginet bruge standardindstillinger."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:954
+msgid "Title"
+msgstr "Titel"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:956
+msgid "This controls the title that the user sees during checkout."
+msgstr "Dette kontrollerer titlen, som kunder ser ved checkout. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:957
+msgid "Viva.com Smart Checkout"
+msgstr "Viva.com Smart Checkout"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:960
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:962
+msgid "This controls the description that the user sees during checkout."
+msgstr "Dette kontrollerer beskrivelsen, som kunder ser ved checkout. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:963
+#: includes/class-wc-vivawallet-smart.php:121
+msgid ""
+"Pay using 30+ methods (cards, digital wallets, local payment methods, online"
+" banking, and more)"
+msgstr ""
+"Betal med 30+ metoder (kort, digitale wallets, lokale betalingsmetoder, "
+"online bank mm.)"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:966
+msgid "Instalments"
+msgstr "Rater"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:968
+msgid ""
+"WARNING: Only available to Greek Viva.com accounts. <br>Example: "
+"90:3,180:6<br>Order total 90 euro -> allow 0 and 3 installments <br>Order "
+"total 180 euro -> allow 0, 3 and 6 installments<br>Leave empty in case you "
+"do not want to offer installments."
+msgstr ""
+"ADVARSEL: Kun tilgængelig for Græske Viva.com konti. <br>Eksempel: "
+"90:3,180:6<br>Ordre ialt 90 euro -> tilladt 0 og 3 rater <br>Ordre ialt 180 "
+"euro -> tilladt 0, 3 og 6 rater<br> Lad være tomt, hvis du ikke ønsker at "
+"tilbyde rater."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:973
+msgid "Live Source Code List"
+msgstr "Live Source Code liste "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:975
+#: includes/class-wc-vivawallet-smart-helpers.php:982
+msgid ""
+"Provides a list with all source codes that are set in your Viva.com banking "
+"app."
+msgstr ""
+"Giver en liste med alle source codes, der er tilgængelige i din Viva.com  "
+"bank app. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:980
+msgid "Demo Source Code List"
+msgstr "Demo Source Code liste "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:987
+msgid "Show logo on checkout page"
+msgstr "Vis logo på checkout side "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:989
+msgid "Enable Viva.com logo on checkout page (default = yes)."
+msgstr "Aktiver Viva.com logo på checkout side (standard = ja)."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:993
+msgid "Order status after successful payment."
+msgstr "Ordre status efter gennemført betaling. "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:994
+msgid ""
+"Your WooCommerce will be updated to this status after successful payment on "
+"Viva.com (default = completed)."
+msgstr ""
+"Din WooCommerce bliver opdateret til denne status efter vellykket betaling "
+"på Viva.com (standard = gennemført)."
+
+#: includes/class-wc-vivawallet-smart-helpers.php:998
+msgid "Completed"
+msgstr "Gennemført "
+
+#: includes/class-wc-vivawallet-smart-helpers.php:999
+msgid "Processing"
+msgstr "Behandler"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1003
+msgid "Preauthorized Payments"
+msgstr "Forhåndsgodkendte betalinger"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1005
+msgid "Enable Preauthorized Payments"
+msgstr "Aktivér forhåndsgodkendte betalinger"
+
+#: includes/class-wc-vivawallet-smart-helpers.php:1006
+msgid ""
+"Enabling this will create orders with an \"On hold\" order status that you "
+"will need to Capture or Cancel later"
+msgstr ""
+"At aktivere dette vil oprette ordrer med en \"Afventende\" ordrestatus, som "
+"du senere skal capture eller annullere."
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:117
+msgid "Viva.com Smart Card Token Id "
+msgstr "Viva.com Smart Card Token Id"
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:122
+msgid "Viva.com Smart Card Token"
+msgstr "Viva.com Smart Card Token"
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:157
+msgid "You are not allowed to change the Card Token."
+msgstr "Du har ikke tilladelse til at ændre Card Token"
+
+#: includes/class-wc-vivawallet-smart-subscriptions.php:255
+msgid "Payment method used for automatic renewal: "
+msgstr "Betalingsmetode brugt til automatisk fornyelse:"
+
+#: includes/class-wc-vivawallet-smart.php:199
+msgid "Capture Viva.com Payment"
+msgstr "Capture viva.com-betaling"
+
+#: includes/class-wc-vivawallet-smart.php:200
+msgid "Void Viva.com Payment"
+msgstr "Void Viva.com-betaling"
+
+#: includes/class-wc-vivawallet-smart.php:216
+msgid "Capture prauthorized payment failed: %s"
+msgstr "Capture præautoriseret betaling mislykkedes: %s"
+
+#: includes/class-wc-vivawallet-smart.php:218
+msgid "Capture prauthorized payment successfull: Tranaction Id: %s"
+msgstr "Capture præautoriseret betaling gennemført: Tranaktion Id: %s"
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:222
+#: includes/class-wc-vivawallet-smart.php:244
+#: includes/class-wc-vivawallet-smart.php:425
+#: includes/class-wc-vivawallet-smart.php:466
+msgid ""
+"Viva.com: Your %s credentials are NOT valid. Please check your credentials!"
+msgstr ""
+"Viva.com : Dine%s legitimationsoplysninger er IKKE gyldige. Tjek venligst "
+"dine legitimationsoplysninger!"
+
+#: includes/class-wc-vivawallet-smart.php:238
+msgid "Cancel of prauthorized payment failed: %s"
+msgstr "Annullering af præautoriseret betaling mislykkedes: %s"
+
+#: includes/class-wc-vivawallet-smart.php:240
+msgid "Cancel of prauthorized payment successfull: Tranaction Id: %s"
+msgstr "Annullering af præautoriseret betaling gennemført: Tranaktion Id: %s"
+
+#: includes/class-wc-vivawallet-smart.php:256
+msgid "Thank you for your order, please click the button below to pay."
+msgstr ""
+"Mange tak for din bestilling, klik venligst på knappen nedenunder for at "
+"betale. "
+
+#: includes/class-wc-vivawallet-smart.php:340
+#: includes/class-wc-vivawallet-smart.php:345
+msgid ""
+"There was a problem processing your payment. Please try again or use an "
+"other payment method."
+msgstr ""
+"Der opstod et problem ved behandlingen af din betaling. Venligst prøv igen "
+"eller brug en anden betalingsmetode. "
+
+#: includes/class-wc-vivawallet-smart.php:356
+msgid ""
+"Thank you for your order. We are now redirecting you to make your payment."
+msgstr ""
+"Mange tak for din bestilling. Vi viderestiller dig nu til at gennemføre din "
+"betaling. "
+
+#: includes/class-wc-vivawallet-smart.php:378
+msgid "Pay Now"
+msgstr "Betal nu"
+
+#: includes/class-wc-vivawallet-smart.php:378
+msgid "Cancel"
+msgstr "Afbestil"
+
+#: includes/class-wc-vivawallet-smart.php:455
+msgid ""
+"Viva.com Warning: A valid domain name is needed for Viva.com services to "
+"work correctly."
+msgstr ""
+"Viva.com advarsel: Et gyldigt domænenavn er nødvendigt for at Viva Wallet "
+"tjenesterne kan fungere korrekt. "
+
+#. translators: domain
+#: includes/class-wc-vivawallet-smart.php:457
+msgid "Your domain, \"%s\", does not seem valid."
+msgstr "Dit domæne, \"%s\", virker ikke gyldigt. "
+
+#: includes/class-wc-vivawallet-smart.php:458
+msgid ""
+"To test locally, edit your hosts file and add a domain, for example, "
+"\"vivademo.test\"."
+msgstr ""
+"For at teste lokalt, rediger din hosts fil og tilføj et domæne, eksempelvis "
+"\"vivademo.test\". "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:471
+#: includes/class-wc-vivawallet-smart.php:502
+msgid "Viva.com: Your %s credentials are valid."
+msgstr "Viva.com : Dine%s legitimationsoplysninger er gyldige. "
+
+#: includes/class-wc-vivawallet-smart.php:478
+msgid ""
+"Viva.com: You are ready to receive payment notifications. Your hooks have "
+"been updated successfully."
+msgstr ""
+"Viva.com : Du er klar til at modtage betalingsnotifikationer. Dine hooks er "
+"blevet opdateret.  "
+
+#: includes/class-wc-vivawallet-smart.php:481
+msgid "Viva.com: There was a problem updating hooks for your website."
+msgstr ""
+"Viva.com : Der var et problem ved opdateringen af hooks til din hjemmeside. "
+
+#: includes/class-wc-vivawallet-smart.php:482
+msgid ""
+"Note that your site must be publicly accessible. Endpoints must be "
+"accessible from the web."
+msgstr ""
+"Bemærk at din hjemmeside skal være offentlig tilgængelig. Endpoints skal "
+"være tilgængelig fra nettet."
+
+#: includes/class-wc-vivawallet-smart.php:483
+msgid ""
+"You will be not able to receive payment notifications and your orders will "
+"not be updated."
+msgstr ""
+"Det vil ikke være muligt for dig at modtage betalingsnotifikationer, og din "
+"ordre vil ikke blive opdateret. "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:492
+msgid ""
+"Viva.com: A new %1$s source code has been created in the Viva.com banking "
+"app with code: %2$s and set as default source code."
+msgstr ""
+"Viva.com : En ny %1$s source code er oprettet i Viva Wallet bank appen med "
+"kode: %2$s og er indstillet som standard source code."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:497
+msgid ""
+"Viva.com: You changed or updated your %1$s credentials, a %2$s source code "
+"for your domain was found with name: %3$s, and set as default source code."
+msgstr ""
+"Viva.com : Du har ændret eller opdateret dine %1$s legitimationsoplysninger,"
+" en %2$s source code til dit domæne er fundet med navn: %3$s, og er "
+"indstillet som standard source code."
+
+#: includes/class-wc-vivawallet-smart.php:503
+msgid "But there was an error trying to create a new source."
+msgstr "Men der var en fejl ved forsøget på at oprette en ny source. "
+
+#: includes/class-wc-vivawallet-smart.php:504
+#: includes/class-wc-vivawallet-smart.php:546
+#: includes/class-wc-vivawallet-smart.php:555
+#: includes/class-wc-vivawallet-smart.php:564
+msgid ""
+"Check the sources selection box in advanced settings to see your available "
+"source codes and set one from there if available."
+msgstr ""
+"Tjek source selection feltet i avancerede indstillinger for at se din "
+"tilgængelige source codes og indstil en af dem hvis tilgængelige. "
+
+#: includes/class-wc-vivawallet-smart.php:505
+#: includes/class-wc-vivawallet-smart.php:547
+#: includes/class-wc-vivawallet-smart.php:556
+#: includes/class-wc-vivawallet-smart.php:565
+msgid ""
+"Please try to save your settings again and if the source is empty, Viva.com "
+"plugin will try to create a new source for your website."
+msgstr ""
+"Venligst prøv at gemme dine indstillinger igen og hvis sourcen er tom, vil "
+"Viva.com plugin forsøge at oprette en ny source til din hjemmeside. "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:517
+msgid ""
+"Viva.com: Your %1$s source code: %2$s is verified and you are ready to "
+"accept payments."
+msgstr ""
+"Viva.com : Din %1$s source code: %2$s er verificeret, og du er klar til at "
+"tage imod betalinger. "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:522
+#: includes/class-wc-vivawallet-smart.php:529
+#: includes/class-wc-vivawallet-smart.php:536
+#: includes/class-wc-vivawallet-smart.php:543
+#: includes/class-wc-vivawallet-smart.php:552
+#: includes/class-wc-vivawallet-smart.php:561
+msgid ""
+"Viva.com: Your %s credentials are valid and connection with Viva.com was "
+"successful."
+msgstr ""
+"Viva.com : Dine %s legitimationsoplysninger er gyldige, og forbindelsen med "
+"Viva Wallet er vellykket. "
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:524
+msgid "We are in the process of reviewing your %1$s website \"%2$s\"."
+msgstr "Vi er i gang med at gennemgå din %1$s hjemmeside\"%2$s\"."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:531
+msgid ""
+"But your %1$s source code: %2$s has been BLOCKED. Please check your latest "
+"email from Viva.com Support for more info."
+msgstr ""
+"Men din %1$ssource code: %2$ser blevet BLOKERET. Venligst tjek seneste "
+"e-mail fra Viva.com Support for mere information."
+
+#. translators: info_message
+#: includes/class-wc-vivawallet-smart.php:538
+msgid "But your %1$s source code: %2$s is NOT active."
+msgstr "Men din %1$ssource code: %2$s er IKKE aktiv."
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:545
+msgid "But your %1$s source code: %2$s is not valid for this domain."
+msgstr "Men din %1$s source code: %2$s er ikke gyldig til dette domæne. "
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:554
+msgid "But your %1$s source code: %2$s has wrong redirection urls."
+msgstr "Men din %1$s source code: %2$s har forkerte redirection urls."
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:563
+msgid "But your %1$s source code: %2$s is not found."
+msgstr "Men din %1$s source code: %2$s kan ikke findes."
+
+#: includes/class-wc-vivawallet-smart.php:571
+msgid ""
+"Viva.com: Your source code is empty. Please save your settings. Viva.com "
+"plugin will try to create a new source for your website."
+msgstr ""
+"Viva Wallet: Din source code er tom. Venligst gem dine indstillinger. "
+"Viva.com plugin vil prøve at oprette en ny source til din hjemmeside. "
+
+#. translators: error_message
+#: includes/class-wc-vivawallet-smart.php:585
+msgid ""
+"Invalid currency. Please check credentials or store currency. Allowed "
+"currencies are: %s"
+msgstr ""
+"Ugyldig valuta. Venligst tjek legitimationsoplysningerne eller butiksvaluta."
+" Godkendte valutaer er:  %s"
+
+#: includes/class-wc-vivawallet-smart.php:592
+msgid ""
+"Viva.com: Pretty permalinks must be enabled ( not plain text permalinks "
+"structure )."
+msgstr ""
+"Viva.com : Pretty permalinks skal blive aktiveret (ikke ren tekst permalinks"
+" struktur) "
+
+#: wc-vivawallet-smart.php:92 wc-vivawallet-smart.php:102
+msgid ""
+"The Viva.com payment gateway requires WooCommerce. Download link %s here."
+msgstr "Viva.com betalingsgatewayen kræver WooCommerce. Download link %s her."
+
+#: wc-vivawallet-smart.php:251
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: wc-vivawallet-smart.php:267
+msgid "View Viva.com Smart Checkout plugin documentation"
+msgstr "Se Viva.com Smart Checkout plugin dokumentation"
+
+#: wc-vivawallet-smart.php:267
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: wc-vivawallet-smart.php:268
+msgid "Get support from Viva.com Team"
+msgstr "Få support fra Viva.com-teamet"
+
+#: wc-vivawallet-smart.php:268
+msgid "Get support"
+msgstr "Få support"

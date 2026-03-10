@@ -1,0 +1,1438 @@
+# Copyright (C) 2022 Viva Wallet
+# This file is distributed under the same license as the Viva Wallet Standard Checkout plugin.
+# Translators:
+# Alexandros Pappas <apappas@vivawallet.com>, 2021
+# Marianna Komianou <mkomianou@vivawallet.com>, 2021
+# Mary Gavala <mgavala@vivawallet.com>, 2021
+# Lydia Tagari, 2022
+# Elena Dikonymaki, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Viva Wallet Standard Checkout 1.4.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/viva-wallet-for-woocommerce\n"
+"POT-Creation-Date: 2022-07-29T14:40:31+00:00\n"
+"PO-Revision-Date: 2021-01-26 10:10+0000\n"
+"Last-Translator: Elena Dikonymaki, 2022\n"
+"Language-Team: Greek (https://www.transifex.com/viva/teams/94187/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: viva-wallet-for-woocommerce\n"
+"X-Generator: WP-CLI 2.6.0\n"
+
+#. Plugin Name of the plugin
+#: includes/class-wc-vivawallet.php:115
+msgid "Viva Wallet Standard Checkout"
+msgstr "Viva Wallet Standard Checkout"
+
+#. Plugin URI of the plugin
+msgid "http://www.vivawallet.com/"
+msgstr "http://www.vivawallet.com/"
+
+#. Description of the plugin
+msgid ""
+"Connects WooCommerce to Viva Wallet payment gateway (standard checkout) to "
+"process and sync your payments and help you sell more."
+msgstr ""
+"Συνδέει το WooCommerce με τη Viva Wallet πύλη πληρωμών (standard checkout) "
+"για να επεξεργαστεί και να συγχρονίσει τις πληρωμές σας και να βοηθήσει στην"
+" αύξηση των πωλήσεων."
+
+#. Author of the plugin
+msgid "Viva Wallet"
+msgstr "Viva Wallet"
+
+#. Author URI of the plugin
+msgid "https://www.vivawallet.com/"
+msgstr "https://www.vivawallet.com/"
+
+#: includes/admin/vivawallet-bitpay-settings.php:12
+msgid "Enable Viva Wallet BitPay Gateway"
+msgstr "Ενεργοποίηση Viva Wallet BitPay Gateway"
+
+#: includes/admin/vivawallet-bitpay-settings.php:14
+msgid "Enable Viva Wallet BitPay Gateway and receive BitPay payments"
+msgstr ""
+"Ενεργοποιήστε το Viva Wallet BitPay Gateway και λάβετε πληρωμές BitPay"
+
+#: includes/admin/vivawallet-bitpay-settings.php:19
+#: includes/admin/vivawallet-directpay-settings.php:19
+#: includes/admin/vivawallet-eps-settings.php:19
+#: includes/admin/vivawallet-giropay-settings.php:19
+#: includes/admin/vivawallet-ideal-settings.php:19
+#: includes/admin/vivawallet-multibanco-settings.php:19
+#: includes/admin/vivawallet-p24-settings.php:19
+#: includes/admin/vivawallet-payu-settings.php:19
+#: includes/admin/vivawallet-settings.php:156
+#: includes/admin/vivawallet-wechatpay-settings.php:19
+msgid "Title"
+msgstr "Τίτλος "
+
+#: includes/admin/vivawallet-bitpay-settings.php:21
+#: includes/admin/vivawallet-directpay-settings.php:21
+#: includes/admin/vivawallet-eps-settings.php:21
+#: includes/admin/vivawallet-giropay-settings.php:21
+#: includes/admin/vivawallet-ideal-settings.php:21
+#: includes/admin/vivawallet-multibanco-settings.php:21
+#: includes/admin/vivawallet-p24-settings.php:21
+#: includes/admin/vivawallet-payu-settings.php:21
+#: includes/admin/vivawallet-settings.php:158
+#: includes/admin/vivawallet-wechatpay-settings.php:21
+msgid "This controls the title which the user sees on checkout page."
+msgstr ""
+"Αυτό ελέγχει τον τίτλο που βλέπει ο χρήστης στη σελίδα ολοκλήρωσης αγοράς."
+
+#: includes/admin/vivawallet-bitpay-settings.php:22
+msgid "BitPay"
+msgstr "BitPay"
+
+#: includes/admin/vivawallet-bitpay-settings.php:25
+#: includes/admin/vivawallet-directpay-settings.php:25
+#: includes/admin/vivawallet-eps-settings.php:25
+#: includes/admin/vivawallet-giropay-settings.php:25
+#: includes/admin/vivawallet-ideal-settings.php:25
+#: includes/admin/vivawallet-multibanco-settings.php:25
+#: includes/admin/vivawallet-p24-settings.php:25
+#: includes/admin/vivawallet-payu-settings.php:25
+#: includes/admin/vivawallet-settings.php:162
+#: includes/admin/vivawallet-wechatpay-settings.php:25
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: includes/admin/vivawallet-bitpay-settings.php:27
+#: includes/admin/vivawallet-directpay-settings.php:27
+#: includes/admin/vivawallet-eps-settings.php:27
+#: includes/admin/vivawallet-giropay-settings.php:27
+#: includes/admin/vivawallet-ideal-settings.php:27
+#: includes/admin/vivawallet-multibanco-settings.php:27
+#: includes/admin/vivawallet-p24-settings.php:27
+#: includes/admin/vivawallet-payu-settings.php:27
+#: includes/admin/vivawallet-settings.php:164
+#: includes/admin/vivawallet-wechatpay-settings.php:27
+msgid "This controls the description which the user sees on checkout page."
+msgstr ""
+"Αυτό ελέγχει την περιγραφή που βλέπει ο χρήστης στη σελίδα ολοκλήρωσης "
+"αγοράς."
+
+#: includes/admin/vivawallet-bitpay-settings.php:28
+msgid "You will be redirected to BitPay."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της BitPay."
+
+#: includes/admin/vivawallet-directpay-settings.php:12
+msgid "Enable Viva Wallet DirectPay Gateway"
+msgstr "Ενεργοποίηση Viva Wallet DirectPay Gateway"
+
+#: includes/admin/vivawallet-directpay-settings.php:14
+msgid "Enable Viva Wallet DirectPay Gateway and receive DirectPay payments"
+msgstr ""
+"Ενεργοποιήστε το Viva Wallet DirectPay Gateway και λάβετε πληρωμές DirectPay"
+
+#: includes/admin/vivawallet-directpay-settings.php:22
+msgid "DirectPay"
+msgstr "DirectPay"
+
+#: includes/admin/vivawallet-directpay-settings.php:28
+msgid "You will be redirected to DirectPay."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της DirectPay."
+
+#: includes/admin/vivawallet-eps-settings.php:12
+msgid "Enable Viva Wallet Eps Gateway"
+msgstr "Ενεργοποίηση Viva Wallet Eps Gateway"
+
+#: includes/admin/vivawallet-eps-settings.php:14
+msgid "Enable Viva Wallet Eps Gateway and receive Eps payments"
+msgstr "Ενεργοποιήστε το Viva Wallet Eps Gateway και λάβετε πληρωμές Eps"
+
+#: includes/admin/vivawallet-eps-settings.php:22
+msgid "Eps"
+msgstr "Eps"
+
+#: includes/admin/vivawallet-eps-settings.php:28
+msgid "You will be redirected to Eps."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της Eps."
+
+#. translators: error
+#: includes/admin/vivawallet-error-page.php:8
+msgid ""
+"Current currency %s selected for WooCommerce is not supported by Viva "
+"Wallet."
+msgstr ""
+"Το τρέχον νόμισμα %s που επιλέχθηκε για το WooCommerce δεν υποστηρίζεται από"
+" τη Viva Wallet."
+
+#: includes/admin/vivawallet-error-page.php:9
+msgid ""
+"Merchants can use one of these currencies (EUR, GBP, BGN, PLN, RON, DKK, "
+"CZK, HRK) which should be the same as their Viva Wallet account currency."
+msgstr ""
+"Οι έμποροι μπορούν να χρησιμοποιήσουν ένα από αυτά τα νομίσματα (EUR, GBP, "
+"BGN, PLN, RON, DKK, CZK, HRK) που θα πρέπει να είναι το ίδιο με το νόμισμα "
+"στο Viva Wallet λογαριασμό τους. "
+
+#: includes/admin/vivawallet-error-page.php:15
+msgid "Invalid currency"
+msgstr "Μη έγκυρο νόμισμα"
+
+#: includes/admin/vivawallet-error-page.php:20
+msgid "Allowed currencies"
+msgstr "Επιτρεπόμενα νομίσματα"
+
+#: includes/admin/vivawallet-giropay-settings.php:12
+msgid "Enable Viva Wallet Giropay Gateway"
+msgstr "Ενεργοποίηση Viva Wallet Giropay Gateway"
+
+#: includes/admin/vivawallet-giropay-settings.php:14
+msgid "Enable Viva Wallet Giropay Gateway and receive Giropay payments"
+msgstr ""
+"Ενεργοποιήστε το Viva Wallet Giropay Gateway και λάβετε πληρωμές Giropay"
+
+#: includes/admin/vivawallet-giropay-settings.php:22
+msgid "Giropay"
+msgstr "Giropay"
+
+#: includes/admin/vivawallet-giropay-settings.php:28
+msgid "You will be redirected to Giropay."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της Giropay."
+
+#: includes/admin/vivawallet-ideal-settings.php:12
+msgid "Enable Viva Wallet iDeal Gateway"
+msgstr "Ενεργοποίηση Viva Wallet iDeal Gateway"
+
+#: includes/admin/vivawallet-ideal-settings.php:14
+msgid "Enable Viva Wallet iDeal Gateway and receive iDeal payments"
+msgstr "Ενεργοποιήστε το Viva Wallet iDeal Gateway και λάβετε πληρωμές  iDeal"
+
+#: includes/admin/vivawallet-ideal-settings.php:22
+msgid "iDeal"
+msgstr "iDeal"
+
+#: includes/admin/vivawallet-ideal-settings.php:28
+msgid "You will be redirected to iDeal."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της iDeal."
+
+#: includes/admin/vivawallet-multibanco-settings.php:12
+msgid "Enable Viva Wallet Multibanco Gateway"
+msgstr "Ενεργοποίηση Viva Wallet Multibanco Gateway"
+
+#: includes/admin/vivawallet-multibanco-settings.php:14
+msgid "Enable Viva Wallet Multibanco Gateway and receive Multibanco payments"
+msgstr ""
+"Ενεργοποιήστε το Viva Wallet Multibanco Gateway και λάβετε πληρωμές "
+"Multibanco"
+
+#: includes/admin/vivawallet-multibanco-settings.php:22
+msgid "Multibanco"
+msgstr "Multibanco"
+
+#: includes/admin/vivawallet-multibanco-settings.php:28
+msgid "You will be redirected to Multibanco."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της Multibanco."
+
+#: includes/admin/vivawallet-p24-settings.php:12
+msgid "Enable Viva Wallet P24 Gateway"
+msgstr "Ενεργοποίηση Viva Wallet P24 Gateway"
+
+#: includes/admin/vivawallet-p24-settings.php:14
+msgid "Enable Viva Wallet P24 Gateway and receive P24 payments"
+msgstr "Ενεργοποιήστε το Viva Wallet P24 Gateway και λάβετε πληρωμές P24"
+
+#: includes/admin/vivawallet-p24-settings.php:22
+msgid "Przelewy24 (P24)"
+msgstr "Przelewy24 (P24)"
+
+#: includes/admin/vivawallet-p24-settings.php:28
+msgid "You will be redirected to P24."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της P24."
+
+#: includes/admin/vivawallet-payu-settings.php:12
+msgid "Enable Viva Wallet PayU Gateway"
+msgstr "Ενεργοποίηση Viva Wallet PayU Gateway"
+
+#: includes/admin/vivawallet-payu-settings.php:14
+msgid "Enable Viva Wallet PayU Gateway and receive PayU payments"
+msgstr "Ενεργοποιήστε το Viva Wallet PayU Gateway και λάβετε πληρωμές PayU "
+
+#: includes/admin/vivawallet-payu-settings.php:22
+msgid "PayU"
+msgstr "PayU"
+
+#: includes/admin/vivawallet-payu-settings.php:28
+msgid "You will be redirected to PayU."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της PayU."
+
+#. translators: credentials
+#: includes/admin/vivawallet-settings.php:11
+msgid ""
+"Set the title and description of the payment gateway. Title and description "
+"are visible to end users in the checkout page."
+msgstr ""
+"Ορίστε τον τίτλο και την περιγραφή του payment gateway. Ο τίτλος και η "
+"περιγραφή είναι ορατά στους τελικούς χρήστες στη σελίδα ολοκλήρωσης αγοράς."
+
+#. translators: credentials
+#: includes/admin/vivawallet-settings.php:17
+msgid ""
+"To find out how to retrieve your credentials for the payment gateway, please"
+" visit the Viva Wallet Standard Checkout <a target=\"_blank\" "
+"href=\"%s\">installation guide</a>."
+msgstr ""
+"Για να μάθετε πώς μπορείτε να ανακτήσετε τα διαπιστευτήριά σας για την πύλη "
+"πληρωμών, επισκεφτείτε τον <a target=\"_blank\" href=\"%s\">οδηγό "
+"εγκατάστασης</a> της Viva Wallet Standard Checkout."
+
+#. translators: Demo Mode
+#: includes/admin/vivawallet-settings.php:19
+msgid ""
+"If Demo Mode is enabled, please use the credentials you got from <a "
+"target=\"_blank\" href=\"%s\">demo.vivapayments.com</a>."
+msgstr ""
+"Εάν είναι ενεργοποιημένη η Demo λειτουργία, χρησιμοποιήστε τους κωδικούς που"
+" λάβατε από το <a target=\"_blank\" href=\"%s\">demo.vivapayments.com</a>."
+
+#: includes/admin/vivawallet-settings.php:27
+msgid "Viva Wallet Standard Checkout settings"
+msgstr "Ρυθμίσεις Viva Wallet Standard Checkout"
+
+#: includes/admin/vivawallet-settings.php:32
+msgid "Enable Viva Wallet Standard Checkout"
+msgstr "Ενεργοποιήστε τη Viva Wallet Standard Checkout"
+
+#: includes/admin/vivawallet-settings.php:34
+msgid ""
+"Enable Viva Wallet Standard Checkout to accept payments from all major "
+"credit cards, and offer other payment methods, such as Apple Pay and Google "
+"Pay, local card schemes, local wallets, and alternative payment methods."
+msgstr ""
+"Ενεργοποιήστε τη Viva Wallet Standard Checkout για να δέχεστε πληρωμές από "
+"όλες τις μεγάλες πιστωτικές κάρτες και να προσφέρετε πολλαπλούς τρόπους "
+"πληρωμής, όπως Apple Pay και Google Pay, τοπικά σχήματα καρτών, τοπικά "
+"digital wallets και εναλλακτικές μεθόδους πληρωμών."
+
+#: includes/admin/vivawallet-settings.php:46
+msgid "Set Viva Wallet API credentials"
+msgstr "Ορίστε κωδικούς Viva Wallet  API"
+
+#: includes/admin/vivawallet-settings.php:51
+msgid "Demo mode"
+msgstr "Demo λειτουργία"
+
+#: includes/admin/vivawallet-settings.php:53
+msgid "Enable demo mode"
+msgstr "Ενεργοποίηση Demo λειτουργίας"
+
+#: includes/admin/vivawallet-settings.php:61
+msgid "Live mode credentials"
+msgstr "Κωδικοί Live mode"
+
+#: includes/admin/vivawallet-settings.php:66
+msgid "Demo mode credentials"
+msgstr "Κωδικοί demo mode"
+
+#: includes/admin/vivawallet-settings.php:71
+msgid "Live Client ID"
+msgstr "Live ID πελάτη"
+
+#: includes/admin/vivawallet-settings.php:73
+msgid "Client ID provided by Viva Wallet."
+msgstr "Το ID πελάτη παρέχεται από τη Viva Wallet."
+
+#: includes/admin/vivawallet-settings.php:77
+msgid "Demo Client ID"
+msgstr "Demo ID πελάτη"
+
+#: includes/admin/vivawallet-settings.php:79
+msgid "Client ID provided by Viva Wallet. "
+msgstr "Το ID πελάτη παρέχεται από τη Viva Wallet."
+
+#: includes/admin/vivawallet-settings.php:86
+msgid "Live Client Secret"
+msgstr "Live Client Secret"
+
+#: includes/admin/vivawallet-settings.php:88
+#: includes/admin/vivawallet-settings.php:94
+msgid "Client Secret provided by Viva Wallet."
+msgstr "Το client secret παρέχεται από τη Viva Wallet "
+
+#: includes/admin/vivawallet-settings.php:92
+msgid "Demo Client Secret"
+msgstr "Demo Client Secret"
+
+#: includes/admin/vivawallet-settings.php:108
+msgid "Live Apple Pay enable"
+msgstr "Ενεργοποίηση Live Apple Pay"
+
+#. translators: apple link to terms.
+#: includes/admin/vivawallet-settings.php:110
+msgid ""
+"Enable Apple Pay API in Live Mode. %1$sBy using Apple Pay, you agree to "
+"%2$s's terms of service."
+msgstr ""
+"Ενεργοποιήστε το Apple Pay API σε live mode.%1$s Χρησιμοποιώντας το Apple "
+"Pay, αποδέχεστε %2$s τους όρους παροχής υπηρεσιών."
+
+#: includes/admin/vivawallet-settings.php:112
+#: includes/admin/vivawallet-settings.php:121
+msgid ""
+"If enabled, users will be able to pay using Apple Pay if supported by the "
+"browser."
+msgstr ""
+"Εάν είναι ενεργοποιημένο, οι χρήστες θα μπορούν να πληρώνουν χρησιμοποιώντας"
+" το Apple Pay εφόσον ​​υποστηρίζεται από τον browser."
+
+#: includes/admin/vivawallet-settings.php:117
+msgid "Demo Apple Pay enable"
+msgstr "Ενεργοποίηση demo Apple Pay"
+
+#. translators: apple link to terms.
+#: includes/admin/vivawallet-settings.php:119
+msgid ""
+"Enable Apple Pay API in Demo Mode. %1$sBy using Apple Pay, you agree to "
+"%2$s's terms of service."
+msgstr ""
+"Ενεργοποιήστε το Apple Pay API σε demo λειτουργία. %1$sΧρησιμοποιώντας το "
+"Apple Pay, αποδέχεστε%2$s τους όρους παροχής υπηρεσιών."
+
+#: includes/admin/vivawallet-settings.php:133
+msgid "Advanced settings"
+msgstr "Προηγμένες ρυθμίσεις"
+
+#: includes/admin/vivawallet-settings.php:138
+msgid "Show advanced settings"
+msgstr "Εμφάνιση προηγμένων ρυθμίσεων "
+
+#: includes/admin/vivawallet-settings.php:140
+msgid ""
+"Show advanced settings. If this checkbox is unchecked, the plugin will use "
+"default settings."
+msgstr ""
+"Εμφάνιση προηγμένων ρυθμίσεων. Εάν αυτό το checkbox δεν είναι επιλεγμένο, το"
+" plugin θα χρησιμοποιεί τις προεπιλεγμένες ρυθμίσεις."
+
+#: includes/admin/vivawallet-settings.php:159
+msgid "Card payment"
+msgstr "Πληρωμή με κάρτα"
+
+#: includes/admin/vivawallet-settings.php:165
+msgid "Accept all major debit and credit cards"
+msgstr "Δεκτές όλες οι δημοφιλείς χρεωστικές και πιστωτικές κάρτες"
+
+#: includes/admin/vivawallet-settings.php:170
+#: includes/class-wc-vivawallet.php:817
+msgid "Installments"
+msgstr "Δόσεις"
+
+#: includes/admin/vivawallet-settings.php:172
+msgid ""
+"WARNING: Only available to Greek Viva Wallet accounts. <br>Example: "
+"90:3,180:6<br>Order total 90 euro -> allow 0 and 3 installments <br>Order "
+"total 180 euro -> allow 0, 3 and 6 installments<br>Leave empty in case you "
+"do not want to offer installments."
+msgstr ""
+"ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Διατίθεται μόνο σε Ελληνικούς λογαριασμούς Viva Wallet. "
+"<br>Παράδειγμα: 90: 3,180: 6<br> Παραγγελία συνολικά 90 ευρώ -> επιτρέψτε 0 "
+"και 3 δόσεις<br> Παραγγελία σύνολο 180 ευρώ -> επιτρέψτε 0, 3 και 6 δόσεις "
+"<br>Αφήστε κενό σε περίπτωση που δε θέλετε να προσφέρετε δόσεις."
+
+#: includes/admin/vivawallet-settings.php:177
+msgid "Live Source Code List"
+msgstr "Live Source Code List"
+
+#: includes/admin/vivawallet-settings.php:179
+msgid ""
+"Provides a list with all source codes that are set in your Viva Wallet "
+"banking app."
+msgstr ""
+"Παρoχή λίστας με όλα τα source codes που έχουν οριστεί στην εφαρμογή Viva "
+"Wallet banking."
+
+#: includes/admin/vivawallet-settings.php:184
+msgid "Demo Source Code List"
+msgstr "Demo Source Code List"
+
+#: includes/admin/vivawallet-settings.php:186
+msgid ""
+"Provides a list with all source codes that are set in the Viva Wallet "
+"banking app"
+msgstr ""
+"Παρoχή λίστας με τα source codes που έχουν οριστεί στην εφαρμογή Viva Wallet"
+" banking"
+
+#: includes/admin/vivawallet-settings.php:192
+msgid "Show Powered by Viva Wallet and logo on payment form"
+msgstr "Εμφάνιση Powered by Viva Wallet και λογότυπο στη φόρμα πληρωμής"
+
+#: includes/admin/vivawallet-settings.php:194
+msgid "Enable Viva Wallet logo on checkout page (default = yes)."
+msgstr ""
+"Ενεργοποίηση λογοτύπου Viva Wallet στη σελίδα ολοκλήρωσης αγοράς (προεπιλογή"
+" = ναι)."
+
+#: includes/admin/vivawallet-settings.php:198
+msgid "Show credit card logo on checkout page. "
+msgstr "Εμφάνιση λογοτύπου πιστωτικής κάρτας στη σελίδα ολοκλήρωσης αγοράς."
+
+#: includes/admin/vivawallet-settings.php:200
+msgid ""
+"Enable credit card logo in the form element input as the user types credit "
+"card number info (default = yes)."
+msgstr ""
+"Ενεργοποιήστε το λογότυπο της πιστωτικής κάρτας κατά την εισαγωγή στοιχείων "
+"φόρμας, καθώς ο χρήστης πληκτρολογεί τις πληροφορίες της πιστωτικής κάρτας "
+"(προεπιλογή = ναι)."
+
+#: includes/admin/vivawallet-settings.php:204
+msgid "Order status after successful payment."
+msgstr "Κατάσταση παραγγελίας μετά από επιτυχή πληρωμή."
+
+#: includes/admin/vivawallet-settings.php:205
+msgid ""
+"Your WooCommerce will be updated to this status after successful payment on "
+"Viva Wallet (default = completed)."
+msgstr ""
+"Το WooCommerce θα ενημερωθεί μετά από επιτυχή πληρωμή στο Viva Wallet "
+"(προεπιλογή = ολοκληρωμένο)."
+
+#: includes/admin/vivawallet-settings.php:209
+msgid "Completed"
+msgstr "Ολοκληρώθηκε"
+
+#: includes/admin/vivawallet-settings.php:210
+msgid "Processing"
+msgstr "Σε επεξεργασία"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:12
+msgid "Enable Viva Wallet WeChat Pay Gateway"
+msgstr "Ενεργοποίηση Viva Wallet WeChat Pay Gateway"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:14
+msgid "Enable Viva Wallet WeChat Pay Gateway and receive WeChat Pay payments"
+msgstr ""
+"Ενεργοποιήστε το Viva Wallet WeChat Pay Gateway και λάβετε πληρωμές WeChat "
+"Pay"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:22
+msgid "WeChat Pay"
+msgstr "WeChat Pay"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:28
+msgid "You will be redirected to WeChatPay."
+msgstr "Θα μεταφερθείτε στο περιβάλλον της WeChatPay."
+
+#. translators: link to main page settings 'here'
+#: includes/class-wc-vivawallet-apm.php:96
+msgid ""
+"Please fill in your Viva Wallet credentials and enable the main plugin from "
+"<a href=\"%s\">here</a> before you enable this payment method."
+msgstr ""
+"Παρακαλούμε συμπληρώστε τους κωδικούς Viva Wallet και ενεργοποιήστε τo κύριo"
+" plugin από <a href=\"%s\">εδώ</a> προτού ενεργοποιήσετε αυτόν τον τρόπο "
+"πληρωμής."
+
+#: includes/class-wc-vivawallet-apm.php:220
+msgid ""
+"Viva Wallet: The plugin of Viva Wallet Standard Checkout must be enabled. "
+"Please enable it and add your credentials."
+msgstr ""
+"Viva Wallet: To plugin της Viva Wallet Standard Checkout πρέπει να είναι "
+"ενεργοποιημένο. Ενεργοποιήστε το και προσθέστε τα διαπιστευτήριά σας."
+
+#: includes/class-wc-vivawallet-apm.php:228
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Please check your credentials "
+"in the main settings page of Viva Wallet Standard Checkout!"
+msgstr ""
+"Viva Wallet: Τα διαπιστευτήριά σας ΔΕΝ είναι έγκυρα. Ελέγξτε τα "
+"διαπιστευτήριά σας στην κύρια σελίδα ρυθμίσεων της Viva Wallet Standard "
+"Checkout!"
+
+#: includes/class-wc-vivawallet-apm.php:238
+msgid "Viva Wallet: You are ready to receive payments using "
+msgstr "Viva Wallet: Είστε έτοιμοι να λάβετε πληρωμές χρησιμοποιώντας"
+
+#: includes/class-wc-vivawallet-apm.php:244
+msgid "Viva Wallet: Your account supports: "
+msgstr "Viva Wallet: Ο λαγαριασμός σας υποστηρίζει:"
+
+#: includes/class-wc-vivawallet-apm.php:247
+msgid "But there was a problem updating hooks for your website. "
+msgstr ""
+"Ωστόσο, παρουσιάστηκε πρόβλημα κατά την ενημέρωση των hooks για τον website "
+"σας."
+
+#: includes/class-wc-vivawallet-apm.php:248
+msgid ""
+"Note that this payment method will work only on a server. Endpoints must be "
+"accessible from the web."
+msgstr ""
+"Λάβετε υπόψη ότι αυτός ο τρόπος πληρωμής θα λειτουργεί μόνο σε διακομιστή. "
+"Τα τελικά σημεία πρέπει να είναι προσβάσιμα από το web."
+
+#: includes/class-wc-vivawallet-apm.php:254
+msgid "Viva Wallet: Your account does not support: "
+msgstr "Viva Wallet: Ο λαγαριασμός σας δεν υποστηρίζει:"
+
+#: includes/class-wc-vivawallet-apm.php:257
+msgid "Please contact Viva Wallet. "
+msgstr "Παρακαλούμε επικοινωνήστε με τη Viva Wallet"
+
+#: includes/class-wc-vivawallet-apm.php:301
+msgid ""
+"Order is currently awaiting payment. After successful payment, we will send "
+"you an email confirmation."
+msgstr ""
+"Εκρεμμεί η πληρωμή της παραγγελίας. Μετά την επιτυχή πληρωμή, θα σας "
+"στείλουμε επιβεβαίωση μέσω email."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:117
+msgid ""
+"Viva Wallet - Apple Pay: This site is not SSL protected. Please protect your"
+" domain to register with Apple Pay."
+msgstr ""
+"Viva Wallet - Apple Pay: Αυτός ο ιστότοπος δεν προστατεύεται από SSL. "
+"Προστατέψτε το domain σας για να εγγραφείτε στο Apple Pay."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:173
+#: includes/class-wc-vivawallet-apple-pay-register.php:178
+msgid ""
+"Viva Wallet - Apple Pay: Unable to load domain association file from Viva "
+"Wallet API. "
+msgstr ""
+"Viva Wallet - Apple Pay: Δεν είναι δυνατή η φόρτωση του σχετικού domain "
+"αρχείου από το Viva Wallet API."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:183
+msgid ""
+"Viva Wallet - Apple Pay: Unable to load variable $_SERVER['DOCUMENT_ROOT']. "
+"Please check the documentation for further info."
+msgstr ""
+"Viva Wallet - Apple Pay: Δεν είναι δυνατή η φόρτωση της μεταβλητής $ _SERVER"
+" ['DOCUMENT_ROOT']. Ελέγξτε τα έγγραφα για περισσότερες πληροφορίες."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:195
+msgid "Viva Wallet - Apple Pay: Domain association already exists. "
+msgstr "Viva Wallet - Apple Pay: Το domain υπάρχει ήδη."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:201
+msgid ""
+"Viva Wallet - Apple Pay: Unable to create .well-known folder for the domain "
+"association file in domain root. Please check the documentation for further "
+"info."
+msgstr ""
+"Viva Wallet - Apple Pay: Αποτυχία δημιουργίας .well-known φακέλου για το "
+"domain αρχείο σε domain root. Ελέγξτε το documentation για περισσότερες "
+"πληροφορίες."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:207
+msgid ""
+"Viva Wallet - Apple Pay: Unable to copy domain association file to domain "
+"root (in .well-known folder). "
+msgstr ""
+"Viva Wallet - Apple Pay: Αποτυχία αντιγραφής του domain αρχείου σε domain "
+"root (in .well-known folder). "
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:211
+msgid "Viva Wallet - Apple Pay: Domain association file updated. "
+msgstr "Viva Wallet - Apple Pay: Το Domain αρχείο ενημερώθηκε"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:248
+#: includes/class-wc-vivawallet-apple-pay-register.php:258
+msgid ""
+"Viva Wallet: There was a problem connecting to Viva Wallet API endpoints. "
+"Please also check logs for the errors"
+msgstr ""
+"Viva Wallet : Παρουσιάστηκε σφάλμα κατά τη σύνδεση με τα Viva Wallet API "
+"endpoints. Ελέγξτε τα logs για σφάλματα"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:270
+msgid ""
+"Viva Wallet: Something seems wrong in the setup of Apple Pay, please reload "
+"this page to try again!"
+msgstr ""
+"Viva Wallet: Κάτι φαίνεται λάθος κατά τη ρύθμιση του Apple Pay, φορτώστε "
+"πάλι αυτήν τη σελίδα για να δοκιμάσετε ξανά!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:286
+#: includes/class-wc-vivawallet-apple-pay-register.php:326
+msgid ""
+"Viva Wallet: Your domain is verified with Apple Pay and you are ready to "
+"accept DEMO payments! Please note that you need an Apple Sandbox account to "
+"process DEMO transactions."
+msgstr ""
+"Viva Wallet: Το domain σας έχει επαληθευτεί με το Apple Pay και είστε "
+"έτοιμοι να δεχτείτε DEMO πληρωμές! Λάβετε υπόψη ότι χρειάζεστε έναν Apple "
+"Sandbox λογαριασμό για την επεξεργασία των DEMO συναλλαγών."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:288
+#: includes/class-wc-vivawallet-apple-pay-register.php:328
+msgid ""
+"Viva Wallet: Your domain is verified with Apple Pay and you are ready to "
+"accept LIVE payments!"
+msgstr ""
+"Viva Wallet: To domain σας έχει επαληθευτεί με το Apple Pay και είστε "
+"έτοιμοι να δεχτείτε LIVE πληρωμές!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:306
+msgid "Viva Wallet: Something seems wrong in the DEMO setup of Apple Pay!"
+msgstr "Viva Wallet: Κάτι φαίνεται λάθος στη DEMO ρύθμιση του Apple Pay!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:308
+msgid "Viva Wallet: Something seems wrong in the setup of Apple Pay!"
+msgstr "Viva Wallet: Κάτι φαίνεται λάθος στη ρύθμιση του Apple Pay!"
+
+#: includes/class-wc-vivawallet-applepay.php:143
+#: includes/class-wc-vivawallet-applepay.php:617
+msgid "Tax"
+msgstr "Φόρος"
+
+#: includes/class-wc-vivawallet-applepay.php:151
+#: includes/class-wc-vivawallet-applepay.php:624
+msgid "Shipping"
+msgstr "Αποστολή"
+
+#: includes/class-wc-vivawallet-applepay.php:158
+msgid "Pending"
+msgstr "Εκρεμμεί"
+
+#: includes/class-wc-vivawallet-applepay.php:226
+msgid ""
+"Viva Wallet - Apple Pay: This site is not SSL protected. Please protect your"
+" domain to accept Apple Pay payments, or disable Apple Pay from Viva Wallet "
+"plugin settings.\" "
+msgstr ""
+"Viva Wallet - Apple Pay: Αυτός ο ιστότοπος δεν προστατεύεται από SSL. "
+"Προστατέψτε το domain σας για να αποδεχτείτε πληρωμές μέσω Apple Pay ή "
+"απενεργοποιήστε το Apple Pay από τις ρυθμίσεις του Viva Wallet Plugin."
+
+#: includes/class-wc-vivawallet-applepay.php:236
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Apple Pay could not be loaded. "
+"Please check your credentials!"
+msgstr ""
+"Viva Wallet: Οι κωδικοί σας ΔΕΝ είναι έγκυροι. Δεν ήταν δυνατή η φόρτωση του"
+" Apple Pay. Ελέγξτε τους κωδικούς σας!"
+
+#: includes/class-wc-vivawallet-applepay.php:399
+#: includes/class-wc-vivawallet-applepay.php:412
+msgid "Unable to find shipping method for address."
+msgstr "Δεν είναι δυνατή η εύρεση μεθόδου αποστολής για τη διεύθυνση."
+
+#: includes/class-wc-vivawallet-applepay.php:493
+msgid "Empty cart"
+msgstr "Άδειο καλάθι"
+
+#: includes/class-wc-vivawallet-applepay.php:631
+msgid "Discount"
+msgstr "Έκπτωση"
+
+#: includes/class-wc-vivawallet-bitpay.php:49
+msgid "Viva Wallet Standard Checkout - BitPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - BitPay Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet-directpay.php:49
+msgid "Viva Wallet Standard Checkout - DirectPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - DirectPay Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet-endpoints.php:81
+#: includes/class-wc-vivawallet-endpoints.php:333
+msgid "There was a connection problem. Please try again later."
+msgstr "Παρουσιάστηκε πρόβλημα σύνδεσης. Παρακαλώ προσπαθήστε ξανά αργότερα."
+
+#. translators: Please check your card details or try again later! (card
+#. details bolded)
+#: includes/class-wc-vivawallet-endpoints.php:91
+#: includes/class-wc-vivawallet-endpoints.php:105
+msgid "Please check your <strong>card details</strong> or try again later!"
+msgstr ""
+"Ελέγξτε τα στοιχεία της <strong>κάρτας σας</strong> ή δοκιμάστε ξανά "
+"αργότερα!"
+
+#: includes/class-wc-vivawallet-endpoints.php:129
+msgid "Sorry we could not process your payment! Please try again later."
+msgstr ""
+"Δυστυχώς δεν ήταν δυνατή η επεξεργασία της πληρωμής σας! Παρακαλώ δοκιμάστε "
+"ξανά αργότερα."
+
+#: includes/class-wc-vivawallet-endpoints.php:159
+msgid "WARNING: This order was paid with installments!"
+msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η παραγγελία πληρώθηκε με δόσεις!"
+
+#: includes/class-wc-vivawallet-endpoints.php:161
+msgid "Number of installments: "
+msgstr "Αριθμός δόσεων:"
+
+#: includes/class-wc-vivawallet-endpoints.php:201
+msgid "Order created via Viva Wallet Standard Checkout."
+msgstr "Η παραγγελία δημιουργήθηκε μέσω Viva Wallet Standard Checkout."
+
+#: includes/class-wc-vivawallet-endpoints.php:213
+msgid ""
+"Sorry we could not process your payment because customer name and email was "
+"not set! Please try again later."
+msgstr ""
+"Δυστυχώς δεν ήταν δυνατή η ολοκλήρωση της πληρωμής σας, επειδή το όνομα "
+"πελάτη και το email δεν είχαν οριστεί! Παρακαλούμε δοκιμάστε ξανά αργότερα."
+
+#: includes/class-wc-vivawallet-endpoints.php:222
+msgid ""
+"Sorry we could not process your payment because no customer name was set! "
+"Please try again later."
+msgstr ""
+"Δυστυχώς δεν ήταν δυνατή η ολοκλήρωση της πληρωμής σας, επειδή δεν έχει "
+"οριστεί όνομα πελάτη! Παρακαλούμε δοκιμάστε ξανά αργότερα."
+
+#: includes/class-wc-vivawallet-endpoints.php:231
+msgid ""
+"Sorry we could not process your payment because no customer email was set! "
+"Please try again later."
+msgstr ""
+"Δυστυχώς δεν ήταν δυνατή η ολοκλήρωση της πληρωμής σας, επειδή δεν έχει "
+"οριστεί email! Παρακαλούμε δοκιμάστε ξανά αργότερα.  "
+
+#: includes/class-wc-vivawallet-endpoints.php:239
+#: includes/class-wc-vivawallet-endpoints.php:250
+msgid "Gateway selected:"
+msgstr "Επιλεγμένο Gateway:"
+
+#: includes/class-wc-vivawallet-endpoints.php:241
+msgid " via Viva Wallet Standard Checkout"
+msgstr "μέσω Viva Wallet Standard Checkout."
+
+#: includes/class-wc-vivawallet-endpoints.php:251
+msgid "Viva Wallet Standard Checkout."
+msgstr "Viva Wallet Standard Checkout."
+
+#: includes/class-wc-vivawallet-endpoints.php:278
+#: includes/class-wc-vivawallet-endpoints.php:637
+msgid "Order has been paid with Viva Wallet Standard Checkout, TxID: "
+msgstr "Η παραγγελία έχει πληρωθεί με Viva Wallet Standard Checkout, TxID: "
+
+#: includes/class-wc-vivawallet-endpoints.php:328
+msgid ""
+"The card issuer rejected this transaction. Please use a different card."
+msgstr ""
+"Ο εκδότης της κάρτας απέρριψε αυτήν τη συναλλαγή. Χρησιμοποιήστε μια "
+"διαφορετική κάρτα."
+
+#: includes/class-wc-vivawallet-endpoints.php:330
+msgid ""
+"There was a problem with your card. Please check the card details and try "
+"again."
+msgstr ""
+"Παρουσιάστηκε πρόβλημα με την κάρτα σας. Ελέγξτε τα στοιχεία της κάρτας και "
+"δοκιμάστε ξανά."
+
+#. translators: Please check your card details or try again later!
+#: includes/class-wc-vivawallet-endpoints.php:361
+msgid "Please check your %s or try again later!"
+msgstr "Παρακαλούμε ελέγξτε το %s ή δοκιμάστε ξανά αργότερα!"
+
+#. translators: Please check your card details or try again later!
+#: includes/class-wc-vivawallet-endpoints.php:361
+msgid "card details"
+msgstr "Στοιχεία κάρτας"
+
+#: includes/class-wc-vivawallet-endpoints.php:371
+#: includes/class-wc-vivawallet-endpoints.php:516
+msgid ""
+"Something went wrong trying to get token for your card! Please try again."
+msgstr ""
+"Κάτι πήγε στραβά προσπαθώντας να αποκτήσετε token για την κάρτα σας! "
+"Παρακαλώ προσπαθήστε ξανά."
+
+#: includes/class-wc-vivawallet-endpoints.php:381
+msgid "You must be logged in to add payment methods."
+msgstr "Πρέπει να είστε συνδεδεμένοι για να προσθέσετε τρόπους πληρωμής."
+
+#: includes/class-wc-vivawallet-endpoints.php:419
+#: includes/class-wc-vivawallet-endpoints.php:420
+msgid "Adding Payment Source"
+msgstr "Προσθήκη πηγής πληρωμής"
+
+#: includes/class-wc-vivawallet-endpoints.php:508
+msgid ""
+"Something went wrong trying to get token for your card! The charge was "
+"successful, but the automatic refund failed. Please contact the store owner "
+"and ask to refund you manually. "
+msgstr ""
+"Κάτι πήγε στραβά προσπαθώντας να αποκτήσετε token για την κάρτα σας! Η "
+"χρέωση ήταν επιτυχής, αλλά η αυτόματη επιστροφή χρημάτων απέτυχε. "
+"Επικοινωνήστε με τον ιδιοκτήτη του καταστήματος και ζητήστε να σας κάνει την"
+" επιστροφή χειροκίνητα."
+
+#: includes/class-wc-vivawallet-endpoints.php:722
+msgid ""
+"There was a problem processing your payment. Please try again or use an "
+"other payment method."
+msgstr ""
+"Δυστυχώς δεν ήταν δυνατή η ολοκλήρωση της πληρωμής σας. Παρακαλούμε "
+"δοκιμάστε ξανά ή επιλέξτε άλλο τρόπο πληρωμής"
+
+#: includes/class-wc-vivawallet-eps.php:49
+msgid "Viva Wallet Standard Checkout - Eps Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - Eps Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet-giropay.php:49
+msgid "Viva Wallet Standard Checkout - Giropay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - Giropay Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet-ideal.php:49
+msgid "Viva Wallet Standard Checkout - iDeal Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - iDeal Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet-multibanco.php:49
+msgid "Viva Wallet Standard Checkout - Multibanco Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - Multibanco Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet-p24.php:49
+msgid "Viva Wallet Standard Checkout - P24 Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - P24 Πύλη Πληρωμών "
+
+#: includes/class-wc-vivawallet-payu.php:49
+msgid "Viva Wallet Standard Checkout - PayU Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - PayU Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet-refund.php:36
+msgid "You cannot edit an already refunded or canceled order."
+msgstr ""
+"Δε μπορείτε να επεξεργαστείτε μια παραγγελία που έχει ήδη επιστραφεί ή "
+"ακυρωθεί."
+
+#: includes/class-wc-vivawallet-refund.php:41
+msgid ""
+"The transaction ID for this order could not be found. Something is wrong!"
+msgstr ""
+"Το transaction ID για αυτήν την παραγγελία δε βρέθηκε. Κάτι πάει λάθος!"
+
+#: includes/class-wc-vivawallet-refund.php:50
+msgid ""
+"Partial Refund not available yet. Please try later or contact Viva Wallet "
+"support for more info."
+msgstr ""
+"Η μερική επιστροφή χρημάτων δεν είναι ακόμη διαθέσιμη. Δοκιμάστε αργότερα ή "
+"επικοινωνήστε με το Viva Wallet support για περισσότερες πληροφορίες."
+
+#: includes/class-wc-vivawallet-refund.php:60
+#: includes/class-wc-vivawallet-refund.php:67
+msgid "Error connecting to Viva Wallet services. Please try again!"
+msgstr ""
+"Σφάλμα σύνδεσης με τις υπηρεσίες Viva Wallet. Παρακαλώ προσπαθήστε ξανά!"
+
+#: includes/class-wc-vivawallet-refund.php:71
+msgid "Something went wrong and we could not process the refund."
+msgstr ""
+"Προέκυψε σφάλμα και δε μπορέσαμε να ολοκληρώσουμε την επιστροφή χρημάτων."
+
+#: includes/class-wc-vivawallet-refund.php:85
+msgid "Full refund was executed on Viva Wallet with ID: "
+msgstr "Πραγματοποιήθηκε πλήρης επιστροφή χρημάτων στο Viva Wallet με ID:"
+
+#: includes/class-wc-vivawallet-refund.php:87
+msgid "Partial refund was executed on Viva Wallet with ID: "
+msgstr "Πραγματοποιήθηκε μερική επιστροφή χρημάτων στο Viva Wallet με ID:"
+
+#: includes/class-wc-vivawallet-subscriptions.php:78
+msgid "Viva Wallet Card Token Id "
+msgstr "Viva Wallet Card Token Id"
+
+#: includes/class-wc-vivawallet-subscriptions.php:82
+msgid "Viva Wallet Card Token"
+msgstr "Viva Wallet Card Token"
+
+#: includes/class-wc-vivawallet-subscriptions.php:105
+msgid "You are not allowed to change the Card Token."
+msgstr "Δεν επιτρέπεται να αλλάξετε το Card Token"
+
+#: includes/class-wc-vivawallet-subscriptions.php:228
+msgid "Order has been paid with Viva Wallet Standard Checkout, TxID:"
+msgstr "Η παραγγελία έχει πληρωθεί με Viva Wallet Standard Checkout, TxID:"
+
+#: includes/class-wc-vivawallet-subscriptions.php:232
+msgid "Card used for automatic renewal: "
+msgstr "Κάρτα που χρησιμοποιείται για αυτόματη ανανέωση:"
+
+#: includes/class-wc-vivawallet-wechatpay.php:49
+msgid "Viva Wallet Standard Checkout - WeChatPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - WeChatPay Πύλη Πληρωμών"
+
+#: includes/class-wc-vivawallet.php:116
+msgid ""
+"Sign up for a demo account to test the API. Accept payments from all major "
+"credit cards, and offer other payment methods, such as Apple Pay and Google "
+"Pay, local card schemes, local wallets, and alternative payment methods."
+msgstr ""
+"Δημιουργήστε έναν δοκιμαστικό λογαριασμό για να δοκιμάσετε το API. "
+"Αποδεχτείτε πληρωμές από όλες τις μεγάλες πιστωτικές κάρτες και προσφέρετε "
+"άλλους τρόπους πληρωμής, όπως το Apple Pay και το Google Pay, τοπικά σχήματα"
+" καρτών, τοπικά wallets και εναλλακτικούς τρόπους πληρωμής."
+
+#: includes/class-wc-vivawallet.php:275
+msgid ""
+"Viva Wallet: The required PHP module, CURL, is not installed, or has been "
+"disabled. Please enable it, as this module is required for Viva Wallet "
+"services to work correctly."
+msgstr ""
+"Viva Wallet: Το απαιτούμενο PHP Module, CURL, δεν έχει εγκατασταθεί ή έχει "
+"απενεργοποιηθεί. Θα χρειαστεί να το ενεργοποιήσετε, καθώς αυτό το module "
+"είναι απαραίτητο για να λειτουργούν σωστά οι υπηρεσίες Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:289
+msgid ""
+"Viva Wallet Warning: A valid domain name is needed for Viva Wallet services "
+"to work correctly. Your domain,"
+msgstr ""
+"Προειδοποίηση Viva Wallet: Απαιτείται έγκυρο όνομα domain για να λειτουργούν"
+" σωστά οι υπηρεσίες Viva Wallet. Το domain σας,"
+
+#: includes/class-wc-vivawallet.php:293 includes/class-wc-vivawallet.php:629
+msgid "does not seem valid."
+msgstr "δε φαίνεται έγκυρο."
+
+#: includes/class-wc-vivawallet.php:295 includes/class-wc-vivawallet.php:631
+msgid ""
+"To test locally, edit your hosts file and add a domain, for example, "
+"\"vivawalletdemo.test\"."
+msgstr ""
+"Για να τεστάρετε τοπικά, επεξεργαστείτε το hosts file και προσθέστε ένα "
+"domain, για παράδειγμα, \"vivawalletdemo.test\"."
+
+#: includes/class-wc-vivawallet.php:304
+msgid ""
+"Viva Wallet: Your DEMO credentials are NOT valid. Please check your "
+"credentials!"
+msgstr ""
+"Viva Wallet: Οι DEMO κωδικοί ΔΕΝ είναι έγκυροι. Ελέγξτε τους κωδικούς σας!"
+
+#: includes/class-wc-vivawallet.php:308
+msgid "Viva Wallet: Your DEMO credentials are valid."
+msgstr "Viva Wallet: Οι demo κωδικοί είναι έγκυροι."
+
+#: includes/class-wc-vivawallet.php:314
+msgid ""
+"Viva Wallet: Your LIVE credentials are NOT valid. Please check your "
+"credentials!"
+msgstr ""
+"Viva Wallet: Οι LIVE κωδικοί σας ΔΕΝ είναι έγκυροι. Ελέγξτε τους κωδικούς "
+"σας!"
+
+#: includes/class-wc-vivawallet.php:318
+msgid "Viva Wallet: Your LIVE credentials are valid."
+msgstr "Viva Wallet: Οι LIVE κωδικοί σας είναι έγκυροι."
+
+#: includes/class-wc-vivawallet.php:328
+msgid ""
+"Viva Wallet: A new DEMO source code has been created in the Viva Wallet "
+"banking app with code: "
+msgstr ""
+"Viva Wallet: Δημιουργήθηκε ένα νέο DEMO source code στην εφαρμογή Viva "
+"Wallet banking με κωδικό:"
+
+#: includes/class-wc-vivawallet.php:332
+msgid ""
+"Viva Wallet: A new LIVE source code has been created in the Viva Wallet "
+"banking app with code: "
+msgstr ""
+"Viva Wallet: Δημιουργήθηκε ένα νέο LIVE source code στην εφαρμογή Viva "
+"Wallet banking με κωδικό:"
+
+#: includes/class-wc-vivawallet.php:336
+msgid ", and name: "
+msgstr ", και όνομα:"
+
+#: includes/class-wc-vivawallet.php:337 includes/class-wc-vivawallet.php:350
+msgid ", and set as default source code."
+msgstr ", και ορίστε ως προεπιλεγμένο source code."
+
+#: includes/class-wc-vivawallet.php:344
+msgid ""
+"Viva Wallet: You changed or updated your DEMO credentials, a DEMO source "
+"code for your domain was found with name: "
+msgstr ""
+"Viva Wallet: Αλλάξατε ή ενημερώσατε τους DEMO κωδικούς σας, ένα DEMO source "
+"code βρέθηκε για το domain σας με το όνομα:"
+
+#: includes/class-wc-vivawallet.php:347
+msgid ""
+"Viva Wallet: You changed or updated your LIVE credentials, a LIVE source "
+"code for your domain was found with name: "
+msgstr ""
+"Viva Wallet: Αλλάξατε ή ενημερώσατε τους LIVE κωδικούς σας, βρέθηκε ένα LIVE"
+" source code για το domain σας με όνομα:"
+
+#: includes/class-wc-vivawallet.php:356
+msgid "Viva Wallet: Your DEMO credentials are valid. "
+msgstr "Viva Wallet: Οι DEMO κωδικοί σας είναι έγκυροι."
+
+#: includes/class-wc-vivawallet.php:358
+msgid "Viva Wallet: Your LIVE credentials are valid. "
+msgstr "Viva Wallet: Οι LIVE κωδικοί σας είναι έγκυροι."
+
+#: includes/class-wc-vivawallet.php:360
+msgid "But there was an error trying to create a new source. Error: "
+msgstr "Παρουσιάστηκε ένα σφάλμα κατά τη δημιουργία νέας πηγής. Σφάλμα:"
+
+#: includes/class-wc-vivawallet.php:362
+msgid ""
+"Please try to save your settings again. Also check the sources selection box"
+" in advanced settings to see your available source codes and set one from "
+"there if available."
+msgstr ""
+"Προσπαθήστε να αποθηκεύσετε ξανά τις ρυθμίσεις σας. Επίσης, επιλέξτε το "
+"sources selection box στις προχωρημένες ρυθμίσεις για να δείτε τα διαθέσιμα "
+"source codes και να ορίσετε ένα από εκεί εάν είναι διαθέσιμα."
+
+#: includes/class-wc-vivawallet.php:381
+msgid "Viva Wallet: Your DEMO source code:"
+msgstr "Viva Wallet: To DEMO source code:"
+
+#: includes/class-wc-vivawallet.php:383
+msgid "Viva Wallet: Your LIVE source code:"
+msgstr "Viva Wallet: Το LIVE source code:"
+
+#: includes/class-wc-vivawallet.php:389
+msgid "is verified and you are ready to accept payments."
+msgstr "έχει επαληθευτεί και είστε έτοιμοι να δεχτείτε πληρωμές."
+
+#: includes/class-wc-vivawallet.php:393 includes/class-wc-vivawallet.php:408
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful. "
+msgstr ""
+"Viva Wallet: Οι DEMO κωδικοί σας είναι έγκυροι και η σύνδεση με το Viva "
+"Wallet ήταν επιτυχής."
+
+#: includes/class-wc-vivawallet.php:395
+msgid "We're in the process of reviewing your DEMO website \""
+msgstr "Βρισκόμαστε στη διαδικασία ελέγχου του DEMO ιστότοπού σας  \""
+
+#: includes/class-wc-vivawallet.php:397 includes/class-wc-vivawallet.php:412
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful. "
+msgstr ""
+"Viva Wallet: Οι LIVE κωδικοί σας είναι έγκυροι και η σύνδεση με το Viva "
+"Wallet ήταν επιτυχής."
+
+#: includes/class-wc-vivawallet.php:399
+msgid "We're in the process of reviewing your LIVE website \""
+msgstr "Βρισκόμαστε στη διαδικασία ελέγχου του LIVE ιστότοπού σας \""
+
+#: includes/class-wc-vivawallet.php:403
+msgid ""
+"For a perfect one-shot-approval (1-2 business days), make sure that you have"
+" included the elements described in the following link. "
+msgstr ""
+"Για απευθείας έγκριση με μία λήψη (1-2 εργάσιμες ημέρες), βεβαιωθείτε ότι "
+"έχετε συμπεριλάβει τα στοιχεία που περιγράφονται στον παρακάτω σύνδεσμο."
+
+#: includes/class-wc-vivawallet.php:410
+msgid "But your DEMO source code: "
+msgstr "Αλλά το DEMO source code:"
+
+#: includes/class-wc-vivawallet.php:414
+msgid "But your LIVE source code: "
+msgstr "Αλλά το LIVE source code:"
+
+#: includes/class-wc-vivawallet.php:419
+msgid ""
+"has been BLOCKED. Please check your latest email from Viva Wallet Support "
+"for more info."
+msgstr ""
+"έχει μπλοκαριστεί. Ελέγξτε το πιο πρόσφατο email σας από το Viva Wallet "
+"support για περισσότερες πληροφορίες."
+
+#: includes/class-wc-vivawallet.php:424
+msgid ""
+"Viva Wallet: Your source code is empty. Please save your settings. Viva "
+"Wallet plugin will try to create a new source for your website."
+msgstr ""
+"Viva Wallet: Το source code είναι κενό. Αποθηκεύστε τις ρυθμίσεις σας. Το "
+"Viva Wallet plugin θα προσπαθήσει να δημιουργήσει μια νέα πηγή για τον "
+"ιστότοπό σας."
+
+#: includes/class-wc-vivawallet.php:540
+msgid ""
+"In order to add a card to your payment method, your card must be validated "
+"through 3D secure."
+msgstr ""
+"Για να προσθέσετε μια κάρτα στον τρόπο πληρωμής σας, η κάρτα σας πρέπει να "
+"επικυρωθεί μέσω 3D secure."
+
+#: includes/class-wc-vivawallet.php:544
+msgid ""
+"In order to change your subscription payment method, your card must be "
+"validated through 3D secure."
+msgstr ""
+"Για να αλλάξετε τον τρόπο πληρωμής της συνδρομής σας, η κάρτα σας πρέπει να "
+"επικυρωθεί μέσω 3D secure."
+
+#: includes/class-wc-vivawallet.php:547
+msgid "You will be asked to validate a charge of "
+msgstr "Θα σας ζητηθεί να επικυρώσετε μια χρέωση ύψους"
+
+#: includes/class-wc-vivawallet.php:550
+msgid "Note that the charge will be automatically immediately refunded."
+msgstr "Λάβετε υπόψη ότι η χρέωση θα επιστραφεί αυτόματα."
+
+#. translators: warning
+#: includes/class-wc-vivawallet.php:570
+msgid "TEST MODE ENABLED. "
+msgstr "TEST MODE ΕΝΕΡΓΟΠΟΙΗΜΕΝΟ."
+
+#: includes/class-wc-vivawallet.php:571
+msgid ""
+"For testing you can use 5188 3400 0000 0060 for card number, 111 for card "
+"code and any future date for expiry date in order to test the payment "
+"process."
+msgstr ""
+"Για τη δοκιμή μπορείτε να χρησιμοποιήσετε το 5188 3400 0000 0060 για αριθμό "
+"κάρτας, 111 για κωδικό κάρτας και οποιαδήποτε μελλοντική ημερομηνία για "
+"ημερομηνία λήξης, προκειμένου να δοκιμάσετε τη διαδικασία πληρωμής."
+
+#. translators: For more info check the %1$s documentation %2$s
+#: includes/class-wc-vivawallet.php:573
+msgid "For more info check the %1$s documentation %2$s"
+msgstr "Για περισσότερες πληροφορίες ελέγξτε τα%1$s έγγραφα%2$s"
+
+#: includes/class-wc-vivawallet.php:625
+msgid ""
+"Viva Wallet: A valid domain name is needed for Viva Wallet services to work "
+"correctly. Your domain,"
+msgstr ""
+"Viva Wallet: Απαιτείται έγκυρο όνομα domain για να λειτουργούν σωστά οι "
+"υπηρεσίες Viva Wallet. Το domain σας,"
+
+#: includes/class-wc-vivawallet.php:645
+msgid ""
+"Viva Wallet: Client Secret or Client ID not set. Please check documentation "
+"and fill in your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: Δεν έχει οριστεί το Client secret ή το Client ID. Ελέγξτε τα "
+"αρχεία και συμπληρώστε τις ρυθμίσεις του Viva Wallet gateway."
+
+#: includes/class-wc-vivawallet.php:650
+msgid ""
+"Viva Wallet: Source Code is not set. Please check documentation and fill in "
+"your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: Το source code δεν έχει οριστεί. Ελέγξτε το documentation και "
+"συμπληρώστε τις ρυθμίσεις του Viva Wallet gateway."
+
+#: includes/class-wc-vivawallet.php:656 includes/class-wc-vivawallet.php:695
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Please check your credentials!"
+msgstr ""
+"Viva Wallet: Οι κωδικοί πρόσβασης ΔΕΝ είναι έγκυροι. Ελέγξτε τους κωδικούς "
+"σας."
+
+#: includes/class-wc-vivawallet.php:664
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful."
+msgstr ""
+"Viva Wallet: Οι LIVE κωδικοί σας είναι έγκυροι και η σύνδεση με το Viva "
+"Wallet ήταν επιτυχής."
+
+#. translators: error
+#: includes/class-wc-vivawallet.php:666 includes/class-wc-vivawallet.php:704
+msgid ""
+"We're in the process of reviewing your LIVE website. For a perfect one-shot-"
+"approval (1-2 business days), make sure that you have included the elements "
+"described in <a href=\"%s\" target=\"_blank\" style=\"text-decoration: "
+"underline; font-weight: bold;\">this link</a>."
+msgstr ""
+"Βρισκόμαστε στη διαδικασία ελέγχου του LIVE ιστότοπού σας. Για άμεση έγκριση"
+" (1-2 εργάσιμες ημέρες), βεβαιωθείτε ότι έχετε συμπεριλάβει τα στοιχεία που "
+"περιγράφονται σε αυτόν τον σύνδεσμο."
+
+#: includes/class-wc-vivawallet.php:671
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful. But your LIVE source code, has been <span style=\"font-"
+"weight: bold;\">BLOCKED</span>."
+msgstr ""
+"Viva Wallet: Οι LIVE κωδικοί σας είναι έγκυροι και η σύνδεση με το Viva "
+"Wallet ήταν επιτυχής. Όμως, ο LIVE source code, έχει <span style=\"font-"
+"weight: bold;\">αποκλειστεί</span>."
+
+#: includes/class-wc-vivawallet.php:672 includes/class-wc-vivawallet.php:715
+msgid "Please check your latest email from Viva Wallet Support for more info."
+msgstr ""
+"Ελέγξτε το πιο πρόσφατο email σας από το Viva Wallet Support για "
+"περισσότερες πληροφορίες."
+
+#: includes/class-wc-vivawallet.php:675 includes/class-wc-vivawallet.php:718
+msgid ""
+"Viva Wallet: Something went wrong! Please try again or come back later. If "
+"you are the admin of the website, please check Viva Wallet Standard Checkout"
+" plugin."
+msgstr ""
+"Viva Wallet: Κάτι πήγε στραβά! Δοκιμάστε ξανά ή επιστρέψτε αργότερα. Εάν "
+"είστε ο διαχειριστής του ιστότοπου, ελέγξτε το plugin της Viva Wallet "
+"Standard Checkout."
+
+#: includes/class-wc-vivawallet.php:684
+msgid ""
+"Viva Wallet: YOU ARE OPERATING IN TEST MODE. Test Client Secret or Client ID"
+" not set. Please check documentation and fill in your Viva Wallet gateway "
+"settings."
+msgstr ""
+"Viva Wallet: ΕΙΣΤΕ ΣΕ ΛΕΙΤΟΥΡΓΙΑ ΔΟΚΙΜΗΣ. Δεν έχει οριστεί το test Secret "
+"Client ή το Client ID. Ελέγξτε το documentation και συμπληρώστε τις "
+"ρυθμίσεις του Viva Wallet gateway."
+
+#: includes/class-wc-vivawallet.php:689
+msgid ""
+"Viva Wallet: YOU ARE OPERATING IN TEST MODE. Test Source Code is not set. "
+"Please check documentation and fill in your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: ΕΙΣΤΕ ΣΕ ΛΕΙΤΟΥΡΓΙΑ ΔΟΚΙΜΗΣ. Δεν έχει σεταριστεί το test source"
+" code. Ελέγξτε το documentation και συμπληρώστε τις ρυθμίσεις του Viva "
+"Wallet gateway."
+
+#: includes/class-wc-vivawallet.php:702
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful."
+msgstr ""
+"Viva Wallet: Οι DEMO κωδικοί σας είναι έγκυροι και η σύνδεση με το Viva "
+"Wallet ήταν επιτυχής."
+
+#: includes/class-wc-vivawallet.php:709
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful. But your DEMO Source Code, has been"
+msgstr ""
+"Viva Wallet: Οι DEMO κωδικοί σας είναι έγκυροι και η σύνδεση με το Viva "
+"Wallet ήταν επιτυχής. Αλλά το DEMO source code, ήταν"
+
+#: includes/class-wc-vivawallet.php:712
+msgid "BLOCKED"
+msgstr "ΑΠΟΚΛΕΙΣΜΕΝΟ"
+
+#: includes/class-wc-vivawallet.php:727
+msgid ""
+"Viva Wallet: This site is not SSL protected. Please protect your domain to "
+"use Viva Wallet payments."
+msgstr ""
+"Viva Wallet: Αυτός ο ιστότοπος δεν προστατεύεται από SSL. Προστατέψτε το "
+"domain σας για να χρησιμοποιήσετε τις πληρωμές Viva Wallet."
+
+#: includes/class-wc-vivawallet.php:811
+msgid "Powered by"
+msgstr "Υποστηρίζεται από"
+
+#: includes/class-wc-vivawallet.php:812
+msgid "Please check your card details!"
+msgstr "Ελέγξτε τα στοιχεία της κάρτας σας!"
+
+#: includes/class-wc-vivawallet.php:813
+msgid ""
+"Connection to Viva Wallet API failed. Please check your connection or try "
+"again later."
+msgstr ""
+"Η σύνδεση με το Viva Wallet API απέτυχε. Ελέγξτε τη σύνδεσή σας ή δοκιμάστε "
+"ξανά αργότερα."
+
+#: includes/class-wc-vivawallet.php:814
+msgid ""
+"A billing name is required to process a charge. No billing name field found "
+"in checkout form."
+msgstr ""
+"Απαιτείται όνομα χρέωσης για την επεξεργασία μιας συναλλαγής. Δε βρέθηκε "
+"πεδίο ονόματος χρέωσης στη φόρμα αγοράς."
+
+#: includes/class-wc-vivawallet.php:815
+msgid ""
+"Please read and accept the terms and conditions to proceed with your order."
+msgstr ""
+"Διαβάστε και αποδεχτείτε τους όρους και προϋποθέσεις για να προχωρήσετε στην"
+" παραγγελία σας."
+
+#: includes/class-wc-vivawallet.php:816
+msgid ""
+"Connection to WooCommerce checkout failed. Please check your connection or "
+"try again later."
+msgstr ""
+"Η σύνδεση με τη WooCommerce checkout απέτυχε. Ελέγξτε τη σύνδεσή σας ή "
+"δοκιμάστε ξανά αργότερα."
+
+#: includes/class-wc-vivawallet.php:847
+msgid ""
+"Order created via Viva Wallet but something went wrong with authentication."
+msgstr ""
+"Η παραγγελία δημιουργήθηκε μέσω του Viva Wallet, αλλά προέκυψε σφάλμα με την"
+" ταυτοποίηση."
+
+#: includes/class-wc-vivawallet.php:852
+msgid "Something went wrong. Please refresh your page and try again."
+msgstr "Κάτι πήγε στραβά. Ανανεώστε τη σελίδα σας και δοκιμάστε ξανά."
+
+#: includes/class-wc-vivawallet.php:879
+msgid ""
+"Order created via Viva Wallet Apple Pay checkout but failed getting Apple "
+"Pay token."
+msgstr ""
+"Η παραγγελία δημιουργήθηκε μέσω του Viva Wallet Apple pay checkout, αλλά "
+"απέτυχε η λήψη Apple Pay token."
+
+#: includes/class-wc-vivawallet.php:881
+msgid "Viva Wallet (via Apple Pay)"
+msgstr "Viva Wallet (μέσω Apple Pay)"
+
+#: includes/class-wc-vivawallet.php:922
+msgid "Order has been paid with Viva Wallet (via Apple Pay), TxID: "
+msgstr "Η παραγγελία έχει πληρωθεί με Viva Wallet (μέσω Apple Pay), TxID:"
+
+#: includes/class-wc-vivawallet.php:927
+msgid "Order created via Viva Wallet Apple Pay checkout."
+msgstr "Η παραγγελία δημιουργήθηκε μέσω του Viva Wallet Apple pay checkout."
+
+#. translators: bolded word
+#: includes/class-wc-vivawallet.php:940
+msgid "Something went %s. Please try again."
+msgstr "Κάτι πήγε %s. Παρακαλούμε προσπαθήστε ξανά."
+
+#. translators: bolded word
+#: includes/class-wc-vivawallet.php:940
+msgid " wrong"
+msgstr "Λάθος"
+
+#: includes/class-wc-vivawallet.php:942
+msgid ""
+"Order created with Viva Wallet (via Apple Pay) but the processing of "
+"transaction failed."
+msgstr ""
+"Η παραγγελία δημιουργήθηκε με το Viva Wallet (μέσω Apple Pay), αλλά η "
+"επεξεργασία της συναλλαγής απέτυχε."
+
+#. translators: error message
+#: woocommerce-vivawallet-gateway.php:38
+msgid ""
+"The Viva Wallet payment gateway requires WooCommerce to work. You can "
+"download %s here."
+msgstr ""
+"Το Viva Wallet payment gateway απαιτεί το WooCommerce για να λειτουργήσει. "
+"Μπορείτε να κάνετε λήψη%s εδώ."
+
+#: woocommerce-vivawallet-gateway.php:255
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: woocommerce-vivawallet-gateway.php:271
+msgid "View Viva Wallet Standard Checkout plugin documentation"
+msgstr "Δείτε τo documentation του plugin της Viva Wallet Standard Checkout"
+
+#: woocommerce-vivawallet-gateway.php:271
+msgid "Documentation"
+msgstr "Documentation"
+
+#: woocommerce-vivawallet-gateway.php:272
+msgid "Get support from Viva Wallet Team"
+msgstr "Λάβετε υποστήριξη από την ομάδα Viva Wallet"
+
+#: woocommerce-vivawallet-gateway.php:272
+msgid "Get support"
+msgstr "Λάβετε υποστήριξη"

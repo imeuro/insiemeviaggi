@@ -1,0 +1,41 @@
+#send-app-notifications-dialog {
+	width: 33%;
+	max-width: 400px;
+	padding: 3em;
+	border: 1px solid #ccc;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	&::backdrop {
+		background: rgba(82, 76, 255, 0.12);
+	}
+}
+
+.send-app-notification-item {
+	margin: 1em 0;
+	padding: 1em;
+	border: 1px solid rgba(82, 76, 255, 0.12);
+
+	[class^="send-app-notification-item-"] {
+		margin-bottom: 1em;
+	}
+
+	&-title {
+		font-weight: bold;
+	}
+
+	&-topic {
+		font-style: italic;
+		color: rgba(82, 76, 255, 0.42);
+	}
+
+	img {
+		height: auto;
+		width: 100%;
+	}
+
+	a {
+		color: rgba(82, 76, 255, 0.62);
+		&:focus {
+			border: none;
+		}
+	}
+}

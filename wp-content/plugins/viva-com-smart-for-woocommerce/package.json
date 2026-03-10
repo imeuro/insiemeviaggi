@@ -1,0 +1,35 @@
+{
+  "name": "viva-com-smart-for-woocommerce",
+  "title": "Viva Wallet Smart Checkout",
+  "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VivaWallet"
+  },
+  "engines": {
+    "node": ">=20.15.0",
+    "npm": ">=10.7.0"
+  },
+  "devDependencies": {
+    "@woocommerce/dependency-extraction-webpack-plugin": "^3.0.1",
+    "@wordpress/scripts": "30.4.0",
+    "archiver": "^7.0.1",
+    "rimraf": "^6.0.1",
+    "uglify-js": "^3.19.3"
+  },
+  "overrides": {
+    "lighthouse": "12.2.1"
+  },
+  "scripts": {
+    "prebuild": "npm install && npm run docker:up && rimraf --glob build/*",
+    "build": "npm run build:webpack && docker exec -it woocommerce-smart-repo bash composer-related.sh",
+    "postbuild": "npm run docker:down && echo exited docker container",
+    "build:composer": "docker exec -it woocommerce-smart-repo bash composer-related.sh",
+    "build:webpack": "wp-scripts build client/blocks/index.js",
+    "start:webpack": "wp-scripts start client/blocks/index.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "create-zip": "node create-zip.js",
+    "uglify:js": "uglifyjs includes/assets/js/admin-vivacom-smart.js -c -m -o includes/assets/js/admin-vivacom-smart.min.js"
+  }
+}

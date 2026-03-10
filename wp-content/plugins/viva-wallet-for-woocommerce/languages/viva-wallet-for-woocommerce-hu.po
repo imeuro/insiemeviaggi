@@ -1,0 +1,1451 @@
+# Copyright (C) 2022 Viva Wallet
+# This file is distributed under the same license as the Viva Wallet Standard Checkout plugin.
+# Translators:
+# Diána Birgés <dbirges@vivawallet.com>, 2021
+# Zoard Baranyai <zbaranyai@vivawallet.com>, 2022
+# Emőke Fazekas, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Viva Wallet Standard Checkout 1.4.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/viva-wallet-for-woocommerce\n"
+"POT-Creation-Date: 2022-07-29T14:40:31+00:00\n"
+"PO-Revision-Date: 2021-01-26 10:10+0000\n"
+"Last-Translator: Emőke Fazekas, 2022\n"
+"Language-Team: Hungarian (https://www.transifex.com/viva/teams/94187/hu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: viva-wallet-for-woocommerce\n"
+"X-Generator: WP-CLI 2.6.0\n"
+
+#. Plugin Name of the plugin
+#: includes/class-wc-vivawallet.php:115
+msgid "Viva Wallet Standard Checkout"
+msgstr "Viva Wallet Standard Checkout"
+
+#. Plugin URI of the plugin
+msgid "http://www.vivawallet.com/"
+msgstr "http://www.vivawallet.com/"
+
+#. Description of the plugin
+msgid ""
+"Connects WooCommerce to Viva Wallet payment gateway (standard checkout) to "
+"process and sync your payments and help you sell more."
+msgstr ""
+"Csatlakoztatja a WooCommerce-t a Viva Wallet fizetési átjáróhoz (standard "
+"checkout) a fizetések feldolgozásához és szinkronizálásához, és segít az "
+"értékesítés növelésében."
+
+#. Author of the plugin
+msgid "Viva Wallet"
+msgstr "Viva Wallet"
+
+#. Author URI of the plugin
+msgid "https://www.vivawallet.com/"
+msgstr "https://www.vivawallet.com/"
+
+#: includes/admin/vivawallet-bitpay-settings.php:12
+msgid "Enable Viva Wallet BitPay Gateway"
+msgstr "Aktiválja a Viva Wallet BitPay Gateway-t"
+
+#: includes/admin/vivawallet-bitpay-settings.php:14
+msgid "Enable Viva Wallet BitPay Gateway and receive BitPay payments"
+msgstr ""
+"Aktiválja a Viva Wallet BitPay Gateway-t, és fogadjon el BitPay fizetéseket"
+
+#: includes/admin/vivawallet-bitpay-settings.php:19
+#: includes/admin/vivawallet-directpay-settings.php:19
+#: includes/admin/vivawallet-eps-settings.php:19
+#: includes/admin/vivawallet-giropay-settings.php:19
+#: includes/admin/vivawallet-ideal-settings.php:19
+#: includes/admin/vivawallet-multibanco-settings.php:19
+#: includes/admin/vivawallet-p24-settings.php:19
+#: includes/admin/vivawallet-payu-settings.php:19
+#: includes/admin/vivawallet-settings.php:156
+#: includes/admin/vivawallet-wechatpay-settings.php:19
+msgid "Title"
+msgstr "Cím"
+
+#: includes/admin/vivawallet-bitpay-settings.php:21
+#: includes/admin/vivawallet-directpay-settings.php:21
+#: includes/admin/vivawallet-eps-settings.php:21
+#: includes/admin/vivawallet-giropay-settings.php:21
+#: includes/admin/vivawallet-ideal-settings.php:21
+#: includes/admin/vivawallet-multibanco-settings.php:21
+#: includes/admin/vivawallet-p24-settings.php:21
+#: includes/admin/vivawallet-payu-settings.php:21
+#: includes/admin/vivawallet-settings.php:158
+#: includes/admin/vivawallet-wechatpay-settings.php:21
+msgid "This controls the title which the user sees on checkout page."
+msgstr "Ez szabályozza a címet, amelyet a felhasználó a fizetési oldalon lát."
+
+#: includes/admin/vivawallet-bitpay-settings.php:22
+msgid "BitPay"
+msgstr "BitPay"
+
+#: includes/admin/vivawallet-bitpay-settings.php:25
+#: includes/admin/vivawallet-directpay-settings.php:25
+#: includes/admin/vivawallet-eps-settings.php:25
+#: includes/admin/vivawallet-giropay-settings.php:25
+#: includes/admin/vivawallet-ideal-settings.php:25
+#: includes/admin/vivawallet-multibanco-settings.php:25
+#: includes/admin/vivawallet-p24-settings.php:25
+#: includes/admin/vivawallet-payu-settings.php:25
+#: includes/admin/vivawallet-settings.php:162
+#: includes/admin/vivawallet-wechatpay-settings.php:25
+msgid "Description"
+msgstr "Leírás"
+
+#: includes/admin/vivawallet-bitpay-settings.php:27
+#: includes/admin/vivawallet-directpay-settings.php:27
+#: includes/admin/vivawallet-eps-settings.php:27
+#: includes/admin/vivawallet-giropay-settings.php:27
+#: includes/admin/vivawallet-ideal-settings.php:27
+#: includes/admin/vivawallet-multibanco-settings.php:27
+#: includes/admin/vivawallet-p24-settings.php:27
+#: includes/admin/vivawallet-payu-settings.php:27
+#: includes/admin/vivawallet-settings.php:164
+#: includes/admin/vivawallet-wechatpay-settings.php:27
+msgid "This controls the description which the user sees on checkout page."
+msgstr ""
+"Ez szabályozza a leírást, amelyet a felhasználó a fizetési oldalon lát."
+
+#: includes/admin/vivawallet-bitpay-settings.php:28
+msgid "You will be redirected to BitPay."
+msgstr "Önt rövidesen átirányítjuk a BitPay felületre."
+
+#: includes/admin/vivawallet-directpay-settings.php:12
+msgid "Enable Viva Wallet DirectPay Gateway"
+msgstr "Aktiválja a Viva Wallet DirectPay Gateway-t"
+
+#: includes/admin/vivawallet-directpay-settings.php:14
+msgid "Enable Viva Wallet DirectPay Gateway and receive DirectPay payments"
+msgstr ""
+"Aktiválja a Viva Wallet DirectPay Gateway-t, és fogadjon el DirectPay "
+"fizetéseket"
+
+#: includes/admin/vivawallet-directpay-settings.php:22
+msgid "DirectPay"
+msgstr "DirectPay"
+
+#: includes/admin/vivawallet-directpay-settings.php:28
+msgid "You will be redirected to DirectPay."
+msgstr "Önt rövidesen átirányítjuk a DirectPay felületre."
+
+#: includes/admin/vivawallet-eps-settings.php:12
+msgid "Enable Viva Wallet Eps Gateway"
+msgstr "Aktiválja a Viva Wallet Eps Gateway-t"
+
+#: includes/admin/vivawallet-eps-settings.php:14
+msgid "Enable Viva Wallet Eps Gateway and receive Eps payments"
+msgstr "Aktiválja a Viva Wallet Eps Gateway-t, és fogadjon el Eps fizetéseket"
+
+#: includes/admin/vivawallet-eps-settings.php:22
+msgid "Eps"
+msgstr "Eps"
+
+#: includes/admin/vivawallet-eps-settings.php:28
+msgid "You will be redirected to Eps."
+msgstr "Önt rövidesen átirányítjuk az Eps felületre."
+
+#. translators: error
+#: includes/admin/vivawallet-error-page.php:8
+msgid ""
+"Current currency %s selected for WooCommerce is not supported by Viva "
+"Wallet."
+msgstr ""
+"Viva Wallet nem támogatja a jelenlegi pénznemet %s , amelyet a WooCommerce-"
+"hez kiválasztott."
+
+#: includes/admin/vivawallet-error-page.php:9
+msgid ""
+"Merchants can use one of these currencies (EUR, GBP, BGN, PLN, RON, DKK, "
+"CZK, HRK) which should be the same as their Viva Wallet account currency."
+msgstr ""
+"A kereskedők a következő pénznemek egyikét (EUR, GBP, BGN, PLN, RON, DKK, "
+"CZK, HRK) használhatják, amelynek meg kell egyeznie a Viva Wallet "
+"folyószámlájuk pénznemével."
+
+#: includes/admin/vivawallet-error-page.php:15
+msgid "Invalid currency"
+msgstr "Érvénytelen pénznem"
+
+#: includes/admin/vivawallet-error-page.php:20
+msgid "Allowed currencies"
+msgstr "Engedélyezett pénznemek"
+
+#: includes/admin/vivawallet-giropay-settings.php:12
+msgid "Enable Viva Wallet Giropay Gateway"
+msgstr "Aktiválja a Viva Wallet Giropay Gateway-t"
+
+#: includes/admin/vivawallet-giropay-settings.php:14
+msgid "Enable Viva Wallet Giropay Gateway and receive Giropay payments"
+msgstr ""
+"Aktiválja a Viva Wallet Giropay Gateway-t, és fogadjon el Giropay "
+"fizetéseket"
+
+#: includes/admin/vivawallet-giropay-settings.php:22
+msgid "Giropay"
+msgstr "Giropay"
+
+#: includes/admin/vivawallet-giropay-settings.php:28
+msgid "You will be redirected to Giropay."
+msgstr "Önt rövidesen átirányítjuk a Giropay felületre."
+
+#: includes/admin/vivawallet-ideal-settings.php:12
+msgid "Enable Viva Wallet iDeal Gateway"
+msgstr "Aktiválja a Viva Wallet iDeal Gateway-t"
+
+#: includes/admin/vivawallet-ideal-settings.php:14
+msgid "Enable Viva Wallet iDeal Gateway and receive iDeal payments"
+msgstr ""
+"Aktiválja a Viva Wallet iDeal Gateway-t, és fogadjon el iDeal fizetéseket"
+
+#: includes/admin/vivawallet-ideal-settings.php:22
+msgid "iDeal"
+msgstr "iDeal"
+
+#: includes/admin/vivawallet-ideal-settings.php:28
+msgid "You will be redirected to iDeal."
+msgstr "Önt rövidesen átirányítjuk az iDeal felületre."
+
+#: includes/admin/vivawallet-multibanco-settings.php:12
+msgid "Enable Viva Wallet Multibanco Gateway"
+msgstr "Aktiválja a Viva Wallet Multibanco Gateway-t"
+
+#: includes/admin/vivawallet-multibanco-settings.php:14
+msgid "Enable Viva Wallet Multibanco Gateway and receive Multibanco payments"
+msgstr ""
+"Aktiválja a Viva Wallet Multibanco Gateway-t, és fogadjon el Multibanco "
+"fizetéseket"
+
+#: includes/admin/vivawallet-multibanco-settings.php:22
+msgid "Multibanco"
+msgstr "Multibanco"
+
+#: includes/admin/vivawallet-multibanco-settings.php:28
+msgid "You will be redirected to Multibanco."
+msgstr "Önt rövidesen átirányítjuk a Multibanco felületre."
+
+#: includes/admin/vivawallet-p24-settings.php:12
+msgid "Enable Viva Wallet P24 Gateway"
+msgstr "Aktiválja a Viva Wallet P24 Gateway-t"
+
+#: includes/admin/vivawallet-p24-settings.php:14
+msgid "Enable Viva Wallet P24 Gateway and receive P24 payments"
+msgstr "Aktiválja a Viva Wallet P24 Gateway-t, és fogadjon el P24 fizetéseket"
+
+#: includes/admin/vivawallet-p24-settings.php:22
+msgid "Przelewy24 (P24)"
+msgstr "Przelewy24 (P24)"
+
+#: includes/admin/vivawallet-p24-settings.php:28
+msgid "You will be redirected to P24."
+msgstr "Önt rövidesen átirányítjuk a P24 felületre."
+
+#: includes/admin/vivawallet-payu-settings.php:12
+msgid "Enable Viva Wallet PayU Gateway"
+msgstr "Aktiválja a Viva Wallet PayU Gateway-t"
+
+#: includes/admin/vivawallet-payu-settings.php:14
+msgid "Enable Viva Wallet PayU Gateway and receive PayU payments"
+msgstr ""
+"Aktiválja a Viva Wallet PayU Gateway-t, és fogadjon el PayU fizetéseket"
+
+#: includes/admin/vivawallet-payu-settings.php:22
+msgid "PayU"
+msgstr "PayU"
+
+#: includes/admin/vivawallet-payu-settings.php:28
+msgid "You will be redirected to PayU."
+msgstr "Önt rövidesen átirányítjuk a PayU felületre."
+
+#. translators: credentials
+#: includes/admin/vivawallet-settings.php:11
+msgid ""
+"Set the title and description of the payment gateway. Title and description "
+"are visible to end users in the checkout page."
+msgstr ""
+"Állítson be a fizetési átjáróhoz egy címet és leírását. A cím és a leírás a "
+"fizetési oldalon látható a felhasználók számára."
+
+#. translators: credentials
+#: includes/admin/vivawallet-settings.php:17
+msgid ""
+"To find out how to retrieve your credentials for the payment gateway, please"
+" visit the Viva Wallet Standard Checkout <a target=\"_blank\" "
+"href=\"%s\">installation guide</a>."
+msgstr ""
+"A fizetési átjáró hitelesítő adatainak lekérdezéséhez kérjük, látogassa meg "
+"a Viva Wallet Standard Checkout <a target=\"_blank\" href=\"%s\">telepítési "
+"útmutatójának oldalát.</a>."
+
+#. translators: Demo Mode
+#: includes/admin/vivawallet-settings.php:19
+msgid ""
+"If Demo Mode is enabled, please use the credentials you got from <a "
+"target=\"_blank\" href=\"%s\">demo.vivapayments.com</a>."
+msgstr ""
+"Amennyiben a demó üzemmód be van kapcsolva, kérjük, használja a hitelesítő "
+"adatokat, amelyeket a <a target=\"_blank\" "
+"href=\"%s\">demo.vivapayments.com</a> oldalon kapott."
+
+#: includes/admin/vivawallet-settings.php:27
+msgid "Viva Wallet Standard Checkout settings"
+msgstr "Viva Wallet Standard Checkout beállítások"
+
+#: includes/admin/vivawallet-settings.php:32
+msgid "Enable Viva Wallet Standard Checkout"
+msgstr "Viva Wallet Standard Checkout engedélyezése"
+
+#: includes/admin/vivawallet-settings.php:34
+msgid ""
+"Enable Viva Wallet Standard Checkout to accept payments from all major "
+"credit cards, and offer other payment methods, such as Apple Pay and Google "
+"Pay, local card schemes, local wallets, and alternative payment methods."
+msgstr ""
+"Engedélyezze a Viva Wallet Standard Checkout megodását, hogy elfogadja az "
+"összes főbb hitelkártyával történő fizetést, és további fizetési módokat is "
+"kínáljon, például Apple Pay és Google Pay, helyi kártyarendszerek, helyi "
+"mobilpénztárcák és alternatív fizetési módok"
+
+#: includes/admin/vivawallet-settings.php:46
+msgid "Set Viva Wallet API credentials"
+msgstr "Állítsa be a Viva Wallet API hitelesítő adatait"
+
+#: includes/admin/vivawallet-settings.php:51
+msgid "Demo mode"
+msgstr "Demó üzemmód"
+
+#: includes/admin/vivawallet-settings.php:53
+msgid "Enable demo mode"
+msgstr "Demó üzemmód aktiválása"
+
+#: includes/admin/vivawallet-settings.php:61
+msgid "Live mode credentials"
+msgstr "Live üzemmód hitelesítő adatai"
+
+#: includes/admin/vivawallet-settings.php:66
+msgid "Demo mode credentials"
+msgstr "Demo üzemmód hitelesítő adatai"
+
+#: includes/admin/vivawallet-settings.php:71
+msgid "Live Client ID"
+msgstr "Live Client ID"
+
+#: includes/admin/vivawallet-settings.php:73
+msgid "Client ID provided by Viva Wallet."
+msgstr "A Client ID adatot a Viva Wallet biztosítja."
+
+#: includes/admin/vivawallet-settings.php:77
+msgid "Demo Client ID"
+msgstr "Demo Client ID"
+
+#: includes/admin/vivawallet-settings.php:79
+msgid "Client ID provided by Viva Wallet. "
+msgstr "A Client ID adatot a Viva Wallet biztosítja."
+
+#: includes/admin/vivawallet-settings.php:86
+msgid "Live Client Secret"
+msgstr "Live Client Secret"
+
+#: includes/admin/vivawallet-settings.php:88
+#: includes/admin/vivawallet-settings.php:94
+msgid "Client Secret provided by Viva Wallet."
+msgstr "A Client Secret adatot a Viva Wallet biztosítja."
+
+#: includes/admin/vivawallet-settings.php:92
+msgid "Demo Client Secret"
+msgstr "Demo Client Secret"
+
+#: includes/admin/vivawallet-settings.php:108
+msgid "Live Apple Pay enable"
+msgstr "Live Apple Pay aktiválása"
+
+#. translators: apple link to terms.
+#: includes/admin/vivawallet-settings.php:110
+msgid ""
+"Enable Apple Pay API in Live Mode. %1$sBy using Apple Pay, you agree to "
+"%2$s's terms of service."
+msgstr ""
+"Aktiválja az Apple Pay API-t live módban. %1$sAz Apple Pay használatával Ön "
+"elfogadja a %2$s szolgáltatás feltételeit."
+
+#: includes/admin/vivawallet-settings.php:112
+#: includes/admin/vivawallet-settings.php:121
+msgid ""
+"If enabled, users will be able to pay using Apple Pay if supported by the "
+"browser."
+msgstr ""
+"Ha aktiválva van, a felhasználók az Apple Pay használatával fizethetnek, ha "
+"a böngésző támogatja."
+
+#: includes/admin/vivawallet-settings.php:117
+msgid "Demo Apple Pay enable"
+msgstr "Demo Apple Pay aktiválása"
+
+#. translators: apple link to terms.
+#: includes/admin/vivawallet-settings.php:119
+msgid ""
+"Enable Apple Pay API in Demo Mode. %1$sBy using Apple Pay, you agree to "
+"%2$s's terms of service."
+msgstr ""
+"Aktiválja az Apple Pay API-t demó módban. %1$sAz Apple Pay használatával Ön "
+"elfogadja a %2$s szolgáltatás feltételeit."
+
+#: includes/admin/vivawallet-settings.php:133
+msgid "Advanced settings"
+msgstr "Speciális beállítások"
+
+#: includes/admin/vivawallet-settings.php:138
+msgid "Show advanced settings"
+msgstr "Speciális beállítások mutatása"
+
+#: includes/admin/vivawallet-settings.php:140
+msgid ""
+"Show advanced settings. If this checkbox is unchecked, the plugin will use "
+"default settings."
+msgstr ""
+"Speciális beállítások megjelenítése. Ha ez a jelölőnégyzet nincs bejelölve, "
+"a bővítmény az alapértelmezett beállításokat használja."
+
+#: includes/admin/vivawallet-settings.php:159
+msgid "Card payment"
+msgstr "Kártyás fizetés"
+
+#: includes/admin/vivawallet-settings.php:165
+msgid "Accept all major debit and credit cards"
+msgstr "Fogadjon el minden főbb bankkártya és hitelkártya típust"
+
+#: includes/admin/vivawallet-settings.php:170
+#: includes/class-wc-vivawallet.php:817
+msgid "Installments"
+msgstr "Fizetési részletek"
+
+#: includes/admin/vivawallet-settings.php:172
+msgid ""
+"WARNING: Only available to Greek Viva Wallet accounts. <br>Example: "
+"90:3,180:6<br>Order total 90 euro -> allow 0 and 3 installments <br>Order "
+"total 180 euro -> allow 0, 3 and 6 installments<br>Leave empty in case you "
+"do not want to offer installments."
+msgstr ""
+"FIGYELEM: A funkció csak a görög Viva Wallet fiókok esetében érhető el. "
+"Példa: 90:3,180:6. Rendelés összesen 90 euró -> 0 és 3 részletben történő "
+"kifizetés engedélyezése. Rendelés összesen 180 euró -> 0, 3 és 6 részletben "
+"történő kifizetés engedélyezése"
+
+#: includes/admin/vivawallet-settings.php:177
+msgid "Live Source Code List"
+msgstr "Live Source Code lista"
+
+#: includes/admin/vivawallet-settings.php:179
+msgid ""
+"Provides a list with all source codes that are set in your Viva Wallet "
+"banking app."
+msgstr ""
+"Biztosítja a Viva Wallet banki alkalmazásban beállított összes source code "
+"adatot."
+
+#: includes/admin/vivawallet-settings.php:184
+msgid "Demo Source Code List"
+msgstr "Demo Source Code lista"
+
+#: includes/admin/vivawallet-settings.php:186
+msgid ""
+"Provides a list with all source codes that are set in the Viva Wallet "
+"banking app"
+msgstr ""
+"Biztosítja a Viva Wallet banki alkalmazásban beállított összes source code "
+"adatot."
+
+#: includes/admin/vivawallet-settings.php:192
+msgid "Show Powered by Viva Wallet and logo on payment form"
+msgstr ""
+"Powered by Viva Wallet felirat és logó megjelenítése a fizetési űrlapon"
+
+#: includes/admin/vivawallet-settings.php:194
+msgid "Enable Viva Wallet logo on checkout page (default = yes)."
+msgstr ""
+"A Viva Wallet logó engedélyezése a fizetési oldalon (alapértelmezett = "
+"igen)."
+
+#: includes/admin/vivawallet-settings.php:198
+msgid "Show credit card logo on checkout page. "
+msgstr "Bankkártya logó megjelenítése a fizetési oldalon."
+
+#: includes/admin/vivawallet-settings.php:200
+msgid ""
+"Enable credit card logo in the form element input as the user types credit "
+"card number info (default = yes)."
+msgstr ""
+"Engedélyezze, hogy a hitelkártya logója megjelenjen az űrlapon, amikor a "
+"felhasználó beírja a hitelkártya számának adatait (alapértelmezett = igen)."
+
+#: includes/admin/vivawallet-settings.php:204
+msgid "Order status after successful payment."
+msgstr "A megrendelés állapota sikeres fizetés után."
+
+#: includes/admin/vivawallet-settings.php:205
+msgid ""
+"Your WooCommerce will be updated to this status after successful payment on "
+"Viva Wallet (default = completed)."
+msgstr ""
+"A Viva Wallet-en befejezett sikeres fizetési tranzakciót követően erre az "
+"állapotra fog frissülni a WooCommerce felülete (alapértelmezett = "
+"befejezett)."
+
+#: includes/admin/vivawallet-settings.php:209
+msgid "Completed"
+msgstr "Befejezett"
+
+#: includes/admin/vivawallet-settings.php:210
+msgid "Processing"
+msgstr "Feldolgozás alatt"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:12
+msgid "Enable Viva Wallet WeChat Pay Gateway"
+msgstr "Aktiválja a Viva Wallet WeChat Pay fizetési átjárót"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:14
+msgid "Enable Viva Wallet WeChat Pay Gateway and receive WeChat Pay payments"
+msgstr ""
+"Aktiválja a Viva Wallet WeChat Pay Gateway-t, és fogadjon el WeChat Pay "
+"fizetéseket"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:22
+msgid "WeChat Pay"
+msgstr "WeChat Pay"
+
+#: includes/admin/vivawallet-wechatpay-settings.php:28
+msgid "You will be redirected to WeChatPay."
+msgstr "Önt rövidesen átirányítjuk a WeChat Pay felületre."
+
+#. translators: link to main page settings 'here'
+#: includes/class-wc-vivawallet-apm.php:96
+msgid ""
+"Please fill in your Viva Wallet credentials and enable the main plugin from "
+"<a href=\"%s\">here</a> before you enable this payment method."
+msgstr ""
+"Kérjük, töltse ki a Viva Wallet hitelesítő adatait, és aktiválja a fő "
+"plugint <a href=\"%s\">itt</a> mielőtt engedélyezné ezt a fizetési módot."
+
+#: includes/class-wc-vivawallet-apm.php:220
+msgid ""
+"Viva Wallet: The plugin of Viva Wallet Standard Checkout must be enabled. "
+"Please enable it and add your credentials."
+msgstr ""
+"Viva Wallet: A Viva Wallet Standard Checkout plugint engedélyezni kell. "
+"Kérjük, engedélyezze és adja meg a hitelesítő adatait."
+
+#: includes/class-wc-vivawallet-apm.php:228
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Please check your credentials "
+"in the main settings page of Viva Wallet Standard Checkout!"
+msgstr ""
+"Viva Wallet: A hitelesítő adatok NEM érvényesek. Kérjük, ellenőrizze "
+"hitelesítő adatait a Viva Wallet Standard Checkout beállításai oldalon!"
+
+#: includes/class-wc-vivawallet-apm.php:238
+msgid "Viva Wallet: You are ready to receive payments using "
+msgstr ""
+"Viva Wallet: Készen áll arra, hogy fizetéseket fogadjon el használva a(z)"
+
+#: includes/class-wc-vivawallet-apm.php:244
+msgid "Viva Wallet: Your account supports: "
+msgstr "Viva Wallet: Fiókja támogatja a következőt:"
+
+#: includes/class-wc-vivawallet-apm.php:247
+msgid "But there was a problem updating hooks for your website. "
+msgstr "Probléma merült fel a webhookok frissítésével a webhelyén."
+
+#: includes/class-wc-vivawallet-apm.php:248
+msgid ""
+"Note that this payment method will work only on a server. Endpoints must be "
+"accessible from the web."
+msgstr ""
+"Felhívjuk figyelmét, hogy ez a fizetési mód csak a szerveren működik. A "
+"végpontoknak hozzáférhetőknek kell lenniük az internetről."
+
+#: includes/class-wc-vivawallet-apm.php:254
+msgid "Viva Wallet: Your account does not support: "
+msgstr "Viva Wallet: Fiókja nem támogatja a következőt:"
+
+#: includes/class-wc-vivawallet-apm.php:257
+msgid "Please contact Viva Wallet. "
+msgstr "Kérjük, lépjen kapcsolatba a Viva Wallet munkatársaival."
+
+#: includes/class-wc-vivawallet-apm.php:301
+msgid ""
+"Order is currently awaiting payment. After successful payment, we will send "
+"you an email confirmation."
+msgstr ""
+"A rendelés kifizetésre vár. A sikeres fizetés után e-mailben visszaigazolást"
+" küldünk Önnek."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:117
+msgid ""
+"Viva Wallet - Apple Pay: This site is not SSL protected. Please protect your"
+" domain to register with Apple Pay."
+msgstr ""
+"Viva Wallet - Apple Pay: Ez a webhely nem védett SSL által. Kérjük, védje "
+"meg domainjét, hogy regisztrálni tudjon az Apple Pay-nél."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:173
+#: includes/class-wc-vivawallet-apple-pay-register.php:178
+msgid ""
+"Viva Wallet - Apple Pay: Unable to load domain association file from Viva "
+"Wallet API. "
+msgstr ""
+"Viva Wallet - Apple Pay: Nem sikerült betölteni a domain társítási (domain "
+"association) fájlt a Viva Wallet API-ból."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:183
+msgid ""
+"Viva Wallet - Apple Pay: Unable to load variable $_SERVER['DOCUMENT_ROOT']. "
+"Please check the documentation for further info."
+msgstr ""
+"Viva Wallet - Apple Pay: A  $_SERVER['DOCUMENT_ROOT'] változó nem tölthető "
+"be. Kérjük, ellenőrizze a dokumentációt további információkért."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:195
+msgid "Viva Wallet - Apple Pay: Domain association already exists. "
+msgstr "Viva Wallet - Apple Pay: A domain társítás már létezik."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:201
+msgid ""
+"Viva Wallet - Apple Pay: Unable to create .well-known folder for the domain "
+"association file in domain root. Please check the documentation for further "
+"info."
+msgstr ""
+"Viva Wallet - Apple Pay: A domain gyökérben lévő domain társítási fájlhoz "
+"nem lehet létrehozni a .well-known mappát. Kérjük, ellenőrizze a "
+"dokumentumot további információkért."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:207
+msgid ""
+"Viva Wallet - Apple Pay: Unable to copy domain association file to domain "
+"root (in .well-known folder). "
+msgstr ""
+"Viva Wallet - Apple Pay: Nem sikerült átmásolni a domain társítási (domain "
+"association) fájlt a domain gyökérbe. (.well-known mappába)."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:211
+msgid "Viva Wallet - Apple Pay: Domain association file updated. "
+msgstr "Viva Wallet - Apple Pay: Domain társítási fájl frissítve."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:248
+#: includes/class-wc-vivawallet-apple-pay-register.php:258
+msgid ""
+"Viva Wallet: There was a problem connecting to Viva Wallet API endpoints. "
+"Please also check logs for the errors"
+msgstr ""
+"Viva Wallet: Hiba történt a Viva Wallet API végpontokhoz való "
+"csatlakozáskor. Kérjük, ellenőrizze a hibákat a naplókban."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:270
+msgid ""
+"Viva Wallet: Something seems wrong in the setup of Apple Pay, please reload "
+"this page to try again!"
+msgstr ""
+"Viva Wallet: Úgy tűnik, hogy valami nincs rendben az Apple Pay "
+"beállításával!. Kérjük, frissítse ezt az oldalt, és próbálja meg újra!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:286
+#: includes/class-wc-vivawallet-apple-pay-register.php:326
+msgid ""
+"Viva Wallet: Your domain is verified with Apple Pay and you are ready to "
+"accept DEMO payments! Please note that you need an Apple Sandbox account to "
+"process DEMO transactions."
+msgstr ""
+"Viva Wallet: A domainje hitelesítve az Apple Payjel, így lehetősége van DEMO"
+" üzemmódban fizetések elfogadására! Felhívjuk figyelmét, hogy a DEMO "
+"tranzakciók feldolgozásához Apple Sandbox fiókra van szüksége."
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:288
+#: includes/class-wc-vivawallet-apple-pay-register.php:328
+msgid ""
+"Viva Wallet: Your domain is verified with Apple Pay and you are ready to "
+"accept LIVE payments!"
+msgstr ""
+"Viva Wallet: A domainje hitelesítve az Apple Payjel, így lehetősége van LIVE"
+" üzemmódban fizetések elfogadására!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:306
+msgid "Viva Wallet: Something seems wrong in the DEMO setup of Apple Pay!"
+msgstr ""
+"Viva Wallet: Úgy tűnik, hogy valami nincs rendben az Apple Pay DEMO "
+"beállításával!"
+
+#: includes/class-wc-vivawallet-apple-pay-register.php:308
+msgid "Viva Wallet: Something seems wrong in the setup of Apple Pay!"
+msgstr ""
+"Viva Wallet: Úgy tűnik, hogy valami nincs rendben az Apple Pay "
+"beállításával!"
+
+#: includes/class-wc-vivawallet-applepay.php:143
+#: includes/class-wc-vivawallet-applepay.php:617
+msgid "Tax"
+msgstr "Adó"
+
+#: includes/class-wc-vivawallet-applepay.php:151
+#: includes/class-wc-vivawallet-applepay.php:624
+msgid "Shipping"
+msgstr "Szállítás"
+
+#: includes/class-wc-vivawallet-applepay.php:158
+msgid "Pending"
+msgstr "Függőben van"
+
+#: includes/class-wc-vivawallet-applepay.php:226
+msgid ""
+"Viva Wallet - Apple Pay: This site is not SSL protected. Please protect your"
+" domain to accept Apple Pay payments, or disable Apple Pay from Viva Wallet "
+"plugin settings.\" "
+msgstr ""
+"Viva Wallet - Apple Pay: Ez a webhely nem védett SSL által. Kérjük, védje "
+"meg domainjét az Apple Pay fizetések elfogadásához, vagy tiltsa le az Apple "
+"Pay szolgáltatást a Viva Wallet plugin beállításaiban."
+
+#: includes/class-wc-vivawallet-applepay.php:236
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Apple Pay could not be loaded. "
+"Please check your credentials!"
+msgstr ""
+"Viva Wallet: Az Ön hitelesítő adatai NEM érvényesek. Az Apple Pay nem "
+"tölthető be. Kérjük, ellenőrizze hitelesítő adatait!"
+
+#: includes/class-wc-vivawallet-applepay.php:399
+#: includes/class-wc-vivawallet-applepay.php:412
+msgid "Unable to find shipping method for address."
+msgstr "Nem sikerült szállítási módot találni ehhez a címhez."
+
+#: includes/class-wc-vivawallet-applepay.php:493
+msgid "Empty cart"
+msgstr "A kosár üres"
+
+#: includes/class-wc-vivawallet-applepay.php:631
+msgid "Discount"
+msgstr "Kedvezmény"
+
+#: includes/class-wc-vivawallet-bitpay.php:49
+msgid "Viva Wallet Standard Checkout - BitPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - BitPay Payment Gateway"
+
+#: includes/class-wc-vivawallet-directpay.php:49
+msgid "Viva Wallet Standard Checkout - DirectPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - DirectPay Payment Gateway"
+
+#: includes/class-wc-vivawallet-endpoints.php:81
+#: includes/class-wc-vivawallet-endpoints.php:333
+msgid "There was a connection problem. Please try again later."
+msgstr "Csatlakozási probléma merült fel. Kérjük, próbálja meg újra később."
+
+#. translators: Please check your card details or try again later! (card
+#. details bolded)
+#: includes/class-wc-vivawallet-endpoints.php:91
+#: includes/class-wc-vivawallet-endpoints.php:105
+msgid "Please check your <strong>card details</strong> or try again later!"
+msgstr ""
+"Kérjük, ellenőrizze a <strong>bankkártyaadatait</strong> vagy próbálja meg "
+"újra később!"
+
+#: includes/class-wc-vivawallet-endpoints.php:129
+msgid "Sorry we could not process your payment! Please try again later."
+msgstr ""
+"Nem sikerült feldolgozni a fizetést! Kérjük, próbálja meg újra később."
+
+#: includes/class-wc-vivawallet-endpoints.php:159
+msgid "WARNING: This order was paid with installments!"
+msgstr "FIGYELEM: Ezt a megrendelést részletfizetéssel egyenlítették ki!"
+
+#: includes/class-wc-vivawallet-endpoints.php:161
+msgid "Number of installments: "
+msgstr "A fizetési részletek száma:"
+
+#: includes/class-wc-vivawallet-endpoints.php:201
+msgid "Order created via Viva Wallet Standard Checkout."
+msgstr "Megrendelés elkészült a Viva Wallet Standard Checkout használatával."
+
+#: includes/class-wc-vivawallet-endpoints.php:213
+msgid ""
+"Sorry we could not process your payment because customer name and email was "
+"not set! Please try again later."
+msgstr ""
+"Nem sikerült feldolgozni a fizetést, mert nem volt beállítva a név és e-mail"
+" cím! Kérjük, próbálja meg újra később."
+
+#: includes/class-wc-vivawallet-endpoints.php:222
+msgid ""
+"Sorry we could not process your payment because no customer name was set! "
+"Please try again later."
+msgstr ""
+"Nem sikerült feldolgozni a fizetést, mert nem volt beállítva név! Kérjük, "
+"próbálja meg újra később."
+
+#: includes/class-wc-vivawallet-endpoints.php:231
+msgid ""
+"Sorry we could not process your payment because no customer email was set! "
+"Please try again later."
+msgstr ""
+"Nem sikerült feldolgozni a fizetést, mert nem volt beállítva e-mail cím! "
+"Kérjük, próbálja meg újra később."
+
+#: includes/class-wc-vivawallet-endpoints.php:239
+#: includes/class-wc-vivawallet-endpoints.php:250
+msgid "Gateway selected:"
+msgstr "Gateway kiválasztva:"
+
+#: includes/class-wc-vivawallet-endpoints.php:241
+msgid " via Viva Wallet Standard Checkout"
+msgstr "Viva Wallet Standard Checkout használatával"
+
+#: includes/class-wc-vivawallet-endpoints.php:251
+msgid "Viva Wallet Standard Checkout."
+msgstr "Viva Wallet Standard Checkout."
+
+#: includes/class-wc-vivawallet-endpoints.php:278
+#: includes/class-wc-vivawallet-endpoints.php:637
+msgid "Order has been paid with Viva Wallet Standard Checkout, TxID: "
+msgstr ""
+"A megrendelés a Viva Wallet Standard Checkout, segítségével került "
+"kifizetésre, TxID : "
+
+#: includes/class-wc-vivawallet-endpoints.php:328
+msgid ""
+"The card issuer rejected this transaction. Please use a different card."
+msgstr ""
+"A kártyakibocsátó elutasította ezt a tranzakciót. Kérjük, használjon másik "
+"kártyát."
+
+#: includes/class-wc-vivawallet-endpoints.php:330
+msgid ""
+"There was a problem with your card. Please check the card details and try "
+"again."
+msgstr ""
+"Probléma volt a kártyájával. Kérjük, ellenőrizze a kártyaadatokat, és "
+"próbálja meg újra."
+
+#. translators: Please check your card details or try again later!
+#: includes/class-wc-vivawallet-endpoints.php:361
+msgid "Please check your %s or try again later!"
+msgstr "Kérjük, ellenőrizze a %s helyességét vagy próbálja meg újra később!"
+
+#. translators: Please check your card details or try again later!
+#: includes/class-wc-vivawallet-endpoints.php:361
+msgid "card details"
+msgstr "kártyaadatok"
+
+#: includes/class-wc-vivawallet-endpoints.php:371
+#: includes/class-wc-vivawallet-endpoints.php:516
+msgid ""
+"Something went wrong trying to get token for your card! Please try again."
+msgstr ""
+"Nem sikerült tokent generálni a kártyájához!Kérjük, próbálja meg újra."
+
+#: includes/class-wc-vivawallet-endpoints.php:381
+msgid "You must be logged in to add payment methods."
+msgstr "A fizetési módok hozzáadásához be kell jelentkeznie."
+
+#: includes/class-wc-vivawallet-endpoints.php:419
+#: includes/class-wc-vivawallet-endpoints.php:420
+msgid "Adding Payment Source"
+msgstr "Fizetési forrás hozzáadása"
+
+#: includes/class-wc-vivawallet-endpoints.php:508
+msgid ""
+"Something went wrong trying to get token for your card! The charge was "
+"successful, but the automatic refund failed. Please contact the store owner "
+"and ask to refund you manually. "
+msgstr ""
+"Nem sikerült tokent generálni a kártyájához! A terhelés sikeres volt, de az "
+"automatikus visszatérítés nem sikerült. Kérjük, vegye fel a kapcsolatot az "
+"üzlet tulajdonosával, és kérvényezze a visszatérítését."
+
+#: includes/class-wc-vivawallet-endpoints.php:722
+msgid ""
+"There was a problem processing your payment. Please try again or use an "
+"other payment method."
+msgstr ""
+"Hiba történt a fizetés feldolgozása során. Kérjük, próbálkozzon újra, vagy "
+"használjon másik fizetési módot."
+
+#: includes/class-wc-vivawallet-eps.php:49
+msgid "Viva Wallet Standard Checkout - Eps Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - Eps Payment Gateway"
+
+#: includes/class-wc-vivawallet-giropay.php:49
+msgid "Viva Wallet Standard Checkout - Giropay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - Giropay Payment Gateway"
+
+#: includes/class-wc-vivawallet-ideal.php:49
+msgid "Viva Wallet Standard Checkout - iDeal Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - iDeal Payment Gateway"
+
+#: includes/class-wc-vivawallet-multibanco.php:49
+msgid "Viva Wallet Standard Checkout - Multibanco Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - Multibanco Payment Gateway"
+
+#: includes/class-wc-vivawallet-p24.php:49
+msgid "Viva Wallet Standard Checkout - P24 Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - P24 Payment Gateway"
+
+#: includes/class-wc-vivawallet-payu.php:49
+msgid "Viva Wallet Standard Checkout - PayU Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - PayU Payment Gateway"
+
+#: includes/class-wc-vivawallet-refund.php:36
+msgid "You cannot edit an already refunded or canceled order."
+msgstr "Nem szerkeszthet egy már visszatérített vagy törölt megrendelést."
+
+#: includes/class-wc-vivawallet-refund.php:41
+msgid ""
+"The transaction ID for this order could not be found. Something is wrong!"
+msgstr ""
+"A tranzakciós azonosító ehhez a megrendeléshez nem található. Valami "
+"probléma van!"
+
+#: includes/class-wc-vivawallet-refund.php:50
+msgid ""
+"Partial Refund not available yet. Please try later or contact Viva Wallet "
+"support for more info."
+msgstr ""
+"A részleges visszatérítés még nem elérhető. Kérjük, próbálkozzon később, "
+"vagy további információkért vegye fel a kapcsolatot a Viva Wallet "
+"ügyfélszolgálatával."
+
+#: includes/class-wc-vivawallet-refund.php:60
+#: includes/class-wc-vivawallet-refund.php:67
+msgid "Error connecting to Viva Wallet services. Please try again!"
+msgstr ""
+"Hiba történt a Viva Wallet szolgáltatásaihoz való csatlakozáskor. Kérjük, "
+"próbálja meg újra!"
+
+#: includes/class-wc-vivawallet-refund.php:71
+msgid "Something went wrong and we could not process the refund."
+msgstr "Valami hiba történt, ezért nem tudtuk feldolgozni a visszatérítést."
+
+#: includes/class-wc-vivawallet-refund.php:85
+msgid "Full refund was executed on Viva Wallet with ID: "
+msgstr ""
+"A teljes visszatérítés teljesítve a Viva Wallet-en a következő azonosítóval:"
+
+#: includes/class-wc-vivawallet-refund.php:87
+msgid "Partial refund was executed on Viva Wallet with ID: "
+msgstr ""
+"A részleges visszatérítés teljesítve a Viva Wallet-en a következő "
+"azonosítóval:"
+
+#: includes/class-wc-vivawallet-subscriptions.php:78
+msgid "Viva Wallet Card Token Id "
+msgstr "Viva Wallet kártya token azonosító"
+
+#: includes/class-wc-vivawallet-subscriptions.php:82
+msgid "Viva Wallet Card Token"
+msgstr "Viva Wallet kártya token"
+
+#: includes/class-wc-vivawallet-subscriptions.php:105
+msgid "You are not allowed to change the Card Token."
+msgstr "Nem változtathatja meg a kártya tokent."
+
+#: includes/class-wc-vivawallet-subscriptions.php:228
+msgid "Order has been paid with Viva Wallet Standard Checkout, TxID:"
+msgstr ""
+"Megrendelés kifizetve a következővel: Viva Wallet Standard Checkout, TxID:"
+
+#: includes/class-wc-vivawallet-subscriptions.php:232
+msgid "Card used for automatic renewal: "
+msgstr "Az automatikus megújításhoz használt kártya:"
+
+#: includes/class-wc-vivawallet-wechatpay.php:49
+msgid "Viva Wallet Standard Checkout - WeChatPay Payment Gateway"
+msgstr "Viva Wallet Standard Checkout - WeChatPay Payment Gateway"
+
+#: includes/class-wc-vivawallet.php:116
+msgid ""
+"Sign up for a demo account to test the API. Accept payments from all major "
+"credit cards, and offer other payment methods, such as Apple Pay and Google "
+"Pay, local card schemes, local wallets, and alternative payment methods."
+msgstr ""
+"Az API teszteléséhez regisztráljon egy demó fiókért. Lehetősége lesz az "
+"összes főbb bankkártyával történő kártyás fizetés elfogadásához, valamint "
+"felkínálni ügyfeleinek egyéb fizetési módokat, például az Apple Pay-t és a "
+"Google Pay-t, helyi kártyarendszerek fizetési módjait, a helyi wallet "
+"fizetési módokat és alternatív fizetési módokat is."
+
+#: includes/class-wc-vivawallet.php:275
+msgid ""
+"Viva Wallet: The required PHP module, CURL, is not installed, or has been "
+"disabled. Please enable it, as this module is required for Viva Wallet "
+"services to work correctly."
+msgstr ""
+"Viva Wallet: A szükséges PHP modul, CURL, nincs telepítve, vagy le van "
+"tiltva. Kérjük, engedélyezze ezeket, mivel erre a modulra a Viva Wallet "
+"szolgáltatások megfelelő működéséhez szükség van."
+
+#: includes/class-wc-vivawallet.php:289
+msgid ""
+"Viva Wallet Warning: A valid domain name is needed for Viva Wallet services "
+"to work correctly. Your domain,"
+msgstr ""
+"Viva Wallet figyelmeztetés: A Viva Wallet szolgáltatások megfelelő "
+"működéséhez érvényes domain névre van szükség. Az Ön domainje,"
+
+#: includes/class-wc-vivawallet.php:293 includes/class-wc-vivawallet.php:629
+msgid "does not seem valid."
+msgstr "nem tűnik érvényesnek."
+
+#: includes/class-wc-vivawallet.php:295 includes/class-wc-vivawallet.php:631
+msgid ""
+"To test locally, edit your hosts file and add a domain, for example, "
+"\"vivawalletdemo.test\"."
+msgstr ""
+"A teszteléshez szerkessze a hosts fájlt, és adjon hozzá egy domaint, például"
+" \"vivawalletdemo.test\""
+
+#: includes/class-wc-vivawallet.php:304
+msgid ""
+"Viva Wallet: Your DEMO credentials are NOT valid. Please check your "
+"credentials!"
+msgstr ""
+"Viva Wallet: A DEMO hitelesítő adatai NEM érvényesek. Kérjük, ellenőrizze a "
+"hitelesítő adatait!"
+
+#: includes/class-wc-vivawallet.php:308
+msgid "Viva Wallet: Your DEMO credentials are valid."
+msgstr "Viva Wallet: A DEMO hitelesítő adatai érvényesek."
+
+#: includes/class-wc-vivawallet.php:314
+msgid ""
+"Viva Wallet: Your LIVE credentials are NOT valid. Please check your "
+"credentials!"
+msgstr ""
+"Viva Wallet: A LIVE hitelesítő adatai NEM érvényesek. Kérjük, ellenőrizze a "
+"hitelesítő adatait!"
+
+#: includes/class-wc-vivawallet.php:318
+msgid "Viva Wallet: Your LIVE credentials are valid."
+msgstr "Viva Wallet: A LIVE hitelesítő adatai érvényesek."
+
+#: includes/class-wc-vivawallet.php:328
+msgid ""
+"Viva Wallet: A new DEMO source code has been created in the Viva Wallet "
+"banking app with code: "
+msgstr ""
+"Viva Wallet: Egy új DEMO source code azonosítót hoztak létre a Viva Wallet "
+"banki alkalmazásban a következő kóddal:"
+
+#: includes/class-wc-vivawallet.php:332
+msgid ""
+"Viva Wallet: A new LIVE source code has been created in the Viva Wallet "
+"banking app with code: "
+msgstr ""
+"Viva Wallet: Egy új LIVE source code azonosítót hoztak létre a Viva Wallet "
+"banki alkalmazásban a következő kóddal:"
+
+#: includes/class-wc-vivawallet.php:336
+msgid ", and name: "
+msgstr ", és név: "
+
+#: includes/class-wc-vivawallet.php:337 includes/class-wc-vivawallet.php:350
+msgid ", and set as default source code."
+msgstr ", és be lett állítva mint alapértelmezett source code."
+
+#: includes/class-wc-vivawallet.php:344
+msgid ""
+"Viva Wallet: You changed or updated your DEMO credentials, a DEMO source "
+"code for your domain was found with name: "
+msgstr ""
+"Viva Wallet: Ön sikeresen megváltoztatta vagy frissítette a DEMO hitelesítő "
+"adatait, a domainjéhez tartozó DEMO source code a következő névvel volt "
+"megtalálható:"
+
+#: includes/class-wc-vivawallet.php:347
+msgid ""
+"Viva Wallet: You changed or updated your LIVE credentials, a LIVE source "
+"code for your domain was found with name: "
+msgstr ""
+"Viva Wallet: Ön sikeresen megváltoztatta vagy frissítette a LIVE hitelesítő "
+"adatait, a domainjéhez tartozó LIVE source code a következő névvel volt "
+"megtalálható:"
+
+#: includes/class-wc-vivawallet.php:356
+msgid "Viva Wallet: Your DEMO credentials are valid. "
+msgstr "Viva Wallet: A DEMO hitelesítő adatai érvényesek."
+
+#: includes/class-wc-vivawallet.php:358
+msgid "Viva Wallet: Your LIVE credentials are valid. "
+msgstr "Viva Wallet: A LIVE hitelesítő adatai érvényesek."
+
+#: includes/class-wc-vivawallet.php:360
+msgid "But there was an error trying to create a new source. Error: "
+msgstr "De hiba történt az új forrás létrehozása során. Hiba:"
+
+#: includes/class-wc-vivawallet.php:362
+msgid ""
+"Please try to save your settings again. Also check the sources selection box"
+" in advanced settings to see your available source codes and set one from "
+"there if available."
+msgstr ""
+"Kérjük, próbálja újra elmenteni a beállításokat. Jelölje be a források "
+"jelölőnégyzetét a speciális beállításokban, hogy megtekinthesse a "
+"rendelkezésre álló source code adatokat, és onnan állítson be egyet, ha "
+"elérhető."
+
+#: includes/class-wc-vivawallet.php:381
+msgid "Viva Wallet: Your DEMO source code:"
+msgstr "Viva Wallet: Az Ön DEMO source code adatai:"
+
+#: includes/class-wc-vivawallet.php:383
+msgid "Viva Wallet: Your LIVE source code:"
+msgstr "Viva Wallet: Az Ön LIVE source code adatai:"
+
+#: includes/class-wc-vivawallet.php:389
+msgid "is verified and you are ready to accept payments."
+msgstr "ellenőrzése megtörtént, készen áll arra, hogy fizetéseket fogadjon el"
+
+#: includes/class-wc-vivawallet.php:393 includes/class-wc-vivawallet.php:408
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful. "
+msgstr ""
+"Viva Wallet: A DEMO hitelesítő adatai érvényesek, és a Viva Wallet-hez való "
+"kapcsolódás sikeres volt."
+
+#: includes/class-wc-vivawallet.php:395
+msgid "We're in the process of reviewing your DEMO website \""
+msgstr "Jelenleg ellenőrizzük a DEMO weboldalát \""
+
+#: includes/class-wc-vivawallet.php:397 includes/class-wc-vivawallet.php:412
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful. "
+msgstr ""
+"Viva Wallet: A LIVE hitelesítő adatai érvényesek, és a Viva Wallet-hez való "
+"kapcsolódás sikeres volt."
+
+#: includes/class-wc-vivawallet.php:399
+msgid "We're in the process of reviewing your LIVE website \""
+msgstr "Jelenleg ellenőrizzük a LIVE weboldalát \""
+
+#: includes/class-wc-vivawallet.php:403
+msgid ""
+"For a perfect one-shot-approval (1-2 business days), make sure that you have"
+" included the elements described in the following link. "
+msgstr ""
+"Az egyszeri jóváhagyás (1-2 munkanap) érdekében, győződjön meg arról, hogy a"
+" következő linken ismertetett elemeket feltüntette."
+
+#: includes/class-wc-vivawallet.php:410
+msgid "But your DEMO source code: "
+msgstr "Az Ön DEMO source code azonosítója: "
+
+#: includes/class-wc-vivawallet.php:414
+msgid "But your LIVE source code: "
+msgstr "Az Ön LIVE source code azonosítója: "
+
+#: includes/class-wc-vivawallet.php:419
+msgid ""
+"has been BLOCKED. Please check your latest email from Viva Wallet Support "
+"for more info."
+msgstr ""
+"zárolva. Kérjük, ellenőrizze a Viva Wallet támogatói csoportunk e-mailjét "
+"további információkért."
+
+#: includes/class-wc-vivawallet.php:424
+msgid ""
+"Viva Wallet: Your source code is empty. Please save your settings. Viva "
+"Wallet plugin will try to create a new source for your website."
+msgstr ""
+"Viva Wallet: A source code mező üres. Kérjük, mentse el a beállításokat. A "
+"Viva Wallet plugin megpróbál új forrást létrehozni a webhelyéhez."
+
+#: includes/class-wc-vivawallet.php:540
+msgid ""
+"In order to add a card to your payment method, your card must be validated "
+"through 3D secure."
+msgstr ""
+"Ahhoz, hogy a kártyás fizetési módot hozzá tudja adni a fizetési módjához a "
+"kártyáját érvényesíteni kell 3D Secure-on keresztül."
+
+#: includes/class-wc-vivawallet.php:544
+msgid ""
+"In order to change your subscription payment method, your card must be "
+"validated through 3D secure."
+msgstr ""
+"Az előfizetése fizetési módjának megváltoztatásához a kártyáját "
+"érvényesíteni kell 3D Secure-on keresztül."
+
+#: includes/class-wc-vivawallet.php:547
+msgid "You will be asked to validate a charge of "
+msgstr "A rendszer fel fogja kérni, hogy érvényesítse a következő terhelést"
+
+#: includes/class-wc-vivawallet.php:550
+msgid "Note that the charge will be automatically immediately refunded."
+msgstr ""
+"Felhívjuk figyelmét, hogy a terhelés automatikusan vissza lesz térítve."
+
+#. translators: warning
+#: includes/class-wc-vivawallet.php:570
+msgid "TEST MODE ENABLED. "
+msgstr "A TESZT ÜZEMMÓD BEKAPCSOLVA"
+
+#: includes/class-wc-vivawallet.php:571
+msgid ""
+"For testing you can use 5188 3400 0000 0060 for card number, 111 for card "
+"code and any future date for expiry date in order to test the payment "
+"process."
+msgstr ""
+"A teszteléshez használhatja az 5188 3400 0000 0060 kártyaszámot, a "
+"kártyakódhoz a 111-es számot és lejárati dátumként bármilyen jövőbeli "
+"dátumot megadhat a fizetési folyamat teszteléséhez."
+
+#. translators: For more info check the %1$s documentation %2$s
+#: includes/class-wc-vivawallet.php:573
+msgid "For more info check the %1$s documentation %2$s"
+msgstr "További információért ellenőrizze a %1$s dokumentumot %2$s"
+
+#: includes/class-wc-vivawallet.php:625
+msgid ""
+"Viva Wallet: A valid domain name is needed for Viva Wallet services to work "
+"correctly. Your domain,"
+msgstr ""
+"Viva Wallet: A Viva Wallet szolgáltatások megfelelő működéséhez érvényes "
+"domain névre van szükség. Az Ön domainje,"
+
+#: includes/class-wc-vivawallet.php:645
+msgid ""
+"Viva Wallet: Client Secret or Client ID not set. Please check documentation "
+"and fill in your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: A Client Secret vagy a Client ID nincs beállítva. Kérjük, "
+"ellenőrizze a dokumentumokat, és állítsa be a Viva Wallet gateway "
+"beállításokat."
+
+#: includes/class-wc-vivawallet.php:650
+msgid ""
+"Viva Wallet: Source Code is not set. Please check documentation and fill in "
+"your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: A source code nincs beállítva. Kérjük, ellenőrizze a "
+"dokumentumokat, és állítsa be Viva Wallet gateway beállításait."
+
+#: includes/class-wc-vivawallet.php:656 includes/class-wc-vivawallet.php:695
+msgid ""
+"Viva Wallet: Your credentials are NOT valid. Please check your credentials!"
+msgstr ""
+"Viva Wallet: A hitelesítő adatai NEM érvényesek. Kérjük, ellenőrizze a "
+"hitelesítő adatokat!"
+
+#: includes/class-wc-vivawallet.php:664
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful."
+msgstr ""
+"Viva Wallet: A LIVE hitelesítő adatai érvényesek, és a Viva Wallet-hez való "
+"kapcsolódás sikeres volt."
+
+#. translators: error
+#: includes/class-wc-vivawallet.php:666 includes/class-wc-vivawallet.php:704
+msgid ""
+"We're in the process of reviewing your LIVE website. For a perfect one-shot-"
+"approval (1-2 business days), make sure that you have included the elements "
+"described in <a href=\"%s\" target=\"_blank\" style=\"text-decoration: "
+"underline; font-weight: bold;\">this link</a>."
+msgstr ""
+"Jelenleg a LIVE oldalának a felülvizsgálata zajlik. A sikeres jóváhagyás "
+"(1-2 munkanap) érdekében győződjön meg róla, hogy az oldala tartalmazza az "
+"alábbi <a href=\"%s\" target=\"_blank\" style=\"text-decoration: underline; "
+"font-weight: bold;\">link</a> alatt feltüntetett elemeket."
+
+#: includes/class-wc-vivawallet.php:671
+msgid ""
+"Viva Wallet: Your LIVE credentials are valid and connection with Viva Wallet"
+" was successful. But your LIVE source code, has been <span style=\"font-"
+"weight: bold;\">BLOCKED</span>."
+msgstr ""
+"Viva Wallet: A LIVE hitelesítő adatai érvényesek, és a Viva Wallet-hez való "
+"kapcsolódás sikeres volt. A LIVE source code adatai azonban <span "
+"style=\"font-weight: bold;\">BLOKKOLVA VANNAK</span>."
+
+#: includes/class-wc-vivawallet.php:672 includes/class-wc-vivawallet.php:715
+msgid "Please check your latest email from Viva Wallet Support for more info."
+msgstr ""
+"Kérjük, ellenőrizze a Viva Wallet támogatói csoportunk legújabb e-mailjét "
+"további információkért."
+
+#: includes/class-wc-vivawallet.php:675 includes/class-wc-vivawallet.php:718
+msgid ""
+"Viva Wallet: Something went wrong! Please try again or come back later. If "
+"you are the admin of the website, please check Viva Wallet Standard Checkout"
+" plugin."
+msgstr ""
+"Viva Wallet: Valami nem sikerült! Kérjük, próbálja meg újra, vagy térjen "
+"vissza később. Ha Ön a weboldal adminisztrátora, kérjük, ellenőrizze a Viva "
+"Wallet Standard Checkout plugint."
+
+#: includes/class-wc-vivawallet.php:684
+msgid ""
+"Viva Wallet: YOU ARE OPERATING IN TEST MODE. Test Client Secret or Client ID"
+" not set. Please check documentation and fill in your Viva Wallet gateway "
+"settings."
+msgstr ""
+"Viva Wallet: ÖN JELENLEG A TESZTÜZEMMÓDOT HASZNÁLJA. A Test Client Secret "
+"vagy a Client ID nincs beállítva. Kérjük, ellenőrizze a dokumentumokat, és "
+"állítsa be a Viva Wallet gateway beállításokat."
+
+#: includes/class-wc-vivawallet.php:689
+msgid ""
+"Viva Wallet: YOU ARE OPERATING IN TEST MODE. Test Source Code is not set. "
+"Please check documentation and fill in your Viva Wallet gateway settings."
+msgstr ""
+"Viva Wallet: ÖN JELENLEG A TESZTÜZEMMÓDOT HASZNÁLJA. A Test Source Code "
+"nincs beállítva. Kérjük, ellenőrizze a dokumentumokat, és állítsa be a Viva "
+"Wallet gateway beállításokat."
+
+#: includes/class-wc-vivawallet.php:702
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful."
+msgstr ""
+"Viva Wallet: A DEMO hitelesítő adatai érvényesek, és a Viva Wallet-hez való "
+"kapcsolódás sikeres volt."
+
+#: includes/class-wc-vivawallet.php:709
+msgid ""
+"Viva Wallet: Your DEMO credentials are valid and connection with Viva Wallet"
+" was successful. But your DEMO Source Code, has been"
+msgstr ""
+"Viva Wallet: A DEMO hitelesítő adatai érvényesek, és a Viva Wallet-hez való "
+"kapcsolódás sikeres volt. A DEMO Source Code adatai azonban"
+
+#: includes/class-wc-vivawallet.php:712
+msgid "BLOCKED"
+msgstr "BLOKKOLVA VANNAK"
+
+#: includes/class-wc-vivawallet.php:727
+msgid ""
+"Viva Wallet: This site is not SSL protected. Please protect your domain to "
+"use Viva Wallet payments."
+msgstr ""
+"Viva Wallet: Ez a webhely nem védett SSL által. Kérjük, védje meg domainjét "
+"a Viva Wallet fizetések használatához."
+
+#: includes/class-wc-vivawallet.php:811
+msgid "Powered by"
+msgstr "Powered by"
+
+#: includes/class-wc-vivawallet.php:812
+msgid "Please check your card details!"
+msgstr "Kérjük, ellenőrizze kártyaadatait!"
+
+#: includes/class-wc-vivawallet.php:813
+msgid ""
+"Connection to Viva Wallet API failed. Please check your connection or try "
+"again later."
+msgstr ""
+"A kapcsolódás a Viva Wallet API-hoz meghiúsult. Kérjük, ellenőrizze a "
+"kapcsolatát, vagy próbálja meg később újra."
+
+#: includes/class-wc-vivawallet.php:814
+msgid ""
+"A billing name is required to process a charge. No billing name field found "
+"in checkout form."
+msgstr ""
+"A számlázási név mező kitöltése kötelező a fizetés befejezéséhez. Nincs "
+"megadva számlázási név a fizetési oldalon."
+
+#: includes/class-wc-vivawallet.php:815
+msgid ""
+"Please read and accept the terms and conditions to proceed with your order."
+msgstr ""
+"Kérjük, olvassa el figyelmesen és fogadja el az Általános Szerződési "
+"Feltételeket a megrendelés folytatásához."
+
+#: includes/class-wc-vivawallet.php:816
+msgid ""
+"Connection to WooCommerce checkout failed. Please check your connection or "
+"try again later."
+msgstr ""
+"A WooCommerce checkout-hoz való csatlakozás sikertelen.  Kérjük, ellenőrizze"
+" az internetkapcsolatát, vagy próbálja meg később újra."
+
+#: includes/class-wc-vivawallet.php:847
+msgid ""
+"Order created via Viva Wallet but something went wrong with authentication."
+msgstr ""
+"A megrendelés létrehozva a Viva Wallet-en keresztül, de valami hiba történt "
+"a hitelesítéssel."
+
+#: includes/class-wc-vivawallet.php:852
+msgid "Something went wrong. Please refresh your page and try again."
+msgstr "Hiba történt. Kérjük, frissítse az oldalt, és próbálja meg újra."
+
+#: includes/class-wc-vivawallet.php:879
+msgid ""
+"Order created via Viva Wallet Apple Pay checkout but failed getting Apple "
+"Pay token."
+msgstr ""
+"A megrendelés sikeresen létrehozva a Viva Wallet Apple Pay checkout-on "
+"keresztül, de az Apple Pay token lekérése sikertelen volt. "
+
+#: includes/class-wc-vivawallet.php:881
+msgid "Viva Wallet (via Apple Pay)"
+msgstr "Viva Wallet (Apple Pay-en keresztül)"
+
+#: includes/class-wc-vivawallet.php:922
+msgid "Order has been paid with Viva Wallet (via Apple Pay), TxID: "
+msgstr "Megrendelés fizetve a Viva Wallet-tel (Apple Pay-en keresztül), TxID:"
+
+#: includes/class-wc-vivawallet.php:927
+msgid "Order created via Viva Wallet Apple Pay checkout."
+msgstr "Megrendelés létrehozva a Viva Wallet Apple Pay checkout-on keresztül."
+
+#. translators: bolded word
+#: includes/class-wc-vivawallet.php:940
+msgid "Something went %s. Please try again."
+msgstr "%s történt. Kérjük, próbálja meg újra."
+
+#. translators: bolded word
+#: includes/class-wc-vivawallet.php:940
+msgid " wrong"
+msgstr "Hiba"
+
+#: includes/class-wc-vivawallet.php:942
+msgid ""
+"Order created with Viva Wallet (via Apple Pay) but the processing of "
+"transaction failed."
+msgstr ""
+"Megrendelés létrehozva a Viva Wallet-tel (Apple Pay-en keresztül), de a "
+"tranzakció feldolgozása sikertelen volt."
+
+#. translators: error message
+#: woocommerce-vivawallet-gateway.php:38
+msgid ""
+"The Viva Wallet payment gateway requires WooCommerce to work. You can "
+"download %s here."
+msgstr ""
+"A Viva Wallet fizetési átjáró megköveteli a WooCommerce működését. "
+"Letöltheti %s itt."
+
+#: woocommerce-vivawallet-gateway.php:255
+msgid "Settings"
+msgstr "Beállítások"
+
+#: woocommerce-vivawallet-gateway.php:271
+msgid "View Viva Wallet Standard Checkout plugin documentation"
+msgstr "Tekintse meg a Viva Wallet Standard Checkout plugin dokumentációt"
+
+#: woocommerce-vivawallet-gateway.php:271
+msgid "Documentation"
+msgstr "Dokumentáció"
+
+#: woocommerce-vivawallet-gateway.php:272
+msgid "Get support from Viva Wallet Team"
+msgstr "Támogatás kérése a Viva Wallet kollégáitól "
+
+#: woocommerce-vivawallet-gateway.php:272
+msgid "Get support"
+msgstr "Támogatás kérése"
