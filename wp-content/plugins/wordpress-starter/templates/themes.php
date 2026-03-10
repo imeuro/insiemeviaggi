@@ -1,1 +1,0 @@
-<div id="sg-admin-container"></div>
