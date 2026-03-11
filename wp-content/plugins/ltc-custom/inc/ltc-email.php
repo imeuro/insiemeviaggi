@@ -133,10 +133,14 @@ function ltc_maybe_auto_complete_viva_order( $order ) {
 		return;
 	}
 
-	$downloads_generated = (bool) $order->get_meta( '_GenerateDownloads_done', true );
-	$order_downloads     = $order->get_meta( '_Order_Downloads', true );
-	if ( ! $downloads_generated || empty( $order_downloads ) ) {
-		return;
+	// Se l'ordine contiene prodotti scaricabili (biglietti PDF) richiediamo che i download siano pronti.
+	if ( $order->has_downloadable_item() ) {
+		$downloads_generated = (bool) $order->get_meta( '_GenerateDownloads_done', true );
+		$order_downloads     = $order->get_meta( '_Order_Downloads', true );
+
+		if ( ! $downloads_generated || empty( $order_downloads ) ) {
+			return;
+		}
 	}
 
 	$order->update_meta_data( '_ltc_auto_completed_done', 'yes' );
