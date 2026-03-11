@@ -139,11 +139,6 @@ function ltc_maybe_auto_complete_viva_order( $order ) {
 		return;
 	}
 
-	$processing_email_sent_at = $order->get_meta( '_ltc_processing_email_sent_at', true );
-	if ( empty( $processing_email_sent_at ) ) {
-		return;
-	}
-
 	$order->update_meta_data( '_ltc_auto_completed_done', 'yes' );
 	$order->save();
 
@@ -195,5 +190,15 @@ function email_order_user_meta( $order, $sent_to_admin, $plain_text ) {
 			echo $coupons_list . '</p>';
 		endif;
 	}
+}
+
+// [ EMAIL / FRONTEND ]
+// nasconde metadati tecnici di sconto dalla visualizzazione (es. pagina ordine ricevuto).
+add_filter( 'woocommerce_hidden_order_itemmeta', 'ltc_hide_discount_itemmeta_keys', 10, 1 );
+function ltc_hide_discount_itemmeta_keys( $hidden ) {
+	$hidden[] = 'discount_amount';
+	$hidden[] = 'discount_amount_tax';
+
+	return $hidden;
 }
 
