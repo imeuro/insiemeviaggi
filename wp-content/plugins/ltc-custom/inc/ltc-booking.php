@@ -138,6 +138,70 @@ function ltc_debug_order_status_changed( $order_id, $from, $to, $order ) {
 	);
 }
 
+// [ BOOKING ]
+// fallback Viva: se il webhook non arriva, completa ordine sul return success validando la transazione.
+add_action( 'woocommerce_api_wc_vivacom_smart_success', 'ltc_viva_success_fallback_complete_order', 1 );
+function ltc_viva_success_fallback_complete_order() {
+	if ( empty( $_GET['t'] ) || empty( $_GET['s'] ) ) {
+		return;
+	}
+
+	if ( ! class_exists( 'WC_Vivacom_Smart_Helpers' ) ) {
+		return;
+	}
+
+	$transaction_id = sanitize_text_field( wp_unslash( $_GET['t'] ) );
+	$order_code     = sanitize_text_field( wp_unslash( $_GET['s'] ) );
+
+	global $wpdb;
+	$wc_order_id = $wpdb->get_var(
+		$wpdb->prepare(
+			"SELECT woocommerce_order_id FROM {$wpdb->prefix}viva_com_smart_wc_checkout_orders WHERE vivacom_order_code = %s ORDER BY date_add DESC LIMIT 1",
+			$order_code
+		)
+	);
+
+	if ( empty( $wc_order_id ) ) {
+		return;
+	}
+
+	$order = wc_get_order( $wc_order_id );
+	if ( ! $order || 'vivacom_smart' !== $order->get_payment_method() ) {
+		return;
+	}
+
+	// Se non e' pending, il webhook (o altro) ha gia' processato l'ordine.
+	if ( 'pending' !== $order->get_status() ) {
+		return;
+	}
+
+	$viva_settings         = get_option( 'woocommerce_vivacom_smart_settings' );
+	$environment           = ( isset( $viva_settings['test_mode'] ) && 'yes' === $viva_settings['test_mode'] ) ? 'demo' : 'live';
+	$bearer_authentication = WC_Vivacom_Smart_Helpers::get_bearer_authentication( $environment );
+
+	if ( ! $bearer_authentication->hasValidToken() ) {
+		return;
+	}
+
+	$transaction_response = WC_Vivacom_Smart_Helpers::get_transaction( $bearer_authentication, $transaction_id );
+	if ( empty( $transaction_response ) ) {
+		return;
+	}
+
+	if ( empty( $transaction_response->orderCode ) || empty( $transaction_response->statusId ) ) {
+		return;
+	}
+
+	// Completa solo se transazione effettivamente riuscita e legata all'ordine atteso.
+	if ( (string) $transaction_response->orderCode !== $order_code || 'F' !== (string) $transaction_response->statusId ) {
+		return;
+	}
+
+	$order->payment_complete( $transaction_id );
+	$order->add_order_note( 'LTC: ordine completato via fallback return success Viva (webhook non ricevuto in tempo).' );
+	$order->save();
+}
+
 function GenerateDownloads_afterPayment( $order_id ) {
 	///////////
 	// **
