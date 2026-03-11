@@ -85,11 +85,15 @@ function ltc_track_processing_order_email_sent( $sent, $email_id, $email ) {
 	}
 
 	if ( $order->get_meta( '_ltc_processing_email_sent_at', true ) ) {
+		ltc_maybe_auto_complete_viva_order( $order );
 		return;
 	}
 
 	$order->update_meta_data( '_ltc_processing_email_sent_at', current_time( 'mysql' ) );
 	$order->save();
+
+	// Dopo invio mail "processing" possiamo verificare e chiudere in sicurezza.
+	ltc_maybe_auto_complete_viva_order( $order );
 }
 
 // [ EMAIL ]
@@ -100,7 +104,15 @@ function ltc_auto_complete_viva_processing_order( $order_id, $order ) {
 		$order = wc_get_order( $order_id );
 	}
 
-	if ( ! $order || 'vivacom_smart' !== $order->get_payment_method() ) {
+	if ( ! $order ) {
+		return;
+	}
+
+	ltc_maybe_auto_complete_viva_order( $order );
+}
+
+function ltc_maybe_auto_complete_viva_order( $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) || 'vivacom_smart' !== $order->get_payment_method() ) {
 		return;
 	}
 
