@@ -6,13 +6,136 @@
 
 
 // [ BOOKING ]
-// create and add download path ASAP after checkout completed
-// based on:
-// https://stackoverflow.com/questions/47747596/add-downloads-in-woocommerce-downloadable-product-programmatically
-
-add_action('woocommerce_checkout_update_order_meta', 'before_checkout_create_order', 1, 2);
-function before_checkout_create_order( $order_id, $data ) {
+// genera e riserva i ticket quando l'ordine entra in uno stato "impegnativo".
+// Viva: processing dopo pagamento; BACS: on-hold subito dopo il checkout.
+add_action( 'woocommerce_order_status_processing', 'ltc_generate_downloads_on_order_status', 20, 2 );
+add_action( 'woocommerce_order_status_on-hold', 'ltc_generate_downloads_on_order_status', 20, 2 );
+add_action( 'woocommerce_order_status_completed', 'ltc_generate_downloads_on_order_status', 20, 2 );
+function ltc_generate_downloads_on_order_status( $order_id, $order ) {
 	GenerateDownloads_afterPayment( $order_id );
+}
+
+// [ BOOKING ]
+// fail-safe: per BACS su on-hold forziamo la riduzione stock se non risulta gia' applicata.
+add_action( 'woocommerce_order_status_on-hold', 'ltc_ensure_bacs_stock_reduction', 50, 2 );
+function ltc_ensure_bacs_stock_reduction( $order_id, $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		$order = wc_get_order( $order_id );
+	}
+
+	if ( ! $order || 'bacs' !== $order->get_payment_method() ) {
+		return;
+	}
+
+	$stock_reduced = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
+	if ( $stock_reduced ) {
+		return;
+	}
+
+	wc_maybe_reduce_stock_levels( $order->get_id() );
+
+	$stock_reduced_after = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
+	if ( $stock_reduced_after ) {
+		$order->add_order_note( 'LTC: riduzione stock forzata su ordine BACS in stato on-hold.' );
+	}
+}
+
+// [ BOOKING ]
+// debug temporaneo flusso ordine: quantita'/totali/status per Viva e BACS.
+function ltc_order_debug_log( $message, $context = array() ) {
+	$logger = wc_get_logger();
+	$data   = ! empty( $context ) ? ' | ' . wp_json_encode( $context ) : '';
+	$logger->info( $message . $data, array( 'source' => 'ltc-order-debug' ) );
+}
+
+function ltc_is_debug_target_order( $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		return false;
+	}
+
+	$payment_method = $order->get_payment_method();
+	if ( ! in_array( $payment_method, array( 'vivacom_smart', 'bacs' ), true ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+add_action( 'woocommerce_checkout_create_order_line_item', 'ltc_debug_checkout_line_item', 20, 4 );
+function ltc_debug_checkout_line_item( $item, $cart_item_key, $values, $order ) {
+	if ( ! ltc_is_debug_target_order( $order ) ) {
+		return;
+	}
+
+	ltc_order_debug_log(
+		'checkout_create_order_line_item',
+		array(
+			'order_id'       => $order->get_id(),
+			'payment_method' => $order->get_payment_method(),
+			'cart_item_key'  => $cart_item_key,
+			'product_id'     => isset( $values['product_id'] ) ? (int) $values['product_id'] : 0,
+			'quantity'       => isset( $values['quantity'] ) ? (int) $values['quantity'] : 0,
+			'line_subtotal'  => isset( $values['line_subtotal'] ) ? (float) $values['line_subtotal'] : 0,
+			'line_total'     => isset( $values['line_total'] ) ? (float) $values['line_total'] : 0,
+			'item_total'     => (float) $item->get_total(),
+			'item_subtotal'  => (float) $item->get_subtotal(),
+		)
+	);
+}
+
+add_action( 'woocommerce_checkout_order_processed', 'ltc_debug_checkout_order_processed', 20, 3 );
+function ltc_debug_checkout_order_processed( $order_id, $posted_data, $order ) {
+	if ( ! ltc_is_debug_target_order( $order ) ) {
+		return;
+	}
+
+	$items = array();
+	foreach ( $order->get_items() as $item ) {
+		$items[] = array(
+			'item_id'      => $item->get_id(),
+			'product_id'   => $item->get_product_id(),
+			'name'         => $item->get_name(),
+			'qty'          => (int) $item->get_quantity(),
+			'line_total'   => (float) $item->get_total(),
+			'line_subtotal'=> (float) $item->get_subtotal(),
+		);
+	}
+
+	ltc_order_debug_log(
+		'checkout_order_processed',
+		array(
+			'order_id'       => $order_id,
+			'payment_method' => $order->get_payment_method(),
+			'status'         => $order->get_status(),
+			'order_total'    => (float) $order->get_total(),
+			'discount_total' => (float) $order->get_discount_total(),
+			'coupons'        => $order->get_coupon_codes(),
+			'items'          => $items,
+		)
+	);
+}
+
+add_action( 'woocommerce_order_status_changed', 'ltc_debug_order_status_changed', 20, 4 );
+function ltc_debug_order_status_changed( $order_id, $from, $to, $order ) {
+	if ( ! ltc_is_debug_target_order( $order ) ) {
+		return;
+	}
+
+	$stock_reduced = (bool) $order->get_data_store()->get_stock_reduced( $order_id );
+
+	ltc_order_debug_log(
+		'order_status_changed',
+		array(
+			'order_id'       => $order_id,
+			'payment_method' => $order->get_payment_method(),
+			'from'           => $from,
+			'to'             => $to,
+			'order_total'    => (float) $order->get_total(),
+			'stock_reduced'  => $stock_reduced,
+			'downloads_done' => (bool) $order->get_meta( '_GenerateDownloads_done', true ),
+			'downloads_count'=> count( (array) $order->get_meta( '_Order_Downloads', true ) ),
+		)
+	);
 }
 
 function GenerateDownloads_afterPayment( $order_id ) {
@@ -28,14 +151,15 @@ function GenerateDownloads_afterPayment( $order_id ) {
 	// per evitare doppi download della stesso item in fase di generazione:
 	// in wp-content/themes/accelerate/woocommerce/emails/email-downloads.php#38
 	///////////
-	if ( ! $order_id )
-        return;
+	if ( ! $order_id ) {
+		return;
+	}
     // Allow code execution only once 
     if( ! get_post_meta( $order_id, '_GenerateDownloads_done', true ) ) {
 
 		$order = wc_get_order( $order_id );
 		$items = $order->get_items();
-		// $downloads = array();
+		$downloads = array();
 
 
 
@@ -66,20 +190,6 @@ function GenerateDownloads_afterPayment( $order_id ) {
 				$last_order_processed = get_post_meta( $cart_item_data['product_id'], 'last_order_processed', true) != '' ? get_post_meta( $cart_item_data['product_id'], 'last_order_processed', true) : 0;
 				
 
-				$cart_item_dl = '';
-
-				$cart_item_dl = wc_get_product($cart_item_data['product_id']);
-				
-				// vedere se ci sono già downloads per questo item, e preservarli!!
-				// $cart_item_dl->get_downloads();
-				// $older_downloads = $cart_item_dl->get_downloads();
-				//print_r($older_downloads);
-
-				
-				// Virtual+Downloadable item : YES
-				$cart_item_dl->set_virtual( true );
-				$cart_item_dl->set_downloadable( true );
-
 				for($k=0; $k<$item['quantity']; $k++) {
 
 					$PDFprogressive = get_post_meta($cart_item_data['product_id'],'_product_code_second', true);
@@ -104,10 +214,6 @@ function GenerateDownloads_afterPayment( $order_id ) {
 					update_post_meta( $cart_item_data['product_id'], '_product_code_second', $PDFprogressive+1 );
 
 				}
-
-				$cart_item_dl->set_downloads( $downloads );
-				$cart_item_dl->save();
-
 
 				if ($last_order_processed < $order_id) {
 					// aggiorno last_order_processed a ordine pagato
@@ -138,6 +244,7 @@ function GenerateDownloads_afterPayment( $order_id ) {
 // la quantità a amagazzino viene aggiornata in automatico, ma rimettiamo in vendita i biglietti 
 add_action( 'woocommerce_order_status_cancelled', 'respawn_tickets', 
 21, 1 );
+add_action( 'woocommerce_order_status_failed', 'respawn_tickets', 21, 1 );
 function respawn_tickets( $order_id ) {
 
 	$downloads 				= get_post_meta( $order_id, '_Order_Downloads', true );
