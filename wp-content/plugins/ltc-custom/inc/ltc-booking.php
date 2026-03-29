@@ -41,6 +41,32 @@ function ltc_ensure_bacs_stock_reduction( $order_id, $order ) {
 }
 
 // [ BOOKING ]
+// fail-safe Viva Smart: allineato a "Order status after successful payment = Processing" nel gateway
+// (se fosse Completed, servirebbe anche un hook su completed; con Processing questo e' il punto giusto).
+add_action( 'woocommerce_order_status_processing', 'ltc_ensure_vivacom_smart_stock_reduction', 50, 2 );
+function ltc_ensure_vivacom_smart_stock_reduction( $order_id, $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		$order = wc_get_order( $order_id );
+	}
+
+	if ( ! $order || 'vivacom_smart' !== $order->get_payment_method() ) {
+		return;
+	}
+
+	$stock_reduced = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
+	if ( $stock_reduced ) {
+		return;
+	}
+
+	wc_maybe_reduce_stock_levels( $order->get_id() );
+
+	$stock_reduced_after = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
+	if ( $stock_reduced_after ) {
+		$order->add_order_note( 'LTC: riduzione stock forzata su ordine Viva Smart (vivacom_smart) in stato processing.' );
+	}
+}
+
+// [ BOOKING ]
 // debug temporaneo flusso ordine: quantita'/totali/status per Viva e BACS.
 function ltc_order_debug_log( $message, $context = array() ) {
 	$logger = wc_get_logger();
