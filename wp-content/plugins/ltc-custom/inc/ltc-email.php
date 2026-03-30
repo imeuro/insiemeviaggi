@@ -26,8 +26,7 @@ function attach_to_wc_emails( $attachments, $email_id, $order, $wc_email ) {
 		return $attachments;
 	}
 
-	$order_id = $order->get_order_number();
-	// $downloads             	= $order->get_downloadable_items();
+	$order_id = $order->get_id();
 	$downloads = get_post_meta( $order_id, '_Order_Downloads', true );
 
 	// Robustezza: se i download non sono ancora pronti, proviamo a generarli al volo.
@@ -37,29 +36,43 @@ function attach_to_wc_emails( $attachments, $email_id, $order, $wc_email ) {
 	}
 
 	if ( empty( $downloads ) || ! is_array( $downloads ) ) {
-		return $attachments;
+		// Fallback WooCommerce: usa i downloadable items nativi se disponibili.
+		$downloads = $order->get_downloadable_items();
 	}
 
-	$unique_downloads = unique_multidim_array( $downloads, 'id' );
+	if ( empty( $downloads ) || ! is_array( $downloads ) ) {
+		return $attachments;
+	}
 
 	// LOG SOME STUFF
 	$logger->info( '==================' );
 	$logger->info( "---> Status for order ".$order_id.": ".$order->get_status() );
-	$logger->info( wc_print_r($downloads, true ) );
-	$logger->info( wc_print_r($unique_downloads, true ) );
+	$logger->info( wc_print_r( $downloads, true ) );
 	$logger->info( wc_print_r($order->get_downloadable_items(), true ) );
 	$logger->info( "---> EMAIL ATTACHMENTS for order #".$order_id.": " );
 	
-	if ( empty( $unique_downloads ) ) {
-		return $attachments;
-	}
+	$seen_paths = array();
+	foreach ( $downloads as $download ) {
+		$file_url = '';
+		$file_name = '';
 
-	foreach ( $unique_downloads as $download ) {
-		if ( empty( $download['file'] ) ) {
+		if ( is_object( $download ) ) {
+			if ( method_exists( $download, 'get_file' ) ) {
+				$file_url = (string) $download->get_file();
+			}
+			if ( method_exists( $download, 'get_name' ) ) {
+				$file_name = (string) $download->get_name();
+			}
+		} elseif ( is_array( $download ) ) {
+			$file_url = isset( $download['file']['file'] ) ? (string) $download['file']['file'] : ( isset( $download['file'] ) ? (string) $download['file'] : '' );
+			$file_name = isset( $download['download_name'] ) ? (string) $download['download_name'] : '';
+		}
+
+		if ( '' === $file_url ) {
 			continue;
 		}
 
-		$DL_path = parse_url( $download['file'], PHP_URL_PATH );
+		$DL_path = parse_url( $file_url, PHP_URL_PATH );
 		if ( empty( $DL_path ) ) {
 			continue;
 		}
@@ -68,13 +81,18 @@ function attach_to_wc_emails( $attachments, $email_id, $order, $wc_email ) {
 		$attachment_path = ABSPATH . $DL_path;
 
 		// Evita allegati inesistenti.
+		if ( isset( $seen_paths[ $attachment_path ] ) ) {
+			continue;
+		}
+
 		if ( ! file_exists( $attachment_path ) ) {
-			$logger->info( '--> ticket file missing: ' . $attachment_path );
+			$logger->info( '--> ticket file missing: ' . $attachment_path . ( '' !== $file_name ? ' (' . $file_name . ')' : '' ) );
 			continue;
 		}
 
 		$logger->info( wc_print_r( $attachment_path, true ) );
 		$attachments[] = $attachment_path;
+		$seen_paths[ $attachment_path ] = true;
 	}
 
 	return $attachments;
@@ -86,6 +104,17 @@ add_filter( 'woocommerce_email_enabled_customer_completed_order', 'ltc_prevent_d
 function ltc_prevent_duplicate_completed_email( $enabled, $order ) {
 	if ( ! $enabled || ! is_a( $order, 'WC_Order' ) ) {
 		return $enabled;
+	}
+
+	// Per Viva: la completed deve partire solo quando stock e allegati sono pronti.
+	if ( 'vivacom_smart' === $order->get_payment_method() && $order->has_downloadable_item() ) {
+		$downloads_generated = (bool) $order->get_meta( '_GenerateDownloads_done', true );
+		$order_downloads     = $order->get_meta( '_Order_Downloads', true );
+		$stock_reduced       = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
+
+		if ( ! $downloads_generated || empty( $order_downloads ) || ! $stock_reduced ) {
+			return false;
+		}
 	}
 
 	$already_sent = $order->get_meta( '_ltc_customer_completed_email_sent_once', true );
@@ -225,7 +254,7 @@ function ltc_maybe_auto_complete_viva_order( $order ) {
 // aggiungo codici sconto utilizzati e cod.biglietto riservato
 add_action('woocommerce_email_customer_details', 'email_order_user_meta', 30, 3 );
 function email_order_user_meta( $order, $sent_to_admin, $plain_text ) {
-  	$order_id 				= $order->get_order_number();
+  	$order_id 				= $order->get_id();
   	// $downloads             	= $order->get_downloadable_items();
   	$downloads             	= get_post_meta( $order_id, '_Order_Downloads', true );
   	$unique_downloads 		= unique_multidim_array($downloads,'id');
