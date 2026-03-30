@@ -13,13 +13,34 @@ function attach_to_wc_emails( $attachments, $email_id, $order, $wc_email ) {
 	$logger = wc_get_logger();
 
 	// Avoiding errors and problems
-    if ( ! is_a( $order, 'WC_Order' ) || ! isset( $email_id ) || !$wc_email->is_customer_email() || $order->get_status() != 'completed' ) {
-        return $attachments;
-    }
-  	$order_id 				= $order->get_order_number();
-  	// $downloads             	= $order->get_downloadable_items();
-  	$downloads             	= get_post_meta( $order_id, '_Order_Downloads', true );
-  	$unique_downloads 		= unique_multidim_array($downloads,'id');
+	if ( ! is_a( $order, 'WC_Order' ) || ! isset( $email_id ) || ! $wc_email->is_customer_email() ) {
+		return $attachments;
+	}
+
+	// Allego i PDF solo per email clienti legate ai download.
+	$supported_email_ids = array(
+		'customer_completed_order',
+	);
+
+	if ( ! in_array( $email_id, $supported_email_ids, true ) ) {
+		return $attachments;
+	}
+
+	$order_id = $order->get_order_number();
+	// $downloads             	= $order->get_downloadable_items();
+	$downloads = get_post_meta( $order_id, '_Order_Downloads', true );
+
+	// Robustezza: se i download non sono ancora pronti, proviamo a generarli al volo.
+	if ( ( empty( $downloads ) || ! is_array( $downloads ) ) && $order->has_downloadable_item() && function_exists( 'GenerateDownloads_afterPayment' ) ) {
+		GenerateDownloads_afterPayment( $order_id );
+		$downloads = get_post_meta( $order_id, '_Order_Downloads', true );
+	}
+
+	if ( empty( $downloads ) || ! is_array( $downloads ) ) {
+		return $attachments;
+	}
+
+	$unique_downloads = unique_multidim_array( $downloads, 'id' );
 
 	// LOG SOME STUFF
 	$logger->info( '==================' );
@@ -29,22 +50,50 @@ function attach_to_wc_emails( $attachments, $email_id, $order, $wc_email ) {
 	$logger->info( wc_print_r($order->get_downloadable_items(), true ) );
 	$logger->info( "---> EMAIL ATTACHMENTS for order #".$order_id.": " );
 	
-  	if ( empty($downloads) ) {
-        return $attachments;
-    }
+	if ( empty( $unique_downloads ) ) {
+		return $attachments;
+	}
 
-  	foreach ($unique_downloads as $download) {
+	foreach ( $unique_downloads as $download ) {
+		if ( empty( $download['file'] ) ) {
+			continue;
+		}
 
-		$DL_path = parse_url($download["file"], PHP_URL_PATH);
-		$DL_path = ltrim($DL_path, '/');
+		$DL_path = parse_url( $download['file'], PHP_URL_PATH );
+		if ( empty( $DL_path ) ) {
+			continue;
+		}
 
-		$logger->info( wc_print_r(ABSPATH . $DL_path, true ) );
+		$DL_path = ltrim( $DL_path, '/' );
+		$attachment_path = ABSPATH . $DL_path;
 
-  		$attachments[] = ABSPATH . $DL_path;
+		// Evita allegati inesistenti.
+		if ( ! file_exists( $attachment_path ) ) {
+			$logger->info( '--> ticket file missing: ' . $attachment_path );
+			continue;
+		}
 
-  	}
+		$logger->info( wc_print_r( $attachment_path, true ) );
+		$attachments[] = $attachment_path;
+	}
 
 	return $attachments;
+}
+
+// [ EMAIL ]
+// evita invii doppi della "ordine completato" allo stesso cliente.
+add_filter( 'woocommerce_email_enabled_customer_completed_order', 'ltc_prevent_duplicate_completed_email', 10, 2 );
+function ltc_prevent_duplicate_completed_email( $enabled, $order ) {
+	if ( ! $enabled || ! is_a( $order, 'WC_Order' ) ) {
+		return $enabled;
+	}
+
+	$already_sent = $order->get_meta( '_ltc_customer_completed_email_sent_once', true );
+	if ( 'yes' === $already_sent ) {
+		return false;
+	}
+
+	return $enabled;
 }
 
 // [ EMAIL ] 
@@ -94,6 +143,28 @@ function ltc_track_processing_order_email_sent( $sent, $email_id, $email ) {
 
 	// Dopo invio mail "processing" possiamo verificare e chiudere in sicurezza.
 	ltc_maybe_auto_complete_viva_order( $order );
+}
+
+// [ EMAIL ]
+// marca la completed email come inviata per prevenire eventuali duplicati futuri.
+add_action( 'woocommerce_email_sent', 'ltc_mark_completed_order_email_sent', 20, 3 );
+function ltc_mark_completed_order_email_sent( $sent, $email_id, $email ) {
+	if ( ! $sent || 'customer_completed_order' !== $email_id ) {
+		return;
+	}
+
+	if ( ! is_object( $email ) || ! isset( $email->object ) || ! is_a( $email->object, 'WC_Order' ) ) {
+		return;
+	}
+
+	$order = $email->object;
+
+	if ( 'yes' === $order->get_meta( '_ltc_customer_completed_email_sent_once', true ) ) {
+		return;
+	}
+
+	$order->update_meta_data( '_ltc_customer_completed_email_sent_once', 'yes' );
+	$order->save();
 }
 
 // [ EMAIL ]

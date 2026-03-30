@@ -2,10 +2,10 @@
 
 	<div class="page-404">
 	
-		<h2>page not found!</h2>
+		<h2><?php esc_html_e( 'Page not found!', 'royal-elementor-kit' ); ?></h2>
 
 		<p>
-			It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.
+			<?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'royal-elementor-kit' ); ?>
 		</p>
 
 	</div>

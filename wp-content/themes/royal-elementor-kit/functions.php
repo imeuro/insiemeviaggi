@@ -80,28 +80,6 @@ function royal_elementor_kit_scripts() {
 add_action( 'wp_enqueue_scripts', 'royal_elementor_kit_scripts' );
 
 /*
-** Enqueue WooCommerce CSS su tutte le pagine WooCommerce
-*/
-function royal_elementor_kit_enqueue_woocommerce_styles() {
-
-	if ( ! class_exists( 'WooCommerce' ) ) {
-		return;
-	}
-
-	if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() && ! is_account_page() ) {
-		return;
-	}
-
-	wp_enqueue_style(
-		'royal-elementor-kit-woocommerce',
-		get_template_directory_uri() . '/assets/css/woocommerce.css',
-		array( 'royal-elementor-kit-style' ),
-		'1.0'
-	);
-}
-add_action( 'wp_enqueue_scripts', 'royal_elementor_kit_enqueue_woocommerce_styles' );
-
-/*
 ** Notices
 */
 require_once get_parent_theme_file_path( '/inc/admin/activation/class-welcome-notice.php' );
@@ -126,3 +104,4 @@ require_once get_parent_theme_file_path( '/inc/admin/menu/rek-admin-menu.php' );
 ** Customizer
 */
 require_once get_parent_theme_file_path( '/inc/admin/customizer/customizer.php' );
+
