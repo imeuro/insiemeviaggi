@@ -8,9 +8,11 @@
 // [ BOOKING ]
 // genera e riserva i ticket quando l'ordine entra in uno stato "impegnativo".
 // Viva: processing dopo pagamento; BACS: on-hold subito dopo il checkout.
-add_action( 'woocommerce_order_status_processing', 'ltc_generate_downloads_on_order_status', 20, 2 );
-add_action( 'woocommerce_order_status_on-hold', 'ltc_generate_downloads_on_order_status', 20, 2 );
-add_action( 'woocommerce_order_status_completed', 'ltc_generate_downloads_on_order_status', 20, 2 );
+// Priorità 5: prima delle email WooCommerce (di solito 10) e prima dei fail-safe stock (50),
+// così _Order_Downloads esiste già prima delle email WooCommerce (di solito prio 10).
+add_action( 'woocommerce_order_status_processing', 'ltc_generate_downloads_on_order_status', 5, 2 );
+add_action( 'woocommerce_order_status_on-hold', 'ltc_generate_downloads_on_order_status', 5, 2 );
+add_action( 'woocommerce_order_status_completed', 'ltc_generate_downloads_on_order_status', 5, 2 );
 function ltc_generate_downloads_on_order_status( $order_id, $order ) {
 	GenerateDownloads_afterPayment( $order_id );
 }
@@ -165,8 +167,9 @@ function ltc_debug_order_status_changed( $order_id, $from, $to, $order ) {
 }
 
 // [ BOOKING ]
-// fallback Viva: se il webhook non arriva, completa ordine sul return success validando la transazione.
-add_action( 'woocommerce_api_wc_vivacom_smart_success', 'ltc_viva_success_fallback_complete_order', 1 );
+// fallback Viva: se il webhook/gateway non processano l'ordine, lo completiamo noi sul return success.
+// Priorità 999: gira DOPO l'handler del gateway plugin, così interviene solo se l'ordine è ancora pending.
+add_action( 'woocommerce_api_wc_vivacom_smart_success', 'ltc_viva_success_fallback_complete_order', 999 );
 function ltc_viva_success_fallback_complete_order() {
 	if ( empty( $_GET['t'] ) || empty( $_GET['s'] ) ) {
 		return;
@@ -191,13 +194,22 @@ function ltc_viva_success_fallback_complete_order() {
 		return;
 	}
 
+	// Lock: impedisce esecuzioni concorrenti (webhook + return URL in parallelo).
+	$lock_key = 'ltc_viva_lock_' . $wc_order_id;
+	if ( get_transient( $lock_key ) ) {
+		return;
+	}
+	set_transient( $lock_key, 1, 120 );
+
+	// Ri-leggiamo l'ordine dopo il lock per avere lo stato aggiornato.
 	$order = wc_get_order( $wc_order_id );
 	if ( ! $order || 'vivacom_smart' !== $order->get_payment_method() ) {
+		delete_transient( $lock_key );
 		return;
 	}
 
-	// Se non e' pending, il webhook (o altro) ha gia' processato l'ordine.
 	if ( 'pending' !== $order->get_status() ) {
+		delete_transient( $lock_key );
 		return;
 	}
 
@@ -206,20 +218,23 @@ function ltc_viva_success_fallback_complete_order() {
 	$bearer_authentication = WC_Vivacom_Smart_Helpers::get_bearer_authentication( $environment );
 
 	if ( ! $bearer_authentication->hasValidToken() ) {
+		delete_transient( $lock_key );
 		return;
 	}
 
 	$transaction_response = WC_Vivacom_Smart_Helpers::get_transaction( $bearer_authentication, $transaction_id );
 	if ( empty( $transaction_response ) ) {
+		delete_transient( $lock_key );
 		return;
 	}
 
 	if ( empty( $transaction_response->orderCode ) || empty( $transaction_response->statusId ) ) {
+		delete_transient( $lock_key );
 		return;
 	}
 
-	// Completa solo se transazione effettivamente riuscita e legata all'ordine atteso.
 	if ( (string) $transaction_response->orderCode !== $order_code || 'F' !== (string) $transaction_response->statusId ) {
+		delete_transient( $lock_key );
 		return;
 	}
 
@@ -229,101 +244,84 @@ function ltc_viva_success_fallback_complete_order() {
 }
 
 function GenerateDownloads_afterPayment( $order_id ) {
-	///////////
-	// **
-	// TODO BETTER:
-	// duplica ogni tanto i biglietti in $downloads
-	// mi sembra che sia se compro più di un item, il secondo riporta anche i download per il primo.
-	// ha a che fare sicuro con $downloads che dovrebbe essere svuotato quando passo al prossimo $product
-	// forse ridichiarare $downloads = array() a inizio foreach di $items e contemporaneamente spostare $order->save(); dentro il foreach alla fine ?
-
-	// per ora risolto con unique_multidim_array() 
-	// per evitare doppi download della stesso item in fase di generazione:
-	// in wp-content/themes/accelerate/woocommerce/emails/email-downloads.php#38
-	///////////
 	if ( ! $order_id ) {
-		return;
+		return null;
 	}
-    // Allow code execution only once 
-    if( ! get_post_meta( $order_id, '_GenerateDownloads_done', true ) ) {
 
-		$order = wc_get_order( $order_id );
-		$items = $order->get_items();
-		$downloads = array();
+	$order = wc_get_order( $order_id );
+	if ( ! $order ) {
+		return null;
+	}
 
+	if ( $order->get_meta( '_GenerateDownloads_done', true ) ) {
+		return $order->get_meta( '_Order_Downloads', true );
+	}
 
+	// Lock: impedisce che due processi concorrenti (webhook + return) generino biglietti doppi
+	// e incrementino _product_code_second due volte (consumando numeri di biglietto).
+	$lock_key = 'ltc_gen_dl_' . $order_id;
+	if ( get_transient( $lock_key ) ) {
+		return null;
+	}
+	set_transient( $lock_key, 1, 60 );
 
+	// Double-check dopo aver acquisito il lock.
+	$order = wc_get_order( $order_id );
+	if ( ! $order || $order->get_meta( '_GenerateDownloads_done', true ) ) {
+		delete_transient( $lock_key );
+		return $order ? $order->get_meta( '_Order_Downloads', true ) : null;
+	}
 
-		foreach ( $items as $item_id => $item ) {
-			// echo '<pre>$item: <br><br>';
-			// print_r($item->get_data());
-			// echo '</pre>';
+	$items     = $order->get_items();
+	$downloads = array();
+	$logger    = wc_get_logger();
 
-			$logger = wc_get_logger();
-			$logger->info( '*++++++*' );
-			//$logger->info( wc_print_r($item, true ) );
+	foreach ( $items as $item_id => $item ) {
+		$logger->info( '*++++++*' );
 
-			$cart_item_data = $item->get_data();
+		$cart_item_data = $item->get_data();
+		$product        = wc_get_product( $item->get_product_id() );
 
-			$product = wc_get_product($item->get_product_id());
+		$logger->info( '-> ok, show me the downloads for ' . $item->get_product_id() );
+		$logger->info( wc_print_r( $product->get_downloads(), true ) );
+		$logger->info( '-> ok, but is downloadable?' );
+		$logger->info( wc_print_r( $product->is_downloadable(), true ) );
 
-            $logger->info( '-> ok, show me the downloads for '.$item->get_product_id() );
-            $logger->info( wc_print_r($product->get_downloads(), true ) );
-            $logger->info( '-> ok, but is downloadable?' );
-            $logger->info( wc_print_r($product->is_downloadable(), true ) );
-
-
-			if ($product->is_downloadable()) {
-
-				$PDFfolder = $product->get_sku();
-				$PDFmatrix = get_post_meta($cart_item_data['product_id'],'_product_code', true);
-				$last_order_processed = get_post_meta( $cart_item_data['product_id'], 'last_order_processed', true) != '' ? get_post_meta( $cart_item_data['product_id'], 'last_order_processed', true) : 0;
-				
-
-				for($k=0; $k<$item['quantity']; $k++) {
-
-					$PDFprogressive = get_post_meta($cart_item_data['product_id'],'_product_code_second', true);
-					// add leading zeroes...
-					$PDFprogressive_000 = str_pad($PDFprogressive,3,"0", STR_PAD_LEFT);
-					// $file_url = get_site_url(null, '/wp-content/uploads/woocommerce_uploads/PDF39/' . $PDFmatrix.'_'.$PDFprogressive_000.'.pdf', 'https');
-					$file_url = get_site_url(null, '/wp-content/uploads/woocommerce_uploads/'. $PDFfolder . '/' . $PDFmatrix.'_'.$PDFprogressive_000.'.pdf', 'https');
-					$attachment_id = md5( $file_url );
-
-					// Creating a download with... yes, WC_Product_Download class
-					$download = new WC_Product_Download();
-
-					$download->set_name( $PDFmatrix.'_'.$PDFprogressive_000.'.pdf' );
-					$download->set_id( $attachment_id );
-					$download->set_file( $file_url );
-
-					$downloads[$attachment_id] = $download;
-
-					// $cart_item_dl->set_download_limit( 3 ); // can be downloaded only once
-					// $cart_item_dl->set_download_expiry( 7 ); // expires in a week
-
-					update_post_meta( $cart_item_data['product_id'], '_product_code_second', $PDFprogressive+1 );
-
-				}
-
-				if ($last_order_processed < $order_id) {
-					// aggiorno last_order_processed a ordine pagato
-					update_post_meta ( $cart_item_data['product_id'], 'last_order_processed', $order_id );
-				}
-
-			
-			}
-
+		if ( ! $product->is_downloadable() ) {
+			continue;
 		}
 
-		$order->update_meta_data( '_Order_Downloads', $downloads );
+		$PDFfolder            = $product->get_sku();
+		$PDFmatrix            = get_post_meta( $cart_item_data['product_id'], '_product_code', true );
+		$last_order_processed = get_post_meta( $cart_item_data['product_id'], 'last_order_processed', true );
+		$last_order_processed = ( '' !== $last_order_processed ) ? (int) $last_order_processed : 0;
 
-		// Flag the action as done (to avoid repetitions on reload for example)
-		$order->update_meta_data( '_GenerateDownloads_done', true );
-		$order->save();
+		for ( $k = 0; $k < $item['quantity']; $k++ ) {
+			$PDFprogressive     = get_post_meta( $cart_item_data['product_id'], '_product_code_second', true );
+			$PDFprogressive_000 = str_pad( $PDFprogressive, 3, '0', STR_PAD_LEFT );
+			$file_url           = get_site_url( null, '/wp-content/uploads/woocommerce_uploads/' . $PDFfolder . '/' . $PDFmatrix . '_' . $PDFprogressive_000 . '.pdf', 'https' );
+			$attachment_id      = md5( $file_url );
 
-	} else {
-		$downloads = get_post_meta( $order_id, '_Order_Downloads', true );
+			$download = new WC_Product_Download();
+			$download->set_name( $PDFmatrix . '_' . $PDFprogressive_000 . '.pdf' );
+			$download->set_id( $attachment_id );
+			$download->set_file( $file_url );
+
+			$downloads[ $attachment_id ] = $download;
+
+			update_post_meta( $cart_item_data['product_id'], '_product_code_second', $PDFprogressive + 1 );
+		}
+
+		if ( $last_order_processed < $order_id ) {
+			update_post_meta( $cart_item_data['product_id'], 'last_order_processed', $order_id );
+		}
 	}
+
+	$order->update_meta_data( '_Order_Downloads', $downloads );
+	$order->update_meta_data( '_GenerateDownloads_done', true );
+	$order->save();
+
+	delete_transient( $lock_key );
 
 	return $downloads;
 }
@@ -337,10 +335,14 @@ add_action( 'woocommerce_order_status_cancelled', 'respawn_tickets',
 add_action( 'woocommerce_order_status_failed', 'respawn_tickets', 21, 1 );
 function respawn_tickets( $order_id ) {
 
-	$downloads 				= get_post_meta( $order_id, '_Order_Downloads', true );
-	$unique_downloads 		= unique_multidim_array($downloads,'id');
-	
 	$order = wc_get_order( $order_id );
+	if ( ! $order ) {
+		return;
+	}
+
+	$downloads        = $order->get_meta( '_Order_Downloads', true );
+	$normalized       = function_exists( 'ltc_normalize_order_downloads_rows' ) ? ltc_normalize_order_downloads_rows( $downloads ) : array();
+	$unique_downloads = ! empty( $normalized ) ? unique_multidim_array( $normalized, 'id' ) : array();
 	$items = $order->get_items();
 	$order_item = [];
 
