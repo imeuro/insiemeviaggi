@@ -43,9 +43,8 @@ function ltc_ensure_bacs_stock_reduction( $order_id, $order ) {
 }
 
 // [ BOOKING ]
-// fail-safe Viva Smart: allineato a "Order status after successful payment = Processing" nel gateway
-// (se fosse Completed, servirebbe anche un hook su completed; con Processing questo e' il punto giusto).
-add_action( 'woocommerce_order_status_processing', 'ltc_ensure_vivacom_smart_stock_reduction', 50, 2 );
+// fail-safe Viva Smart: riduzione stock su completed (flusso reale osservato nei log).
+add_action( 'woocommerce_order_status_completed', 'ltc_ensure_vivacom_smart_stock_reduction', 50, 2 );
 function ltc_ensure_vivacom_smart_stock_reduction( $order_id, $order ) {
 	if ( ! is_a( $order, 'WC_Order' ) ) {
 		$order = wc_get_order( $order_id );
@@ -55,17 +54,60 @@ function ltc_ensure_vivacom_smart_stock_reduction( $order_id, $order ) {
 		return;
 	}
 
-	$stock_reduced = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
-	if ( $stock_reduced ) {
+	// Idempotenza forte: eseguiamo una sola volta il fail-safe "per-riga ordine".
+	if ( 'yes' === $order->get_meta( '_ltc_viva_stock_enforced', true ) ) {
 		return;
 	}
 
-	wc_maybe_reduce_stock_levels( $order->get_id() );
+	$line_changes = 0;
+	$line_notes   = array();
 
-	$stock_reduced_after = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
-	if ( $stock_reduced_after ) {
-		$order->add_order_note( 'LTC: riduzione stock forzata su ordine Viva Smart (vivacom_smart) in stato processing.' );
+	foreach ( $order->get_items( 'line_item' ) as $item_id => $item ) {
+		$product = $item->get_product();
+		if ( ! $product || ! $product->managing_stock() ) {
+			continue;
+		}
+
+		$original_checkout_qty = (int) $item->get_meta( '_ltc_original_checkout_qty', true );
+		$item_qty              = (int) $item->get_quantity();
+		$qty_to_use            = $original_checkout_qty > 0 ? $original_checkout_qty : max( 0, $item_qty );
+
+		if ( $qty_to_use < 1 ) {
+			continue;
+		}
+
+		$before_stock = $product->get_stock_quantity();
+		wc_update_product_stock( $product, $qty_to_use, 'decrease' );
+		$after_product = wc_get_product( $product->get_id() );
+		$after_stock   = $after_product ? $after_product->get_stock_quantity() : null;
+
+		if ( $before_stock !== $after_stock ) {
+			$line_changes++;
+		}
+
+		$line_notes[] = sprintf(
+			'item:%d product:%d qty:%d stock:%s->%s',
+			(int) $item_id,
+			(int) $product->get_id(),
+			(int) $qty_to_use,
+			( null === $before_stock ? 'null' : (string) $before_stock ),
+			( null === $after_stock ? 'null' : (string) $after_stock )
+		);
 	}
+
+	$stock_reduced_flag = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
+	if ( ! $stock_reduced_flag ) {
+		wc_maybe_reduce_stock_levels( $order->get_id() );
+	}
+
+	$order->update_meta_data( '_ltc_viva_stock_enforced', 'yes' );
+	$order->save();
+
+	$order->add_order_note(
+		'LTC: verifica/riduzione stock su completed (vivacom_smart). Righe aggiornate: ' .
+		$line_changes .
+		'. Dettagli: ' . implode( ' | ', $line_notes )
+	);
 }
 
 // [ BOOKING ]
@@ -74,6 +116,99 @@ function ltc_order_debug_log( $message, $context = array() ) {
 	$logger = wc_get_logger();
 	$data   = ! empty( $context ) ? ' | ' . wp_json_encode( $context ) : '';
 	$logger->info( $message . $data, array( 'source' => 'ltc-order-debug' ) );
+}
+
+/**
+ * Acquire an atomic per-product lock for ticket sequence updates.
+ * Uses add_option (unique option_name) to avoid race conditions across requests/processes.
+ *
+ * @param int $product_id Product ID.
+ * @param int $wait_seconds Max seconds to wait for lock.
+ * @return string|false Lock key on success, false on timeout.
+ */
+function ltc_acquire_product_ticket_lock( $product_id, $wait_seconds = 8 ) {
+	$product_id = (int) $product_id;
+	if ( $product_id < 1 ) {
+		return false;
+	}
+
+	$lock_key = 'ltc_ticket_seq_lock_' . $product_id;
+	$deadline = microtime( true ) + max( 1, (int) $wait_seconds );
+
+	do {
+		if ( add_option( $lock_key, (string) time(), '', 'no' ) ) {
+			return $lock_key;
+		}
+
+		usleep( 150000 ); // 150ms backoff
+	} while ( microtime( true ) < $deadline );
+
+	return false;
+}
+
+/**
+ * Release per-product ticket lock.
+ *
+ * @param string $lock_key Lock key returned by ltc_acquire_product_ticket_lock().
+ * @return void
+ */
+function ltc_release_product_ticket_lock( $lock_key ) {
+	if ( empty( $lock_key ) ) {
+		return;
+	}
+
+	delete_option( (string) $lock_key );
+}
+
+/**
+ * Check whether a ticket filename is already reserved in order meta _Order_Downloads.
+ * Works with classic postmeta and (if present) HPOS orders meta table.
+ *
+ * @param string $ticket_name Ticket file name (e.g. DITRAP_635.pdf).
+ * @param int    $exclude_order_id Optional order ID to exclude.
+ * @return bool
+ */
+function ltc_is_ticket_name_already_reserved( $ticket_name, $exclude_order_id = 0 ) {
+	global $wpdb;
+
+	$ticket_name = trim( (string) $ticket_name );
+	if ( '' === $ticket_name ) {
+		return false;
+	}
+
+	$exclude_order_id = (int) $exclude_order_id;
+	$like             = '%' . $wpdb->esc_like( $ticket_name ) . '%';
+
+	$postmeta_sql = "SELECT meta_id FROM {$wpdb->postmeta} WHERE meta_key = '_Order_Downloads' AND meta_value LIKE %s";
+	$postmeta_args = array( $like );
+
+	if ( $exclude_order_id > 0 ) {
+		$postmeta_sql   .= ' AND post_id <> %d';
+		$postmeta_args[] = $exclude_order_id;
+	}
+
+	$found = $wpdb->get_var( $wpdb->prepare( $postmeta_sql . ' LIMIT 1', $postmeta_args ) );
+	if ( ! empty( $found ) ) {
+		return true;
+	}
+
+	$hpos_meta_table = $wpdb->prefix . 'wc_orders_meta';
+	$table_exists    = ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $hpos_meta_table ) ) === $hpos_meta_table );
+
+	if ( ! $table_exists ) {
+		return false;
+	}
+
+	$hpos_sql  = "SELECT id FROM {$hpos_meta_table} WHERE meta_key = '_Order_Downloads' AND meta_value LIKE %s";
+	$hpos_args = array( $like );
+
+	if ( $exclude_order_id > 0 ) {
+		$hpos_sql   .= ' AND order_id <> %d';
+		$hpos_args[] = $exclude_order_id;
+	}
+
+	$found_hpos = $wpdb->get_var( $wpdb->prepare( $hpos_sql . ' LIMIT 1', $hpos_args ) );
+	return ! empty( $found_hpos );
 }
 
 function ltc_is_debug_target_order( $order ) {
@@ -111,6 +246,13 @@ function ltc_debug_checkout_line_item( $item, $cart_item_key, $values, $order ) 
 	);
 }
 
+add_action( 'woocommerce_checkout_create_order_line_item', 'ltc_capture_checkout_original_qty_meta', 5, 4 );
+function ltc_capture_checkout_original_qty_meta( $item, $cart_item_key, $values, $order ) {
+	$checkout_qty = isset( $values['quantity'] ) ? (int) $values['quantity'] : (int) $item->get_quantity();
+	$checkout_qty = max( 0, $checkout_qty );
+	$item->update_meta_data( '_ltc_original_checkout_qty', $checkout_qty );
+}
+
 add_action( 'woocommerce_checkout_order_processed', 'ltc_debug_checkout_order_processed', 20, 3 );
 function ltc_debug_checkout_order_processed( $order_id, $posted_data, $order ) {
 	if ( ! ltc_is_debug_target_order( $order ) ) {
@@ -124,6 +266,7 @@ function ltc_debug_checkout_order_processed( $order_id, $posted_data, $order ) {
 			'product_id'   => $item->get_product_id(),
 			'name'         => $item->get_name(),
 			'qty'          => (int) $item->get_quantity(),
+			'checkout_qty' => (int) $item->get_meta( '_ltc_original_checkout_qty', true ),
 			'line_total'   => (float) $item->get_total(),
 			'line_subtotal'=> (float) $item->get_subtotal(),
 		);
@@ -296,24 +439,110 @@ function GenerateDownloads_afterPayment( $order_id ) {
 		$last_order_processed = get_post_meta( $cart_item_data['product_id'], 'last_order_processed', true );
 		$last_order_processed = ( '' !== $last_order_processed ) ? (int) $last_order_processed : 0;
 
-		for ( $k = 0; $k < $item['quantity']; $k++ ) {
-			$PDFprogressive     = get_post_meta( $cart_item_data['product_id'], '_product_code_second', true );
-			$PDFprogressive_000 = str_pad( $PDFprogressive, 3, '0', STR_PAD_LEFT );
-			$file_url           = get_site_url( null, '/wp-content/uploads/woocommerce_uploads/' . $PDFfolder . '/' . $PDFmatrix . '_' . $PDFprogressive_000 . '.pdf', 'https' );
-			$attachment_id      = md5( $file_url );
+		$original_checkout_qty = (int) $item->get_meta( '_ltc_original_checkout_qty', true );
+		$item_qty              = (int) $item->get_quantity();
+		$qty_to_use            = $original_checkout_qty > 0 ? $original_checkout_qty : max( 0, $item_qty );
 
-			$download = new WC_Product_Download();
-			$download->set_name( $PDFmatrix . '_' . $PDFprogressive_000 . '.pdf' );
-			$download->set_id( $attachment_id );
-			$download->set_file( $file_url );
-
-			$downloads[ $attachment_id ] = $download;
-
-			update_post_meta( $cart_item_data['product_id'], '_product_code_second', $PDFprogressive + 1 );
+		$product_lock_key = ltc_acquire_product_ticket_lock( (int) $cart_item_data['product_id'], 10 );
+		if ( false === $product_lock_key ) {
+			$logger->error(
+				'LTC ticket lock timeout: impossibile riservare progressivo univoco',
+				array(
+					'source'     => 'ltc-order-debug',
+					'order_id'   => $order_id,
+					'item_id'    => $item_id,
+					'product_id' => (int) $cart_item_data['product_id'],
+				)
+			);
+			delete_transient( $lock_key );
+			return null;
 		}
 
-		if ( $last_order_processed < $order_id ) {
-			update_post_meta( $cart_item_data['product_id'], 'last_order_processed', $order_id );
+		try {
+			$next_progressive = (int) get_post_meta( $cart_item_data['product_id'], '_product_code_second', true );
+			if ( $next_progressive < 1 ) {
+				$next_progressive = 1;
+			}
+
+			for ( $k = 0; $k < $qty_to_use; $k++ ) {
+				$attempts_for_ticket = 0;
+				$ticket_assigned     = false;
+
+				while ( $attempts_for_ticket < 5000 ) {
+					$PDFprogressive_000 = str_pad( (string) $next_progressive, 3, '0', STR_PAD_LEFT );
+					$ticket_name        = $PDFmatrix . '_' . $PDFprogressive_000 . '.pdf';
+
+					if ( ltc_is_ticket_name_already_reserved( $ticket_name, $order_id ) ) {
+						$logger->warning(
+							'LTC ticket già riservato, salto progressivo',
+							array(
+								'source'       => 'ltc-order-debug',
+								'order_id'     => $order_id,
+								'product_id'   => (int) $cart_item_data['product_id'],
+								'ticket_name'  => $ticket_name,
+								'progressive'  => $next_progressive,
+							)
+						);
+						$next_progressive++;
+						$attempts_for_ticket++;
+						continue;
+					}
+
+					$file_rel_path = '/wp-content/uploads/woocommerce_uploads/' . $PDFfolder . '/' . $ticket_name;
+					$file_abs_path = ABSPATH . ltrim( $file_rel_path, '/' );
+
+					if ( ! file_exists( $file_abs_path ) ) {
+						$logger->warning(
+							'LTC ticket file non trovato, salto progressivo',
+							array(
+								'source'      => 'ltc-order-debug',
+								'order_id'    => $order_id,
+								'product_id'  => (int) $cart_item_data['product_id'],
+								'ticket_name' => $ticket_name,
+								'path'        => $file_abs_path,
+							)
+						);
+						$next_progressive++;
+						$attempts_for_ticket++;
+						continue;
+					}
+
+					$file_url      = get_site_url( null, $file_rel_path, 'https' );
+					$attachment_id = md5( $file_url );
+
+					$download = new WC_Product_Download();
+					$download->set_name( $ticket_name );
+					$download->set_id( $attachment_id );
+					$download->set_file( $file_url );
+
+					$downloads[ $attachment_id ] = $download;
+					$next_progressive++;
+					$ticket_assigned = true;
+					break;
+				}
+
+				if ( ! $ticket_assigned ) {
+					$logger->error(
+						'LTC impossibile assegnare ticket univoco dopo troppi tentativi',
+						array(
+							'source'     => 'ltc-order-debug',
+							'order_id'   => $order_id,
+							'product_id' => (int) $cart_item_data['product_id'],
+							'qty_index'  => $k,
+						)
+					);
+					delete_transient( $lock_key );
+					return null;
+				}
+			}
+
+			update_post_meta( $cart_item_data['product_id'], '_product_code_second', $next_progressive );
+
+			if ( $last_order_processed < $order_id ) {
+				update_post_meta( $cart_item_data['product_id'], 'last_order_processed', $order_id );
+			}
+		} finally {
+			ltc_release_product_ticket_lock( $product_lock_key );
 		}
 	}
 

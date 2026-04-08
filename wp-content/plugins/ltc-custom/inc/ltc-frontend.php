@@ -111,6 +111,30 @@ function is_coupon_valid( $coupon_code ) {
     return is_wp_error( $response ) ? false : true;     
 }
 
+function ltc_has_required_coupon() {
+	if ( ! WC()->cart ) {
+		return false;
+	}
+
+	// Do not re-validate coupon rules here:
+	// if WooCommerce keeps the coupon applied, it is valid for this business check.
+	return count( (array) WC()->cart->get_applied_coupons() ) > 0;
+}
+
+function ltc_get_first_targeted_cart_item( $targeted_ids ) {
+	if ( ! WC()->cart ) {
+		return null;
+	}
+
+	foreach ( WC()->cart->get_cart() as $cart_item ) {
+		if ( in_array( $cart_item['product_id'], $targeted_ids, true ) ) {
+			return $cart_item;
+		}
+	}
+
+	return null;
+}
+
 
 // enable 'coupon-warning' notice type
 add_filter('woocommerce_notice_types', function ($notice_types) {
@@ -120,34 +144,37 @@ add_filter('woocommerce_notice_types', function ($notice_types) {
 
 add_action( 'woocommerce_check_cart_items', 'mandatory_coupon_for_specific_items' );
 function mandatory_coupon_for_specific_items() {
-	$targeted_ids = get_post_ids_for_specific_cat(85,'product_cat'); // The targeted product ids (in this array) 
-	$coupon_code = 'ltc'; // The required coupon code
-
-	$coupons_entered = WC()->cart->get_applied_coupons();
-	$coupon_prefix = [];
-
-	foreach ($coupons_entered as $key=>$single_coupon_entered) {
-		$short_coupon_entered = substr($single_coupon_entered, 0, 3);
-		$coupon_prefix[] = strtolower($short_coupon_entered);
+	// On checkout we show only the hard-blocking validation error (no extra warning).
+	if ( is_checkout() && ! is_cart() ) {
+		return;
 	}
 
-	$coupon_applied = in_array( strtolower($coupon_code), $coupon_prefix );
+	$targeted_ids = get_post_ids_for_specific_cat(85,'product_cat'); // The targeted product ids (in this array) 
+	$coupon_applied = ltc_has_required_coupon();
+	$targeted_item  = ltc_get_first_targeted_cart_item( $targeted_ids );
 
-	// Loop through cart items
-	foreach(WC()->cart->get_cart() as $cart_item ) {
-		
-	// Check cart item for defined product Ids and applied coupon
-		if( in_array( $cart_item['product_id'], $targeted_ids ) && ! $coupon_applied ) {
-			wc_clear_notices(); // Clear all other notices
+	if ( $targeted_item && ! $coupon_applied ) {
+		// Blur prices in cart/checkout summary and disable checkout CTA from cart page.
+		echo "<script>document.addEventListener('DOMContentLoaded', (event) => { const cartprices = document.querySelectorAll('.woocommerce-cart-form bdi, .cart_totals bdi'); Array.from(cartprices).forEach((el)=>{ el.classList.add('xyz');});const proceedLink=document.querySelector('.wc-proceed-to-checkout > a'); if(proceedLink){proceedLink.removeAttribute('href');}});</script>";
+		wc_add_notice( sprintf( 'Per acquistare "%s" è necessario inserire un codice promozionale.', $targeted_item['data']->get_name() ), 'coupon-warning' );
+	}
+}
 
-			// print_r($coupon_applied);
-			// blur price
-			echo "<script>document.addEventListener('DOMContentLoaded', (event) => { const cartprices = document.querySelectorAll('.woocommerce-cart-form bdi, .cart_totals bdi'); Array.from(cartprices).forEach((el)=>{ el.classList.add('xyz');});document.querySelector('.wc-proceed-to-checkout > a').removeAttribute('href');});</script>";
+add_action( 'woocommerce_after_checkout_validation', 'ltc_block_checkout_without_required_coupon', 20, 2 );
+function ltc_block_checkout_without_required_coupon( $data, $errors ) {
+	$targeted_ids    = get_post_ids_for_specific_cat( 85, 'product_cat' );
+	$targeted_item   = ltc_get_first_targeted_cart_item( $targeted_ids );
+	$coupon_applied  = ltc_has_required_coupon();
 
-			// Avoid checkout displaying an error notice
-			wc_add_notice( sprintf( 'Per acquistare "%s" è necessario inserire un codice promozionale.', $cart_item['data']->get_name() ), 'coupon-warning' );
-			break; // stop the loop
-		}
+	if ( ! $targeted_item || $coupon_applied ) {
+		return;
+	}
+
+	if ( is_a( $errors, 'WP_Error' ) ) {
+		$errors->add(
+			'ltc_required_coupon_missing',
+			sprintf( 'Per acquistare "%s" è necessario inserire un codice promozionale valido.', $targeted_item['data']->get_name() )
+		);
 	}
 }
 
@@ -183,9 +210,9 @@ function conditional_payment_gateways( $available_gateways ) {
 
     $isBACSonly = ( has_product_category_in_cart( array('vacanze-studio','longform') ) ) ? 1 : 0;
 
-    // Remove Vivawallet (vivawallet_native) payment gateway for these products
+    // Remove Viva Smart payment gateway for these products
     if($isBACSonly === 1)
-        unset($available_gateways['vivawallet_native']); // unset 'vivawallet_native'
+        unset($available_gateways['vivacom_smart']); // unset 'vivacom_smart'
     // Remove Bank wire (Bacs) payment gateway for subscription products
     // if($prod_subscription)
     //     unset($available_gateways['bacs']); // unset 'bacs'

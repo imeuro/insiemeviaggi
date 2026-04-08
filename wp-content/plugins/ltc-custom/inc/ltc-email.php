@@ -86,6 +86,33 @@ function ltc_order_ticket_pdf_files_ready( $order ) {
 }
 
 /**
+ * Quantità attesa di ticket allegabili, derivata dalla qty bloccata in checkout.
+ *
+ * @param WC_Order $order Ordine.
+ * @return int
+ */
+function ltc_get_expected_downloadable_qty( $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		return 0;
+	}
+
+	$expected_qty = 0;
+
+	foreach ( $order->get_items( 'line_item' ) as $item ) {
+		$product = $item->get_product();
+		if ( ! $product || ! $product->is_downloadable() ) {
+			continue;
+		}
+
+		$locked_qty = (int) $item->get_meta( '_ltc_checkout_qty', true );
+		$item_qty   = (int) $item->get_quantity();
+		$expected_qty += $locked_qty > 0 ? $locked_qty : max( 0, $item_qty );
+	}
+
+	return $expected_qty;
+}
+
+/**
  * Pianifica un solo invio "Ordine completato" quando i PDF sono pronti (evita il primo invio vuoto).
  *
  * @param int $order_id ID ordine.
@@ -173,6 +200,31 @@ function ltc_send_customer_completed_when_ready_callback( $order_id, $attempt = 
 }
 
 add_action( 'ltc_send_customer_completed_when_ready', 'ltc_send_customer_completed_when_ready_callback', 10, 2 );
+
+// [ EMAIL ]
+// Safety-net: quando un ordine entra in completed, pianifica sempre il trigger "completed when ready".
+// Evita casi in cui il flusso webhook/return salta l'invio customer_completed_order con allegati.
+add_action( 'woocommerce_order_status_completed', 'ltc_queue_completed_email_on_completed_status', 30, 2 );
+function ltc_queue_completed_email_on_completed_status( $order_id, $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		$order = wc_get_order( $order_id );
+	}
+
+	if ( ! $order ) {
+		return;
+	}
+
+	if ( 'yes' === $order->get_meta( '_ltc_customer_completed_email_sent_once', true ) ) {
+		return;
+	}
+
+	// Per ordini senza ticket lasciamo WooCommerce standard.
+	if ( ! $order->has_downloadable_item() ) {
+		return;
+	}
+
+	ltc_schedule_completed_email_when_ready( (int) $order->get_id(), 0 );
+}
 
 // [ EMAIL ]
 // Un solo invio "Ordine completato" al cliente, solo con PDF pronti.
@@ -280,6 +332,7 @@ function attach_to_wc_emails( $attachments, $email_id, $order, $wc_email ) {
 
 	$normalized_rows  = ltc_normalize_order_downloads_rows( $downloads );
 	$unique_downloads = unique_multidim_array( $normalized_rows, 'id' );
+	$expected_qty     = ltc_get_expected_downloadable_qty( $order );
 
 	$logger->info( '==================' );
 	$logger->info( '---> Status for order ' . $order_id . ': ' . $order->get_status() );
@@ -288,6 +341,21 @@ function attach_to_wc_emails( $attachments, $email_id, $order, $wc_email ) {
 	$logger->info( '---> EMAIL ATTACHMENTS for order #' . $order_id . ' (' . $email_id . '): ' );
 
 	if ( empty( $unique_downloads ) ) {
+		return $attachments;
+	}
+
+	if ( $expected_qty > 0 && count( $unique_downloads ) !== $expected_qty ) {
+		$logger->error(
+			'LTC blocco allegati: mismatch quantità ticket',
+			array(
+				'source'             => 'ltc-email',
+				'order_id'           => $order_id,
+				'expected_qty'       => $expected_qty,
+				'downloads_found'    => count( $unique_downloads ),
+				'email_id'           => $email_id,
+			)
+		);
+		$order->add_order_note( 'LTC: invio allegati bloccato per mismatch tra quantità acquistata e ticket riservati.' );
 		return $attachments;
 	}
 
@@ -351,10 +419,77 @@ function ltc_ensure_new_order_email_enabled_for_merchant( $enabled, $object = nu
 }
 
 // [ EMAIL ]
+// Nuovo ordine al merchant: garantisce booking@insiemeviaggi.com tra i destinatari.
+add_filter( 'woocommerce_email_recipient_new_order', 'ltc_force_booking_recipient_on_new_order', 999, 2 );
+function ltc_force_booking_recipient_on_new_order( $recipient, $order ) {
+	$required_email = 'booking@insiemeviaggi.com';
+	$recipient_list = array();
+
+	if ( is_string( $recipient ) && '' !== trim( $recipient ) ) {
+		$parts = array_map( 'trim', explode( ',', $recipient ) );
+		foreach ( $parts as $email ) {
+			$clean = sanitize_email( $email );
+			if ( '' !== $clean ) {
+				$recipient_list[] = $clean;
+			}
+		}
+	}
+
+	$recipient_list[] = $required_email;
+	$recipient_list   = array_values( array_unique( $recipient_list ) );
+
+	return implode( ',', $recipient_list );
+}
+
+// [ EMAIL ]
+// Failsafe: se Woo non marca _new_order_email_sent, ritenta trigger email admin su stati target.
+add_action( 'woocommerce_order_status_changed', 'ltc_retry_new_order_email_if_not_sent', 40, 4 );
+function ltc_retry_new_order_email_if_not_sent( $order_id, $from, $to, $order ) {
+	if ( ! in_array( $to, array( 'processing', 'completed', 'on-hold' ), true ) ) {
+		return;
+	}
+
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		$order = wc_get_order( $order_id );
+	}
+
+	if ( ! $order ) {
+		return;
+	}
+
+	if ( 'true' === $order->get_meta( '_new_order_email_sent', true ) ) {
+		return;
+	}
+
+	$mailer = WC()->mailer();
+	if ( ! $mailer || ! method_exists( $mailer, 'get_emails' ) ) {
+		return;
+	}
+
+	foreach ( $mailer->get_emails() as $email ) {
+		if ( isset( $email->id ) && 'new_order' === $email->id ) {
+			$email->trigger( $order_id, $order );
+			break;
+		}
+	}
+}
+
+// [ EMAIL ]
 // BCC di debug: inoltra tutte le email WooCommerce anche a me.
 add_filter( 'woocommerce_email_headers', 'woo_cc_all_emails' );
-function woo_cc_all_emails() {
-	return 'Bcc: ominodiwordpress@meuro.dev' . "\r\n";
+function woo_cc_all_emails( $headers, $email_id = null, $order = null ) {
+	$debug_bcc = 'Bcc: ominodiwordpress@meuro.dev' . "\r\n";
+
+	if ( is_string( $headers ) ) {
+		return $headers . $debug_bcc;
+	}
+
+	if ( is_array( $headers ) ) {
+		$headers[] = 'Bcc: ominodiwordpress@meuro.dev';
+		return $headers;
+	}
+
+	return $headers;
 }
 // Forza BCC a booking@insiemeviaggi.com solo per la email "ordine completato" (customer_completed_order)
 add_filter( 'woocommerce_email_headers', 'ltc_bcc_booking_completed_email_only', 20, 3 );
@@ -377,6 +512,84 @@ function ltc_bcc_booking_completed_email_only( $headers, $email_id = null, $orde
 
 
 // [ EMAIL ]
+// Auto-completamento robusto ordini Viva:
+// avvio su stato processing + retry schedulato (non dipende dall'invio email).
+function ltc_schedule_viva_auto_complete_check( $order_id, $attempt = 0 ) {
+	$order_id = (int) $order_id;
+	$attempt  = (int) $attempt;
+
+	if ( $order_id < 1 ) {
+		return;
+	}
+
+	$hook = 'ltc_viva_auto_complete_check';
+	$args = array( $order_id, $attempt );
+
+	if ( function_exists( 'as_next_scheduled_action' ) && as_next_scheduled_action( $hook, $args, 'ltc-email' ) ) {
+		return;
+	}
+
+	if ( wp_next_scheduled( $hook, $args ) ) {
+		return;
+	}
+
+	$delay = ( 0 === $attempt ) ? 5 : 10;
+
+	if ( function_exists( 'as_schedule_single_action' ) ) {
+		as_schedule_single_action( time() + $delay, $hook, $args, 'ltc-email' );
+		return;
+	}
+
+	wp_schedule_single_event( time() + $delay, $hook, $args );
+}
+
+add_action( 'woocommerce_order_status_processing', 'ltc_queue_viva_auto_complete_from_processing', 25, 2 );
+function ltc_queue_viva_auto_complete_from_processing( $order_id, $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		$order = wc_get_order( $order_id );
+	}
+
+	if ( ! $order || 'vivacom_smart' !== $order->get_payment_method() ) {
+		return;
+	}
+
+	ltc_schedule_viva_auto_complete_check( $order->get_id(), 0 );
+}
+
+add_action( 'ltc_viva_auto_complete_check', 'ltc_viva_auto_complete_check_callback', 10, 2 );
+function ltc_viva_auto_complete_check_callback( $order_id, $attempt = 0 ) {
+	$order_id = (int) $order_id;
+	$attempt  = (int) $attempt;
+
+	if ( $order_id < 1 ) {
+		return;
+	}
+
+	$order = wc_get_order( $order_id );
+	if ( ! $order ) {
+		return;
+	}
+
+	$completed = ltc_maybe_auto_complete_viva_order( $order, $attempt );
+	if ( $completed ) {
+		return;
+	}
+
+	if ( $attempt >= 24 ) {
+		wc_get_logger()->error(
+			'LTC: auto-completamento Viva non riuscito entro il numero massimo di tentativi.',
+			array(
+				'source'   => 'ltc-email',
+				'order_id' => $order_id,
+			)
+		);
+		return;
+	}
+
+	ltc_schedule_viva_auto_complete_check( $order_id, $attempt + 1 );
+}
+
+// [ EMAIL ]
 // traccia l'invio della mail "ordine in lavorazione" per ordini Viva.
 add_action( 'woocommerce_email_sent', 'ltc_track_processing_order_email_sent', 10, 3 );
 function ltc_track_processing_order_email_sent( $sent, $email_id, $email ) {
@@ -395,21 +608,14 @@ function ltc_track_processing_order_email_sent( $sent, $email_id, $email ) {
 	}
 
 	if ( $order->get_meta( '_ltc_processing_email_sent_at', true ) ) {
-		$order_refreshed = wc_get_order( $order->get_id() );
-		if ( $order_refreshed ) {
-			ltc_maybe_auto_complete_viva_order( $order_refreshed );
-		}
+		ltc_schedule_viva_auto_complete_check( $order->get_id(), 0 );
 		return;
 	}
 
 	$order->update_meta_data( '_ltc_processing_email_sent_at', current_time( 'mysql' ) );
 	$order->save();
 
-	// Dopo invio mail "processing" possiamo verificare e chiudere in sicurezza.
-	$order = wc_get_order( $order->get_id() );
-	if ( $order ) {
-		ltc_maybe_auto_complete_viva_order( $order );
-	}
+	ltc_schedule_viva_auto_complete_check( $order->get_id(), 0 );
 }
 
 // [ EMAIL ]
@@ -434,26 +640,63 @@ function ltc_mark_completed_order_email_sent( $sent, $email_id, $email ) {
 	$order->save();
 }
 
-function ltc_maybe_auto_complete_viva_order( $order ) {
-	if ( ! is_a( $order, 'WC_Order' ) || 'vivacom_smart' !== $order->get_payment_method() ) {
+// [ EMAIL ]
+// Traccia invio "Nuovo ordine" per audit e diagnosi.
+add_action( 'woocommerce_email_sent', 'ltc_track_new_order_email_sent', 25, 3 );
+function ltc_track_new_order_email_sent( $sent, $email_id, $email ) {
+	if ( ! $sent || 'new_order' !== $email_id ) {
 		return;
+	}
+
+	if ( ! is_object( $email ) || ! isset( $email->object ) || ! is_a( $email->object, 'WC_Order' ) ) {
+		return;
+	}
+
+	$order = $email->object;
+	$order->add_order_note( 'LTC: email amministratore "Nuovo ordine" inviata con successo.' );
+}
+
+// [ EMAIL ]
+// Diagnostica invio mail WP (SMTP/provider): salva errore nel logger WooCommerce.
+add_action( 'wp_mail_failed', 'ltc_log_wp_mail_failures', 10, 1 );
+function ltc_log_wp_mail_failures( $wp_error ) {
+	if ( ! is_a( $wp_error, 'WP_Error' ) ) {
+		return;
+	}
+
+	$data = $wp_error->get_error_data();
+	wc_get_logger()->error(
+		'LTC wp_mail_failed: ' . $wp_error->get_error_message(),
+		array(
+			'source' => 'ltc-email',
+			'data'   => $data,
+		)
+	);
+}
+
+function ltc_maybe_auto_complete_viva_order( $order, $attempt = 0 ) {
+	if ( ! is_a( $order, 'WC_Order' ) || 'vivacom_smart' !== $order->get_payment_method() ) {
+		return true;
+	}
+
+	if ( 'completed' === $order->get_status() ) {
+		if ( 'yes' !== $order->get_meta( '_ltc_auto_completed_done', true ) ) {
+			$order->update_meta_data( '_ltc_auto_completed_done', 'yes' );
+			$order->save();
+		}
+		return true;
 	}
 
 	if ( 'processing' !== $order->get_status() ) {
-		return;
+		return false;
 	}
 
 	if ( 'yes' === $order->get_meta( '_ltc_auto_completed_done', true ) ) {
-		return;
-	}
-
-	// Se la mail completato è già partita non ri-completiamo (evita ciclo completed→processing→completed).
-	if ( 'yes' === $order->get_meta( '_ltc_customer_completed_email_sent_once', true ) ) {
-		return;
+		return true;
 	}
 
 	if ( ! $order->is_paid() ) {
-		return;
+		return false;
 	}
 
 	$fresh = wc_get_order( $order->get_id() );
@@ -463,15 +706,31 @@ function ltc_maybe_auto_complete_viva_order( $order ) {
 
 	$stock_reduced = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
 	if ( ! $stock_reduced ) {
-		return;
+		wc_maybe_reduce_stock_levels( $order->get_id() );
+		$order = wc_get_order( $order->get_id() );
+		if ( ! $order ) {
+			return false;
+		}
+		$stock_reduced = (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() );
+		if ( ! $stock_reduced ) {
+			return false;
+		}
 	}
 
 	if ( $order->has_downloadable_item() ) {
+		if ( function_exists( 'GenerateDownloads_afterPayment' ) ) {
+			GenerateDownloads_afterPayment( $order->get_id() );
+			$order = wc_get_order( $order->get_id() );
+			if ( ! $order ) {
+				return false;
+			}
+		}
+
 		$downloads_generated = (bool) $order->get_meta( '_GenerateDownloads_done', true );
 		$order_downloads     = $order->get_meta( '_Order_Downloads', true );
 
 		if ( ! $downloads_generated || empty( $order_downloads ) ) {
-			return;
+			return false;
 		}
 	}
 
@@ -479,6 +738,7 @@ function ltc_maybe_auto_complete_viva_order( $order ) {
 	$order->save();
 
 	$order->update_status( 'completed', 'LTC: auto-completamento Viva dopo verifica email processing, stock e ticket.' );
+	return true;
 }
 
 // [ EMAIL ]
