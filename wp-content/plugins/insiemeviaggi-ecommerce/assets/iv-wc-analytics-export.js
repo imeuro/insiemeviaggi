@@ -1,7 +1,7 @@
 (() => {
 	'use strict';
 
-	const config = window.LTC_WC_ANALYTICS_EXPORT;
+	const config = window.IV_WC_ANALYTICS_EXPORT;
 	if (!config || !config.adminPostUrl || !config.exportNonce) {
 		return;
 	}
@@ -212,11 +212,11 @@
 			const actionInput = document.createElement('input');
 			actionInput.type = 'hidden';
 			actionInput.name = 'action';
-			actionInput.value = 'ltc_export_orders_report';
+			actionInput.value = 'iv_export_orders_report';
 
 			const nonceInput = document.createElement('input');
 			nonceInput.type = 'hidden';
-			nonceInput.name = 'ltc_export_nonce';
+			nonceInput.name = 'iv_export_nonce';
 			nonceInput.value = config.exportNonce;
 
 			const argsInput = document.createElement('input');

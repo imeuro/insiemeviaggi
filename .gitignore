@@ -1,6 +1,8 @@
 *
 .*
 !.gitignore
+.DS_Store
+
 
 !wp-content/
 wp-content/*
@@ -14,3 +16,5 @@ wp-content/themes/*
 wp-content/plugins/*
 !wp-content/plugins/ltc-custom/
 !wp-content/plugins/ltc-custom/**
+!wp-content/plugins/insiemeviaggi-ecommerce/
+!wp-content/plugins/insiemeviaggi-ecommerce/**

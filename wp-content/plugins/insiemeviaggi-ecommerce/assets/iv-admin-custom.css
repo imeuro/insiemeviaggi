@@ -1,5 +1,5 @@
 
-div#ltc_section_header {
+div#iv_section_header {
 	display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -9,24 +9,24 @@ div#ltc_section_header {
     padding: 15px;
     background: #fff;
 }
-div#ltc_section_header .page_spiega {
+div#iv_section_header .page_spiega {
     flex: 0 1 400px;
 }
-div#ltc_section_header button {
+div#iv_section_header button {
     margin-right: 15px;
     line-height: 18px;
     padding-left: 10px;
 }
 
 
-#ltc_table_container {
+#iv_table_container {
     margin-right: 15px;
     box-sizing: border-box;
     border: 1px solid rgba(0,0,0,.1);
     border-top: none;
     position: relative;
 }
-#ltc_table_container:after {
+#iv_table_container:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -36,16 +36,16 @@ div#ltc_section_header button {
 }
 
 /*
-#ltc_table_container:before {
+#iv_table_container:before {
     left: 0;
     background: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
 }
-#ltc_table_container:after {
+#iv_table_container:after {
     right: 0;
     background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff);
 }
-#ltc_table_container:after, 
-#ltc_table_container:before {
+#iv_table_container:after, 
+#iv_table_container:before {
     content: "";
     position: absolute;
     top: 0;
@@ -56,18 +56,18 @@ div#ltc_section_header button {
     transition: opacity .3s;
     z-index: 1;
 }*/
-#ltc_table {
+#iv_table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
 }
 
-#ltc_table tbody {
+#iv_table tbody {
     display: table;
     width: 100%;
 }
 
-#ltc_table th {
+#iv_table th {
     font-size: 0.85rem;
     font-weight: 700;
     padding: 25px 25px 20px 25px;
@@ -76,15 +76,15 @@ div#ltc_section_header button {
     text-align: left;
 }
 
-#ltc_table tr {
+#iv_table tr {
     background-color: #fff;
 }
 
-#ltc_table tr:hover {
+#iv_table tr:hover {
     background-color: #ddd;
 }
 
-#ltc_table td {
+#iv_table td {
     font-size: 0.75rem;
     font-weight: 400;
     padding: 15px 24px;
@@ -93,7 +93,7 @@ div#ltc_section_header button {
     text-align: left;
 }
 
-.ltc_csv_preview_notice {
+.iv_csv_preview_notice {
     position: relative;
     top: -1px;
     margin: 0;
@@ -104,7 +104,7 @@ div#ltc_section_header button {
     border-top: none;
     text-align: center;
 }
-.ltc_csv_preview_notice .button.button-large {
+.iv_csv_preview_notice .button.button-large {
     margin-top: 15px;
     margin-left: 0;
     line-height: 18px;
