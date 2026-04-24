@@ -594,6 +594,7 @@ function iv_generate_order_tickets( $order_id ) {
 		$product_id     = (int) $cart_item_data['product_id'];
 		$pdf_folder     = $product->get_sku();
 		$pdf_matrix     = get_post_meta( $product_id, '_product_code', true );
+		$pdf_sku        = (string) $pdf_folder;
 
 		$original_checkout_qty = (int) $item->get_meta( '_iv_original_checkout_qty', true );
 		$item_qty              = (int) $item->get_quantity();
@@ -639,7 +640,16 @@ function iv_generate_order_tickets( $order_id ) {
 					$progressive_str = str_pad( (string) $next_progressive, 3, '0', STR_PAD_LEFT );
 					$ticket_name     = $pdf_matrix . '_' . $progressive_str . '.pdf';
 
-					if ( iv_is_ticket_name_already_reserved( $ticket_name, $order_id ) ) {
+					if ( iv_is_ticket_already_reserved( $pdf_sku, (string) $pdf_matrix, $progressive_str, $order_id ) ) {
+						iv_debug_log( 'ticket_collision_detected', array(
+							'hypothesisId' => 'UNIQ_V2',
+							'order_id'     => $order_id,
+							'product_id'   => $product_id,
+							'sku'          => $pdf_sku,
+							'matrix'       => (string) $pdf_matrix,
+							'progressive'  => $progressive_str,
+							'ticket_name'  => $ticket_name,
+						) );
 						$next_progressive++;
 						$attempts++;
 						continue;
@@ -649,6 +659,16 @@ function iv_generate_order_tickets( $order_id ) {
 					$file_abs_path = ABSPATH . ltrim( $file_rel_path, '/' );
 
 					if ( ! file_exists( $file_abs_path ) ) {
+						iv_debug_log( 'ticket_missing_file', array(
+							'hypothesisId' => 'UNIQ_V2',
+							'order_id'     => $order_id,
+							'product_id'   => $product_id,
+							'sku'          => $pdf_sku,
+							'matrix'       => (string) $pdf_matrix,
+							'progressive'  => $progressive_str,
+							'ticket_name'  => $ticket_name,
+							'file_abs_path'=> $file_abs_path,
+						) );
 						$next_progressive++;
 						$attempts++;
 						continue;
@@ -657,12 +677,16 @@ function iv_generate_order_tickets( $order_id ) {
 					$file_url      = get_site_url( null, $file_rel_path, 'https' );
 					$attachment_id = md5( $file_url );
 
-					$download = new WC_Product_Download();
-					$download->set_name( $ticket_name );
-					$download->set_id( $attachment_id );
-					$download->set_file( $file_url );
-
-					$downloads[ $attachment_id ] = $download;
+					$unique_key = iv_build_ticket_unique_key( $pdf_sku, (string) $pdf_matrix, $progressive_str );
+					$downloads[ $attachment_id ] = array(
+						'id'            => $attachment_id,
+						'name'          => $ticket_name,
+						'file'          => $file_url,
+						'sku'           => $pdf_sku,
+						'matrix'        => (string) $pdf_matrix,
+						'progressive'   => $progressive_str,
+						'iv_unique_key' => $unique_key,
+					);
 					$next_progressive++;
 					$ticket_assigned = true;
 					break;
@@ -802,6 +826,82 @@ function iv_release_product_ticket_lock( $lock_key ) {
 /*****************************************
  * VERIFICA UNICITA TICKET
  *****************************************/
+
+/**
+ * Costruisce la chiave univoca canonica ticket.
+ *
+ * @param string $sku         SKU prodotto.
+ * @param string $matrix      Matrice ticket.
+ * @param string $progressive Progressivo ticket (zero-padded).
+ * @return string
+ */
+function iv_build_ticket_unique_key( $sku, $matrix, $progressive ) {
+	$sku         = trim( (string) $sku );
+	$matrix      = trim( (string) $matrix );
+	$progressive = trim( (string) $progressive );
+	if ( '' === $sku || '' === $matrix || '' === $progressive ) {
+		return '';
+	}
+	return $sku . '|' . $matrix . '|' . $progressive;
+}
+
+/**
+ * Verifica unicita esclusivamente per SKU+matrice+progressivo.
+ *
+ * @param string $sku              SKU prodotto.
+ * @param string $matrix           Matrice ticket.
+ * @param string $progressive      Progressivo ticket.
+ * @param int    $exclude_order_id Ordine da escludere.
+ * @return bool
+ */
+function iv_is_ticket_already_reserved( $sku, $matrix, $progressive, $exclude_order_id = 0 ) {
+	global $wpdb;
+
+	$unique_key = iv_build_ticket_unique_key( $sku, $matrix, $progressive );
+	$exclude_order_id = (int) $exclude_order_id;
+
+	if ( '' !== $unique_key ) {
+		$uk_like = '%' . $wpdb->esc_like( $unique_key ) . '%';
+
+		$postmeta_sql  = "SELECT meta_id FROM {$wpdb->postmeta} WHERE meta_key = '_Order_Downloads' AND meta_value LIKE %s";
+		$postmeta_args = array( $uk_like );
+		if ( $exclude_order_id > 0 ) {
+			$postmeta_sql   .= ' AND post_id <> %d';
+			$postmeta_args[] = $exclude_order_id;
+		}
+		$found = $wpdb->get_var( $wpdb->prepare( $postmeta_sql . ' LIMIT 1', $postmeta_args ) );
+		if ( ! empty( $found ) ) {
+			iv_debug_log( 'ticket_collision_unique_key', array(
+				'hypothesisId' => 'UNIQ_V2',
+				'unique_key'   => $unique_key,
+				'source'       => 'postmeta',
+			) );
+			return true;
+		}
+
+		$hpos_meta_table = $wpdb->prefix . 'wc_orders_meta';
+		$table_exists    = ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $hpos_meta_table ) ) === $hpos_meta_table );
+		if ( $table_exists ) {
+			$hpos_sql  = "SELECT id FROM {$hpos_meta_table} WHERE meta_key = '_Order_Downloads' AND meta_value LIKE %s";
+			$hpos_args = array( $uk_like );
+			if ( $exclude_order_id > 0 ) {
+				$hpos_sql   .= ' AND order_id <> %d';
+				$hpos_args[] = $exclude_order_id;
+			}
+			$found_hpos = $wpdb->get_var( $wpdb->prepare( $hpos_sql . ' LIMIT 1', $hpos_args ) );
+			if ( ! empty( $found_hpos ) ) {
+				iv_debug_log( 'ticket_collision_unique_key', array(
+					'hypothesisId' => 'UNIQ_V2',
+					'unique_key'   => $unique_key,
+					'source'       => 'hpos',
+				) );
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
 
 /**
  * Verifica se un nome file ticket e' gia riservato in _Order_Downloads di un altro ordine.
