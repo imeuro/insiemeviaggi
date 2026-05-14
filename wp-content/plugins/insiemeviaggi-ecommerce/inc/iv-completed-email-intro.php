@@ -331,9 +331,12 @@ function iv_completed_order_intro_product_data_panel() {
 	<div id="iv_completed_email_product_data" class="panel woocommerce_options_panel hidden">
 		<div class="options_group iv-completed-email-intro-panel">
 			<p class="form-field form-field-wide iv-completed-email-intro-description">
+				<label for="iv_completed_order_intro_description">
+					<?php echo esc_html__( 'Ordine completato', 'insiemeviaggi-ecommerce' ); ?>
+				</label>
 				<?php
 				echo esc_html__(
-					"Inserisci un eventuale testo specifico per questo prodotto per l'email 'Ordine Completato'. Se lasci vuoto, verrà usato il testo standard.",
+					"Inserisci un eventuale testo -specifico per questo prodotto- che apparirà nell'email 'Ordine Completato' appena dopo 'Ciao [customer_first_name],'. Se lasci vuoto, verrà usato il testo standard.",
 					'insiemeviaggi-ecommerce'
 				);
 				?>
