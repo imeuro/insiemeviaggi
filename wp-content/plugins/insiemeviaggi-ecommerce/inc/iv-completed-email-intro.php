@@ -285,8 +285,65 @@ function iv_completed_order_intro_register_meta_box() {
 		'iv_completed_order_intro_meta_box_render',
 		'product',
 		'normal',
-		'low'
+		'high'
 	);
+}
+
+/*****************************************
+ * DIAGNOSTICA: avviso temporaneo per verificare il caricamento su staging.
+ * Rimuovere quando il meta box risulta visibile.
+ *****************************************/
+
+add_action( 'admin_notices', 'iv_completed_order_intro_debug_notice' );
+
+/**
+ * Mostra notice solo su modifica/creazione prodotto per confermare che il modulo è attivo.
+ */
+function iv_completed_order_intro_debug_notice() {
+	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+	if ( ! $screen || 'product' !== $screen->id ) {
+		return;
+	}
+
+	$registered = has_action( 'add_meta_boxes', 'iv_completed_order_intro_register_meta_box' ) ? 'sì' : 'no';
+	?>
+	<div class="notice notice-info">
+		<p>
+			<strong>IV intro email:</strong>
+			modulo <code>iv-completed-email-intro.php</code> caricato.
+			Meta box <code>iv_completed_order_intro_box</code> registrato: <?php echo esc_html( $registered ); ?>.
+			Se non lo vedi sotto i "Dati prodotto", controlla in alto a destra <em>Impostazioni schermata</em> e abilita la casella <strong>Email ordine completato</strong>.
+		</p>
+	</div>
+	<?php
+}
+
+/*****************************************
+ * FALLBACK: stampa diretta sotto editor classico (bypassa metabox machinery)
+ *****************************************/
+
+add_action( 'edit_form_after_editor', 'iv_completed_order_intro_after_editor_fallback' );
+
+/**
+ * Stampa il box intro email subito sotto l'editor del prodotto, in modo che sia comunque presente nel DOM
+ * anche se il meta box venisse nascosto da "Impostazioni schermata" o da altri plugin.
+ *
+ * @param WP_Post $post Post corrente.
+ */
+function iv_completed_order_intro_after_editor_fallback( $post ) {
+	if ( ! $post || 'product' !== $post->post_type ) {
+		return;
+	}
+	?>
+	<div id="iv_completed_order_intro_fallback" class="postbox" style="margin-top:20px;">
+		<div class="postbox-header">
+			<h2 class="hndle"><span><?php echo esc_html__( 'Email ordine completato (fallback)', 'insiemeviaggi-ecommerce' ); ?></span></h2>
+		</div>
+		<div class="inside">
+			<?php iv_completed_order_intro_meta_box_render( $post ); ?>
+		</div>
+	</div>
+	<?php
 }
 
 /**
@@ -295,9 +352,17 @@ function iv_completed_order_intro_register_meta_box() {
  * @param WP_Post $post Post prodotto.
  */
 function iv_completed_order_intro_meta_box_render( $post ) {
+	static $already_rendered = false;
+
+	if ( $already_rendered ) {
+		return;
+	}
+
 	if ( ! $post || 'product' !== $post->post_type ) {
 		return;
 	}
+
+	$already_rendered = true;
 
 	$product_object = wc_get_product( $post->ID );
 	$value          = '';
