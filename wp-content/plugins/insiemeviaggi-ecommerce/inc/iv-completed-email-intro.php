@@ -285,7 +285,12 @@ function iv_completed_order_intro_product_data_tabs( $tabs ) {
 	$tabs['iv_completed_email'] = array(
 		'label'    => __( 'Email ordine completato', 'insiemeviaggi-ecommerce' ),
 		'target'   => 'iv_completed_email_product_data',
-		'class'    => array(),
+		'class'    => array(
+			'show_if_simple',
+			'show_if_variable',
+			'show_if_grouped',
+			'show_if_external',
+		),
 		'priority' => 80,
 	);
 
