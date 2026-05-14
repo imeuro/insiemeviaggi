@@ -270,99 +270,44 @@ function iv_completed_order_intro_admin_enqueue( $hook_suffix ) {
 }
 
 /*****************************************
- * ADMIN: META BOX PRODOTTO (sempre nel DOM, non dipende da ul.product_data_tabs)
+ * ADMIN: TAB E PANNELLO PRODOTTO
  *****************************************/
 
-add_action( 'add_meta_boxes', 'iv_completed_order_intro_register_meta_box', 20 );
+add_filter( 'woocommerce_product_data_tabs', 'iv_completed_order_intro_product_data_tabs', 70 );
 
 /**
- * Registra meta box intro email su scheda prodotto (editor classico).
+ * Aggiunge tab dati prodotto per intro email.
+ *
+ * @param array<string, array<string, mixed>> $tabs Tab esistenti.
+ * @return array<string, array<string, mixed>>
  */
-function iv_completed_order_intro_register_meta_box() {
-	add_meta_box(
-		'iv_completed_order_intro_box',
-		__( 'Email ordine completato', 'insiemeviaggi-ecommerce' ),
-		'iv_completed_order_intro_meta_box_render',
-		'product',
-		'normal',
-		'high'
+function iv_completed_order_intro_product_data_tabs( $tabs ) {
+	$tabs['iv_completed_email'] = array(
+		'label'    => __( 'Email ordine completato', 'insiemeviaggi-ecommerce' ),
+		'target'   => 'iv_completed_email_product_data',
+		'class'    => array(
+			'show_if_simple',
+			'show_if_variable',
+			'show_if_grouped',
+			'show_if_external',
+		),
+		'priority' => 80,
 	);
+
+	return $tabs;
 }
 
-/*****************************************
- * DIAGNOSTICA: avviso temporaneo per verificare il caricamento su staging.
- * Rimuovere quando il meta box risulta visibile.
- *****************************************/
-
-add_action( 'admin_notices', 'iv_completed_order_intro_debug_notice' );
+add_action( 'woocommerce_product_data_panels', 'iv_completed_order_intro_product_data_panel' );
 
 /**
- * Mostra notice solo su modifica/creazione prodotto per confermare che il modulo è attivo.
+ * Pannello tab con editor WYSIWYG (prodotto semplice o genitore variabile).
  */
-function iv_completed_order_intro_debug_notice() {
-	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-	if ( ! $screen || 'product' !== $screen->id ) {
-		return;
-	}
-
-	$registered = has_action( 'add_meta_boxes', 'iv_completed_order_intro_register_meta_box' ) ? 'sì' : 'no';
-	?>
-	<div class="notice notice-info">
-		<p>
-			<strong>IV intro email:</strong>
-			modulo <code>iv-completed-email-intro.php</code> caricato.
-			Meta box <code>iv_completed_order_intro_box</code> registrato: <?php echo esc_html( $registered ); ?>.
-			Se non lo vedi sotto i "Dati prodotto", controlla in alto a destra <em>Impostazioni schermata</em> e abilita la casella <strong>Email ordine completato</strong>.
-		</p>
-	</div>
-	<?php
-}
-
-/*****************************************
- * FALLBACK: stampa diretta sotto editor classico (bypassa metabox machinery)
- *****************************************/
-
-add_action( 'edit_form_after_editor', 'iv_completed_order_intro_after_editor_fallback' );
-
-/**
- * Stampa il box intro email subito sotto l'editor del prodotto, in modo che sia comunque presente nel DOM
- * anche se il meta box venisse nascosto da "Impostazioni schermata" o da altri plugin.
- *
- * @param WP_Post $post Post corrente.
- */
-function iv_completed_order_intro_after_editor_fallback( $post ) {
-	if ( ! $post || 'product' !== $post->post_type ) {
-		return;
-	}
-	?>
-	<div id="iv_completed_order_intro_fallback" class="postbox" style="margin-top:20px;">
-		<div class="postbox-header">
-			<h2 class="hndle"><span><?php echo esc_html__( 'Email ordine completato (fallback)', 'insiemeviaggi-ecommerce' ); ?></span></h2>
-		</div>
-		<div class="inside">
-			<?php iv_completed_order_intro_meta_box_render( $post ); ?>
-		</div>
-	</div>
-	<?php
-}
-
-/**
- * Contenuto meta box: descrizione + editor WYSIWYG (prodotto semplice o genitore variabile).
- *
- * @param WP_Post $post Post prodotto.
- */
-function iv_completed_order_intro_meta_box_render( $post ) {
-	static $already_rendered = false;
-
-	if ( $already_rendered ) {
-		return;
-	}
+function iv_completed_order_intro_product_data_panel() {
+	global $post;
 
 	if ( ! $post || 'product' !== $post->post_type ) {
 		return;
 	}
-
-	$already_rendered = true;
 
 	$product_object = wc_get_product( $post->ID );
 	$value          = '';
@@ -373,33 +318,35 @@ function iv_completed_order_intro_meta_box_render( $post ) {
 
 	wp_nonce_field( 'iv_save_completed_order_intro', 'iv_completed_order_intro_nonce' );
 	?>
-	<div class="iv-completed-email-intro-metabox">
-		<p class="description iv-completed-email-intro-description">
-			<?php
-			echo esc_html__(
-				'Testo mostrato nell’email HTML “Ordine completato” dopo il saluto. Se lasci vuoto, si usa il testo standard del sito. Per prodotti variabili puoi impostare un testo anche su ogni variazione (priorità alla variazione, altrimenti questo testo).',
-				'insiemeviaggi-ecommerce'
-			);
-			?>
-		</p>
-		<p class="iv-completed-email-intro-field">
-			<label class="screen-reader-text" for="iv_completed_order_intro_editor">
-				<?php echo esc_html__( 'Intro email ordine completato', 'insiemeviaggi-ecommerce' ); ?>
-			</label>
-			<?php
-			wp_editor(
-				wp_kses_post( $value ),
-				'iv_completed_order_intro_editor',
-				array(
-					'textarea_name' => 'iv_completed_order_intro_html',
-					'textarea_rows' => 10,
-					'media_buttons' => false,
-					'teeny'         => true,
-					'quicktags'     => true,
-				)
-			);
-			?>
-		</p>
+	<div id="iv_completed_email_product_data" class="panel woocommerce_options_panel hidden">
+		<div class="options_group iv-completed-email-intro-panel">
+			<p class="form-field form-field-wide iv-completed-email-intro-description">
+				<?php
+				echo esc_html__(
+					'Testo mostrato nell’email HTML “Ordine completato” dopo il saluto. Se lasci vuoto, si usa il testo standard del sito. Per prodotti variabili puoi impostare un testo anche su ogni variazione (priorità alla variazione, altrimenti questo testo).',
+					'insiemeviaggi-ecommerce'
+				);
+				?>
+			</p>
+			<p class="form-field form-field-wide">
+				<label for="iv_completed_order_intro_editor">
+					<?php echo esc_html__( 'Intro email ordine completato', 'insiemeviaggi-ecommerce' ); ?>
+				</label>
+				<?php
+				wp_editor(
+					wp_kses_post( $value ),
+					'iv_completed_order_intro_editor',
+					array(
+						'textarea_name' => 'iv_completed_order_intro_html',
+						'textarea_rows' => 10,
+						'media_buttons' => false,
+						'teeny'         => true,
+						'quicktags'     => true,
+					)
+				);
+				?>
+			</p>
+		</div>
 	</div>
 	<?php
 }
