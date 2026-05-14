@@ -283,7 +283,7 @@ add_filter( 'woocommerce_product_data_tabs', 'iv_completed_order_intro_product_d
  */
 function iv_completed_order_intro_product_data_tabs( $tabs ) {
 	$tabs['iv_completed_email'] = array(
-		'label'    => __( 'Email ordine completato', 'insiemeviaggi-ecommerce' ),
+		'label'    => __( 'Email', 'insiemeviaggi-ecommerce' ),
 		'target'   => 'iv_completed_email_product_data',
 		'class'    => array(
 			'show_if_simple',
@@ -323,14 +323,14 @@ function iv_completed_order_intro_product_data_panel() {
 			<p class="form-field form-field-wide iv-completed-email-intro-description">
 				<?php
 				echo esc_html__(
-					'Testo mostrato nell’email HTML “Ordine completato” dopo il saluto. Se lasci vuoto, si usa il testo standard del sito. Per prodotti variabili puoi impostare un testo anche su ogni variazione (priorità alla variazione, altrimenti questo testo).',
+					"Inserisci un eventuale testo specifico per questo prodotto per l'email 'Ordine Completato'. Se lasci vuoto, verrà usato il testo standard.",
 					'insiemeviaggi-ecommerce'
 				);
 				?>
 			</p>
 			<p class="form-field form-field-wide">
-				<label for="iv_completed_order_intro_editor">
-					<?php echo esc_html__( 'Intro email ordine completato', 'insiemeviaggi-ecommerce' ); ?>
+				<label class="screen-reader-text" for="iv_completed_order_intro_editor">
+					<?php echo esc_html__( 'Testo email Ordine completato', 'insiemeviaggi-ecommerce' ); ?>
 				</label>
 				<?php
 				wp_editor(
@@ -338,7 +338,7 @@ function iv_completed_order_intro_product_data_panel() {
 					'iv_completed_order_intro_editor',
 					array(
 						'textarea_name' => 'iv_completed_order_intro_html',
-						'textarea_rows' => 10,
+						'textarea_rows' => 6,
 						'media_buttons' => false,
 						'teeny'         => true,
 						'quicktags'     => true,

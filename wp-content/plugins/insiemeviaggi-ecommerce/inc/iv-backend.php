@@ -472,3 +472,32 @@ function iv_options_page() {
 	</form>
 	<?php
 }
+
+
+/*****************************************
+ * DATI PRODOTTO: TAB NON USATE (WooCommerce admin)
+ *****************************************/
+
+add_filter( 'woocommerce_product_data_tabs', 'iv_remove_unused_product_data_tabs', 100 );
+
+/**
+ * Rimuove tab "Dati prodotto" non necessarie (Spedizione, Attributi, Avanzate).
+ * La tab "Articoli collegati" (linked_product) resta visibile di default; per nasconderla:
+ * add_filter( 'iv_product_data_remove_linked_product_tab', '__return_true' );
+ *
+ * @param array<string, array<string, mixed>> $tabs Tab WooCommerce.
+ * @return array<string, array<string, mixed>>
+ */
+function iv_remove_unused_product_data_tabs( $tabs ) {
+	if ( ! is_array( $tabs ) ) {
+		return $tabs;
+	}
+
+	unset( $tabs['shipping'], $tabs['attribute'], $tabs['advanced'] );
+
+	if ( apply_filters( 'iv_product_data_remove_linked_product_tab', false ) ) {
+		unset( $tabs['linked_product'] );
+	}
+
+	return $tabs;
+}
