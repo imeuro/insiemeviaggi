@@ -158,7 +158,21 @@ include IV_PLUGIN_DIR . 'inc/iv-tickets.php';
 
 include IV_PLUGIN_DIR . 'inc/iv-email.php';
 
-include IV_PLUGIN_DIR . 'inc/iv-completed-email-intro.php';
+/**
+ * Intro email ordine completato: caricato dopo WooCommerce (ordine di bootstrap plugin).
+ * Evita che `class_exists( 'WooCommerce' )` sia false all'include e che il modulo esca senza hook.
+ */
+add_action(
+	'plugins_loaded',
+	static function () {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+
+		require_once IV_PLUGIN_DIR . 'inc/iv-completed-email-intro.php';
+	},
+	11
+);
 
 
 /*****************************************

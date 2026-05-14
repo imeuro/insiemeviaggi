@@ -7,10 +7,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'WooCommerce' ) ) {
-	return;
-}
-
 /*****************************************
  * COSTANTI
  *****************************************/
