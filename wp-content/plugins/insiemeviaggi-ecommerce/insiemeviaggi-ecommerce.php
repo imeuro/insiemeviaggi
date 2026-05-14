@@ -158,6 +158,8 @@ include IV_PLUGIN_DIR . 'inc/iv-tickets.php';
 
 include IV_PLUGIN_DIR . 'inc/iv-email.php';
 
+include IV_PLUGIN_DIR . 'inc/iv-completed-email-intro.php';
+
 
 /*****************************************
  * FRONTEND
