@@ -336,7 +336,8 @@ function iv_completed_order_intro_product_data_panel() {
 				</label>
 				<?php
 				echo esc_html__(
-					"Inserisci un eventuale testo -specifico per questo prodotto- che apparirà nell'email 'Ordine Completato' appena dopo 'Ciao [customer_first_name],'. Se lasci vuoto, verrà usato il testo standard.",
+					"Inserisci un eventuale testo -specifico per questo prodotto- che apparirà nell'email <strong>Ordine Completato</strong> appena dopo <em>'Ciao [customer_first_name],'</em>.<br>Se lasci vuoto, verrà usato il testo standard.",
+
 					'insiemeviaggi-ecommerce'
 				);
 				?>
@@ -351,7 +352,7 @@ function iv_completed_order_intro_product_data_panel() {
 					'iv_completed_order_intro_editor',
 					array(
 						'textarea_name' => 'iv_completed_order_intro_html',
-						'textarea_rows' => 6,
+						'textarea_rows' => 10,
 						'media_buttons' => false,
 						'teeny'         => true,
 						'quicktags'     => true,
