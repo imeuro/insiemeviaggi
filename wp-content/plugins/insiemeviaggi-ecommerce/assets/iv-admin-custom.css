@@ -109,3 +109,7 @@ div#iv_section_header button {
     margin-left: 0;
     line-height: 18px;
 }
+
+#iv_completed_order_intro_editor {
+    padding: 0 12px 12px 12px;
+}
