@@ -338,7 +338,7 @@ function iv_completed_order_intro_product_data_panel() {
 				);
 				?>
 			</p>
-			<p class="form-field form-field-wide">
+			<div class="form-field form-field-wide">
 				<label class="screen-reader-text" for="iv_completed_order_intro_editor">
 					<?php echo esc_html__( 'Testo email Ordine completato', 'insiemeviaggi-ecommerce' ); ?>
 				</label>
@@ -355,7 +355,7 @@ function iv_completed_order_intro_product_data_panel() {
 					)
 				);
 				?>
-			</p>
+			</div>
 		</div>
 	</div>
 	<?php
