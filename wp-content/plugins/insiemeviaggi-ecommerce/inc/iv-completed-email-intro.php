@@ -267,6 +267,16 @@ function iv_completed_order_intro_admin_enqueue( $hook_suffix ) {
 	}
 
 	wp_enqueue_editor();
+
+	$iv_email_tab_css = IV_PLUGIN_DIR . 'assets/iv-wc-product-email-tab.css';
+	if ( file_exists( $iv_email_tab_css ) ) {
+		wp_enqueue_style(
+			'iv-wc-product-email-tab',
+			IV_PLUGIN_URL . 'assets/iv-wc-product-email-tab.css',
+			array( 'dashicons' ),
+			(string) filemtime( $iv_email_tab_css )
+		);
+	}
 }
 
 /*****************************************

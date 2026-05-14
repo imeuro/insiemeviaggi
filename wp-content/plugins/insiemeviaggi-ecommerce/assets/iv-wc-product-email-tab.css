@@ -1,0 +1,17 @@
+/* -------------------------------------------------------------------------
+ * WooCommerce — tab "Email" (dati prodotto): icona busta (Dashicons)
+ * ------------------------------------------------------------------------- */
+
+#woocommerce-product-data ul.product_data_tabs li.iv_completed_email_options a::before {
+	display: inline-block;
+	font-family: dashicons;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "\f466";
+}
