@@ -270,41 +270,31 @@ function iv_completed_order_intro_admin_enqueue( $hook_suffix ) {
 }
 
 /*****************************************
- * ADMIN: TAB E PANNELLO PRODOTTO
+ * ADMIN: META BOX PRODOTTO (sempre nel DOM, non dipende da ul.product_data_tabs)
  *****************************************/
 
-add_filter( 'woocommerce_product_data_tabs', 'iv_completed_order_intro_product_data_tabs', 70 );
+add_action( 'add_meta_boxes', 'iv_completed_order_intro_register_meta_box', 20 );
 
 /**
- * Aggiunge tab dati prodotto per intro email.
- *
- * @param array<string, array<string, mixed>> $tabs Tab esistenti.
- * @return array<string, array<string, mixed>>
+ * Registra meta box intro email su scheda prodotto (editor classico).
  */
-function iv_completed_order_intro_product_data_tabs( $tabs ) {
-	$tabs['iv_completed_email'] = array(
-		'label'    => __( 'Email ordine completato', 'insiemeviaggi-ecommerce' ),
-		'target'   => 'iv_completed_email_product_data',
-		'class'    => array(
-			'show_if_simple',
-			'show_if_variable',
-			'show_if_grouped',
-			'show_if_external',
-		),
-		'priority' => 80,
+function iv_completed_order_intro_register_meta_box() {
+	add_meta_box(
+		'iv_completed_order_intro_box',
+		__( 'Email ordine completato', 'insiemeviaggi-ecommerce' ),
+		'iv_completed_order_intro_meta_box_render',
+		'product',
+		'normal',
+		'low'
 	);
-
-	return $tabs;
 }
 
-add_action( 'woocommerce_product_data_panels', 'iv_completed_order_intro_product_data_panel' );
-
 /**
- * Pannello tab con editor WYSIWYG (prodotto semplice o genitore variabile).
+ * Contenuto meta box: descrizione + editor WYSIWYG (prodotto semplice o genitore variabile).
+ *
+ * @param WP_Post $post Post prodotto.
  */
-function iv_completed_order_intro_product_data_panel() {
-	global $post;
-
+function iv_completed_order_intro_meta_box_render( $post ) {
 	if ( ! $post || 'product' !== $post->post_type ) {
 		return;
 	}
@@ -318,35 +308,33 @@ function iv_completed_order_intro_product_data_panel() {
 
 	wp_nonce_field( 'iv_save_completed_order_intro', 'iv_completed_order_intro_nonce' );
 	?>
-	<div id="iv_completed_email_product_data" class="panel woocommerce_options_panel hidden">
-		<div class="options_group iv-completed-email-intro-panel">
-			<p class="form-field form-field-wide iv-completed-email-intro-description">
-				<?php
-				echo esc_html__(
-					'Testo mostrato nell’email HTML “Ordine completato” dopo il saluto. Se lasci vuoto, si usa il testo standard del sito. Per prodotti variabili puoi impostare un testo anche su ogni variazione (priorità alla variazione, altrimenti questo testo).',
-					'insiemeviaggi-ecommerce'
-				);
-				?>
-			</p>
-			<p class="form-field form-field-wide">
-				<label for="iv_completed_order_intro_editor">
-					<?php echo esc_html__( 'Intro email ordine completato', 'insiemeviaggi-ecommerce' ); ?>
-				</label>
-				<?php
-				wp_editor(
-					wp_kses_post( $value ),
-					'iv_completed_order_intro_editor',
-					array(
-						'textarea_name' => 'iv_completed_order_intro_html',
-						'textarea_rows' => 10,
-						'media_buttons' => false,
-						'teeny'         => true,
-						'quicktags'     => true,
-					)
-				);
-				?>
-			</p>
-		</div>
+	<div class="iv-completed-email-intro-metabox">
+		<p class="description iv-completed-email-intro-description">
+			<?php
+			echo esc_html__(
+				'Testo mostrato nell’email HTML “Ordine completato” dopo il saluto. Se lasci vuoto, si usa il testo standard del sito. Per prodotti variabili puoi impostare un testo anche su ogni variazione (priorità alla variazione, altrimenti questo testo).',
+				'insiemeviaggi-ecommerce'
+			);
+			?>
+		</p>
+		<p class="iv-completed-email-intro-field">
+			<label class="screen-reader-text" for="iv_completed_order_intro_editor">
+				<?php echo esc_html__( 'Intro email ordine completato', 'insiemeviaggi-ecommerce' ); ?>
+			</label>
+			<?php
+			wp_editor(
+				wp_kses_post( $value ),
+				'iv_completed_order_intro_editor',
+				array(
+					'textarea_name' => 'iv_completed_order_intro_html',
+					'textarea_rows' => 10,
+					'media_buttons' => false,
+					'teeny'         => true,
+					'quicktags'     => true,
+				)
+			);
+			?>
+		</p>
 	</div>
 	<?php
 }
