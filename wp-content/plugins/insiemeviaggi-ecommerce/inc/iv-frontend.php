@@ -48,46 +48,32 @@ function iv_custom_checkout_fields( $fields ) {
 
 
 /*****************************************
- * COUPON OBBLIGATORIO PER CATEGORIA "CONVENZIONI"
+ * COUPON OBBLIGATORIO (tutti i prodotti)
  *****************************************/
 
-function iv_get_post_ids_for_specific_cat( $cat_id, $taxonomy = 'product_cat' ) {
-	return get_posts( array(
-		'post_type' => 'product',
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'product_cat',
-				'field'    => 'ID',
-				'terms'    => $cat_id,
-			),
-		),
-		'fields' => 'ids',
-	) );
-}
+function iv_cart_has_items() {
+	if ( ! WC()->cart ) {
+		return false;
+	}
 
-function iv_is_coupon_valid( $coupon_code ) {
-	$coupon    = new \WC_Coupon( $coupon_code );
-	$discounts = new \WC_Discounts( WC()->cart );
-	$response  = $discounts->is_coupon_valid( $coupon );
-	return ! is_wp_error( $response );
+	return ! WC()->cart->is_empty();
 }
 
 function iv_has_required_coupon() {
 	if ( ! WC()->cart ) {
 		return false;
 	}
+
 	return count( (array) WC()->cart->get_applied_coupons() ) > 0;
 }
 
-function iv_get_first_targeted_cart_item( $targeted_ids ) {
-	if ( ! WC()->cart ) {
+function iv_get_first_cart_item() {
+	if ( ! WC()->cart || WC()->cart->is_empty() ) {
 		return null;
 	}
 
 	foreach ( WC()->cart->get_cart() as $cart_item ) {
-		if ( in_array( $cart_item['product_id'], $targeted_ids, true ) ) {
-			return $cart_item;
-		}
+		return $cart_item;
 	}
 
 	return null;
@@ -99,38 +85,50 @@ add_filter( 'woocommerce_notice_types', function ( $notice_types ) {
 	return $notice_types;
 } );
 
-add_action( 'woocommerce_check_cart_items', 'iv_mandatory_coupon_for_specific_items' );
-function iv_mandatory_coupon_for_specific_items() {
+add_action( 'woocommerce_check_cart_items', 'iv_mandatory_coupon_for_cart_items' );
+function iv_mandatory_coupon_for_cart_items() {
 	if ( is_checkout() && ! is_cart() ) {
 		return;
 	}
 
-	$targeted_ids   = iv_get_post_ids_for_specific_cat( 85, 'product_cat' );
-	$coupon_applied = iv_has_required_coupon();
-	$targeted_item  = iv_get_first_targeted_cart_item( $targeted_ids );
-
-	if ( $targeted_item && ! $coupon_applied ) {
-		echo "<script>document.addEventListener('DOMContentLoaded', (event) => { const cartprices = document.querySelectorAll('.woocommerce-cart-form bdi, .cart_totals bdi'); Array.from(cartprices).forEach((el)=>{ el.classList.add('xyz');});const proceedLink=document.querySelector('.wc-proceed-to-checkout > a'); if(proceedLink){proceedLink.removeAttribute('href');}});</script>";
-		wc_add_notice( sprintf( 'Per acquistare "%s" è necessario inserire un codice promozionale.', $targeted_item['data']->get_name() ), 'coupon-warning' );
+	if ( ! iv_cart_has_items() || iv_has_required_coupon() ) {
+		return;
 	}
+
+	$cart_item    = iv_get_first_cart_item();
+	$product_name = ( $cart_item && isset( $cart_item['data'] ) )
+		? $cart_item['data']->get_name()
+		: __( 'i prodotti selezionati', 'insiemeviaggi-ecommerce' );
+
+	echo "<script>document.addEventListener('DOMContentLoaded', (event) => { const cartprices = document.querySelectorAll('.woocommerce-cart-form bdi, .cart_totals bdi'); Array.from(cartprices).forEach((el)=>{ el.classList.add('xyz');});const proceedLink=document.querySelector('.wc-proceed-to-checkout > a'); if(proceedLink){proceedLink.removeAttribute('href');}});</script>";
+	wc_add_notice(
+		sprintf( 'Per acquistare "%s" è necessario inserire un codice promozionale.', $product_name ),
+		'coupon-warning'
+	);
 }
 
 add_action( 'woocommerce_after_checkout_validation', 'iv_block_checkout_without_required_coupon', 20, 2 );
 function iv_block_checkout_without_required_coupon( $data, $errors ) {
-	$targeted_ids   = iv_get_post_ids_for_specific_cat( 85, 'product_cat' );
-	$targeted_item  = iv_get_first_targeted_cart_item( $targeted_ids );
-	$coupon_applied = iv_has_required_coupon();
-
-	if ( ! $targeted_item || $coupon_applied ) {
+	if ( ! iv_cart_has_items() || iv_has_required_coupon() ) {
 		return;
 	}
 
-	if ( is_a( $errors, 'WP_Error' ) ) {
-		$errors->add(
-			'iv_required_coupon_missing',
-			sprintf( 'Per acquistare "%s" è necessario inserire un codice promozionale valido.', $targeted_item['data']->get_name() )
-		);
+	$cart_item    = iv_get_first_cart_item();
+	$product_name = ( $cart_item && isset( $cart_item['data'] ) )
+		? $cart_item['data']->get_name()
+		: __( 'i prodotti selezionati', 'insiemeviaggi-ecommerce' );
+
+	if ( ! is_a( $errors, 'WP_Error' ) ) {
+		return;
 	}
+
+	$errors->add(
+		'iv_required_coupon_missing',
+		sprintf(
+			'Per acquistare "%s" è necessario inserire un codice promozionale valido.',
+			$product_name
+		)
+	);
 }
 
 add_filter( 'woocommerce_add_to_cart_fragments', 'iv_blur_prices_fragment', 0, 1 );

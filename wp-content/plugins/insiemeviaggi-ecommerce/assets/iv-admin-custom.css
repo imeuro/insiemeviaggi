@@ -110,6 +110,6 @@ div#iv_section_header button {
     line-height: 18px;
 }
 
-#wp-iv_completed_order_intro_editor-wrap {
+#iv_completed_email_product_data .form-field {
     padding: 0 12px 12px 12px;
 }

@@ -76,6 +76,26 @@ function iv_format_completed_order_intro_html( $raw ) {
 }
 
 /**
+ * Legge il meta intro dal prodotto (WC_Product + fallback post_meta).
+ *
+ * @param WC_Product|null $product Prodotto.
+ * @return string
+ */
+function iv_read_product_completed_order_intro_meta( $product ) {
+	if ( ! is_a( $product, 'WC_Product' ) ) {
+		return '';
+	}
+
+	$raw = $product->get_meta( IV_COMPLETED_ORDER_INTRO_META_KEY, true );
+	if ( ! is_string( $raw ) || iv_completed_order_intro_raw_is_empty( $raw ) ) {
+		$post_raw = get_post_meta( $product->get_id(), IV_COMPLETED_ORDER_INTRO_META_KEY, true );
+		$raw      = is_string( $post_raw ) ? $post_raw : '';
+	}
+
+	return $raw;
+}
+
+/**
  * Intro effettiva per prodotto ordine: meta su variante o prodotto, fallback meta sul genitore per variazioni.
  *
  * @param WC_Product|null $product Prodotto riga ordine.
@@ -86,10 +106,7 @@ function iv_get_effective_product_completed_order_intro_raw( $product ) {
 		return '';
 	}
 
-	$raw = $product->get_meta( IV_COMPLETED_ORDER_INTRO_META_KEY, true );
-	if ( ! is_string( $raw ) ) {
-		$raw = '';
-	}
+	$raw = iv_read_product_completed_order_intro_meta( $product );
 
 	if ( ! iv_completed_order_intro_raw_is_empty( $raw ) ) {
 		return $raw;
@@ -98,12 +115,64 @@ function iv_get_effective_product_completed_order_intro_raw( $product ) {
 	if ( $product->is_type( 'variation' ) ) {
 		$parent = wc_get_product( $product->get_parent_id() );
 		if ( $parent && is_a( $parent, 'WC_Product' ) ) {
-			$parent_raw = $parent->get_meta( IV_COMPLETED_ORDER_INTRO_META_KEY, true );
-			return is_string( $parent_raw ) ? $parent_raw : '';
+			return iv_read_product_completed_order_intro_meta( $parent );
 		}
 	}
 
 	return '';
+}
+
+/**
+ * Risolve il prodotto WooCommerce da una riga ordine.
+ *
+ * @param WC_Order_Item_Product $item Riga ordine.
+ * @return WC_Product|null
+ */
+function iv_get_order_line_product( $item ) {
+	if ( ! is_a( $item, 'WC_Order_Item_Product' ) ) {
+		return null;
+	}
+
+	$product = $item->get_product();
+	if ( $product && is_a( $product, 'WC_Product' ) ) {
+		return $product;
+	}
+
+	$product_id = (int) $item->get_variation_id();
+	if ( $product_id < 1 ) {
+		$product_id = (int) $item->get_product_id();
+	}
+
+	if ( $product_id < 1 ) {
+		return null;
+	}
+
+	$product = wc_get_product( $product_id );
+
+	return ( $product && is_a( $product, 'WC_Product' ) ) ? $product : null;
+}
+
+/**
+ * Log diagnostico risoluzione intro (solo se WC_Logger disponibile).
+ *
+ * @param WC_Order|null $order    Ordine.
+ * @param string        $source   Contesto scelta testo.
+ * @param array         $details  Dettagli aggiuntivi.
+ */
+function iv_log_completed_order_intro_resolution( $order, $source, $details = array() ) {
+	if ( ! function_exists( 'wc_get_logger' ) ) {
+		return;
+	}
+
+	$order_id = ( is_a( $order, 'WC_Order' ) ) ? $order->get_id() : 0;
+
+	wc_get_logger()->info(
+		'IV intro email ordine #' . $order_id . ' → ' . $source,
+		array(
+			'source'  => 'iv-completed-email-intro',
+			'context' => $details,
+		)
+	);
 }
 
 /**
@@ -128,16 +197,17 @@ function iv_get_completed_order_email_intro_html( $order ) {
 			continue;
 		}
 
-		$product = $item->get_product();
+		$product = iv_get_order_line_product( $item );
 		if ( ! $product ) {
 			continue;
 		}
 
-		$raw            = iv_get_effective_product_completed_order_intro_raw( $product );
-		$has_intro      = ! iv_completed_order_intro_raw_is_empty( $raw );
-		$rows[]         = array(
-			'has_intro' => $has_intro,
-			'raw'       => $raw,
+		$raw       = iv_get_effective_product_completed_order_intro_raw( $product );
+		$has_intro = ! iv_completed_order_intro_raw_is_empty( $raw );
+		$rows[]    = array(
+			'has_intro'  => $has_intro,
+			'raw'        => $raw,
+			'product_id' => $product->get_id(),
 		);
 	}
 
@@ -146,29 +216,25 @@ function iv_get_completed_order_email_intro_html( $order ) {
 	if ( 0 === $n ) {
 		$chosen_raw = apply_filters( 'iv_completed_order_email_intro_default_plain', $default_plain, $order );
 		$html       = iv_format_completed_order_intro_html( $chosen_raw );
+		$context    = array( 'source' => 'no_line_items' );
 
-		return apply_filters(
-			'iv_completed_order_email_intro_html',
-			$html,
-			$order,
-			array(
-				'source' => 'no_line_items',
-			)
-		);
+		iv_log_completed_order_intro_resolution( $order, 'no_line_items', $context );
+
+		return apply_filters( 'iv_completed_order_email_intro_html', $html, $order, $context );
 	}
 
 	if ( 1 === $n ) {
 		$chosen_raw = $rows[0]['has_intro'] ? $rows[0]['raw'] : apply_filters( 'iv_completed_order_email_intro_default_plain', $default_plain, $order );
 		$html       = iv_format_completed_order_intro_html( $chosen_raw );
-
-		return apply_filters(
-			'iv_completed_order_email_intro_html',
-			$html,
-			$order,
-			array(
-				'source' => 'single_line_item',
-			)
+		$context    = array(
+			'source'     => $rows[0]['has_intro'] ? 'single_line_item_override' : 'single_line_item_default',
+			'product_id' => $rows[0]['product_id'],
+			'has_intro'  => $rows[0]['has_intro'],
 		);
+
+		iv_log_completed_order_intro_resolution( $order, $context['source'], $context );
+
+		return apply_filters( 'iv_completed_order_email_intro_html', $html, $order, $context );
 	}
 
 	$with_intro = array();
@@ -183,29 +249,25 @@ function iv_get_completed_order_email_intro_html( $order ) {
 	if ( 0 === $count_with ) {
 		$chosen_raw = apply_filters( 'iv_completed_order_email_intro_default_plain', $default_plain, $order );
 		$html       = iv_format_completed_order_intro_html( $chosen_raw );
+		$context    = array( 'source' => 'multi_all_empty', 'line_count' => $n );
 
-		return apply_filters(
-			'iv_completed_order_email_intro_html',
-			$html,
-			$order,
-			array(
-				'source' => 'multi_all_empty',
-			)
-		);
+		iv_log_completed_order_intro_resolution( $order, $context['source'], $context );
+
+		return apply_filters( 'iv_completed_order_email_intro_html', $html, $order, $context );
 	}
 
 	if ( $count_with < $n ) {
 		$chosen_raw = apply_filters( 'iv_completed_order_email_intro_default_plain', $default_plain, $order );
 		$html       = iv_format_completed_order_intro_html( $chosen_raw );
-
-		return apply_filters(
-			'iv_completed_order_email_intro_html',
-			$html,
-			$order,
-			array(
-				'source' => 'multi_mixed_filled_empty',
-			)
+		$context    = array(
+			'source'     => 'multi_mixed_filled_empty',
+			'line_count' => $n,
+			'with_intro' => $count_with,
 		);
+
+		iv_log_completed_order_intro_resolution( $order, $context['source'], $context );
+
+		return apply_filters( 'iv_completed_order_email_intro_html', $html, $order, $context );
 	}
 
 	$first_norm = iv_normalize_completed_order_intro_for_compare( $with_intro[0]['raw'] );
@@ -221,29 +283,55 @@ function iv_get_completed_order_email_intro_html( $order ) {
 	if ( $all_same ) {
 		$chosen_raw = $with_intro[0]['raw'];
 		$html       = iv_format_completed_order_intro_html( $chosen_raw );
-
-		return apply_filters(
-			'iv_completed_order_email_intro_html',
-			$html,
-			$order,
-			array(
-				'source' => 'multi_all_same_override',
-			)
+		$context    = array(
+			'source'     => 'multi_all_same_override',
+			'line_count' => $n,
 		);
+
+		iv_log_completed_order_intro_resolution( $order, $context['source'], $context );
+
+		return apply_filters( 'iv_completed_order_email_intro_html', $html, $order, $context );
 	}
 
 	$chosen_raw = apply_filters( 'iv_completed_order_email_intro_default_plain', $default_plain, $order );
 	$html       = iv_format_completed_order_intro_html( $chosen_raw );
-
-	return apply_filters(
-		'iv_completed_order_email_intro_html',
-		$html,
-		$order,
-		array(
-			'source' => 'multi_different_overrides',
-		)
+	$context    = array(
+		'source'     => 'multi_different_overrides',
+		'line_count' => $n,
 	);
+
+	iv_log_completed_order_intro_resolution( $order, $context['source'], $context );
+
+	return apply_filters( 'iv_completed_order_email_intro_html', $html, $order, $context );
 }
+
+/*****************************************
+ * OUTPUT EMAIL (hook + azione tema)
+ *****************************************/
+
+/**
+ * Stampa l'intro email ordine completato (evita doppio output).
+ *
+ * @param WC_Order $order Ordine.
+ */
+function iv_echo_completed_order_email_intro( $order ) {
+	global $iv_completed_order_intro_emitted;
+
+	if ( ! empty( $iv_completed_order_intro_emitted ) ) {
+		return;
+	}
+
+	if ( ! is_a( $order, 'WC_Order' ) ) {
+		return;
+	}
+
+	$iv_completed_order_intro_emitted = true;
+
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML già filtrato da wp_kses_post.
+	echo iv_get_completed_order_email_intro_html( $order );
+}
+
+add_action( 'iv_completed_order_email_intro', 'iv_echo_completed_order_email_intro', 10, 1 );
 
 /*****************************************
  * ADMIN: SCRIPT EDITOR
@@ -277,6 +365,12 @@ function iv_completed_order_intro_admin_enqueue( $hook_suffix ) {
 			(string) filemtime( $iv_email_tab_css )
 		);
 	}
+
+	wp_add_inline_script(
+		'jquery',
+		'(function($){$(function(){$("#post").on("submit",function(){if(typeof tinymce!=="undefined"){tinymce.triggerSave();}});});})(jQuery);',
+		'after'
+	);
 }
 
 /*****************************************
@@ -322,8 +416,7 @@ function iv_completed_order_intro_product_data_panel() {
 	$product_object = wc_get_product( $post->ID );
 	$value          = '';
 	if ( $product_object && is_a( $product_object, 'WC_Product' ) ) {
-		$meta = $product_object->get_meta( IV_COMPLETED_ORDER_INTRO_META_KEY, true );
-		$value = is_string( $meta ) ? $meta : '';
+		$value = iv_read_product_completed_order_intro_meta( $product_object );
 	}
 
 	wp_nonce_field( 'iv_save_completed_order_intro', 'iv_completed_order_intro_nonce' );
@@ -335,14 +428,10 @@ function iv_completed_order_intro_product_data_panel() {
 					<?php echo esc_html__( 'Ordine completato', 'insiemeviaggi-ecommerce' ); ?>
 				</label>
 				<?php
-				echo esc_html__(
-					"Inserisci un eventuale testo -specifico per questo prodotto- che apparirà nell'email <strong>Ordine Completato</strong> appena dopo <em>'Ciao [customer_first_name],'</em>.<br>Se lasci vuoto, verrà usato il testo standard.",
-
-					'insiemeviaggi-ecommerce'
-				);
+				echo "Inserisci un eventuale testo -specifico per questo prodotto- che apparirà nell'email <strong>Ordine Completato</strong> appena dopo <em>'Ciao [customer_first_name],'</em>.<br>Se lasci vuoto, verrà usato il testo standard.";
 				?>
 			</p>
-			<div class="form-field form-field-wide">
+			<div class="form-field form-field-wide" style="padding: 0 12px 12px 12px;">
 				<label class="screen-reader-text" for="iv_completed_order_intro_editor">
 					<?php echo esc_html__( 'Testo email Ordine completato', 'insiemeviaggi-ecommerce' ); ?>
 				</label>
@@ -379,8 +468,7 @@ function iv_completed_order_intro_variation_field( $loop, $variation_data, $vari
 		return;
 	}
 
-	$value = $variation->get_meta( IV_COMPLETED_ORDER_INTRO_META_KEY, true );
-	$value = is_string( $value ) ? $value : '';
+	$value = iv_read_product_completed_order_intro_meta( $variation );
 	$editor_id = 'iv_v_co_intro_' . (int) $variation->get_id();
 	?>
 	<div class="form-row form-field iv-variation-completed-email-intro">
@@ -434,7 +522,7 @@ function iv_completed_order_intro_save_product( $product ) {
 		return;
 	}
 
-	if ( ! isset( $_POST['iv_completed_order_intro_html'] ) ) {
+	if ( ! array_key_exists( 'iv_completed_order_intro_html', $_POST ) ) {
 		return;
 	}
 
@@ -442,6 +530,7 @@ function iv_completed_order_intro_save_product( $product ) {
 	$html = is_string( $html ) ? wp_kses_post( $html ) : '';
 
 	$product->update_meta_data( IV_COMPLETED_ORDER_INTRO_META_KEY, $html );
+	update_post_meta( $product->get_id(), IV_COMPLETED_ORDER_INTRO_META_KEY, $html );
 }
 
 add_action( 'woocommerce_save_product_variation', 'iv_completed_order_intro_save_variation', 10, 2 );
@@ -481,5 +570,6 @@ function iv_completed_order_intro_save_variation( $variation_id, $i ) {
 	$html   = is_string( $posted ) ? wp_kses_post( $posted ) : '';
 
 	$variation->update_meta_data( IV_COMPLETED_ORDER_INTRO_META_KEY, $html );
+	update_post_meta( $variation_id, IV_COMPLETED_ORDER_INTRO_META_KEY, $html );
 	$variation->save();
 }
