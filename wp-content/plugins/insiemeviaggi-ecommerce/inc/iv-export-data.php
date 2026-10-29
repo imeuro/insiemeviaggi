@@ -22,9 +22,6 @@ else :
 	$ABSPATH = '/var/www/html/insiemeviaggi/';
 endif;
 
-$ck           = 'ck_949470a85574c84b7a3cc662ca8f58cd7c7b3679';
-$cs           = 'cs_faf8293e8b36f6e0b41d49db552a5057a061d9f8';
-$api_url      = $ABSURL . 'wp-json/wc/v3/customers?consumer_key=' . $ck . '&consumer_secret=' . $cs . '&orderby=id&order=desc&per_page=100';
 $json_filename = $ABSPATH . 'wp-content/uploads/customer-data.json';
 $csv_filename  = $ABSPATH . 'wp-content/uploads/customer-data.csv';
 $csv_url       = $ABSURL . 'wp-content/uploads/customer-data.csv';
@@ -190,7 +187,40 @@ function iv_prepare_customer_row( $row, $headers_list ) {
 	return $row;
 }
 
-function iv_generate_csv_from_api( $endpoint, $cfilename, $force_regenerate ) {
+/**
+ * Riga cliente nel formato "REST" atteso da iv_prepare_customer_row().
+ *
+ * @param WC_Customer $customer Cliente.
+ * @return array
+ */
+function iv_customer_to_row( $customer ) {
+	return array(
+		'id'         => $customer->get_id(),
+		'email'      => $customer->get_email(),
+		'first_name' => $customer->get_first_name(),
+		'last_name'  => $customer->get_last_name(),
+		'billing'    => array(
+			'address_1' => $customer->get_billing_address_1(),
+			'address_2' => $customer->get_billing_address_2(),
+			'postcode'  => $customer->get_billing_postcode(),
+			'city'      => $customer->get_billing_city(),
+			'state'     => $customer->get_billing_state(),
+			'country'   => $customer->get_billing_country(),
+			'phone'     => $customer->get_billing_phone(),
+			'company'   => $customer->get_billing_company(),
+		),
+	);
+}
+
+/**
+ * Rigenera il CSV clienti leggendo direttamente dal DB (nessuna chiamata REST).
+ * Scrive su file temporaneo e sostituisce il CSV solo a export riuscito.
+ *
+ * @param string $cfilename        Percorso del CSV.
+ * @param bool   $force_regenerate True per cron/rigenerazione manuale.
+ * @return bool
+ */
+function iv_generate_csv_from_api( $cfilename, $force_regenerate ) {
 	$is_cron_job = ( true === $force_regenerate && ! is_user_logged_in() );
 
 	if ( ! $is_cron_job && ! current_user_can( 'manage_options' ) ) {
@@ -198,41 +228,40 @@ function iv_generate_csv_from_api( $endpoint, $cfilename, $force_regenerate ) {
 	}
 
 	if ( ! ( ( isset( $_GET['regenerate_csv'] ) && 'true' === $_GET['regenerate_csv'] ) || true === $force_regenerate ) ) {
-		return;
+		return false;
 	}
 
 	@ini_set( 'memory_limit', '512M' );
 
+	$logger = wc_get_logger();
+	$tmp    = $cfilename . '.tmp';
+
 	$headers_list = iv_get_longform_headers();
-	$fp           = fopen( $cfilename, 'w' );
+	$fp           = fopen( $tmp, 'w' );
 	if ( false === $fp ) {
-		return;
+		$logger->error( 'IV export clienti: impossibile scrivere ' . $tmp, array( 'source' => 'iv-export-data' ) );
+		return false;
 	}
+
 	$header = false;
 	$page   = 1;
+	$count  = 0;
 
 	while ( true ) {
-		$request_url = $endpoint . '&page=' . $page;
-		$args        = array();
-		if ( isset( $_SERVER['SERVER_NAME'] ) && ( 'localhost' === $_SERVER['SERVER_NAME'] || false !== strpos( $_SERVER['SERVER_NAME'], 'localhost' ) ) ) {
-			$args['sslverify'] = false;
-		}
-		$response = wp_remote_get( $request_url, $args );
-		if ( is_wp_error( $response ) ) {
-			break;
-		}
-		$response_data = wp_remote_retrieve_body( $response );
-		if ( '[]' === $response_data || '' === $response_data ) {
-			break;
-		}
-
-		$data = json_decode( $response_data, true );
-		if ( empty( $data ) ) {
+		$user_ids = get_users( array(
+			'role'    => 'customer',
+			'orderby' => 'ID',
+			'order'   => 'DESC',
+			'number'  => 100,
+			'paged'   => $page,
+			'fields'  => 'ID',
+		) );
+		if ( empty( $user_ids ) ) {
 			break;
 		}
 
-		foreach ( $data as $key => $row ) {
-			$row = iv_prepare_customer_row( $row, $headers_list );
+		foreach ( $user_ids as $user_id ) {
+			$row = iv_prepare_customer_row( iv_customer_to_row( new WC_Customer( (int) $user_id ) ), $headers_list );
 
 			if ( empty( $header ) ) {
 				$header = array_keys( $row );
@@ -241,14 +270,23 @@ function iv_generate_csv_from_api( $endpoint, $cfilename, $force_regenerate ) {
 			}
 
 			fputcsv( $fp, array_merge( $header, $row ) );
+			$count++;
 			unset( $row );
 		}
 
-		unset( $data, $response_data, $response );
+		unset( $user_ids );
 		$page++;
 	}
 
 	fclose( $fp );
+
+	if ( 0 === $count || ! rename( $tmp, $cfilename ) ) {
+		@unlink( $tmp );
+		$logger->error( 'IV export clienti: export non completato (clienti: ' . $count . '), CSV precedente mantenuto.', array( 'source' => 'iv-export-data' ) );
+		return false;
+	}
+
+	return true;
 }
 
 function iv_csv_preview( $cfilename, $csv_url_param = '', $preview_limit = null ) {

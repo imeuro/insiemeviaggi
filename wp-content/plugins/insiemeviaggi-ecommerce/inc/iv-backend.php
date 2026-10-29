@@ -166,8 +166,8 @@ function iv_protect_customer_data_files() {
 
 add_action( 'iv_weekly_action', 'iv_refresh_csv' );
 function iv_refresh_csv() {
-	global $api_url, $csv_filename;
-	iv_generate_csv_from_api( $api_url, $csv_filename, true );
+	global $csv_filename;
+	iv_generate_csv_from_api( $csv_filename, true );
 }
 
 wp_clear_scheduled_hook( 'LTC_daily_action' );
@@ -439,7 +439,7 @@ function iv_options_page() {
 		wp_die( esc_html__( 'Non hai i permessi per accedere a questa pagina.', 'woocommerce' ) );
 	}
 
-	global $api_url, $json_filename, $csv_filename, $csv_url, $ABSPATH;
+	global $json_filename, $csv_filename, $csv_url, $ABSPATH;
 
 	?>
 	<form action='./admin.php' method='GET' name="gencsv">
@@ -447,22 +447,26 @@ function iv_options_page() {
 		settings_fields( 'pluginPage' );
 		do_settings_sections( 'pluginPage' );
 
-		global $api_url, $json_filename, $csv_filename, $csv_url;
+		global $json_filename, $csv_filename, $csv_url;
 
 		if ( isset( $_GET['regenerate_csv'] ) && 'true' === $_GET['regenerate_csv'] ) {
 			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_die( esc_html__( 'Non hai i permessi per eseguire questa operazione.', 'woocommerce' ) );
 			}
 
-			iv_generate_csv_from_api( $api_url, $csv_filename, true );
+			$generated = iv_generate_csv_from_api( $csv_filename, true );
 
-			$redirect_url = admin_url( 'admin.php?page=iv-export-clienti&csv_generated=1' );
+			$redirect_url = admin_url( 'admin.php?page=iv-export-clienti&csv_generated=' . ( $generated ? '1' : '0' ) );
 			wp_redirect( $redirect_url );
 			exit;
 		}
 
 		if ( isset( $_GET['csv_generated'] ) && '1' === $_GET['csv_generated'] ) {
 			echo '<div class="notice notice-success is-dismissible" style="margin: 15px 0;"><p><strong>Lista clienti generata con successo!</strong></p></div>';
+		}
+
+		if ( isset( $_GET['csv_generated'] ) && '0' === $_GET['csv_generated'] ) {
+			echo '<div class="notice notice-error is-dismissible" style="margin: 15px 0;"><p><strong>Generazione della lista clienti non riuscita (vedi log WooCommerce "iv-export-data"). Il file precedente è stato mantenuto.</strong></p></div>';
 		}
 
 		if ( file_exists( $csv_filename ) ) {
