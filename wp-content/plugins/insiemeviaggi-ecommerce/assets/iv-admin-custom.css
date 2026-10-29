@@ -33,6 +33,7 @@ div#iv_section_header button {
     height: 400px;
     bottom: 0;
     background: linear-gradient(0deg, white, transparent);
+    pointer-events: none;
 }
 
 /*
