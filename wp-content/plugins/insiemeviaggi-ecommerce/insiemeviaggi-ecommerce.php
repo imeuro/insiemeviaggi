@@ -150,6 +150,7 @@ if ( ! function_exists( 'startsWith' ) ) {
  *****************************************/
 
 include IV_PLUGIN_DIR . 'inc/iv-tickets.php';
+include IV_PLUGIN_DIR . 'inc/iv-stock-reservation.php';
 
 
 /*****************************************

@@ -104,4 +104,3 @@ require_once get_parent_theme_file_path( '/inc/admin/menu/rek-admin-menu.php' );
 ** Customizer
 */
 require_once get_parent_theme_file_path( '/inc/admin/customizer/customizer.php' );
-

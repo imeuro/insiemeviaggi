@@ -632,6 +632,14 @@ function iv_generate_order_tickets( $order_id ) {
 				$next_progressive = 1;
 			}
 
+			// Fail-fast: se i PDF liberi non bastano, inutile scorrere migliaia di progressivi.
+			$available_files = iv_count_available_ticket_files( $pdf_folder, (string) $pdf_matrix, $next_progressive );
+			if ( $available_files < $qty ) {
+				iv_report_ticket_shortage( $order, $product_id, $qty, $available_files );
+				delete_transient( $lock_key );
+				return null;
+			}
+
 			for ( $k = 0; $k < $qty; $k++ ) {
 				$attempts        = 0;
 				$ticket_assigned = false;
@@ -717,11 +725,91 @@ function iv_generate_order_tickets( $order_id ) {
 
 	$order->update_meta_data( '_Order_Downloads', $downloads );
 	$order->update_meta_data( '_GenerateDownloads_done', true );
+	$order->delete_meta_data( '_iv_tickets_shortage_notified' );
 	$order->save();
 
 	delete_transient( $lock_key );
 
 	return $downloads;
+}
+
+
+/**
+ * Conta i PDF ancora assegnabili: file {matrice}_{progressivo}.pdf con progressivo >= $from_progressive.
+ * I file consumati/disabilitati (progressivo precedente o prefisso "_") non vengono contati.
+ *
+ * @param string $pdf_folder      Cartella in woocommerce_uploads (SKU prodotto).
+ * @param string $pdf_matrix      Matrice ticket (_product_code).
+ * @param int    $from_progressive Primo progressivo assegnabile (_product_code_second).
+ * @return int
+ */
+function iv_count_available_ticket_files( $pdf_folder, $pdf_matrix, $from_progressive ) {
+	static $cache = array();
+
+	$pdf_folder = (string) $pdf_folder;
+	$pdf_matrix = (string) $pdf_matrix;
+	if ( '' === $pdf_folder || '' === $pdf_matrix ) {
+		return 0;
+	}
+
+	$cache_key = $pdf_folder . '|' . $pdf_matrix . '|' . (int) $from_progressive;
+	if ( isset( $cache[ $cache_key ] ) ) {
+		return $cache[ $cache_key ];
+	}
+
+	$dir   = ABSPATH . 'wp-content/uploads/woocommerce_uploads/' . $pdf_folder . '/';
+	$files = glob( $dir . '*.pdf' );
+	$count = 0;
+	$regex = '/^' . preg_quote( $pdf_matrix, '/' ) . '_(\d+)\.pdf$/';
+
+	foreach ( (array) $files as $file ) {
+		if ( preg_match( $regex, basename( $file ), $m ) && (int) $m[1] >= (int) $from_progressive ) {
+			$count++;
+		}
+	}
+
+	$cache[ $cache_key ] = $count;
+	return $count;
+}
+
+
+/**
+ * Segnala (una sola volta per ordine) che i PDF non bastano: log, nota ordine, mail all'amministratore.
+ *
+ * @param WC_Order $order      Ordine.
+ * @param int      $product_id ID prodotto.
+ * @param int      $needed     Biglietti richiesti.
+ * @param int      $available  Biglietti disponibili.
+ */
+function iv_report_ticket_shortage( $order, $product_id, $needed, $available ) {
+	$order_id = $order->get_id();
+
+	wc_get_logger()->error(
+		sprintf( 'IV: PDF insufficienti per ordine #%d, prodotto %d (richiesti %d, disponibili %d)', $order_id, $product_id, $needed, $available ),
+		array( 'source' => 'iv-tickets' )
+	);
+
+	if ( 'yes' === $order->get_meta( '_iv_tickets_shortage_notified', true ) ) {
+		return;
+	}
+
+	$order->update_meta_data( '_iv_tickets_shortage_notified', 'yes' );
+	$order->add_order_note( sprintf( 'IV: biglietti non generati, PDF insufficienti per il prodotto #%d (richiesti %d, disponibili %d). Caricare i PDF mancanti e rigenerare.', $product_id, $needed, $available ) );
+	$order->save();
+
+	wp_mail(
+		get_option( 'admin_email' ),
+		sprintf( '[%s] PDF biglietti insufficienti - ordine #%d', wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ), $order_id ),
+		sprintf(
+			"L'ordine #%d (%s) non ha biglietti assegnati: prodotto #%d, richiesti %d, PDF disponibili %d.\nCaricare i PDF mancanti e rigenerare i biglietti.\n%s",
+			$order_id,
+			$order->get_formatted_billing_full_name(),
+			$product_id,
+			$needed,
+			$available,
+			$order->get_edit_order_url()
+		)
+	);
 }
 
 
