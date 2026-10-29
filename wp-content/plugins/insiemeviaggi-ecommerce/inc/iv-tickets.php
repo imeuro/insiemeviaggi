@@ -6,6 +6,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/* Massimo di progressivi gia riservati da altri ordini che si saltano prima di rinunciare. */
+defined( 'IV_TICKET_MAX_COLLISIONS' ) || define( 'IV_TICKET_MAX_COLLISIONS', 200 );
+
 
 /* Hook: genera biglietti quando l'ordine entra in completed o on-hold (BACS).
  * Priorita 5: prima delle email WooCommerce (priorita 10),
@@ -411,7 +414,9 @@ function iv_control_reduce_order_stock_for_vivacom_smart( $trigger_reduce, $orde
 // #endregion
 
 // #region agent log — stock reduction forzata con qty corretta
-add_action( 'woocommerce_order_status_completed', 'iv_ensure_correct_stock_reduction', 50, 2 );
+// Priorita 1: lo stock va scalato prima della generazione biglietti (prio 5), che puo essere lenta.
+// A completed lo stato e gia salvato come non-pending, quindi la riserva Woo non conta piu: scalare tardi riapre la finestra di overselling.
+add_action( 'woocommerce_order_status_completed', 'iv_ensure_correct_stock_reduction', 1, 2 );
 function iv_ensure_correct_stock_reduction( $order_id, $order ) {
 	if ( ! is_a( $order, 'WC_Order' ) ) {
 		$order = wc_get_order( $order_id );
@@ -632,84 +637,70 @@ function iv_generate_order_tickets( $order_id ) {
 				$next_progressive = 1;
 			}
 
-			// Fail-fast: se i PDF liberi non bastano, inutile scorrere migliaia di progressivi.
-			$available_files = iv_count_available_ticket_files( $pdf_folder, (string) $pdf_matrix, $next_progressive );
-			if ( $available_files < $qty ) {
-				iv_report_ticket_shortage( $order, $product_id, $qty, $available_files );
+			// Si scorrono solo i PDF realmente presenti (progressivo >= contatore), non tutti i numeri possibili.
+			$candidates = iv_list_available_ticket_progressives( $pdf_folder, (string) $pdf_matrix, $next_progressive );
+			if ( count( $candidates ) < $qty ) {
+				iv_report_ticket_shortage( $order, $product_id, $qty, count( $candidates ) );
 				delete_transient( $lock_key );
 				return null;
 			}
 
-			for ( $k = 0; $k < $qty; $k++ ) {
-				$attempts        = 0;
-				$ticket_assigned = false;
+			$assigned   = 0;
+			$collisions = 0;
 
-				while ( $attempts < 5000 ) {
-					$progressive_str = str_pad( (string) $next_progressive, 3, '0', STR_PAD_LEFT );
-					$ticket_name     = $pdf_matrix . '_' . $progressive_str . '.pdf';
-
-					if ( iv_is_ticket_already_reserved( $pdf_sku, (string) $pdf_matrix, $progressive_str, $order_id ) ) {
-						iv_debug_log( 'ticket_collision_detected', array(
-							'hypothesisId' => 'UNIQ_V2',
-							'order_id'     => $order_id,
-							'product_id'   => $product_id,
-							'sku'          => $pdf_sku,
-							'matrix'       => (string) $pdf_matrix,
-							'progressive'  => $progressive_str,
-							'ticket_name'  => $ticket_name,
-						) );
-						$next_progressive++;
-						$attempts++;
-						continue;
-					}
-
-					$file_rel_path = '/wp-content/uploads/woocommerce_uploads/' . $pdf_folder . '/' . $ticket_name;
-					$file_abs_path = ABSPATH . ltrim( $file_rel_path, '/' );
-
-					if ( ! file_exists( $file_abs_path ) ) {
-						iv_debug_log( 'ticket_missing_file', array(
-							'hypothesisId' => 'UNIQ_V2',
-							'order_id'     => $order_id,
-							'product_id'   => $product_id,
-							'sku'          => $pdf_sku,
-							'matrix'       => (string) $pdf_matrix,
-							'progressive'  => $progressive_str,
-							'ticket_name'  => $ticket_name,
-							'file_abs_path'=> $file_abs_path,
-						) );
-						$next_progressive++;
-						$attempts++;
-						continue;
-					}
-
-					$file_url      = get_site_url( null, $file_rel_path, 'https' );
-					$attachment_id = md5( $file_url );
-
-					$unique_key = iv_build_ticket_unique_key( $pdf_sku, (string) $pdf_matrix, $progressive_str );
-					$downloads[ $attachment_id ] = array(
-						'id'            => $attachment_id,
-						'name'          => $ticket_name,
-						'file'          => $file_url,
-						'sku'           => $pdf_sku,
-						'matrix'        => (string) $pdf_matrix,
-						'progressive'   => $progressive_str,
-						'iv_unique_key' => $unique_key,
-					);
-					$next_progressive++;
-					$ticket_assigned = true;
+			foreach ( $candidates as $progressive ) {
+				if ( $assigned >= $qty ) {
 					break;
 				}
 
-				if ( ! $ticket_assigned ) {
-					$logger->error( 'IV: impossibile assegnare ticket dopo troppi tentativi', array(
-						'source'     => 'iv-tickets',
-						'order_id'   => $order_id,
-						'product_id' => $product_id,
-						'qty_index'  => $k,
+				$progressive_str = str_pad( (string) $progressive, 3, '0', STR_PAD_LEFT );
+				$ticket_name     = $pdf_matrix . '_' . $progressive_str . '.pdf';
+
+				if ( iv_is_ticket_already_reserved( $pdf_sku, (string) $pdf_matrix, $progressive_str, $order_id ) ) {
+					iv_debug_log( 'ticket_collision_detected', array(
+						'hypothesisId' => 'UNIQ_V2',
+						'order_id'     => $order_id,
+						'product_id'   => $product_id,
+						'sku'          => $pdf_sku,
+						'matrix'       => (string) $pdf_matrix,
+						'progressive'  => $progressive_str,
+						'ticket_name'  => $ticket_name,
 					) );
-					delete_transient( $lock_key );
-					return null;
+					$next_progressive = $progressive + 1;
+					if ( ++$collisions >= IV_TICKET_MAX_COLLISIONS ) {
+						break;
+					}
+					continue;
 				}
+
+				$file_rel_path = '/wp-content/uploads/woocommerce_uploads/' . $pdf_folder . '/' . $ticket_name;
+				$file_url      = get_site_url( null, $file_rel_path, 'https' );
+				$attachment_id = md5( $file_url );
+
+				$unique_key = iv_build_ticket_unique_key( $pdf_sku, (string) $pdf_matrix, $progressive_str );
+				$downloads[ $attachment_id ] = array(
+					'id'            => $attachment_id,
+					'name'          => $ticket_name,
+					'file'          => $file_url,
+					'sku'           => $pdf_sku,
+					'matrix'        => (string) $pdf_matrix,
+					'progressive'   => $progressive_str,
+					'iv_unique_key' => $unique_key,
+				);
+				$next_progressive = $progressive + 1;
+				$assigned++;
+			}
+
+			if ( $assigned < $qty ) {
+				$logger->error( 'IV: impossibile assegnare ticket (PDF gia riservati da altri ordini)', array(
+					'source'     => 'iv-tickets',
+					'order_id'   => $order_id,
+					'product_id' => $product_id,
+					'assigned'   => $assigned,
+					'collisions' => $collisions,
+				) );
+				delete_transient( $lock_key );
+				return null;
 			}
 
 			update_post_meta( $product_id, '_product_code_second', $next_progressive );
@@ -735,21 +726,21 @@ function iv_generate_order_tickets( $order_id ) {
 
 
 /**
- * Conta i PDF ancora assegnabili: file {matrice}_{progressivo}.pdf con progressivo >= $from_progressive.
- * I file consumati/disabilitati (progressivo precedente o prefisso "_") non vengono contati.
+ * Progressivi dei PDF ancora assegnabili, in ordine crescente: file {matrice}_{progressivo}.pdf
+ * con progressivo >= $from_progressive. I file consumati/disabilitati (prefisso "_") sono esclusi.
  *
- * @param string $pdf_folder      Cartella in woocommerce_uploads (SKU prodotto).
- * @param string $pdf_matrix      Matrice ticket (_product_code).
+ * @param string $pdf_folder       Cartella in woocommerce_uploads (SKU prodotto).
+ * @param string $pdf_matrix       Matrice ticket (_product_code).
  * @param int    $from_progressive Primo progressivo assegnabile (_product_code_second).
- * @return int
+ * @return int[]
  */
-function iv_count_available_ticket_files( $pdf_folder, $pdf_matrix, $from_progressive ) {
+function iv_list_available_ticket_progressives( $pdf_folder, $pdf_matrix, $from_progressive ) {
 	static $cache = array();
 
 	$pdf_folder = (string) $pdf_folder;
 	$pdf_matrix = (string) $pdf_matrix;
 	if ( '' === $pdf_folder || '' === $pdf_matrix ) {
-		return 0;
+		return array();
 	}
 
 	$cache_key = $pdf_folder . '|' . $pdf_matrix . '|' . (int) $from_progressive;
@@ -758,18 +749,27 @@ function iv_count_available_ticket_files( $pdf_folder, $pdf_matrix, $from_progre
 	}
 
 	$dir   = ABSPATH . 'wp-content/uploads/woocommerce_uploads/' . $pdf_folder . '/';
-	$files = glob( $dir . '*.pdf' );
-	$count = 0;
 	$regex = '/^' . preg_quote( $pdf_matrix, '/' ) . '_(\d+)\.pdf$/';
+	$found = array();
 
-	foreach ( (array) $files as $file ) {
+	foreach ( (array) glob( $dir . '*.pdf' ) as $file ) {
 		if ( preg_match( $regex, basename( $file ), $m ) && (int) $m[1] >= (int) $from_progressive ) {
-			$count++;
+			$found[] = (int) $m[1];
 		}
 	}
 
-	$cache[ $cache_key ] = $count;
-	return $count;
+	sort( $found, SORT_NUMERIC );
+	$cache[ $cache_key ] = $found;
+	return $found;
+}
+
+/**
+ * Numero di PDF ancora assegnabili (vedi iv_list_available_ticket_progressives).
+ *
+ * @return int
+ */
+function iv_count_available_ticket_files( $pdf_folder, $pdf_matrix, $from_progressive ) {
+	return count( iv_list_available_ticket_progressives( $pdf_folder, $pdf_matrix, $from_progressive ) );
 }
 
 
